@@ -24,7 +24,7 @@
 
   $copy = [
       'ru' => [
-          'title' => 'О библиотеке — KazUTB Smart Library',
+          'title' => 'О библиотеке — KazUTB Digital Library',
           'collection_areas' => [
               [
                   'slug' => 'technology',
@@ -74,7 +74,7 @@
           'canon_hero_eyebrow' => 'Учреждение',
           'canon_hero_title_a' => 'Сохраняем знание.',
           'canon_hero_title_b' => 'Поддерживаем исследования.',
-          'canon_hero_body' => 'KazUTB Smart Library — университетская библиотека, соединяющая академическую традицию и цифровой сервис, чтобы поддерживать учебную и исследовательскую работу читателей университета.',
+          'canon_hero_body' => 'KazUTB Digital Library — университетская библиотека Казахского университета технологии и бизнеса имени К. Кулажанова, соединяющая академическую традицию и цифровой сервис для поддержки учебной и исследовательской работы.',
           'canon_hero_image_alt' => 'Читательский зал университетской библиотеки с книжными стеллажами и столами для работы',
           'canon_hero_badge_title' => 'Институциональная библиотека',
           'canon_hero_badge_body' => 'Поддержка академических программ кампуса и колледжа КазУТБ.',
@@ -96,7 +96,7 @@
           ],
       ],
       'kk' => [
-          'title' => 'Кітапхана туралы — KazUTB Smart Library',
+          'title' => 'Кітапхана туралы — KazUTB Digital Library',
           'collection_areas' => [
               [
                   'slug' => 'technology',
@@ -146,7 +146,7 @@
           'canon_hero_eyebrow' => 'Мекеме',
           'canon_hero_title_a' => 'Білімді сақтаймыз.',
           'canon_hero_title_b' => 'Зерттеуді қолдаймыз.',
-          'canon_hero_body' => 'KazUTB Smart Library — академиялық дәстүр мен цифрлық қызметті біріктіріп, университет оқырмандарының оқу мен зерттеу жұмысын қолдайтын университет кітапханасы.',
+          'canon_hero_body' => 'KazUTB Digital Library — Қ. Құлажанов атындағы Қазақ технология және бизнес университетінің академиялық дәстүр мен цифрлық қызметті біріктіретін, оқу мен зерттеу жұмысын қолдайтын университет кітапханасы.',
           'canon_hero_image_alt' => 'Көп қабатты сөрелері мен оқу үстелдері бар университет кітапханасының оқу залы',
           'canon_hero_badge_title' => 'Институционалдық кітапхана',
           'canon_hero_badge_body' => 'KazUTB университеті мен колледжінің академиялық бағдарламаларын қолдау.',
@@ -168,7 +168,7 @@
           ],
       ],
       'en' => [
-          'title' => 'About — KazUTB Smart Library',
+          'title' => 'About — KazUTB Digital Library',
           'collection_areas' => [
               [
                   'slug' => 'technology',
@@ -218,7 +218,7 @@
           'canon_hero_eyebrow' => 'Institution',
           'canon_hero_title_a' => 'Preserving Knowledge.',
           'canon_hero_title_b' => 'Supporting Research.',
-          'canon_hero_body' => 'The KazUTB Smart Library is the university library that brings together academic tradition and digital service to support the teaching and research work of the university\'s readers.',
+          'canon_hero_body' => 'The KazUTB Digital Library is the university library of the Kazakh University of Technology and Business named after K. Kulazhanov, bringing together academic tradition and digital service to support teaching and research.',
           'canon_hero_image_alt' => 'Reading room of the university library with shelves and study desks',
           'canon_hero_badge_title' => 'Institutional library',
           'canon_hero_badge_body' => 'Supporting the academic programmes of the KazUTB university and college campus.',

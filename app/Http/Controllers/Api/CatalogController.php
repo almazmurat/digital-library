@@ -20,6 +20,7 @@ class CatalogController extends Controller
             'isbn' => ['nullable', 'string', 'max:64'],
             'udc' => ['nullable', 'string', 'max:128'],
             'language' => ['nullable', 'string', 'max:10'],
+            'material_type' => ['nullable', 'string', 'in:all,digital,archive,physical'],
             'page' => ['nullable', 'integer', 'min:1'],
             'limit' => ['nullable', 'integer', 'min:1', 'max:100'],
             'sort' => ['nullable', 'string', 'in:popular,newest,title,author'],
@@ -46,6 +47,7 @@ class CatalogController extends Controller
             yearTo: isset($validated['year_to']) ? (int) $validated['year_to'] : null,
             availableOnly: in_array($validated['available_only'] ?? '0', ['1', 'true'], true),
             physicalOnly: in_array($validated['physical_only'] ?? '0', ['1', 'true'], true),
+            materialType: isset($validated['material_type']) ? (string) $validated['material_type'] : null,
             subjectId: isset($validated['subject_id']) ? (string) $validated['subject_id'] : null,
             institution: isset($validated['institution']) ? (string) $validated['institution'] : null,
         );

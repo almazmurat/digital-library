@@ -56,6 +56,208 @@ $memberView = static function (Request $request, string $view, array $data = [])
     ], $data));
 };
 
+<<<<<<< HEAD
+=======
+$newsModelToPublicArticle = static function ($record): array {
+    $publishedAt = $record->published_at ?? $record->updated_at ?? $record->created_at ?? now();
+    $publishedAt = $publishedAt instanceof \Carbon\CarbonInterface ? $publishedAt : now();
+    $content = trim((string) ($record->content ?? ''));
+    $paragraphs = preg_split('/\R{2,}/', $content) ?: [];
+    $paragraphs = array_values(array_filter(array_map(static fn ($value) => trim((string) $value), $paragraphs)));
+
+    if ($paragraphs === [] && $content !== '') {
+        $paragraphs = [$content];
+    }
+
+    $blocks = [];
+    foreach ($paragraphs as $index => $paragraph) {
+        $blocks[] = [
+            'type' => $index === 0 ? 'lead' : 'p',
+            'text' => $paragraph,
+        ];
+    }
+
+    $categoryLabel = \Illuminate\Support\Str::of((string) ($record->category ?? 'announcement'))
+        ->replace('-', ' ')
+        ->replace('_', ' ')
+        ->title()
+        ->toString();
+    $excerpt = trim((string) ($record->excerpt ?: \Illuminate\Support\Str::limit(preg_replace('/\s+/', ' ', strip_tags($content)), 220)));
+
+    return [
+        'id' => (string) $record->id,
+        'slug' => (string) $record->slug,
+        'featured' => (bool) ($record->is_featured ?? false),
+        'published_at' => $publishedAt->toDateString(),
+        'published_display' => [
+            'ru' => $publishedAt->format('d.m.Y'),
+            'kk' => $publishedAt->format('d.m.Y'),
+            'en' => $publishedAt->format('F j, Y'),
+        ],
+        'category' => [
+            'ru' => $categoryLabel,
+            'kk' => $categoryLabel,
+            'en' => $categoryLabel,
+        ],
+        'title' => [
+            'ru' => (string) $record->title,
+            'kk' => (string) $record->title,
+            'en' => (string) $record->title,
+        ],
+        'excerpt' => [
+            'ru' => $excerpt,
+            'kk' => $excerpt,
+            'en' => $excerpt,
+        ],
+        'hero' => [
+            'image' => null,
+            'alt' => ['ru' => '', 'kk' => '', 'en' => ''],
+        ],
+        'body' => [
+            'ru' => $blocks,
+            'kk' => $blocks,
+            'en' => $blocks,
+        ],
+        'cta' => null,
+    ];
+};
+
+$newsModelToAdminEntry = static function ($record): array {
+    $status = (string) ($record->status ?? 'draft');
+    $publishedAt = $record->published_at ?? $record->updated_at ?? $record->created_at ?? now();
+    $publishedAt = $publishedAt instanceof \Carbon\CarbonInterface ? $publishedAt : now();
+
+    $dateLabel = match ($status) {
+        'published' => 'Published ' . $publishedAt->format('M d, Y'),
+        'archived' => 'Archived ' . $publishedAt->format('M d, Y'),
+        default => 'Last edited ' . $publishedAt->diffForHumans(),
+    };
+
+    return [
+        'id' => (string) $record->id,
+        'status' => \Illuminate\Support\Str::of($status)->title()->toString(),
+        'status_tone' => $status,
+        'date_icon' => $status === 'published' ? 'calendar_today' : ($status === 'archived' ? 'inventory_2' : 'edit'),
+        'date_label' => $dateLabel,
+        'featured' => (bool) ($record->is_featured ?? false),
+        'category' => \Illuminate\Support\Str::of((string) ($record->category ?? 'announcement'))->replace('-', ' ')->replace('_', ' ')->title()->toString(),
+        'title' => (string) $record->title,
+        'excerpt' => (string) ($record->excerpt ?? ''),
+        'has_cover' => false,
+        'public_url' => $status === 'published' && $publishedAt->lte(now()) ? '/news/' . $record->slug : null,
+    ];
+};
+
+$resolveCrmUserId = static function (array $sessionUser): ?string {
+    $sessionId = trim((string) ($sessionUser['id'] ?? ''));
+
+    // Session user ID from CRM is the authoritative CRM user identifier.
+    // No DB lookup needed; if it's a valid UUID, use it directly.
+    if ($sessionId !== '' && \Illuminate\Support\Str::isUuid($sessionId)) {
+        return $sessionId;
+    }
+
+    return null;
+};
+
+$memberReservationsFeed = static function (string $crmUserId): array {
+    return DB::connection('pgsql')
+        ->table('public.Reservation as r')
+        ->leftJoin('public.Book as b', 'b.id', '=', 'r.bookId')
+        ->where('r.userId', $crmUserId)
+        ->select([
+            'r.id',
+            'r.status',
+            'r.reservedAt',
+            'r.expiresAt',
+            'r.processedAt',
+            'r.notes',
+            'r.copyId',
+            'r.createdAt',
+            'b.title as bookTitle',
+            'b.isbn as bookIsbn',
+            'b.publishYear as bookPublishYear',
+        ])
+        ->orderByDesc('r.reservedAt')
+        ->limit(100)
+        ->get()
+        ->map(function (object $row): array {
+            $notes = null;
+
+            if (! empty($row->notes)) {
+                $decoded = json_decode($row->notes, true);
+                $notes = is_array($decoded) ? $decoded : null;
+            }
+
+            return [
+                'id' => $row->id,
+                'status' => $row->status,
+                'reservedAt' => $row->reservedAt,
+                'expiresAt' => $row->expiresAt,
+                'processedAt' => $row->processedAt,
+                'copyId' => $row->copyId,
+                'cancelOrigin' => $notes['cancel_origin'] ?? null,
+                'cancelReasonCode' => $notes['cancel_reason_code'] ?? null,
+                'book' => [
+                    'title' => $row->bookTitle,
+                    'isbn' => $row->bookIsbn,
+                    'publishYear' => $row->bookPublishYear,
+                ],
+            ];
+        })
+        ->all();
+};
+
+$memberHistoryFeed = static function (string $crmUserId): array {
+    return DB::connection('pgsql')
+        ->table('app.circulation_loans as cl')
+        ->leftJoin('app.book_copies as bc', 'bc.id', '=', 'cl.copy_id')
+        ->leftJoin('app.documents as d', 'd.id', '=', 'bc.document_id')
+        ->where('cl.reader_id', $crmUserId)
+        ->select([
+            'cl.id',
+            'cl.issued_at',
+            'cl.due_at',
+            'cl.returned_at',
+            'cl.status',
+            'd.title_display',
+            'd.title_raw',
+        ])
+        ->orderByDesc('cl.issued_at')
+        ->limit(200)
+        ->get()
+        ->map(function (object $row): array {
+            $issuedAt = $row->issued_at !== null ? \Carbon\Carbon::parse($row->issued_at) : null;
+            $dueAt = $row->due_at !== null ? \Carbon\Carbon::parse($row->due_at) : null;
+            $returnedAt = $row->returned_at !== null ? \Carbon\Carbon::parse($row->returned_at) : null;
+
+            $status = 'returned';
+            $statusLabel = 'Returned';
+            if ($returnedAt === null) {
+                if ($dueAt !== null && $dueAt->isPast()) {
+                    $status = 'overdue';
+                    $statusLabel = 'Overdue';
+                } else {
+                    $status = 'active';
+                    $statusLabel = 'Currently on loan';
+                }
+            }
+
+            return [
+                'id' => (string) $row->id,
+                'title' => trim((string) ($row->title_display ?? $row->title_raw ?? '')) ?: 'Untitled item',
+                'status' => $status,
+                'status_label' => $statusLabel,
+                'issued_at' => $issuedAt?->format('M d, Y'),
+                'due_at' => $dueAt?->format('M d, Y'),
+                'returned_at' => $returnedAt?->format('M d, Y'),
+                'term' => $issuedAt?->format('F Y') ?? 'Unknown period',
+            ];
+        })
+        ->all();
+};
+
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 // Phase 3.3 — seeded public news catalog.
 // Representative content for the canonical /news index + /news/{slug} detail.
 // The structure is deliberately DB-replaceable later: an array of article
@@ -244,12 +446,277 @@ $newsSeedProvider = static function (): array {
                 'en' => ['heading' => 'Confirm your access', 'body' => 'If you represent a partner institution, contact the library to confirm the right access routes for your team.', 'label' => 'Contact the library', 'href' => '/contacts'],
             ],
         ],
+        'restoration-lab-acquisition-ledgers' => [
+            'slug' => 'restoration-lab-acquisition-ledgers',
+            'featured' => false,
+            'published_at' => '2026-03-29',
+            'published_display' => [
+                'ru' => '29 марта 2026',
+                'kk' => '2026 жылғы 29 наурыз',
+                'en' => 'March 29, 2026',
+            ],
+            'category' => [
+                'ru' => 'Приобретения',
+                'kk' => 'Толықтырулар',
+                'en' => 'Acquisitions',
+            ],
+            'title' => [
+                'ru' => 'В фонд реставрационной лаборатории переданы журналы книжных поступлений',
+                'kk' => 'Қалпына келтіру зертханасына кітап түсімдерінің журналдары берілді',
+                'en' => 'Restoration Lab Receives Historical Acquisition Ledgers',
+            ],
+            'excerpt' => [
+                'ru' => 'Новая партия инвентарных журналов и карточек поступила в библиотеку для консервации, описания и дальнейшего включения в цифровой архив.',
+                'kk' => 'Түгендеу журналдары мен карточкалардың жаңа топтамасы консервациялау, сипаттау және кейін цифрлық мұрағатқа енгізу үшін кітапханаға берілді.',
+                'en' => 'A newly transferred set of accession ledgers and inventory cards has entered the library for conservation, description, and later inclusion in the digital archive.',
+            ],
+            'hero' => [
+                'image' => 'images/news/default-library.jpg',
+                'alt' => [
+                    'ru' => 'Исторические книги и журналы на полке фонда',
+                    'kk' => 'Қор сөресіндегі тарихи кітаптар мен журналдар',
+                    'en' => 'Historical books and ledgers on a collection shelf',
+                ],
+            ],
+            'body' => [
+                'ru' => [
+                    ['type' => 'lead', 'text' => 'Фонд реставрационной лаборатории KazUTB Smart Library пополнился серией исторических журналов поступлений и вспомогательных карточек учёта.'],
+                    ['type' => 'p', 'text' => 'Материалы проходят первичную консервацию, атрибуцию и подготовку к оцифровке. После завершения обработки описания будут связаны с публичным каталогом и новостным архивом библиотеки.'],
+                ],
+                'kk' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library қалпына келтіру зертханасының қоры тарихи түсім журналдары мен қосалқы есеп карточкаларымен толықты.'],
+                    ['type' => 'p', 'text' => 'Материалдар бастапқы консервациядан, атрибуциядан және цифрландыруға дайындаудан өтуде. Өңдеу аяқталғаннан кейін сипаттамалар ашық каталогпен және кітапхананың жаңалықтар мұрағатымен байланысады.'],
+                ],
+                'en' => [
+                    ['type' => 'lead', 'text' => 'The KazUTB Smart Library restoration lab has received a set of historical acquisition ledgers and supporting catalog cards.'],
+                    ['type' => 'p', 'text' => 'The materials are undergoing initial conservation, attribution, and digitisation preparation. Once processed, their descriptions will be linked into the public catalog and the library news archive.'],
+                ],
+            ],
+            'cta' => [
+                'ru' => ['heading' => 'Посмотреть каталог фонда', 'body' => 'Следите за обновлениями коллекций и проверенными поступлениями в публичном каталоге библиотеки.', 'label' => 'Открыть каталог', 'href' => '/catalog'],
+                'kk' => ['heading' => 'Қор каталогын қарау', 'body' => 'Кітапхананың ашық каталогындағы коллекция жаңартулары мен тексерілген түсімдерді бақылаңыз.', 'label' => 'Каталогты ашу', 'href' => '/catalog'],
+                'en' => ['heading' => 'Browse the collection catalog', 'body' => 'Track collection updates and reviewed accessions in the public library catalog.', 'label' => 'Open the catalog', 'href' => '/catalog'],
+            ],
+        ],
+        'interlibrary-loan-governance-update' => [
+            'slug' => 'interlibrary-loan-governance-update',
+            'featured' => false,
+            'published_at' => '2026-03-21',
+            'published_display' => [
+                'ru' => '21 марта 2026',
+                'kk' => '2026 жылғы 21 наурыз',
+                'en' => 'March 21, 2026',
+            ],
+            'category' => [
+                'ru' => 'Политики',
+                'kk' => 'Саясаттар',
+                'en' => 'Policy',
+            ],
+            'title' => [
+                'ru' => 'Обновлены правила межбиблиотечного обмена и международных запросов',
+                'kk' => 'Кітапханааралық алмасу және халықаралық сұраным ережелері жаңартылды',
+                'en' => 'Interlibrary Loan Governance Updated for International Requests',
+            ],
+            'excerpt' => [
+                'ru' => 'Библиотека уточнила сроки, роли и требования к маршрутизации запросов, чтобы ускорить обмен материалами между академическими партнёрами.',
+                'kk' => 'Кітапхана академиялық серіктестер арасындағы материал алмасуды жеделдету үшін сұранымдарды бағыттау мерзімдерін, рөлдерін және талаптарын нақтылады.',
+                'en' => 'The library has clarified timelines, roles, and routing requirements to accelerate material exchange with academic partners.',
+            ],
+            'hero' => [
+                'image' => 'images/news/ai-workshop.jpg',
+                'alt' => [
+                    'ru' => 'Документы и формы межбиблиотечного обмена на рабочем столе',
+                    'kk' => 'Жұмыс үстеліндегі кітапханааралық алмасу құжаттары мен нысандары',
+                    'en' => 'Interlibrary loan forms and documents on a work table',
+                ],
+            ],
+            'body' => [
+                'ru' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library обновил регламент межбиблиотечного обмена для международных и межвузовских запросов.'],
+                    ['type' => 'p', 'text' => 'Новая редакция фиксирует единые сроки подтверждения, перечень ответственных сотрудников и требования к сопровождению цифровых копий. Это снижает задержки и делает обслуживание предсказуемее для партнёрских учреждений.'],
+                ],
+                'kk' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library халықаралық және жоғары оқу орындары арасындағы сұранымдар үшін кітапханааралық алмасу регламентін жаңартты.'],
+                    ['type' => 'p', 'text' => 'Жаңа редакция растаудың бірыңғай мерзімдерін, жауапты қызметкерлер тізімін және цифрлық көшірмелерді сүйемелдеу талаптарын бекітеді. Бұл кідірістерді азайтып, серіктес ұйымдар үшін қызмет көрсетуді болжамды етеді.'],
+                ],
+                'en' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library has updated its interlibrary loan governance for international and inter-university requests.'],
+                    ['type' => 'p', 'text' => 'The revised guidance defines confirmation timelines, accountable roles, and requirements for handling digital copies. This reduces delays and makes service expectations more predictable for partner institutions.'],
+                ],
+            ],
+            'cta' => [
+                'ru' => ['heading' => 'Уточнить правила обмена', 'body' => 'Если вашей организации нужен доступ к межбиблиотечному обмену, свяжитесь с библиотекой для согласования маршрута.', 'label' => 'Связаться с библиотекой', 'href' => '/contacts'],
+                'kk' => ['heading' => 'Алмасу ережелерін нақтылау', 'body' => 'Ұйымыңызға кітапханааралық алмасу қажет болса, бағытты келісу үшін кітапханаға хабарласыңыз.', 'label' => 'Кітапханамен байланысу', 'href' => '/contacts'],
+                'en' => ['heading' => 'Confirm exchange guidance', 'body' => 'If your institution needs interlibrary loan access, contact the library to confirm the correct request route.', 'label' => 'Contact the library', 'href' => '/contacts'],
+            ],
+        ],
+        'catalog-usability-lab-findings-2026' => [
+            'slug' => 'catalog-usability-lab-findings-2026',
+            'featured' => false,
+            'published_at' => '2026-03-14',
+            'published_display' => [
+                'ru' => '14 марта 2026',
+                'kk' => '2026 жылғы 14 наурыз',
+                'en' => 'March 14, 2026',
+            ],
+            'category' => [
+                'ru' => 'Исследования',
+                'kk' => 'Зерттеулер',
+                'en' => 'Research',
+            ],
+            'title' => [
+                'ru' => 'Лаборатория UX-каталога опубликовала результаты весеннего цикла',
+                'kk' => 'Каталог UX-зертханасы көктемгі цикл нәтижелерін жариялады',
+                'en' => 'Catalog UX Lab Publishes Spring Findings',
+            ],
+            'excerpt' => [
+                'ru' => 'Команда библиотеки провела серию тестов навигации и поиска, чтобы сократить время доступа к научным материалам и повысить точность выдачи.',
+                'kk' => 'Кітапхана командасы ғылыми материалдарға қолжетімділік уақытын қысқарту және іздеу нәтижесінің дәлдігін арттыру үшін навигация мен іздеу тесттерін өткізді.',
+                'en' => 'The library team ran navigation and search tests to reduce access time to scholarly materials and improve retrieval precision.',
+            ],
+            'hero' => [
+                'image' => 'images/news/ai-workshop.jpg',
+                'alt' => [
+                    'ru' => 'Дашборд исследования пользовательских сценариев каталога',
+                    'kk' => 'Каталогтың пайдаланушы сценарийлерін зерттеу дашборды',
+                    'en' => 'Dashboard from the catalog user-scenario research cycle',
+                ],
+            ],
+            'body' => [
+                'ru' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library завершила весенний цикл исследований пользовательского опыта каталога.'],
+                    ['type' => 'p', 'text' => 'Команда проанализировала пути поиска по ключевым исследовательским сценариям и обновила приоритеты улучшений для интерфейсов фильтрации, выдачи и перехода к связанным материалам.'],
+                ],
+                'kk' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library каталог пайдаланушы тәжірибесін зерттеудің көктемгі циклін аяқтады.'],
+                    ['type' => 'p', 'text' => 'Команда зерттеу сценарийлері бойынша іздеу маршруттарын талдап, сүзгілеу, нәтиже беру және байланысты материалдарға өту интерфейстерін жетілдіру басымдықтарын жаңартты.'],
+                ],
+                'en' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library has completed its spring cycle of catalog user-experience research.'],
+                    ['type' => 'p', 'text' => 'The team analysed search journeys across core research scenarios and refreshed improvement priorities for filtering, result ranking, and related-material navigation interfaces.'],
+                ],
+            ],
+            'cta' => [
+                'ru' => ['heading' => 'Открыть каталог', 'body' => 'Проверьте обновленные сценарии поиска в публичном каталоге библиотеки.', 'label' => 'Перейти в каталог', 'href' => '/catalog'],
+                'kk' => ['heading' => 'Каталогты ашу', 'body' => 'Кітапхананың ашық каталогындағы жаңартылған іздеу сценарийлерін тексеріңіз.', 'label' => 'Каталогқа өту', 'href' => '/catalog'],
+                'en' => ['heading' => 'Open the catalog', 'body' => 'Review the updated search journeys in the public library catalog.', 'label' => 'Go to catalog', 'href' => '/catalog'],
+            ],
+        ],
+        'institutional-repository-intake-window-2026' => [
+            'slug' => 'institutional-repository-intake-window-2026',
+            'featured' => false,
+            'published_at' => '2026-03-07',
+            'published_display' => [
+                'ru' => '7 марта 2026',
+                'kk' => '2026 жылғы 7 наурыз',
+                'en' => 'March 7, 2026',
+            ],
+            'category' => [
+                'ru' => 'Репозиторий',
+                'kk' => 'Репозиторий',
+                'en' => 'Repository',
+            ],
+            'title' => [
+                'ru' => 'Открыто окно приёма материалов в институциональный репозиторий',
+                'kk' => 'Институционалдық репозиторийге материал қабылдау терезесі ашылды',
+                'en' => 'Institutional Repository Intake Window Opens',
+            ],
+            'excerpt' => [
+                'ru' => 'Библиотека объявила весенний цикл приёма диссертаций, статей и отчетов подразделений для экспертной модерации и публикации в репозитории.',
+                'kk' => 'Кітапхана диссертациялар, мақалалар және бөлімшелер есептері үшін көктемгі қабылдау циклін жариялады, материалдар сараптамалық модерациядан кейін репозиторийде жарияланады.',
+                'en' => 'The library announced a spring intake cycle for theses, articles, and institutional reports for expert moderation and repository publication.',
+            ],
+            'hero' => [
+                'image' => 'images/news/default-library.jpg',
+                'alt' => [
+                    'ru' => 'Сотрудник репозитория проверяет пакет академических материалов',
+                    'kk' => 'Репозиторий қызметкері академиялық материалдар пакетін тексеруде',
+                    'en' => 'Repository officer reviewing an academic submission package',
+                ],
+            ],
+            'body' => [
+                'ru' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library начала новый цикл приёма материалов в институциональный репозиторий.'],
+                    ['type' => 'p', 'text' => 'Материалы проходят проверку метаданных, правового статуса и качества описания. После модерации записи публикуются с устойчивыми идентификаторами и маршрутом к защищенному просмотру.'],
+                ],
+                'kk' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library институционалдық репозиторийге материал қабылдаудың жаңа циклін бастады.'],
+                    ['type' => 'p', 'text' => 'Материалдар метадерек, құқықтық мәртебе және сипаттама сапасы бойынша тексеріледі. Модерациядан кейін жазбалар тұрақты идентификаторлармен және қорғалған оқу маршрутымен жарияланады.'],
+                ],
+                'en' => [
+                    ['type' => 'lead', 'text' => 'KazUTB Smart Library has launched a new institutional repository intake cycle.'],
+                    ['type' => 'p', 'text' => 'Submissions are reviewed for metadata quality, rights status, and descriptive completeness. After moderation, records are published with persistent identifiers and a controlled-reading route.'],
+                ],
+            ],
+            'cta' => [
+                'ru' => ['heading' => 'Перейти в репозиторий', 'body' => 'Проверьте условия приёма и текущие опубликованные записи репозитория.', 'label' => 'Открыть репозиторий', 'href' => '/repository'],
+                'kk' => ['heading' => 'Репозиторийге өту', 'body' => 'Қабылдау шарттары мен репозиторийдегі ағымдағы жарияланған жазбаларды тексеріңіз.', 'label' => 'Репозиторийді ашу', 'href' => '/repository'],
+                'en' => ['heading' => 'Go to repository', 'body' => 'Review intake conditions and current published repository records.', 'label' => 'Open repository', 'href' => '/repository'],
+            ],
+        ],
+        'library-hours-extended-finals-2026' => [
+            'slug' => 'library-hours-extended-finals-2026',
+            'featured' => false,
+            'published_at' => '2026-02-27',
+            'published_display' => [
+                'ru' => '27 февраля 2026',
+                'kk' => '2026 жылғы 27 ақпан',
+                'en' => 'February 27, 2026',
+            ],
+            'category' => [
+                'ru' => 'Сервисы',
+                'kk' => 'Сервистер',
+                'en' => 'Services',
+            ],
+            'title' => [
+                'ru' => 'В период финальной аттестации библиотека продлевает режим работы',
+                'kk' => 'Қорытынды аттестация кезеңінде кітапхана жұмыс уақыты ұзартылды',
+                'en' => 'Library Extends Operating Hours for Final Assessment Period',
+            ],
+            'excerpt' => [
+                'ru' => 'Для поддержки учебной нагрузки библиотека расширяет вечерний график и усиливает консультационные окна по работе с источниками и подписными базами данных.',
+                'kk' => 'Оқу жүктемесін қолдау үшін кітапхана кешкі кестені ұзартып, дереккөздер мен жазылымдық дерекқорлар бойынша консультация терезелерін көбейтеді.',
+                'en' => 'To support peak academic workloads, the library is extending evening access and increasing consultation windows for source work and subscribed databases.',
+            ],
+            'hero' => [
+                'image' => 'images/news/campus-library.jpg',
+                'alt' => [
+                    'ru' => 'Вечерний режим работы в читальном зале',
+                    'kk' => 'Оқу залындағы кешкі жұмыс режимі',
+                    'en' => 'Extended evening service in the main reading room',
+                ],
+            ],
+            'body' => [
+                'ru' => [
+                    ['type' => 'lead', 'text' => 'Библиотека вводит расширенный график обслуживания на период финальной аттестации.'],
+                    ['type' => 'p', 'text' => 'Дополнительные вечерние часы и консультационные окна направлены на поддержку студентов и преподавателей в работе с учебной и научной литературой.'],
+                ],
+                'kk' => [
+                    ['type' => 'lead', 'text' => 'Кітапхана қорытынды аттестация кезеңіне арналған кеңейтілген қызмет көрсету кестесін енгізеді.'],
+                    ['type' => 'p', 'text' => 'Қосымша кешкі сағаттар мен консультация терезелері студенттер мен оқытушылардың оқу және ғылыми әдебиетпен жұмысын қолдауға бағытталған.'],
+                ],
+                'en' => [
+                    ['type' => 'lead', 'text' => 'The library is introducing an extended service schedule for the final assessment period.'],
+                    ['type' => 'p', 'text' => 'Additional evening hours and consultation windows are intended to support students and faculty working with course and research literature.'],
+                ],
+            ],
+            'cta' => [
+                'ru' => ['heading' => 'Связаться с библиотекой', 'body' => 'Уточните расписание консультаций и вечерних сервисов через официальные контакты.', 'label' => 'Открыть контакты', 'href' => '/contacts'],
+                'kk' => ['heading' => 'Кітапханамен байланысу', 'body' => 'Кеңес беру кестесі мен кешкі сервистерді ресми байланыс арналары арқылы нақтылаңыз.', 'label' => 'Байланыстарды ашу', 'href' => '/contacts'],
+                'en' => ['heading' => 'Contact the library', 'body' => 'Confirm consultation and evening-service schedules through official contact channels.', 'label' => 'Open contacts', 'href' => '/contacts'],
+            ],
+        ],
     ];
 
     $orderedSlugs = [
         'global-symposium-archival-integrity',
         'eurasian-manuscripts-integration',
         'digital-access-partner-institutions',
+        'restoration-lab-acquisition-ledgers',
+        'interlibrary-loan-governance-update',
+        'catalog-usability-lab-findings-2026',
+        'institutional-repository-intake-window-2026',
+        'library-hours-extended-finals-2026',
     ];
 
     return ['articles' => $articles, 'ordered' => $orderedSlugs];
@@ -306,24 +773,27 @@ $leadershipSeedProvider = static function (): array {
         ],
     ];
 
-    // v1 directory: role-based slots. `full_name` intentionally omitted —
-    // per Cluster B Content Contract §9 risk R-B1.2, real names are populated
-    // only after director approval. Portraits are local assets; a null
-    // portrait triggers the initial-letter fallback treatment in the view.
+    // v1 directory: primarily role-based slots. Confirmed public profile data
+    // can be provided per role when approved by library leadership.
     $profiles = [
         [
             'slug' => 'director',
             'order' => 1,
             'portrait' => null,
+            'full_name' => [
+                'ru' => 'Панкей Ж.',
+                'kk' => 'Панкей Ж.',
+                'en' => 'Pankey Zh.',
+            ],
             'portrait_initials' => [
                 'ru' => 'Д',
                 'kk' => 'Д',
                 'en' => 'D',
             ],
             'role_title' => [
-                'ru' => 'Директор библиотеки',
-                'kk' => 'Кітапхана директоры',
-                'en' => 'Library Director',
+                'ru' => 'директор',
+                'kk' => 'директор',
+                'en' => 'director',
             ],
             'role_scope_line' => [
                 'ru' => 'Общее руководство и стратегия',
@@ -890,35 +1360,12 @@ Route::get('/catalog', function (Request $request, CatalogReadService $catalogRe
         yearTo: $request->filled('year_to') && is_numeric((string) $request->query('year_to')) ? (int) $request->query('year_to') : $yearBounds['max'],
         availableOnly: $request->boolean('available_only'),
         physicalOnly: $request->boolean('physical_only'),
+        materialType: $materialType,
         institution: $request->filled('institution') ? (string) $request->query('institution') : null,
     );
 
     if ($uiSort === 'year_asc' && is_array($catalogBootstrap['data'] ?? null)) {
         usort($catalogBootstrap['data'], static fn (array $left, array $right): int => ((int) ($left['publicationYear'] ?? 0)) <=> ((int) ($right['publicationYear'] ?? 0)));
-    }
-
-    if ($materialType !== 'all' && is_array($catalogBootstrap['data'] ?? null)) {
-        $catalogBootstrap['data'] = array_values(array_filter(
-            $catalogBootstrap['data'],
-            static function (array $item) use ($materialType): bool {
-                $subjects = array_map(
-                    static fn (array $subject): string => mb_strtolower(trim((string) ($subject['label'] ?? ''))),
-                    $item['classification'] ?? []
-                );
-                $subjectText = implode(' ', $subjects);
-                $total = (int) ($item['copies']['total'] ?? 0);
-                $available = (int) ($item['copies']['available'] ?? 0);
-                $kind = str_contains($subjectText, 'диссер') || str_contains($subjectText, 'thesis') || str_contains($subjectText, 'archive')
-                    ? 'archive'
-                    : ($total > 0 ? ($available > 0 ? 'physical' : 'archive') : 'digital');
-
-                return $kind === $materialType;
-            }
-        ));
-        $catalogBootstrap['meta']['total'] = count($catalogBootstrap['data']);
-        $catalogBootstrap['meta']['total_pages'] = 1;
-        $catalogBootstrap['meta']['totalPages'] = 1;
-        $catalogBootstrap['meta']['page'] = 1;
     }
 
     return view('catalog', [
@@ -1235,6 +1682,9 @@ $eventsSeedProvider = static function (): array {
             'hero_title' => 'Календарь событий',
             'hero_body' => 'Расписание симпозиумов, семинаров и книжных выставок KazUTB Smart Library. Присоединяйтесь к академическому сообществу университета.',
             'event_details_cta' => 'Подробнее о событии',
+            'page_status' => 'Страница :page из :last · всего событий: :total',
+            'previous_page' => 'Предыдущая страница',
+            'next_page' => 'Следующая страница',
             'load_more' => 'Показать больше событий',
         ],
         'kk' => [
@@ -1242,6 +1692,9 @@ $eventsSeedProvider = static function (): array {
             'hero_title' => 'Іс-шаралар күнтізбесі',
             'hero_body' => 'KazUTB Smart Library ұйымдастыратын симпозиумдар, семинарлар мен кітап көрмелерінің кестесі. Университеттің академиялық қауымдастығына қосылыңыз.',
             'event_details_cta' => 'Іс-шара туралы толығырақ',
+            'page_status' => ':total іс-шара · :last беттің :page-беті',
+            'previous_page' => 'Алдыңғы бет',
+            'next_page' => 'Келесі бет',
             'load_more' => 'Қосымша іс-шараларды көрсету',
         ],
         'en' => [
@@ -1249,6 +1702,9 @@ $eventsSeedProvider = static function (): array {
             'hero_title' => 'Public Events Index',
             'hero_body' => 'A curated calendar of upcoming symposiums, seminars, and book exhibits hosted by the KazUTB Smart Library. Join our academic community.',
             'event_details_cta' => 'Event details',
+            'page_status' => 'Page :page of :last · :total events total',
+            'previous_page' => 'Previous page',
+            'next_page' => 'Next page',
             'load_more' => 'Load more events',
         ],
     ];
@@ -1382,6 +1838,134 @@ $eventsSeedProvider = static function (): array {
                 ],
             ],
         ],
+        [
+            'slug' => 'doctoral-writing-clinic-2026',
+            'featured' => false,
+            'category_slug' => 'clinic',
+            'iso_date' => '2026-07-02',
+            'i18n' => [
+                'ru' => [
+                    'category' => 'Консультационная сессия',
+                    'date_month_day' => '2 июля',
+                    'date_year_time' => '2026 · 11:00',
+                    'title' => 'Клиника академического письма для докторантов',
+                    'description' => 'Индивидуальные и групповые консультации по структуре статьи, академическому стилю, работе с отзывами рецензентов и этике публикации.',
+                    'venue' => 'Исследовательская студия, зал 1/204',
+                ],
+                'kk' => [
+                    'category' => 'Кеңес беру сессиясы',
+                    'date_month_day' => '2 шілде',
+                    'date_year_time' => '2026 · 11:00',
+                    'title' => 'Докторанттарға арналған академиялық жазу клиникасы',
+                    'description' => 'Мақала құрылымы, академиялық стиль, рецензент пікірлерімен жұмыс және жариялау этикасы бойынша жеке және топтық кеңестер.',
+                    'venue' => 'Зерттеу студиясы, 1/204 залы',
+                ],
+                'en' => [
+                    'category' => 'Writing Clinic',
+                    'date_month_day' => 'Jul 02',
+                    'date_year_time' => '2026 · 11:00',
+                    'title' => 'Academic Writing Clinic for Doctoral Candidates',
+                    'description' => 'Individual and group consultations on article structure, academic style, reviewer feedback, and publication ethics.',
+                    'venue' => 'Research Studio, Room 1/204',
+                ],
+            ],
+        ],
+        [
+            'slug' => 'data-literacy-bootcamp-2026',
+            'featured' => false,
+            'category_slug' => 'bootcamp',
+            'iso_date' => '2026-07-09',
+            'i18n' => [
+                'ru' => [
+                    'category' => 'Интенсив',
+                    'date_month_day' => '9 июля',
+                    'date_year_time' => '2026 · 09:30',
+                    'title' => 'Интенсив по информационной и дата-грамотности',
+                    'description' => 'Однодневная программа по поиску исследовательских наборов данных, оценке качества источников и базовой подготовке данных для учебных проектов.',
+                    'venue' => 'Цифровая лаборатория, корпус 2',
+                ],
+                'kk' => [
+                    'category' => 'Интенсив',
+                    'date_month_day' => '9 шілде',
+                    'date_year_time' => '2026 · 09:30',
+                    'title' => 'Ақпараттық және дата-сауаттылық интенсиві',
+                    'description' => 'Зерттеу деректер жиынтықтарын іздеу, дереккөз сапасын бағалау және оқу жобалары үшін деректерді бастапқы дайындау бойынша бір күндік бағдарлама.',
+                    'venue' => 'Цифрлық зертхана, 2-корпус',
+                ],
+                'en' => [
+                    'category' => 'Bootcamp',
+                    'date_month_day' => 'Jul 09',
+                    'date_year_time' => '2026 · 09:30',
+                    'title' => 'Information and Data Literacy Bootcamp',
+                    'description' => 'A one-day programme on locating research datasets, evaluating source quality, and preparing basic data for coursework projects.',
+                    'venue' => 'Digital Lab, Building 2',
+                ],
+            ],
+        ],
+        [
+            'slug' => 'heritage-metadata-roundtable-2026',
+            'featured' => false,
+            'category_slug' => 'roundtable',
+            'iso_date' => '2026-07-16',
+            'i18n' => [
+                'ru' => [
+                    'category' => 'Круглый стол',
+                    'date_month_day' => '16 июля',
+                    'date_year_time' => '2026 · 16:00',
+                    'title' => 'Круглый стол по метаданным культурного наследия',
+                    'description' => 'Обсуждение стандартов описания, межинституционального обмена записями и устойчивых идентификаторов для редких коллекций и архивов.',
+                    'venue' => 'Медиа-зал, корпус 1',
+                ],
+                'kk' => [
+                    'category' => 'Дөңгелек үстел',
+                    'date_month_day' => '16 шілде',
+                    'date_year_time' => '2026 · 16:00',
+                    'title' => 'Мәдени мұра метадеректері бойынша дөңгелек үстел',
+                    'description' => 'Сирек қорлар мен мұрағаттарға арналған сипаттау стандарттары, институтаралық жазба алмасу және тұрақты идентификаторлар талқыланады.',
+                    'venue' => 'Медиа-зал, 1-корпус',
+                ],
+                'en' => [
+                    'category' => 'Roundtable',
+                    'date_month_day' => 'Jul 16',
+                    'date_year_time' => '2026 · 16:00',
+                    'title' => 'Heritage Metadata Roundtable',
+                    'description' => 'A discussion on description standards, inter-institutional record exchange, and persistent identifiers for rare collections and archives.',
+                    'venue' => 'Media Hall, Building 1',
+                ],
+            ],
+        ],
+        [
+            'slug' => 'freshers-library-orientation-2026',
+            'featured' => false,
+            'category_slug' => 'orientation',
+            'iso_date' => '2026-08-27',
+            'i18n' => [
+                'ru' => [
+                    'category' => 'Ориентация',
+                    'date_month_day' => '27 августа',
+                    'date_year_time' => '2026 · 13:00',
+                    'title' => 'Ориентация первокурсников по сервисам библиотеки',
+                    'description' => 'Вводная сессия по читательскому кабинету, цифровым ресурсам, правилам пользования фондом и маршрутам обращения за академической поддержкой.',
+                    'venue' => 'Актовый зал библиотеки',
+                ],
+                'kk' => [
+                    'category' => 'Бейімдеу сессиясы',
+                    'date_month_day' => '27 тамыз',
+                    'date_year_time' => '2026 · 13:00',
+                    'title' => 'Бірінші курс студенттеріне арналған кітапхана сервистері бойынша ориентация',
+                    'description' => 'Оқырман кабинеті, цифрлық ресурстар, қорды пайдалану ережелері және академиялық қолдау маршруттары бойынша кіріспе сессия.',
+                    'venue' => 'Кітапхана мәжіліс залы',
+                ],
+                'en' => [
+                    'category' => 'Orientation',
+                    'date_month_day' => 'Aug 27',
+                    'date_year_time' => '2026 · 13:00',
+                    'title' => 'Freshers Orientation to Library Services',
+                    'description' => 'An introductory session on the reader dashboard, digital resources, collection rules, and routes for academic support.',
+                    'venue' => 'Library Assembly Hall',
+                ],
+            ],
+        ],
     ];
 
     return [
@@ -1392,7 +1976,15 @@ $eventsSeedProvider = static function (): array {
 
 Route::get('/news', function () use ($newsSeedProvider) {
     $seed = $newsSeedProvider();
+<<<<<<< HEAD
     $articles = array_map(
+=======
+    $topic = (string) $request->query('topic', 'all');
+    $topic = in_array($topic, ['all', 'events', 'research'], true) ? $topic : 'all';
+    $page = max(1, (int) $request->query('page', 1));
+    $perPage = 5;
+    $seedArticles = array_map(
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
         static fn (string $slug) => $seed['articles'][$slug],
         $seed['ordered']
     );
@@ -1736,7 +2328,21 @@ Route::get('/contacts', function () use ($contactsSeedProvider) {
 // Mirrors docs/design-exports/events_index_canonical — header + vertical
 // event card list (1/4 date rail + 3/4 content with venue + details link)
 // + Load More. Content is driven by $eventsSeedProvider (trilingual).
+<<<<<<< HEAD
 Route::get('/events', function () use ($eventsSeedProvider) {
+=======
+Route::get('/events', function (Request $request) use ($eventsSeedProvider) {
+    $events = $eventsSeedProvider();
+    $page = max(1, (int) $request->query('page', 1));
+    $perPage = 3;
+    $total = count($events['items']);
+    $lastPage = max(1, (int) ceil(max(1, $total) / $perPage));
+    $page = min($page, $lastPage);
+    $offset = ($page - 1) * $perPage;
+
+    $events['items'] = array_slice($events['items'], $offset, $perPage);
+
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
     return view('events.index', [
         'activePage' => 'events',
         'events' => $eventsSeedProvider(),
@@ -2135,6 +2741,330 @@ $eventDetailProvider = static function (): array {
                     'materials' => [
                         ['title' => 'Template: bibliography structure', 'meta' => 'PDF · 540 KB'],
                         ['title' => 'Citation and reference formatting guide', 'meta' => 'PDF · 720 KB'],
+                    ],
+                ],
+            ],
+        ],
+        'doctoral-writing-clinic-2026' => [
+            'secondary_category_slug' => 'writing-support',
+            'date_time_range' => '11:00 – 13:00',
+            'i18n' => [
+                'ru' => [
+                    'subtitle' => 'Консультационный формат для докторантов, готовящих статьи, обзоры литературы и ответы рецензентам.',
+                    'secondary_category' => 'Поддержка академического письма',
+                    'date_time_range' => '11:00 – 13:00 (Астана)',
+                    'capacity_label' => '24 места',
+                    'capacity_note' => 'Работа в малых группах и индивидуальные слоты',
+                    'about' => [
+                        'Клиника академического письма предназначена для докторантов, которые завершают рукописи статей и готовят материалы для подачи в рецензируемые журналы.',
+                        'Участники получат рекомендации по структуре текста, связности аргументации, корректному использованию источников и стратегии ответа на замечания рецензентов.',
+                    ],
+                    'agenda' => [
+                        ['time' => '11:00', 'title' => 'Диагностика рукописи', 'note' => 'Короткий аудит структуры и аргументации'],
+                        ['time' => '11:40', 'title' => 'Сессия по стилю и цитированию', 'note' => 'Работа с примерами участников'],
+                        ['time' => '12:20', 'title' => 'Ответы рецензентам', 'note' => 'Шаблоны и типовые сценарии'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Координатор центра академического письма',
+                        'role' => 'KazUTB Smart Library · Исследовательская поддержка',
+                        'bio' => 'Консультирует авторов по подготовке рукописей, академическому стилю и публикационной стратегии.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Шаблон ответа рецензенту', 'meta' => 'DOCX · 190 КБ'],
+                        ['title' => 'Памятка по структуре исследовательской статьи', 'meta' => 'PDF · 510 КБ'],
+                    ],
+                ],
+                'kk' => [
+                    'subtitle' => 'Мақалалар, әдебиет шолулары және рецензенттерге жауаптар дайындайтын докторанттарға арналған кеңес беру форматы.',
+                    'secondary_category' => 'Академиялық жазуды қолдау',
+                    'date_time_range' => '11:00 – 13:00 (Астана)',
+                    'capacity_label' => '24 орын',
+                    'capacity_note' => 'Шағын топтар және жеке слоттар',
+                    'about' => [
+                        'Академиялық жазу клиникасы рецензияланатын журналдарға ұсынуға арналған мақала қолжазбаларын аяқтап жатқан докторанттарға арналады.',
+                        'Қатысушылар мәтін құрылымы, аргументация байланыстылығы, дереккөздерді дұрыс пайдалану және рецензент ескертулеріне жауап беру стратегиясы бойынша ұсыныстар алады.',
+                    ],
+                    'agenda' => [
+                        ['time' => '11:00', 'title' => 'Қолжазбаны диагностикалау', 'note' => 'Құрылым мен аргументацияға қысқа аудит'],
+                        ['time' => '11:40', 'title' => 'Стиль және сілтеме сессиясы', 'note' => 'Қатысушылар мысалдарымен жұмыс'],
+                        ['time' => '12:20', 'title' => 'Рецензенттерге жауаптар', 'note' => 'Үлгілер және типтік сценарийлер'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Академиялық жазу орталығының үйлестірушісі',
+                        'role' => 'KazUTB Smart Library · Зерттеу қолдауы',
+                        'bio' => 'Авторларға қолжазба дайындау, академиялық стиль және жариялау стратегиясы бойынша кеңес береді.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Рецензентке жауап үлгісі', 'meta' => 'DOCX · 190 КБ'],
+                        ['title' => 'Зерттеу мақаласының құрылымы бойынша жадынама', 'meta' => 'PDF · 510 КБ'],
+                    ],
+                ],
+                'en' => [
+                    'subtitle' => 'A consultation format for doctoral candidates preparing journal articles, literature reviews, and reviewer responses.',
+                    'secondary_category' => 'Academic Writing Support',
+                    'date_time_range' => '11:00 – 13:00 (Astana)',
+                    'capacity_label' => '24 seats',
+                    'capacity_note' => 'Small-group work and individual slots',
+                    'about' => [
+                        'The writing clinic is designed for doctoral candidates finalising article manuscripts and submission packages for peer-reviewed journals.',
+                        'Participants receive guidance on text structure, argumentative coherence, correct source use, and strategies for answering reviewer comments.',
+                    ],
+                    'agenda' => [
+                        ['time' => '11:00', 'title' => 'Manuscript diagnostic', 'note' => 'A short audit of structure and argument'],
+                        ['time' => '11:40', 'title' => 'Style and citation session', 'note' => 'Working with participant examples'],
+                        ['time' => '12:20', 'title' => 'Responding to reviewers', 'note' => 'Templates and common scenarios'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Coordinator, Academic Writing Centre',
+                        'role' => 'KazUTB Smart Library · Research Support',
+                        'bio' => 'Advises authors on manuscript preparation, academic style, and publication strategy.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Reviewer response template', 'meta' => 'DOCX · 190 KB'],
+                        ['title' => 'Research article structure memo', 'meta' => 'PDF · 510 KB'],
+                    ],
+                ],
+            ],
+        ],
+        'data-literacy-bootcamp-2026' => [
+            'secondary_category_slug' => 'data-skills',
+            'date_time_range' => '09:30 – 16:30',
+            'i18n' => [
+                'ru' => [
+                    'subtitle' => 'Однодневный интенсив по поиску, оценке и подготовке исследовательских данных для учебных и прикладных проектов.',
+                    'secondary_category' => 'Дата-навыки',
+                    'date_time_range' => '09:30 – 16:30 (Астана)',
+                    'capacity_label' => '36 мест',
+                    'capacity_note' => 'Открыто для студентов и преподавателей прикладных программ',
+                    'about' => [
+                        'Интенсив знакомит участников с основами дата-грамотности в академической среде: от поиска надежных наборов данных до их базовой очистки и описания.',
+                        'Программа построена вокруг практических упражнений и демонстрирует, как библиотечные сервисы поддерживают учебные проекты, дипломные работы и прикладные исследования.',
+                    ],
+                    'agenda' => [
+                        ['time' => '09:30', 'title' => 'Навигация по открытым и подписным данным', 'note' => 'Каталоги, репозитории, документация'],
+                        ['time' => '11:30', 'title' => 'Оценка качества источника', 'note' => 'Происхождение, лицензии, методология'],
+                        ['time' => '14:00', 'title' => 'Мини-практикум по подготовке данных', 'note' => 'Форматы, таблицы, описание переменных'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Специалист по цифровым исследовательским сервисам',
+                        'role' => 'Цифровая лаборатория · KazUTB Smart Library',
+                        'bio' => 'Сопровождает учебные проекты по работе с данными и исследовательскими цифровыми инструментами.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Навигатор по открытым наборам данных', 'meta' => 'PDF · 1.1 МБ'],
+                        ['title' => 'Чек-лист оценки качества данных', 'meta' => 'PDF · 430 КБ'],
+                    ],
+                ],
+                'kk' => [
+                    'subtitle' => 'Оқу және қолданбалы жобалар үшін зерттеу деректерін іздеу, бағалау және дайындау бойынша бір күндік интенсив.',
+                    'secondary_category' => 'Дата-дағдылар',
+                    'date_time_range' => '09:30 – 16:30 (Астана)',
+                    'capacity_label' => '36 орын',
+                    'capacity_note' => 'Қолданбалы бағдарламалар студенттері мен оқытушыларына ашық',
+                    'about' => [
+                        'Интенсив қатысушыларды академиялық ортадағы дата-сауаттылық негіздерімен таныстырады: сенімді деректер жиынтықтарын іздеуден бастап оларды бастапқы тазалау мен сипаттауға дейін.',
+                        'Бағдарлама практикалық жаттығуларға құрылған және кітапхана сервистерінің оқу жобаларын, диплом жұмыстарын және қолданбалы зерттеулерді қалай қолдайтынын көрсетеді.',
+                    ],
+                    'agenda' => [
+                        ['time' => '09:30', 'title' => 'Ашық және жазылымдық деректер бойынша навигация', 'note' => 'Каталогтар, репозиторийлер, құжаттама'],
+                        ['time' => '11:30', 'title' => 'Дереккөз сапасын бағалау', 'note' => 'Шығу тегі, лицензиялар, әдіснама'],
+                        ['time' => '14:00', 'title' => 'Деректерді дайындау бойынша мини-практикум', 'note' => 'Форматтар, кестелер, айнымалылар сипаттамасы'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Цифрлық зерттеу сервистері бойынша маман',
+                        'role' => 'Цифрлық зертхана · KazUTB Smart Library',
+                        'bio' => 'Деректермен және зерттеу цифрлық құралдарымен жұмыс істеуге арналған оқу жобаларын сүйемелдейді.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Ашық деректер жиынтықтары бойынша навигатор', 'meta' => 'PDF · 1.1 МБ'],
+                        ['title' => 'Деректер сапасын бағалау чек-парағы', 'meta' => 'PDF · 430 КБ'],
+                    ],
+                ],
+                'en' => [
+                    'subtitle' => 'A one-day intensive on locating, evaluating, and preparing research data for coursework and applied projects.',
+                    'secondary_category' => 'Data Skills',
+                    'date_time_range' => '09:30 – 16:30 (Astana)',
+                    'capacity_label' => '36 seats',
+                    'capacity_note' => 'Open to students and faculty in applied programmes',
+                    'about' => [
+                        'This bootcamp introduces participants to the fundamentals of data literacy in the academic setting, from locating trustworthy datasets to basic cleaning and description.',
+                        'The programme is built around practical exercises and shows how library services support coursework, final projects, and applied research.',
+                    ],
+                    'agenda' => [
+                        ['time' => '09:30', 'title' => 'Navigating open and subscribed data', 'note' => 'Catalogs, repositories, and documentation'],
+                        ['time' => '11:30', 'title' => 'Evaluating source quality', 'note' => 'Provenance, licensing, and methodology'],
+                        ['time' => '14:00', 'title' => 'Mini practicum on data preparation', 'note' => 'Formats, tables, and variable description'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Digital Research Services Specialist',
+                        'role' => 'Digital Lab · KazUTB Smart Library',
+                        'bio' => 'Supports coursework that relies on data handling and research-oriented digital tools.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Open dataset navigator', 'meta' => 'PDF · 1.1 MB'],
+                        ['title' => 'Data quality checklist', 'meta' => 'PDF · 430 KB'],
+                    ],
+                ],
+            ],
+        ],
+        'heritage-metadata-roundtable-2026' => [
+            'secondary_category_slug' => 'metadata-governance',
+            'date_time_range' => '16:00 – 18:00',
+            'i18n' => [
+                'ru' => [
+                    'subtitle' => 'Обсуждение описательных стандартов и устойчивых идентификаторов для редких коллекций и архивов.',
+                    'secondary_category' => 'Управление метаданными',
+                    'date_time_range' => '16:00 – 18:00 (Астана)',
+                    'capacity_label' => '50 мест',
+                    'capacity_note' => 'Для библиотекарей, архивистов и преподавателей профильных кафедр',
+                    'about' => [
+                        'Круглый стол объединяет специалистов по библиотечному описанию, цифровым коллекциям и архивному управлению вокруг общих требований к метаданным культурного наследия.',
+                        'Фокус — на совместимости стандартов, межинституциональном обмене записями и роли устойчивых идентификаторов при интеграции коллекций в открытые исследовательские среды.',
+                    ],
+                    'agenda' => [
+                        ['time' => '16:00', 'title' => 'Постановка задачи', 'note' => 'Метаданные для редких и гибридных коллекций'],
+                        ['time' => '16:40', 'title' => 'Институциональные кейсы', 'note' => 'Практики обмена и нормализации записей'],
+                        ['time' => '17:20', 'title' => 'Открытая дискуссия', 'note' => 'Приоритеты для совместной работы на 2026–2027 годы'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Руководитель направления цифровых коллекций',
+                        'role' => 'KazUTB Smart Library · Метаданные и интеграция',
+                        'bio' => 'Координирует описание редких коллекций и интеграцию библиотечных записей в цифровые сервисы университета.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Краткий обзор метаданных культурного наследия', 'meta' => 'PDF · 860 КБ'],
+                        ['title' => 'Матрица сопоставления идентификаторов', 'meta' => 'XLSX · 280 КБ'],
+                    ],
+                ],
+                'kk' => [
+                    'subtitle' => 'Сирек қорлар мен мұрағаттарға арналған сипаттау стандарттары мен тұрақты идентификаторларды талқылау.',
+                    'secondary_category' => 'Метадеректерді басқару',
+                    'date_time_range' => '16:00 – 18:00 (Астана)',
+                    'capacity_label' => '50 орын',
+                    'capacity_note' => 'Кітапханашыларға, архивистерге және профильдік кафедра оқытушыларына арналған',
+                    'about' => [
+                        'Дөңгелек үстел кітапханалық сипаттау, цифрлық жинақтар және архивтік басқару мамандарын мәдени мұра метадеректеріне қойылатын ортақ талаптар төңірегінде біріктіреді.',
+                        'Негізгі назар стандарттардың үйлесімділігіне, институтаралық жазба алмасуға және жинақтарды ашық зерттеу орталарына біріктіру кезіндегі тұрақты идентификаторлардың рөліне аударылады.',
+                    ],
+                    'agenda' => [
+                        ['time' => '16:00', 'title' => 'Мәселені қою', 'note' => 'Сирек және гибридті жинақтарға арналған метадеректер'],
+                        ['time' => '16:40', 'title' => 'Институционалдық кейстер', 'note' => 'Жазбаларды алмасу және нормализациялау практикасы'],
+                        ['time' => '17:20', 'title' => 'Ашық талқылау', 'note' => '2026–2027 жылдарға бірлескен жұмыс басымдықтары'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Цифрлық жинақтар бағытының жетекшісі',
+                        'role' => 'KazUTB Smart Library · Метадеректер және интеграция',
+                        'bio' => 'Сирек жинақтарды сипаттауды және кітапхана жазбаларын университеттің цифрлық сервистеріне біріктіруді үйлестіреді.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Мәдени мұра метадеректеріне қысқаша шолу', 'meta' => 'PDF · 860 КБ'],
+                        ['title' => 'Идентификаторларды салыстыру матрицасы', 'meta' => 'XLSX · 280 КБ'],
+                    ],
+                ],
+                'en' => [
+                    'subtitle' => 'A discussion on descriptive standards and persistent identifiers for rare collections and archives.',
+                    'secondary_category' => 'Metadata Governance',
+                    'date_time_range' => '16:00 – 18:00 (Astana)',
+                    'capacity_label' => '50 seats',
+                    'capacity_note' => 'For librarians, archivists, and faculty in relevant departments',
+                    'about' => [
+                        'This roundtable brings together specialists in cataloguing, digital collections, and archival management around shared requirements for heritage metadata.',
+                        'The focus is on standards interoperability, inter-institutional record exchange, and the role of persistent identifiers when integrating collections into open research environments.',
+                    ],
+                    'agenda' => [
+                        ['time' => '16:00', 'title' => 'Framing the issue', 'note' => 'Metadata for rare and hybrid collections'],
+                        ['time' => '16:40', 'title' => 'Institutional cases', 'note' => 'Practices for exchange and record normalisation'],
+                        ['time' => '17:20', 'title' => 'Open discussion', 'note' => 'Priorities for collaboration in 2026–2027'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Head of Digital Collections',
+                        'role' => 'KazUTB Smart Library · Metadata & Integration',
+                        'bio' => 'Coordinates rare-collection description and the integration of library records into the university’s digital services.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Briefing on heritage metadata', 'meta' => 'PDF · 860 KB'],
+                        ['title' => 'Identifier crosswalk matrix', 'meta' => 'XLSX · 280 KB'],
+                    ],
+                ],
+            ],
+        ],
+        'freshers-library-orientation-2026' => [
+            'secondary_category_slug' => 'student-onboarding',
+            'date_time_range' => '13:00 – 14:30',
+            'i18n' => [
+                'ru' => [
+                    'subtitle' => 'Открытая вводная встреча по цифровым сервисам, правилам и академическим маршрутам библиотеки для новых студентов.',
+                    'secondary_category' => 'Адаптация студентов',
+                    'date_time_range' => '13:00 – 14:30 (Астана)',
+                    'capacity_label' => '180 мест',
+                    'capacity_note' => 'Открыто для первокурсников и кураторов академических групп',
+                    'about' => [
+                        'Ориентационная сессия знакомит новых студентов с читательским кабинетом, цифровой библиотекой, правилами пользования фондом и маршрутами получения академической поддержки.',
+                        'Сессия также показывает, где искать учебную литературу, как пользоваться тематическими фондами и к кому обращаться по техническим или исследовательским вопросам.',
+                    ],
+                    'agenda' => [
+                        ['time' => '13:00', 'title' => 'Быстрый обзор сервисов', 'note' => 'Кабинет читателя, каталог, цифровые ресурсы'],
+                        ['time' => '13:30', 'title' => 'Навигация по фондам и залам', 'note' => '1/200, 1/202, 1/203 и режимы доступа'],
+                        ['time' => '14:00', 'title' => 'Q&A и регистрация читателей', 'note' => 'Ответы на вопросы и помощь на месте'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Координатор читательских сервисов',
+                        'role' => 'KazUTB Smart Library · Public Services',
+                        'bio' => 'Отвечает за публичные сервисы библиотеки, маршруты адаптации студентов и поддержку первого обращения.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Памятка первокурсника: библиотечные сервисы', 'meta' => 'PDF · 350 КБ'],
+                        ['title' => 'Карта залов и фондов', 'meta' => 'PDF · 540 КБ'],
+                    ],
+                ],
+                'kk' => [
+                    'subtitle' => 'Жаңа студенттерге арналған кітапхананың цифрлық сервистері, ережелері және академиялық маршруттары бойынша ашық кіріспе кездесу.',
+                    'secondary_category' => 'Студенттерді бейімдеу',
+                    'date_time_range' => '13:00 – 14:30 (Астана)',
+                    'capacity_label' => '180 орын',
+                    'capacity_note' => 'Бірінші курс студенттері мен академиялық топ кураторларына ашық',
+                    'about' => [
+                        'Бейімдеу сессиясы жаңа студенттерді оқырман кабинетімен, цифрлық кітапханамен, қорды пайдалану ережелерімен және академиялық қолдау маршруттарымен таныстырады.',
+                        'Сессия оқу әдебиетін қайдан іздеу, тақырыптық қорларды қалай пайдалану және техникалық не зерттеу сұрақтары бойынша кімге жүгіну керегін көрсетеді.',
+                    ],
+                    'agenda' => [
+                        ['time' => '13:00', 'title' => 'Сервистерге жылдам шолу', 'note' => 'Оқырман кабинеті, каталог, цифрлық ресурстар'],
+                        ['time' => '13:30', 'title' => 'Қорлар мен залдар бойынша навигация', 'note' => '1/200, 1/202, 1/203 және қолжетімділік режимдері'],
+                        ['time' => '14:00', 'title' => 'Q&A және оқырманды тіркеу', 'note' => 'Сұрақтарға жауап және орнында көмек'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Оқырман сервистерінің үйлестірушісі',
+                        'role' => 'KazUTB Smart Library · Public Services',
+                        'bio' => 'Кітапхананың жария сервистеріне, студенттерді бейімдеу маршруттарына және алғашқы сұрауларды қолдауға жауап береді.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Бірінші курс студентіне арналған жадынама: кітапхана сервистері', 'meta' => 'PDF · 350 КБ'],
+                        ['title' => 'Залдар мен қорлар картасы', 'meta' => 'PDF · 540 КБ'],
+                    ],
+                ],
+                'en' => [
+                    'subtitle' => 'An open introduction to library digital services, rules, and academic support routes for incoming students.',
+                    'secondary_category' => 'Student Onboarding',
+                    'date_time_range' => '13:00 – 14:30 (Astana)',
+                    'capacity_label' => '180 seats',
+                    'capacity_note' => 'Open to first-year students and academic group advisers',
+                    'about' => [
+                        'This orientation introduces incoming students to the reader dashboard, the digital library, collection rules, and routes for academic support.',
+                        'It also shows where to find course literature, how to use the themed funds, and whom to contact for technical or research-related questions.',
+                    ],
+                    'agenda' => [
+                        ['time' => '13:00', 'title' => 'Quick service overview', 'note' => 'Reader dashboard, catalog, and digital resources'],
+                        ['time' => '13:30', 'title' => 'Navigating funds and rooms', 'note' => '1/200, 1/202, 1/203 and access modes'],
+                        ['time' => '14:00', 'title' => 'Q&A and reader registration', 'note' => 'On-site support and questions'],
+                    ],
+                    'speaker' => [
+                        'name' => 'Reader Services Coordinator',
+                        'role' => 'KazUTB Smart Library · Public Services',
+                        'bio' => 'Leads public-facing library services, student onboarding routes, and first-contact support.',
+                    ],
+                    'materials' => [
+                        ['title' => 'Freshers guide to library services', 'meta' => 'PDF · 350 KB'],
+                        ['title' => 'Map of rooms and funds', 'meta' => 'PDF · 540 KB'],
                     ],
                 ],
             ],

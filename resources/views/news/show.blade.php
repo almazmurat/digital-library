@@ -18,11 +18,13 @@
           'title_suffix'       => 'KazUTB Smart Library',
           'back'               => 'Вернуться к новостям',
           'read_time'          => '5 мин. чтение',
+        'highlights_heading' => 'Ключевые акценты',
           'tags_label'         => 'Теги:',
           'share_label'        => 'Поделиться:',
-          'editorial_label'    => 'Редакционная группа',
-          'editorial_role'     => 'Институциональные коммуникации',
-          'editorial_bio'      => 'Институциональные обновления, исследовательские инициативы и новости цифровых коллекций KazUTB Smart Library.',
+        'author_name'        => 'Айман Нурмагамбетова',
+        'author_role'        => 'Директор по коммуникациям',
+        'author_alt'         => 'Портрет Айман Нурмагамбетовой',
+        'editorial_bio'      => 'Освещает институциональные обновления, исследовательские инициативы и цифровые проекты KazUTB Smart Library.',
           'editorial_articles' => 'Все публикации',
           'related_heading'    => 'Связанные материалы',
           'newsletter_heading' => 'Будьте в курсе',
@@ -34,11 +36,13 @@
           'title_suffix'       => 'KazUTB Smart Library',
           'back'               => 'Жаңалықтарға оралу',
           'read_time'          => '5 мин. оқу',
+          'highlights_heading' => 'Негізгі тұстар',
           'tags_label'         => 'Тегтер:',
           'share_label'        => 'Бөлісу:',
-          'editorial_label'    => 'Редакциялық топ',
-          'editorial_role'     => 'Институционалдық коммуникациялар',
-          'editorial_bio'      => 'KazUTB Smart Library институционалдық жаңартулары, зерттеу бастамалары және цифрлық жинақтар жаңалықтары.',
+          'author_name'        => 'Айман Нұрмағамбетова',
+          'author_role'        => 'Коммуникациялар жөніндегі директор',
+          'author_alt'         => 'Айман Нұрмағамбетованың портреті',
+          'editorial_bio'      => 'KazUTB Smart Library институционалдық жаңартуларын, зерттеу бастамаларын және цифрлық жобаларын жариялайды.',
           'editorial_articles' => 'Барлық жарияланымдар',
           'related_heading'    => 'Байланысты материалдар',
           'newsletter_heading' => 'Хабардар болыңыз',
@@ -50,11 +54,13 @@
           'title_suffix'       => 'KazUTB Smart Library',
           'back'               => 'Return to News & Announcements',
           'read_time'          => '5 min read',
+          'highlights_heading' => 'Project Highlights',
           'tags_label'         => 'Tags:',
           'share_label'        => 'Share:',
-          'editorial_label'    => 'Editorial Team',
-          'editorial_role'     => 'Institutional Communications',
-          'editorial_bio'      => 'Institutional updates, research initiatives, and digital collections news for KazUTB Smart Library.',
+          'author_name'        => 'Aiman Nurmagambetova',
+          'author_role'        => 'Communications Director',
+          'author_alt'         => 'Portrait of Aiman Nurmagambetova',
+          'editorial_bio'      => 'Covering institutional updates, research initiatives, and digital projects for the KazUTB Smart Library ecosystem.',
           'editorial_articles' => 'All dispatches',
           'related_heading'    => 'Related Updates',
           'newsletter_heading' => 'Stay Informed',
@@ -63,6 +69,8 @@
           'newsletter_cta'     => 'Subscribe',
       ],
   ][$lang];
+
+      $sidebarRelated = array_slice($relatedArticles ?? [], 0, 3);
 @endphp
 
 @section('title', $article['title'][$lang] . ' — ' . $chrome['title_suffix'])
@@ -119,9 +127,7 @@
             @break
           @case('list')
             <div class="news-detail-canonical__highlight">
-              @if(! empty($block['items'][0]['term']))
-              <h3 class="news-detail-canonical__highlight-heading">{{ $block['items'][0]['term'] }}</h3>
-              @endif
+              <h3 class="news-detail-canonical__highlight-heading">{{ $block['heading'] ?? $chrome['highlights_heading'] }}</h3>
               <ul class="news-detail-canonical__highlight-list">
                 @foreach($block['items'] as $item)
                 <li><strong>{{ $item['term'] }}</strong>: {{ $item['text'] }}</li>
@@ -170,12 +176,13 @@
     {{-- Editorial / author card --}}
     <div class="news-detail-canonical__author" data-test-id="news-detail-canonical-author">
       <div class="news-detail-canonical__author-info">
-        <div class="news-detail-canonical__author-portrait">
-          <span class="material-symbols-outlined news-detail-canonical__author-icon" aria-hidden="true">edit_note</span>
-        </div>
+        <img src="{{ asset('images/news/author-visit.jpg') }}"
+             alt="{{ $chrome['author_alt'] }}"
+             class="news-detail-canonical__author-portrait"
+             loading="lazy" />
         <div>
-          <h4 class="news-detail-canonical__author-name">{{ $chrome['editorial_label'] }}</h4>
-          <p class="news-detail-canonical__author-role">{{ $chrome['editorial_role'] }}</p>
+          <h4 class="news-detail-canonical__author-name">{{ $chrome['author_name'] }}</h4>
+          <p class="news-detail-canonical__author-role">{{ $chrome['author_role'] }}</p>
         </div>
       </div>
       <p class="news-detail-canonical__author-bio">{{ $chrome['editorial_bio'] }}</p>
@@ -186,11 +193,11 @@
     </div>
 
     {{-- Related updates --}}
-    @if(! empty($relatedArticles))
+    @if(! empty($sidebarRelated))
     <div class="news-detail-canonical__related" data-section="news-detail-canonical-related">
       <h3 class="news-detail-canonical__related-heading">{{ $chrome['related_heading'] }}</h3>
       <div class="news-detail-canonical__related-list">
-        @foreach($relatedArticles as $rel)
+        @foreach($sidebarRelated as $rel)
         <a href="{{ $routeWithLang('/news/' . $rel['slug']) }}"
            class="news-detail-canonical__related-item">
           @if(! empty($rel['hero']['image']))
@@ -214,7 +221,7 @@
     </div>
     @endif
 
-    {{-- Newsletter (static UI) --}}
+    {{-- Newsletter (informational only - no subscription backend) --}}
     <div class="news-detail-canonical__newsletter" data-test-id="news-detail-canonical-newsletter">
       <div class="news-detail-canonical__newsletter-bg-icon" aria-hidden="true">
         <span class="material-symbols-outlined">drafts</span>
@@ -222,11 +229,11 @@
       <div class="news-detail-canonical__newsletter-content">
         <h3 class="news-detail-canonical__newsletter-heading">{{ $chrome['newsletter_heading'] }}</h3>
         <p class="news-detail-canonical__newsletter-body">{{ $chrome['newsletter_body'] }}</p>
-        <form class="news-detail-canonical__newsletter-form" onsubmit="return false;">
+        <form class="news-detail-canonical__newsletter-form" onsubmit="return false;" novalidate>
           <input type="email"
                  class="news-detail-canonical__newsletter-input"
                  placeholder="{{ $chrome['newsletter_email'] }}"
-                 required />
+                 aria-label="{{ $chrome['newsletter_email'] }}" />
           <button type="submit" class="news-detail-canonical__newsletter-btn">{{ $chrome['newsletter_cta'] }}</button>
         </form>
       </div>
@@ -345,7 +352,7 @@
 
   .news-detail-canonical__title {
     font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-size: clamp(2.25rem, 4.4vw, 3.5rem);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -.02em;
@@ -579,17 +586,10 @@
   .news-detail-canonical__author-portrait {
     width: 64px;
     height: 64px;
-    border-radius: 50%;
-    background: #001f3f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 12px;
+    object-fit: cover;
     flex-shrink: 0;
-  }
-
-  .news-detail-canonical__author-icon {
-    color: #ffffff;
-    font-size: 28px;
+    box-shadow: 0 1px 3px rgba(0,6,19,.08);
   }
 
   .news-detail-canonical__author-name {
@@ -783,18 +783,21 @@
   }
 
   .news-detail-canonical__newsletter-input {
-    background: rgba(255,255,255,.1);
-    border: 1px solid rgba(196,198,207,.3);
+    background: rgba(255,255,255,.14);
+    border: 1px solid rgba(196,198,207,.4);
     border-radius: 6px;
     padding: 8px 16px;
     font-family: 'Manrope', sans-serif;
     font-size: .875rem;
     color: #ffffff;
     outline: none;
-    transition: border-color .2s;
+    transition: border-color .2s, background-color .2s;
   }
-  .news-detail-canonical__newsletter-input::placeholder { color: rgba(255,255,255,.45); }
-  .news-detail-canonical__newsletter-input:focus { border-color: #006a6a; }
+  .news-detail-canonical__newsletter-input::placeholder { color: rgba(255,255,255,.78); }
+  .news-detail-canonical__newsletter-input:focus {
+    border-color: #76d6d5;
+    background: rgba(255,255,255,.18);
+  }
 
   .news-detail-canonical__newsletter-btn {
     background: #006a6a;

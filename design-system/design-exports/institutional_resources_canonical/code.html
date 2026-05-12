@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Resources - KazUTB Smart Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#76d6d5",
+                        "secondary-container": "#90efef",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "primary": "#000613",
+                        "secondary": "#006a6a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-container": "#76889d",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-surface": "#191c1d",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed": "#091d2e",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed": "#d1e4fb",
+                        "primary-fixed-dim": "#afc8f0",
+                        "on-primary-container": "#6f88ad",
+                        "tertiary": "#000610",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#476083",
+                        "tertiary-container": "#0d2031",
+                        "on-surface-variant": "#43474e",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary-fixed": "#93f2f2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "on-secondary-container": "#006e6e",
+                        "surface-dim": "#d9dadb",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#d4e3ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#001f3f",
+                        "inverse-primary": "#afc8f0",
+                        "on-secondary-fixed": "#002020",
+                        "inverse-surface": "#2e3132"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "display": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            font-family: theme('fontFamily.body');
+        }
+        h1, h2, h3, h4, h5, h6, .font-headline {
+            font-family: theme('fontFamily.headline');
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar component -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl bg-slate-100 dark:bg-slate-900 shadow-sm transition-all duration-500 ease-in-out">
+<div class="flex justify-between items-center px-8 py-4 max-w-full">
+<div class="text-xl font-bold font-['Newsreader'] text-slate-900 dark:text-slate-50">
+                KazUTB Smart Library
+            </div>
+<div class="hidden md:flex space-x-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-3 py-1 rounded-DEFAULT" href="#">Catalog</a>
+<a class="text-teal-700 dark:text-teal-400 font-semibold border-b-2 border-teal-700 dark:border-teal-400 pb-1 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-3 py-1 rounded-DEFAULT" href="#">Discovery</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-3 py-1 rounded-DEFAULT" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-3 py-1 rounded-DEFAULT" href="#">Leadership</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="search">search</span>
+<input class="pl-9 pr-4 py-2 bg-surface-container-highest border-0 border-b border-outline-variant/20 focus:border-secondary focus:ring-0 text-sm font-label rounded-t-DEFAULT w-64 transition-colors" placeholder="Search resources..." type="text"/>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2 rounded-md font-label font-medium hover:from-primary-container hover:to-primary transition-all shadow-sm">
+                    Sign In
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<header class="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+<div class="lg:col-span-8">
+<span class="text-secondary font-label tracking-widest uppercase text-xs font-semibold mb-4 block">Directory</span>
+<h1 class="text-5xl md:text-6xl font-headline text-primary tracking-tight leading-tight mb-6 relative -left-2">
+                    Institutional <br/>
+<span class="italic text-primary-container">Resources</span>
+</h1>
+<p class="text-lg font-body text-on-surface-variant max-w-2xl leading-relaxed">
+                    A curated collection of academic databases, journals, and analytical tools accessible to the KazUTB scholarly community. Access requires institutional authentication.
+                </p>
+</div>
+<div class="lg:col-span-4 flex justify-start lg:justify-end">
+<div class="bg-surface-container-low p-6 rounded-xl flex items-center space-x-4">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="vpn_key">vpn_key</span>
+</div>
+<div>
+<h3 class="font-headline text-primary text-lg">Off-Campus Access</h3>
+<a class="text-secondary font-label text-sm hover:underline mt-1 inline-block" href="#">Configure Proxy Settings →</a>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+<!-- Filters Sidebar -->
+<aside class="lg:col-span-1 space-y-8">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] sticky top-32">
+<h3 class="font-headline text-xl text-primary mb-6">Refine Search</h3>
+<div class="space-y-6">
+<div>
+<h4 class="font-label font-semibold text-on-surface mb-3 text-sm">Discipline</h4>
+<ul class="space-y-2 font-label text-sm text-on-surface-variant">
+<li>
+<label class="flex items-center space-x-2 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary/20 bg-surface" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Engineering &amp; Tech</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-2 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary/20 bg-surface" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Natural Sciences</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-2 cursor-pointer group">
+<input checked="" class="rounded-sm border-outline-variant text-secondary focus:ring-secondary/20 bg-surface" type="checkbox"/>
+<span class="text-primary font-medium">Business &amp; Economics</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-2 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary/20 bg-surface" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Humanities</span>
+</label>
+</li>
+</ul>
+</div>
+<hr class="border-outline-variant/20"/>
+<div>
+<h4 class="font-label font-semibold text-on-surface mb-3 text-sm">Resource Type</h4>
+<ul class="space-y-2 font-label text-sm text-on-surface-variant">
+<li>
+<label class="flex items-center space-x-2 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary/20 bg-surface" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Journals</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-2 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary/20 bg-surface" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Conference Proceedings</span>
+</label>
+</li>
+<li>
+<label class="flex items-center space-x-2 cursor-pointer group">
+<input class="rounded-sm border-outline-variant text-secondary focus:ring-secondary/20 bg-surface" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Datasets</span>
+</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</aside>
+<!-- Directory Grid -->
+<div class="lg:col-span-3 space-y-12">
+<!-- Category: Premium Databases -->
+<section>
+<div class="flex items-baseline space-x-4 mb-6">
+<h2 class="font-headline text-3xl text-primary">Premium Databases</h2>
+<span class="text-sm font-label text-on-surface-variant bg-surface-container-high px-2 py-1 rounded-md">8 Subscriptions</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-container-high hover:-translate-y-1 group relative flex flex-col justify-between min-h-[240px]">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="font-headline text-primary text-xl font-bold">S</span>
+</div>
+<span class="text-xs font-label px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full flex items-center space-x-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+<span>Institutional</span>
+</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-2 group-hover:text-secondary transition-colors">Scopus</h3>
+<p class="text-sm font-body text-on-surface-variant line-clamp-3 leading-relaxed">
+                                    The largest abstract and citation database of peer-reviewed literature: scientific journals, books and conference proceedings. Essential for comprehensive literature reviews.
+                                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-xs font-label text-outline uppercase tracking-wider">Elsevier</span>
+<a class="text-secondary font-label text-sm font-medium flex items-center space-x-1 group-hover:underline" href="#">
+<span>Access Resource</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-container-high hover:-translate-y-1 group relative flex flex-col justify-between min-h-[240px]">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center">
+<span class="font-headline text-primary text-xl font-bold">E</span>
+</div>
+<span class="text-xs font-label px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full flex items-center space-x-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+<span>Institutional</span>
+</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-2 group-hover:text-secondary transition-colors">EBSCOhost</h3>
+<p class="text-sm font-body text-on-surface-variant line-clamp-3 leading-relaxed">
+                                    A powerful online reference system providing access to premium full-text academic journals, magazines, and other resources across all major disciplines.
+                                </p>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-xs font-label text-outline uppercase tracking-wider">EBSCO</span>
+<a class="text-secondary font-label text-sm font-medium flex items-center space-x-1 group-hover:underline" href="#">
+<span>Access Resource</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+<!-- Space between sections -->
+<div class="h-8"></div>
+<!-- Category: Open Access Tools -->
+<section>
+<div class="flex items-baseline space-x-4 mb-6">
+<h2 class="font-headline text-3xl text-primary">Open Access Tools</h2>
+<span class="text-sm font-label text-on-surface-variant bg-surface-container-high px-2 py-1 rounded-md">Public</span>
+</div>
+<div class="space-y-4">
+<!-- List Item 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group hover:bg-surface-container-high transition-colors">
+<div class="flex items-center space-x-5">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+</div>
+<div>
+<h3 class="font-headline text-lg text-primary">Directory of Open Access Journals (DOAJ)</h3>
+<p class="text-sm font-body text-on-surface-variant mt-1">Community-curated online directory that indexes and provides access to high quality, open access, peer-reviewed journals.</p>
+</div>
+</div>
+<button class="text-primary hover:text-secondary bg-transparent border border-outline-variant/20 hover:border-secondary/50 px-4 py-2 rounded-md font-label text-sm transition-all whitespace-nowrap ml-4">
+                                Open Tool
+                            </button>
+</div>
+<!-- List Item 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center justify-between group hover:bg-surface-container-high transition-colors">
+<div class="flex items-center space-x-5">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="dataset">dataset</span>
+</div>
+<div>
+<h3 class="font-headline text-lg text-primary">Zenodo</h3>
+<p class="text-sm font-body text-on-surface-variant mt-1">General-purpose open repository developed under the European OpenAIRE program. Ideal for publishing research data.</p>
+</div>
+</div>
+<button class="text-primary hover:text-secondary bg-transparent border border-outline-variant/20 hover:border-secondary/50 px-4 py-2 rounded-md font-label text-sm transition-all whitespace-nowrap ml-4">
+                                Open Tool
+                            </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer component -->
+<footer class="w-full py-12 mt-20 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 font-['Manrope'] text-sm tracking-wide bg-slate-200/50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 duration-200">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto">
+<div class="font-['Newsreader'] font-semibold text-slate-900 dark:text-slate-100 mb-4 md:mb-0">
+                © 2024 KazUTB Smart Library. Preserving Knowledge through the Digital Curator.
+            </div>
+<div class="flex space-x-6">
+<a class="text-teal-700 dark:text-teal-400 underline underline-offset-4 hover:text-teal-700 transition-colors" href="#">Institutional Access</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors" href="#">Library Terms</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors" href="#">Research Support</a>
+</div>
+</div>
+</footer>
+</body></html>

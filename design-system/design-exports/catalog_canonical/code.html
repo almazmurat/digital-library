@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catalog Search &amp; Browse - KazUTB Smart Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#76d6d5",
+                        "secondary-container": "#90efef",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "primary": "#000613",
+                        "secondary": "#006a6a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-container": "#76889d",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-surface": "#191c1d",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed": "#091d2e",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed": "#d1e4fb",
+                        "primary-fixed-dim": "#afc8f0",
+                        "on-primary-container": "#6f88ad",
+                        "tertiary": "#000610",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#476083",
+                        "tertiary-container": "#0d2031",
+                        "on-surface-variant": "#43474e",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary-fixed": "#93f2f2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "on-secondary-container": "#006e6e",
+                        "surface-dim": "#d9dadb",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#d4e3ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#001f3f",
+                        "inverse-primary": "#afc8f0",
+                        "on-secondary-fixed": "#002020",
+                        "inverse-surface": "#2e3132"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "display": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Newsreader', serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col pt-[72px]">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm text-slate-900 dark:text-slate-50 font-['Newsreader'] tracking-tight transition-all duration-500 ease-in-out hidden md:block">
+<div class="flex justify-between items-center px-8 py-4 max-w-full bg-slate-100 dark:bg-slate-900 shadow-sm">
+<div class="text-xl font-bold font-['Newsreader'] text-slate-900 dark:text-slate-50">
+                KazUTB Smart Library
+            </div>
+<div class="flex items-center space-x-6">
+<a class="text-teal-700 dark:text-teal-400 font-semibold border-b-2 border-teal-700 dark:border-teal-400 pb-1 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300" href="#">Discovery</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300" href="#">Leadership</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative">
+<input class="bg-surface-container-highest border-b border-outline-variant/20 focus:border-secondary focus:ring-0 px-4 py-2 text-sm rounded-t font-body w-64 placeholder-on-surface-variant text-on-surface transition-colors bg-opacity-50" placeholder="Search catalog..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2 text-on-surface-variant" data-icon="search">search</span>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-5 py-2 rounded font-body text-sm hover:opacity-90 transition-opacity">Sign In</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area with SideNav (Desktop) -->
+<div class="flex flex-1 w-full max-w-full">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 border-r-0 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-['Manrope'] antialiased bg-slate-50 dark:bg-slate-900 shadow-2xl shadow-slate-200/50 dark:shadow-none ease-out duration-300 hidden md:flex flex-col h-full py-6 mt-[72px] z-40">
+<div class="px-6 mb-8 flex flex-col items-start">
+<div class="h-12 w-12 rounded-full bg-surface-container-highest mb-4 overflow-hidden border-2 border-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-2xl" data-icon="person">person</span>
+</div>
+<h2 class="font-headline text-lg font-semibold text-primary">Member Portal</h2>
+<p class="text-sm text-on-surface-variant">Academic Curator</p>
+<div class="font-['Newsreader'] italic text-lg mt-2 text-outline">KazUTB Smart Library</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center space-x-3 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="book_5">book_5</span>
+<span class="font-medium text-sm">My Bookshelf</span>
+</a>
+<a class="flex items-center space-x-3 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-medium text-sm">Research Logs</span>
+</a>
+<a class="flex items-center space-x-3 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="format_quote">format_quote</span>
+<span class="font-medium text-sm">Citations</span>
+</a>
+<a class="flex items-center space-x-3 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 px-4 py-3 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="saved_search">saved_search</span>
+<span class="font-medium text-sm">Saved Queries</span>
+</a>
+</nav>
+<div class="px-6 mb-6">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity">Start Research</button>
+</div>
+<div class="px-4 border-t border-outline-variant/20 pt-4 space-y-2">
+<a class="flex items-center space-x-3 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+<a class="flex items-center space-x-3 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+<span class="font-medium text-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Canvas -->
+<main class="flex-1 md:ml-64 p-8 lg:p-12 min-h-screen bg-surface">
+<!-- Hero / Search Header -->
+<header class="mb-12 max-w-5xl mx-auto">
+<h1 class="text-[3.5rem] font-headline text-primary leading-tight tracking-tight mb-4 -ml-1">Digital Catalog</h1>
+<p class="text-on-surface-variant font-body text-lg max-w-2xl mb-8 leading-relaxed">Search the KazUTB Smart Library’s extensive collection of physical volumes, digital journals, and institutional research papers.</p>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-[0_24px_48px_-12px_rgba(0,6,19,0.04)] border border-outline-variant/10">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-4 top-3.5 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-highest/50 border-b border-outline-variant/20 focus:border-secondary focus:ring-0 pl-12 pr-4 py-3 text-base rounded-t font-body placeholder-on-surface-variant text-on-surface transition-colors" placeholder="Title, Author, Keyword, or UDC..." type="text" value="Artificial Intelligence Architecture"/>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-3 rounded text-base font-medium hover:opacity-90 transition-opacity flex items-center justify-center space-x-2">
+<span>Search</span>
+</button>
+</div>
+</div>
+</header>
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
+<!-- Filters Sidebar (Desktop) -->
+<aside class="w-full lg:w-64 flex-shrink-0 space-y-8 hidden lg:block">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline text-xl text-primary">Filters</h3>
+<button class="text-sm font-body text-secondary hover:text-primary transition-colors">Clear all</button>
+</div>
+<!-- Filter Section: Type -->
+<div class="space-y-4">
+<h4 class="font-body font-semibold text-sm text-on-surface uppercase tracking-wider">Resource Type</h4>
+<div class="space-y-2">
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input checked="" class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">Books (Physical)</span>
+<span class="text-xs text-outline ml-auto">142</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">E-Books</span>
+<span class="text-xs text-outline ml-auto">89</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input checked="" class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">Journals</span>
+<span class="text-xs text-outline ml-auto">45</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">Dissertations</span>
+<span class="text-xs text-outline ml-auto">12</span>
+</label>
+</div>
+</div>
+<!-- Filter Section: Year -->
+<div class="space-y-4">
+<h4 class="font-body font-semibold text-sm text-on-surface uppercase tracking-wider">Publication Year</h4>
+<div class="flex items-center space-x-2">
+<input class="w-full bg-surface-container-highest/50 border-b border-outline-variant/20 focus:border-secondary focus:ring-0 px-3 py-2 text-sm rounded-t font-body placeholder-on-surface-variant text-on-surface text-center" placeholder="From" type="text"/>
+<span class="text-outline-variant">-</span>
+<input class="w-full bg-surface-container-highest/50 border-b border-outline-variant/20 focus:border-secondary focus:ring-0 px-3 py-2 text-sm rounded-t font-body placeholder-on-surface-variant text-on-surface text-center" placeholder="To" type="text"/>
+</div>
+</div>
+<!-- Filter Section: Faculty -->
+<div class="space-y-4">
+<h4 class="font-body font-semibold text-sm text-on-surface uppercase tracking-wider">Faculty / Discipline</h4>
+<div class="space-y-2">
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input checked="" class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">Computer Science</span>
+<span class="text-xs text-outline ml-auto">210</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">Engineering</span>
+<span class="text-xs text-outline ml-auto">84</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">Economics</span>
+<span class="text-xs text-outline ml-auto">32</span>
+</label>
+</div>
+</div>
+<!-- Filter Section: Language -->
+<div class="space-y-4">
+<h4 class="font-body font-semibold text-sm text-on-surface uppercase tracking-wider">Language</h4>
+<div class="space-y-2">
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input checked="" class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">English</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">Kazakh</span>
+</label>
+<label class="flex items-center space-x-3 cursor-pointer group">
+<input class="form-checkbox text-secondary border-outline-variant/50 rounded-sm focus:ring-secondary/30 h-4 w-4 bg-surface-container-lowest" type="checkbox"/>
+<span class="font-body text-sm text-on-surface-variant group-hover:text-primary transition-colors">Russian</span>
+</label>
+</div>
+</div>
+</aside>
+<!-- Search Results List -->
+<div class="flex-1 w-full">
+<!-- Results Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-4 border-b border-outline-variant/20 gap-4">
+<div class="font-body text-sm text-on-surface-variant">
+                            Showing <span class="font-bold text-primary">1-10</span> of <span class="font-bold text-primary">288</span> results for "Artificial Intelligence Architecture"
+                        </div>
+<div class="flex items-center space-x-4">
+<label class="text-sm font-body text-on-surface-variant">Sort by:</label>
+<select class="bg-surface-container-lowest border border-outline-variant/30 text-sm font-body text-primary rounded px-3 py-1.5 focus:border-secondary focus:ring-0 appearance-none pr-8 relative">
+<option>Relevance</option>
+<option>Year (Newest)</option>
+<option>Year (Oldest)</option>
+<option>Title (A-Z)</option>
+</select>
+</div>
+</div>
+<!-- Results List (No borders between cards, spacing only) -->
+<div class="space-y-12">
+<!-- Result Card 1 -->
+<article class="group bg-surface-container-lowest p-6 rounded-xl transition-all duration-300 hover:bg-surface-container-high hover:shadow-[0_24px_48px_-12px_rgba(0,6,19,0.04)] relative">
+<div class="flex flex-col sm:flex-row gap-6">
+<!-- Cover/Placeholder -->
+<div class="w-24 h-32 bg-surface-variant rounded flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/10">
+<img alt="Book cover" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" data-alt="abstract geometric rendering of artificial neural networks in deep navy and soft teal glowing connections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp2qomWWPpcJcGdLdnYavPkPgJKhAIHQO6RX8s_TKWKoprNh8k5xYe8_XstRBMr-1Wo2WRUGRt4V-2jsWPhwgHqSpMrN8xwUM8Vjw6uw2kQeHXTyZa-__ve3L0bHlrwIrPwKas6Btt-0wH2NaoQhHFsMn6dbn0VAOYb0WKyx_eNKLk8JEP7l75BHzTCS8_5zCbJbpcuqJj1sTK7qdadXA3-LxwNQzSm-tgBxfeJulO83fB2nBGXzceooqv6Ym0xu0zX32F6tLqyWPQ"/>
+</div>
+<!-- Content -->
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div class="text-xs font-body font-bold text-secondary tracking-wider uppercase mb-1">Book • Physical</div>
+<button class="text-outline hover:text-secondary transition-colors" title="Save Citation">
+<span class="material-symbols-outlined" data-icon="bookmark_add">bookmark_add</span>
+</button>
+</div>
+<h2 class="text-2xl font-headline text-primary mb-2 group-hover:text-secondary-container transition-colors cursor-pointer w-fit">Deep Learning Architectures for Academic Contexts</h2>
+<p class="text-sm font-body text-on-surface-variant mb-4">By <a class="text-primary hover:underline" href="#">Dr. Alikhan Ospanov</a>, <a class="text-primary hover:underline" href="#">Elena Petrova</a> • Published 2023</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-surface-container rounded text-xs font-body text-on-surface-variant">Computer Science</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs font-body text-on-surface-variant">Neural Networks</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs font-body text-on-surface-variant">English</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-t border-outline-variant/10 pt-4 mt-4 gap-4">
+<div class="flex space-x-6 text-sm font-body">
+<div><span class="text-outline">UDC:</span> <span class="font-medium text-primary">004.8</span></div>
+<div><span class="text-outline">Call No:</span> <span class="font-medium text-primary">QA76.9.A73 O8 2023</span></div>
+</div>
+<div class="flex items-center space-x-2 text-sm font-body">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+<span class="text-emerald-800 dark:text-emerald-400 font-medium">Available</span>
+<span class="text-outline text-xs ml-1">(Main Library, Floor 3)</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Result Card 2 -->
+<article class="group bg-surface-container-lowest p-6 rounded-xl transition-all duration-300 hover:bg-surface-container-high hover:shadow-[0_24px_48px_-12px_rgba(0,6,19,0.04)] relative">
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="w-24 h-32 bg-surface-variant rounded flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/10">
+<span class="material-symbols-outlined text-outline text-4xl" data-icon="article">article</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div class="text-xs font-body font-bold text-secondary tracking-wider uppercase mb-1">Journal Article • Electronic</div>
+<button class="text-outline hover:text-secondary transition-colors" title="Save Citation">
+<span class="material-symbols-outlined" data-icon="bookmark_add">bookmark_add</span>
+</button>
+</div>
+<h2 class="text-2xl font-headline text-primary mb-2 group-hover:text-secondary-container transition-colors cursor-pointer w-fit">Evolution of AI Hardware Architectures in the Post-Moore Era</h2>
+<p class="text-sm font-body text-on-surface-variant mb-4">By <a class="text-primary hover:underline" href="#">S. Kumar</a> • <span class="italic">Journal of Advanced Computing</span> • Published Oct 2022</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-surface-container rounded text-xs font-body text-on-surface-variant">Hardware</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs font-body text-on-surface-variant">AI</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-t border-outline-variant/10 pt-4 mt-4 gap-4">
+<div class="flex space-x-6 text-sm font-body">
+<div><span class="text-outline">DOI:</span> <span class="font-medium text-primary">10.1016/j.advcomp.2022.08.004</span></div>
+</div>
+<div class="flex items-center space-x-4 text-sm font-body">
+<button class="text-secondary font-medium hover:text-primary transition-colors flex items-center space-x-1">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+<span>PDF</span>
+</button>
+<a class="text-secondary font-medium hover:text-primary transition-colors flex items-center space-x-1" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+<span>Access Online</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Result Card 3 -->
+<article class="group bg-surface-container-lowest p-6 rounded-xl transition-all duration-300 hover:bg-surface-container-high hover:shadow-[0_24px_48px_-12px_rgba(0,6,19,0.04)] relative">
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="w-24 h-32 bg-surface-variant rounded flex-shrink-0 flex items-center justify-center overflow-hidden border border-outline-variant/10">
+<img alt="Book cover" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" data-alt="close up of glowing blue circuit board traces representing computer architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgaKaCPBLDxDDMHlG8d8grMOYeRIfVgBRmGfXCesJ1T45OLhLJYBpsxt6ReCy928HZfEif5gCPM-pZnSj-8HAHbN62dx_W-nhpfSBOedLfATRoTyo8ZcmoqLHkC44KesvwvK9vNPZ2NZoUUUCuBww_IRsX8NJ1QuOSqJaPr3DbyiIoHbfrWUo5EeSr-99AhUR54z7GbrMfh4Vks8VXNurksF8nqqwksiTleBl0zb4E4kUTJQr2h_8c_1vw8sDiEYGLGx4pxeH4oPEU"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-2">
+<div class="text-xs font-body font-bold text-secondary tracking-wider uppercase mb-1">Book • Physical</div>
+<button class="text-outline hover:text-secondary transition-colors" title="Save Citation">
+<span class="material-symbols-outlined" data-icon="bookmark_add">bookmark_add</span>
+</button>
+</div>
+<h2 class="text-2xl font-headline text-primary mb-2 group-hover:text-secondary-container transition-colors cursor-pointer w-fit">Cognitive Computing: Theory and Architecture</h2>
+<p class="text-sm font-body text-on-surface-variant mb-4">By <a class="text-primary hover:underline" href="#">M. R. Genesereth</a> • Published 2019</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-surface-container rounded text-xs font-body text-on-surface-variant">Cognitive Science</span>
+<span class="px-2 py-1 bg-surface-container rounded text-xs font-body text-on-surface-variant">Architecture</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-t border-outline-variant/10 pt-4 mt-4 gap-4">
+<div class="flex space-x-6 text-sm font-body">
+<div><span class="text-outline">UDC:</span> <span class="font-medium text-primary">004.81</span></div>
+<div><span class="text-outline">Call No:</span> <span class="font-medium text-primary">Q335 .G46 2019</span></div>
+</div>
+<div class="flex items-center space-x-2 text-sm font-body">
+<span class="w-2 h-2 rounded-full bg-red-600"></span>
+<span class="text-red-800 dark:text-red-400 font-medium">Checked Out</span>
+<span class="text-outline text-xs ml-1">(Due: Nov 15)</span>
+<button class="ml-4 text-xs border-b border-secondary/50 text-secondary hover:text-primary transition-colors">Place Hold</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex justify-center items-center space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded text-outline hover:bg-surface-container transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded bg-primary text-on-primary font-body text-sm font-medium">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded text-primary hover:bg-surface-container transition-colors font-body text-sm font-medium">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded text-primary hover:bg-surface-container transition-colors font-body text-sm font-medium">3</button>
+<span class="text-outline px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded text-primary hover:bg-surface-container transition-colors font-body text-sm font-medium">29</button>
+<button class="w-10 h-10 flex items-center justify-center rounded text-primary hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 mt-20 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 font-['Manrope'] text-sm tracking-wide flex flex-col md:flex-row justify-between items-center px-12 border-t border-slate-200 dark:border-slate-800 bg-slate-200/50 dark:bg-slate-800/50 flat no-shadows z-50 relative">
+<div class="font-['Newsreader'] font-semibold text-slate-900 dark:text-slate-100 mb-4 md:mb-0 text-lg">
+            KazUTB Smart Library
+        </div>
+<div class="text-center md:text-left mb-4 md:mb-0 text-slate-500">
+            © 2024 KazUTB Smart Library. Preserving Knowledge through the Digital Curator.
+        </div>
+<div class="flex flex-wrap justify-center md:justify-end gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors duration-200" href="#">Institutional Access</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors duration-200" href="#">Library Terms</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors duration-200" href="#">Research Support</a>
+</div>
+</footer>
+</body></html>

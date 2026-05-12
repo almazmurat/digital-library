@@ -24,6 +24,7 @@ class CatalogReadService
         ?int $yearTo = null,
         bool $availableOnly = false,
         bool $physicalOnly = false,
+        ?string $materialType = null,
         ?string $subjectId = null,
         ?string $institution = null,
     ): array {
@@ -111,6 +112,25 @@ class CatalogReadService
 
         if ($physicalOnly) {
             $builder->whereRaw("COALESCE((d.copy_summary_json->>'totalCopies')::int, 0) > 0");
+        }
+
+        if ($materialType !== null && $materialType !== '' && $materialType !== 'all') {
+            $archiveMarkerSql = "(LOWER(COALESCE(d.subjects_json::text, '')) LIKE '%диссер%' OR LOWER(COALESCE(d.subjects_json::text, '')) LIKE '%thesis%' OR LOWER(COALESCE(d.subjects_json::text, '')) LIKE '%archive%')";
+
+            if ($materialType === 'archive') {
+                $builder->whereRaw(
+                    "({$archiveMarkerSql} OR (COALESCE((d.copy_summary_json->>'totalCopies')::int, 0) > 0 AND COALESCE((d.copy_summary_json->>'availableCopies')::int, 0) = 0))"
+                );
+            } elseif ($materialType === 'physical') {
+                $builder
+                    ->whereRaw("COALESCE((d.copy_summary_json->>'totalCopies')::int, 0) > 0")
+                    ->whereRaw("COALESCE((d.copy_summary_json->>'availableCopies')::int, 0) > 0")
+                    ->whereRaw("NOT {$archiveMarkerSql}");
+            } elseif ($materialType === 'digital') {
+                $builder
+                    ->whereRaw("COALESCE((d.copy_summary_json->>'totalCopies')::int, 0) = 0")
+                    ->whereRaw("NOT {$archiveMarkerSql}");
+            }
         }
 
         if ($subjectId !== null && $subjectId !== '') {

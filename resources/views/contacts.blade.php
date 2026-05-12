@@ -15,9 +15,9 @@
 
   $copy = $contacts[$lang];
   $chromeTitle = [
-      'ru' => 'Контакты — KazUTB Smart Library',
-      'kk' => 'Байланыс — KazUTB Smart Library',
-      'en' => 'Contacts — KazUTB Smart Library',
+      'ru' => 'Контакты — KazUTB Digital Library',
+      'kk' => 'Байланыс — KazUTB Digital Library',
+      'en' => 'Contacts — KazUTB Digital Library',
   ][$lang];
 @endphp
 
@@ -71,33 +71,17 @@
         <section class="contacts-canonical__form-card" data-section="contacts-canonical-inquiry-form">
           <h3 class="contacts-canonical__card-heading">{{ $copy['form_title'] }}</h3>
           <p class="contacts-canonical__form-note">{{ $copy['form_note'] }}</p>
-          <form class="contacts-canonical__form" action="mailto:{{ $copy['location_email'] }}" method="post" enctype="text/plain" data-test-id="contacts-canonical-inquiry-form">
-            <div class="contacts-canonical__field">
-              <label for="contact-name">{{ $copy['form_label_name'] }}</label>
-              <input type="text" id="contact-name" name="name" placeholder="{{ $copy['form_placeholder_name'] }}" autocomplete="name">
+          <div class="contacts-canonical__inquiry-list">
+            <p class="contacts-canonical__inquiry-lead">{{ $lang === 'kk' ? 'Номсану қолжетімді е-поста жәберіңіз:' : ($lang === 'en' ? 'For inquiries, please email us at:' : 'Для вопросов пожалуйста направьте на электронные адреса:') }}</p>
+            <div class="contacts-canonical__inquiry-items">
+              @foreach($copy['support_channels'] as $channel)
+                <div class="contacts-canonical__inquiry-item">
+                  <span class="material-symbols-outlined" aria-hidden="true">mail</span>
+                  <a href="mailto:{{ $channel['email'] }}">{{ $channel['title'] }} — {{ $channel['email'] }}</a>
+                </div>
+              @endforeach
             </div>
-            <div class="contacts-canonical__field">
-              <label for="contact-email">{{ $copy['form_label_email'] }}</label>
-              <input type="email" id="contact-email" name="email" placeholder="{{ $copy['form_placeholder_email'] }}" autocomplete="email">
-            </div>
-            <div class="contacts-canonical__field">
-              <label for="contact-department">{{ $copy['form_label_department'] }}</label>
-              <select id="contact-department" name="department">
-                <option value="" disabled selected>{{ $copy['form_placeholder_department'] }}</option>
-                @foreach($copy['form_departments'] as $optValue => $optLabel)
-                  <option value="{{ $optValue }}">{{ $optLabel }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="contacts-canonical__field">
-              <label for="contact-message">{{ $copy['form_label_message'] }}</label>
-              <textarea id="contact-message" name="message" rows="4" placeholder="{{ $copy['form_placeholder_message'] }}"></textarea>
-            </div>
-            <button type="submit" class="contacts-canonical__form-submit" data-test-id="contacts-canonical-inquiry-submit">
-              <span>{{ $copy['form_submit'] }}</span>
-              <span class="material-symbols-outlined" aria-hidden="true">send</span>
-            </button>
-          </form>
+          </div>
         </section>
 
         {{-- Location + hours card. --}}
@@ -255,7 +239,7 @@
     line-height: 1.08;
     letter-spacing: -0.02em;
     color: #000613;
-    margin: 0 0 24px -2px;
+    margin: 0 0 20px -2px;
   }
 
   @media (min-width: 768px) {
@@ -271,10 +255,10 @@
 
   .contacts-canonical__lead {
     font-family: 'Manrope', sans-serif;
-    font-size: 16px;
-    line-height: 1.65;
+    font-size: 17px;
+    line-height: 1.62;
     color: #43474e;
-    max-width: 640px;
+    max-width: 680px;
     margin: 0;
   }
 
@@ -314,7 +298,7 @@
   .contacts-canonical__hero-inline {
     position: relative;
     padding-top: 32px;
-    margin-bottom: 48px;
+    margin-bottom: 56px;
   }
 
   .contacts-canonical__channels {
@@ -325,9 +309,11 @@
 
   .contacts-canonical__channel-card {
     background: #ffffff;
+    border: 1px solid rgba(196, 198, 207, 0.55);
     border-radius: 8px;
     padding: 32px;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 10px 22px rgba(0, 6, 19, 0.03);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -336,6 +322,8 @@
 
   .contacts-canonical__channel-card:hover {
     background: #f3f4f5;
+    border-color: rgba(0, 106, 106, 0.35);
+    box-shadow: 0 14px 28px rgba(0, 6, 19, 0.05);
   }
 
   .contacts-canonical__channel-icon {
@@ -399,7 +387,8 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 500;
     color: #191c1d;
   }
 
@@ -422,13 +411,15 @@
   .contacts-canonical__col-right {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 32px;
   }
 
   .contacts-canonical__form-card {
     background: #f3f4f5;
     padding: 32px;
     border-radius: 12px;
+    border: 1px solid rgba(196, 198, 207, 0.55);
+    box-shadow: 0 12px 28px rgba(0, 6, 19, 0.035);
   }
 
   .contacts-canonical__card-heading {
@@ -457,6 +448,49 @@
     color: #43474e;
     margin: 0 0 20px;
     line-height: 1.5;
+  }
+
+  .contacts-canonical__inquiry-list {
+    padding: 16px 0 2px;
+  }
+
+  .contacts-canonical__inquiry-lead {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #43474e;
+    margin: 0 0 16px;
+  }
+
+  .contacts-canonical__inquiry-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contacts-canonical__inquiry-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 36px;
+  }
+
+  .contacts-canonical__inquiry-item .material-symbols-outlined {
+    font-size: 20px;
+    color: #476083;
+  }
+
+  .contacts-canonical__inquiry-item a {
+    color: #2f486a;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .contacts-canonical__inquiry-item a:hover,
+  .contacts-canonical__inquiry-item a:focus-visible {
+    color: #001f3f;
+    border-bottom-color: rgba(0, 31, 63, 0.35);
   }
 
   .contacts-canonical__form {
@@ -534,6 +568,8 @@
     background: #ffffff;
     padding: 24px;
     border-radius: 8px;
+    border: 1px solid rgba(196, 198, 207, 0.55);
+    box-shadow: 0 10px 22px rgba(0, 6, 19, 0.03);
   }
 
   .contacts-canonical__location-body {
@@ -547,7 +583,7 @@
   .contacts-canonical__location-contact {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 16px;
   }
 
@@ -560,13 +596,16 @@
     font-weight: 500;
     color: #006a6a;
     text-decoration: none;
-    padding: 8px 0;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 106, 106, 0.28);
+    background: rgba(0, 106, 106, 0.04);
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
   }
 
   .contacts-canonical__directions-link:hover {
     border-color: #006a6a;
+    background: rgba(0, 106, 106, 0.08);
   }
 
   .contacts-canonical__directions-link .material-symbols-outlined {
@@ -602,6 +641,8 @@
     background: #ffffff;
     border-radius: 12px;
     padding: 32px;
+    border: 1px solid rgba(196, 198, 207, 0.5);
+    box-shadow: 0 12px 28px rgba(0, 6, 19, 0.03);
   }
 
   @media (min-width: 768px) {
@@ -750,6 +791,7 @@
     background: #f3f4f5;
     border-radius: 12px;
     padding: 32px;
+    border: 1px solid rgba(196, 198, 207, 0.5);
   }
 
   @media (min-width: 768px) {
@@ -799,15 +841,38 @@
     align-items: center;
     padding: 20px 24px;
     background: #ffffff;
+    border: 1px solid rgba(196, 198, 207, 0.5);
     border-radius: 8px;
     text-decoration: none;
     color: #000613;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
   }
 
   .contacts-canonical__visit-link:hover {
     background: #000613;
     color: #ffffff;
+    border-color: #000613;
+  }
+
+  @media (max-width: 640px) {
+    .contacts-canonical__hero-inline {
+      margin-bottom: 40px;
+    }
+
+    .contacts-canonical__channel-card,
+    .contacts-canonical__form-card,
+    .contacts-canonical__wayfinding,
+    .contacts-canonical__visit {
+      padding: 24px;
+    }
+
+    .contacts-canonical__location-card {
+      padding: 20px;
+    }
+
+    .contacts-canonical__visit-link {
+      padding: 16px;
+    }
   }
 
   .contacts-canonical__visit-link-title {

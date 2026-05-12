@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Shortlist - Athenaeum Digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f3f4f5",
+                      "primary-container": "#001f3f",
+                      "on-tertiary": "#ffffff",
+                      "secondary": "#006a6a",
+                      "on-secondary-container": "#006e6e",
+                      "on-tertiary-container": "#76889d",
+                      "on-secondary-fixed-variant": "#004f4f",
+                      "background": "#f8f9fa",
+                      "primary": "#000613",
+                      "surface-tint": "#476083",
+                      "outline-variant": "#c4c6cf",
+                      "tertiary-fixed": "#d1e4fb",
+                      "tertiary-container": "#0d2031",
+                      "surface-variant": "#e1e3e4",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#afc8f0",
+                      "on-tertiary-fixed-variant": "#36485b",
+                      "surface": "#f8f9fa",
+                      "inverse-surface": "#2e3132",
+                      "on-surface-variant": "#43474e",
+                      "surface-bright": "#f8f9fa",
+                      "on-primary-container": "#6f88ad",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#93f2f2",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#b5c8df",
+                      "on-tertiary-fixed": "#091d2e",
+                      "surface-dim": "#d9dadb",
+                      "on-surface": "#191c1d",
+                      "tertiary": "#000610",
+                      "on-background": "#191c1d",
+                      "on-secondary-fixed": "#002020",
+                      "secondary-container": "#90efef",
+                      "primary-fixed": "#d4e3ff",
+                      "secondary-fixed-dim": "#76d6d5",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-primary-fixed": "#001c3a",
+                      "surface-container": "#edeeef",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "surface-container-highest": "#e1e3e4",
+                      "error": "#ba1a1a",
+                      "outline": "#74777f",
+                      "inverse-primary": "#afc8f0",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Newsreader"
+                      ],
+                      "body": [
+                              "Manrope"
+                      ],
+                      "label": [
+                              "Manrope"
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: 'Newsreader', serif;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex fixed left-0 top-20 h-[calc(100vh-5rem)] w-72 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 font-['Manrope'] text-sm uppercase tracking-widest bg-white/50 dark:bg-slate-800/50 flex-col py-8 space-y-2 z-40">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold font-serif">
+                A
+            </div>
+<div>
+<div class="font-bold text-primary">Library Access</div>
+<div class="text-xs text-on-surface-variant normal-case tracking-normal">The Scholar's Portal</div>
+</div>
+</div>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-8 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-8 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="book_online">book_online</span>
+<span>Reservations</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-8 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>History</span>
+</a>
+<!-- Active Tab: My Shortlist -->
+<a class="flex items-center gap-4 px-6 py-3 text-teal-700 dark:text-teal-400 font-bold border-r-2 border-teal-700 dark:border-teal-400 bg-teal-50/50 dark:bg-teal-900/20 hover:pl-8 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark" data-weight="fill" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+<span>My Shortlist</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-8 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-8 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span>Messages</span>
+</a>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg text-slate-900 dark:text-slate-50 shadow-[0_24px_48px_rgba(0,31,63,0.04)] bg-slate-50 dark:bg-slate-900 flex justify-between items-center px-12 h-20">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-serif italic text-slate-900 dark:text-slate-50">Athenaeum Digital</div>
+<div class="hidden md:flex bg-surface-container-highest px-4 py-2 rounded-lg items-center gap-2 border-b border-outline-variant/20 focus-within:border-secondary transition-colors duration-300">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline text-sm w-64" placeholder="Search library..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-slate-600 dark:text-slate-400 font-medium hover:text-teal-600 dark:hover:text-teal-300 transition-colors duration-300 ease-in-out">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-20 md:ml-72 p-8 md:p-16 max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-16">
+<h1 class="text-[3.5rem] font-headline font-semibold text-primary leading-tight mb-4 tracking-tight -ml-1">My Shortlist</h1>
+<p class="text-lg font-body text-on-surface-variant max-w-2xl leading-relaxed">
+                Your curated collection of research materials. Review, cite, and reserve your saved literature for upcoming study sessions.
+            </p>
+</div>
+<!-- Filter/Action Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-12">
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-lowest text-primary rounded-md border-b border-outline-variant/20 hover:bg-surface-variant transition-colors duration-300 text-sm font-semibold">All Items (12)</button>
+<button class="px-4 py-2 bg-transparent text-on-surface-variant rounded-md hover:bg-surface-variant transition-colors duration-300 text-sm font-medium">Books (8)</button>
+<button class="px-4 py-2 bg-transparent text-on-surface-variant rounded-md hover:bg-surface-variant transition-colors duration-300 text-sm font-medium">Journals (4)</button>
+</div>
+<div class="flex gap-4 items-center">
+<button class="flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                    Filter
+                </button>
+<button class="flex items-center gap-2 text-sm font-semibold text-secondary hover:text-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-lg">sort</span>
+                    Sort by: Date Added
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Featured Item (Takes up 2 columns) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl p-8 hover:bg-surface-container-high transition-colors duration-500 flex flex-col md:flex-row gap-8 items-start group">
+<div class="w-full md:w-48 shrink-0 relative aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-low">
+<img alt="Cover of The Architecture of Complexity" class="w-full h-full object-cover shadow-md transition-transform duration-700 group-hover:scale-105" data-alt="antique book cover with embossed gold lettering and geometric patterns on dark navy leather binding in soft directional light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkskqBKJkJj-O2Tdsza3zuV1esBrbZls4cTIAj90wbggv0TOODNK0a953JM6q2l1J0YLHWhETY0K2G655VgFL_SZQHDYokJKFLX41JuS5o0Qe6is-BLrT1xSWjNBU36GtFmKj4_Zk3REFWUegSsleY6VtUQREb6_5UTGLUNM4edfeHwbVJqnQZZuZdIfqok-wCvpiYCGFnEqq8EP0OgjXPFcWpkFgc7p-9pJOZ4YnC1H0wwNHgtW8mpCrTrd9AIjuwnD5il6-X2V6i"/>
+</div>
+<div class="flex-1 flex flex-col justify-between h-full">
+<div>
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant text-xs font-label rounded uppercase tracking-wider">Monograph</span>
+<span class="text-xs text-on-surface-variant font-label">Added 2 days ago</span>
+</div>
+<h2 class="text-2xl font-headline text-primary mb-2">The Architecture of Complexity</h2>
+<p class="text-on-surface-variant text-sm mb-4 font-body">Herbert A. Simon, 1962</p>
+<p class="text-on-surface text-sm leading-relaxed mb-6 font-body">
+                            A seminal paper exploring the hierarchical structures in complex systems, from biological organisms to social organizations and artificial intelligence. Essential reading for the upcoming systems theory seminar.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-4 mt-auto">
+<button class="px-6 py-2 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-md font-semibold text-sm hover:opacity-90 transition-opacity duration-300">
+                            Reserve
+                        </button>
+<button class="px-6 py-2 bg-transparent text-secondary rounded-md font-semibold text-sm border border-outline-variant/20 hover:bg-surface-variant transition-colors duration-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">format_quote</span> Cite
+                        </button>
+<button class="px-4 py-2 text-primary font-medium text-sm hover:bg-surface-variant rounded-md transition-colors duration-300 ml-auto flex items-center gap-1">
+                            Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Standard Item 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 hover:bg-surface-container-high transition-colors duration-500 flex flex-col group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-20 h-28 shrink-0 relative rounded-md overflow-hidden bg-surface-container-low shadow-sm">
+<img alt="Cover of Statistical Rethinking" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="minimalist modern textbook cover with abstract geometric shapes in muted blue and cream colors, clean typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGubcz2FvgKpyB1sZ21wx2juDhHoXo531-4J4SDSD78zuvsEnVgwO4YE1ZtkRklPPI5sTzwF8yUE-b4YKJMqgEGCALPmzrtSCB2PoJNj9KPDXKgnzPgIGWy0TjIL0HaHahV1kV_RjFBNxDqY8gz9bRE2Vpok7Z76F8J80Kx7SeBczUb9MTgl9RDA5065fIvj-BTxzDFeKP0x3ItfEc3bZwfIp0BxNUGi0mGtV24fNEnzpsnuS-MeZqQw4wfqOVCgBGeKf9jZCDC_cx"/>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors duration-300">
+<span class="material-symbols-outlined">bookmark_remove</span>
+</button>
+</div>
+<div class="flex-1">
+<span class="text-xs text-secondary font-label uppercase tracking-widest mb-1 block">Textbook</span>
+<h3 class="text-lg font-headline text-primary mb-1 leading-snug">Statistical Rethinking</h3>
+<p class="text-on-surface-variant text-sm mb-4 font-body">Richard McElreath, 2020</p>
+</div>
+<div class="flex gap-3 mt-4 pt-4 border-t border-outline-variant/10">
+<button class="flex-1 py-2 bg-transparent text-secondary rounded-md font-semibold text-sm border border-outline-variant/20 hover:bg-surface-variant transition-colors duration-300 text-center">
+                        Cite
+                    </button>
+<button class="flex-1 py-2 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-md font-semibold text-sm hover:opacity-90 transition-opacity duration-300 text-center">
+                        Reserve
+                    </button>
+</div>
+</div>
+<!-- Standard Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 hover:bg-surface-container-high transition-colors duration-500 flex flex-col group">
+<div class="flex justify-between items-start mb-4">
+<div class="w-20 h-28 shrink-0 relative rounded-md overflow-hidden bg-surface-container-low shadow-sm">
+<img alt="Cover of Journal of Cognitive Neuroscience" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="academic journal cover featuring a stylized illustration of a glowing human brain network on a dark navy background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDabzPnUE5tkhvlLNMOuHduzkwcUyfP-FXNlaiWSNH7bU1cruaty46fT7i4Ynjix7rbYpvTkt_F_Zy0z9-R6G0ISi-uESh1LKoyBYDdZDf8_KdQd5MwYdsNMyXpF0B79IF1ilWlNu0RETy6WPyq1mjQorUoRVkmvNjgiGwYfA_rdPQmFi84Gp-zB_ZStoM_mzO384ovW2V6h9snpDmh8811jtctLnDtLSVfNuokIrA-ieR4dm9_wvQipY3myQWRV2lhYH9vK7HEt9S4"/>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors duration-300">
+<span class="material-symbols-outlined">bookmark_remove</span>
+</button>
+</div>
+<div class="flex-1">
+<span class="text-xs text-secondary font-label uppercase tracking-widest mb-1 block">Journal Article</span>
+<h3 class="text-lg font-headline text-primary mb-1 leading-snug">Neural Correlates of Memory</h3>
+<p class="text-on-surface-variant text-sm mb-4 font-body">Vol. 45, Issue 2, 2023</p>
+</div>
+<div class="flex gap-3 mt-4 pt-4 border-t border-outline-variant/10">
+<button class="flex-1 py-2 bg-transparent text-secondary rounded-md font-semibold text-sm border border-outline-variant/20 hover:bg-surface-variant transition-colors duration-300 text-center">
+                        Cite
+                    </button>
+<button class="flex-1 py-2 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-md font-semibold text-sm hover:opacity-90 transition-opacity duration-300 text-center flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> PDF
+                    </button>
+</div>
+</div>
+<!-- Notes/Drawer Teaser (Takes 1 column, spanning rows if needed, but here just a block) -->
+<div class="bg-surface-container-high rounded-xl p-8 border-l-4 border-secondary flex flex-col">
+<div class="flex items-center gap-3 mb-6 text-primary">
+<span class="material-symbols-outlined text-2xl">edit_note</span>
+<h3 class="text-xl font-headline">Research Notes</h3>
+</div>
+<p class="text-sm font-body text-on-surface mb-6 leading-relaxed italic">
+                    "Ensure to cross-reference Simon's hierarchical models with the latest findings in the cognitive neuroscience paper regarding neural network structures."
+                </p>
+<div class="mt-auto">
+<button class="text-secondary font-semibold text-sm flex items-center gap-2 hover:text-primary transition-colors duration-300">
+                        Open Scholar's Drawer <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom spacing -->
+<div class="h-32"></div>
+</main>
+</body></html>

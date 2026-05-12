@@ -71,9 +71,9 @@
           'field_subject_help' => 'Поле готово для будущей библиографической аннотации.',
           'types' => ['Книги и e-books', 'Научные журналы', 'Диссертации и работы'],
           'collections' => [
-              ['label' => 'Инженерия и технологии (1,204)', 'value' => 'technology_library'],
-              ['label' => 'Бизнес и экономика (892)', 'value' => 'economic_library'],
-              ['label' => 'Гуманитарный фонд (432)', 'value' => 'college_library'],
+              ['label' => 'Инженерия и технологии', 'value' => 'technology_library'],
+              ['label' => 'Бизнес и экономика', 'value' => 'economic_library'],
+              ['label' => 'Гуманитарный фонд', 'value' => 'college_library'],
               ['label' => '+ Показать ещё 12', 'value' => 'ktslib'],
           ],
           'institution_options' => [
@@ -188,9 +188,9 @@
           'field_subject_help' => 'Өріс болашақ библиографиялық аннотация үшін дайын тұр.',
           'types' => ['Кітаптар мен e-books', 'Ғылыми журналдар', 'Диссертациялар мен жұмыстар'],
           'collections' => [
-              ['label' => 'Инженерия және технология (1,204)', 'value' => 'technology_library'],
-              ['label' => 'Бизнес және экономика (892)', 'value' => 'economic_library'],
-              ['label' => 'Гуманитарлық қор (432)', 'value' => 'college_library'],
+              ['label' => 'Инженерия және технология', 'value' => 'technology_library'],
+              ['label' => 'Бизнес және экономика', 'value' => 'economic_library'],
+              ['label' => 'Гуманитарлық қор', 'value' => 'college_library'],
               ['label' => '+ Тағы 12 бөлім', 'value' => 'ktslib'],
           ],
           'institution_options' => [
@@ -305,9 +305,9 @@
           'field_subject_help' => 'This field is prepared for future bibliographic annotations.',
           'types' => ['Books & E-books', 'Academic Journals', 'Theses & Dissertations'],
           'collections' => [
-              ['label' => 'Engineering & Tech (1,204)', 'value' => 'technology_library'],
-              ['label' => 'Business & Economics (892)', 'value' => 'economic_library'],
-              ['label' => 'Humanities (432)', 'value' => 'college_library'],
+              ['label' => 'Engineering & Tech', 'value' => 'technology_library'],
+              ['label' => 'Business & Economics', 'value' => 'economic_library'],
+              ['label' => 'Humanities', 'value' => 'college_library'],
               ['label' => '+ View 12 more', 'value' => 'ktslib'],
           ],
           'institution_options' => [
@@ -1313,6 +1313,116 @@
     return isMeaningfulText(value) ? String(value).trim() : fallback;
   }
 
+<<<<<<< HEAD
+=======
+  function normalizeText(value, fallback = '') {
+    return isMeaningfulText(value) ? String(value).trim() : fallback;
+  }
+
+  function shortlistHeaders(includeJson = false) {
+    const headers = { Accept: 'application/json' };
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+    if (csrfToken) headers['X-CSRF-TOKEN'] = csrfToken;
+    if (includeJson) headers['Content-Type'] = 'application/json';
+    return headers;
+  }
+
+  function updateShortlistButton(button, shortlisted, busy = false) {
+    if (!button) return;
+    const icon = button.querySelector('[data-shortlist-icon]');
+    const label = button.querySelector('[data-shortlist-label]');
+    button.disabled = busy;
+    button.setAttribute('aria-pressed', shortlisted ? 'true' : 'false');
+    button.classList.toggle('text-secondary', shortlisted);
+    button.classList.toggle('font-semibold', shortlisted);
+    if (icon) icon.textContent = busy ? 'progress_activity' : (shortlisted ? 'bookmark_added' : 'bookmark_add');
+    if (label) label.textContent = busy ? SHORTLIST_COPY.saving : (shortlisted ? SHORTLIST_COPY.added : SHORTLIST_COPY.add);
+  }
+
+  function cssEscapeIdentifier(identifier) {
+    if (window.CSS?.escape) return window.CSS.escape(identifier);
+    return String(identifier).replace(/[^a-zA-Z0-9_-]/g, '\\$&');
+  }
+
+  function updateShortlistButtonsForIdentifier(identifier, shortlisted) {
+    document.querySelectorAll(`[data-shortlist-toggle][data-shortlist-identifier="${cssEscapeIdentifier(identifier)}"]`).forEach((button) => {
+      updateShortlistButton(button, shortlisted);
+    });
+  }
+
+  function shortlistPayloadFromButton(button) {
+    return {
+      identifier: button.dataset.shortlistIdentifier || '',
+      title: button.dataset.shortlistTitle || '',
+      type: 'book',
+      author: button.dataset.shortlistAuthor || null,
+      publisher: button.dataset.shortlistPublisher || null,
+      year: button.dataset.shortlistYear || null,
+      language: button.dataset.shortlistLanguage || null,
+      isbn: button.dataset.shortlistIsbn || null,
+      available: Number(button.dataset.shortlistAvailable || 0),
+      total: Number(button.dataset.shortlistTotal || 0),
+    };
+  }
+
+  async function checkVisibleShortlistButtons() {
+    const buttons = Array.from(document.querySelectorAll('[data-shortlist-toggle]'));
+    const identifiers = Array.from(new Set(buttons.map((button) => button.dataset.shortlistIdentifier || '').filter(Boolean))).slice(0, 50);
+    if (!identifiers.length) return;
+
+    try {
+      const response = await fetch(`${SHORTLIST_API}/check`, {
+        method: 'POST',
+        headers: shortlistHeaders(true),
+        credentials: 'same-origin',
+        body: JSON.stringify({ identifiers }),
+      });
+      if (!response.ok) return;
+      const payload = await response.json();
+      identifiers.forEach((identifier) => {
+        const shortlisted = !!payload?.data?.[identifier];
+        catalogShortlistState.set(identifier, shortlisted);
+        updateShortlistButtonsForIdentifier(identifier, shortlisted);
+      });
+    } catch (_) {
+      // Shortlist status is progressive enhancement on the catalog page.
+    }
+  }
+
+  async function toggleCatalogShortlist(button) {
+    const payload = shortlistPayloadFromButton(button);
+    if (!payload.identifier || !payload.title) return;
+    const currentlyShortlisted = catalogShortlistState.get(payload.identifier) === true || button.getAttribute('aria-pressed') === 'true';
+    updateShortlistButton(button, currentlyShortlisted, true);
+
+    try {
+      const response = await fetch(currentlyShortlisted ? `${SHORTLIST_API}/${encodeURIComponent(payload.identifier)}` : SHORTLIST_API, {
+        method: currentlyShortlisted ? 'DELETE' : 'POST',
+        headers: shortlistHeaders(!currentlyShortlisted),
+        credentials: 'same-origin',
+        body: currentlyShortlisted ? undefined : JSON.stringify(payload),
+      });
+
+      if (response.ok || response.status === 201 || response.status === 409) {
+        const nextState = !currentlyShortlisted || response.status === 409;
+        catalogShortlistState.set(payload.identifier, nextState);
+        updateShortlistButtonsForIdentifier(payload.identifier, nextState);
+        return;
+      }
+
+      throw new Error('Shortlist request failed');
+    } catch (error) {
+      console.error(error);
+      updateShortlistButton(button, currentlyShortlisted);
+      const label = button.querySelector('[data-shortlist-label]');
+      if (label) {
+        label.textContent = SHORTLIST_COPY.error;
+        window.setTimeout(() => updateShortlistButton(button, currentlyShortlisted), 1600);
+      }
+    }
+  }
+
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
   function formatLocationLabel(location) {
     const serviceCode = String(location?.servicePoint?.code || '').trim().toLowerCase();
     const serviceName = String(location?.servicePoint?.name || '').trim();
@@ -1646,13 +1756,6 @@
     `;
   }
 
-  function applyMaterialTypeFilter(items) {
-    const materialType = window.catalogState.materialType || 'all';
-    if (materialType === 'all') return items;
-
-    return items.filter((item) => deriveMaterialKind(item) === materialType);
-  }
-
   function syncLanguageButtons() {
     document.querySelectorAll('#language-chips button').forEach((button) => {
       const isActive = button.dataset.lang === window.catalogState.language;
@@ -1708,9 +1811,8 @@
     const nav = document.getElementById('catalog-pagination');
     if (!nav) return;
 
-    const usingLocalMaterialFilter = (window.catalogState.materialType || 'all') !== 'all';
-    const totalPages = usingLocalMaterialFilter ? 1 : Math.max(1, Number(meta.total_pages || meta.totalPages || 1));
-    const currentPage = usingLocalMaterialFilter ? 1 : Math.max(1, Number(meta.page || 1));
+    const totalPages = Math.max(1, Number(meta.total_pages || meta.totalPages || 1));
+    const currentPage = Math.max(1, Number(meta.page || 1));
     const pages = [];
 
     if (totalPages <= 5) {
@@ -1762,6 +1864,7 @@
     if (window.catalogState.availableOnly) apiParams.set('available_only', '1');
     if (window.catalogState.physicalOnly) apiParams.set('physical_only', '1');
     if (window.catalogState.institution) apiParams.set('institution', window.catalogState.institution);
+    if (window.catalogState.materialType && window.catalogState.materialType !== 'all') apiParams.set('material_type', window.catalogState.materialType);
     apiParams.set('page', String(window.catalogState.page || 1));
     apiParams.set('sort', SORT_API_MAP[window.catalogState.sort] || 'popular');
     apiParams.set('limit', '10');
@@ -1781,22 +1884,24 @@
       let data = Array.isArray(payload?.data) ? payload.data : [];
       const meta = payload?.meta || {};
 
+<<<<<<< HEAD
       if (window.catalogState.sort === 'year_asc') {
         data = [...data].sort((left, right) => Number(left?.publicationYear || 0) - Number(right?.publicationYear || 0));
       }
 
       data = applyMaterialTypeFilter(data);
 
+=======
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
       if (container) {
         container.innerHTML = data.length
           ? data.map((item, index) => buildCard(item, index)).join('')
           : `<p class="text-on-surface-variant text-sm">${escapeHtml(uiCopy.empty)}</p>`;
       }
 
-      const usingLocalMaterialFilter = (window.catalogState.materialType || 'all') !== 'all';
-      const total = usingLocalMaterialFilter ? data.length : Number(meta.total || data.length || 0);
-      const perPage = usingLocalMaterialFilter ? data.length : Number(meta.per_page || data.length || 0);
-      const currentPage = usingLocalMaterialFilter ? 1 : Number(meta.page || 1);
+      const total = Number(meta.total || data.length || 0);
+      const perPage = Number(meta.per_page || data.length || 0);
+      const currentPage = Number(meta.page || 1);
       const fromValue = total > 0 ? ((currentPage - 1) * Math.max(perPage, 1)) + 1 : 0;
       const toValue = total > 0 ? Math.min(((currentPage - 1) * Math.max(perPage, 1)) + data.length, total) : 0;
       const queryLabel = window.catalogState.q || (document.querySelector('#language-chips button.bg-primary')?.textContent || 'Catalog');

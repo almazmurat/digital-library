@@ -247,26 +247,6 @@
               @endforeach
             </div>
 
-            @php
-              $quickFillIdentities = collect($demoIdentities)->filter(fn ($identity) => in_array($identity['slug'] ?? '', ['librarian', 'admin'], true))->values();
-            @endphp
-            @if($quickFillIdentities->isNotEmpty())
-              <div class="mt-5 grid grid-cols-1 gap-3">
-                <p class="text-[11px] font-bold uppercase tracking-widest text-outline">Quick fill demo credentials</p>
-                @foreach($quickFillIdentities as $identity)
-                  <button
-                    type="button"
-                    class="quick-fill-card rounded-lg bg-surface-container-lowest px-4 py-3 text-left hover:bg-surface-container-high transition-colors"
-                    data-quick-fill="{{ $identity['slug'] }}"
-                    onclick="fillDemoCredentials('{{ $identity['slug'] }}', '{{ $identity['quickFillLogin'] ?? $identity['login'] }}', '{{ $identity['password'] }}')"
-                  >
-                    <span class="block font-semibold text-primary">{{ $identity['icon'] ?? '👤' }} {{ $identity['label'] }}</span>
-                    <span class="block mt-1 text-xs text-on-surface-variant">Login: {{ $identity['quickFillLogin'] ?? $identity['login'] }}</span>
-                    <span class="block text-xs text-on-surface-variant">Password: {{ $identity['password'] }}</span>
-                  </button>
-                @endforeach
-              </div>
-            @endif
           </div>
         @endif
       </div>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Public News Index - KazUTB Smart Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#76d6d5",
+                        "secondary-container": "#90efef",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "primary": "#000613",
+                        "secondary": "#006a6a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-container": "#76889d",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-surface": "#191c1d",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed": "#091d2e",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed": "#d1e4fb",
+                        "primary-fixed-dim": "#afc8f0",
+                        "on-primary-container": "#6f88ad",
+                        "tertiary": "#000610",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#476083",
+                        "tertiary-container": "#0d2031",
+                        "on-surface-variant": "#43474e",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary-fixed": "#93f2f2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "on-secondary-container": "#006e6e",
+                        "surface-dim": "#d9dadb",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#d4e3ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#001f3f",
+                        "inverse-primary": "#afc8f0",
+                        "on-secondary-fixed": "#002020",
+                        "inverse-surface": "#2e3132"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl bg-slate-100 dark:bg-slate-900 shadow-sm transition-all duration-500 ease-in-out">
+<div class="flex justify-between items-center px-8 py-4 max-w-full">
+<div class="flex items-center gap-8">
+<a class="text-xl font-bold font-['Newsreader'] text-slate-900 dark:text-slate-50" href="#">KazUTB Smart Library</a>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-3 py-2 rounded-DEFAULT" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-3 py-2 rounded-DEFAULT" href="#">Discovery</a>
+<!-- About is active as this is institutional news -->
+<a class="text-teal-700 dark:text-teal-400 font-semibold border-b-2 border-teal-700 dark:border-teal-400 pb-1 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-3 py-2" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-3 py-2 rounded-DEFAULT" href="#">Leadership</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-highest border-b border-outline-variant/20 focus:border-secondary focus:ring-0 focus:outline-none pl-9 pr-4 py-2 rounded-t-DEFAULT w-64 text-sm font-body transition-colors duration-300 placeholder-outline" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2 rounded-md font-label text-sm font-medium hover:opacity-90 transition-opacity duration-300">Sign In</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto min-h-screen">
+<!-- Page Header -->
+<header class="mb-16 max-w-3xl">
+<p class="font-label text-secondary uppercase tracking-widest text-xs font-semibold mb-4">Institutional Updates</p>
+<h1 class="font-display text-display-lg text-primary leading-tight tracking-tight mb-6">Library Dispatch</h1>
+<p class="font-body text-body-lg text-on-surface-variant leading-relaxed">The latest announcements, archival discoveries, and scholarly initiatives from the KazUTB Smart Library curatorial team.</p>
+</header>
+<!-- Featured Lead Story -->
+<section class="mb-24">
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden group hover:bg-surface-container-high transition-colors duration-500 flex flex-col md:flex-row">
+<div class="md:w-3/5 h-64 md:h-auto relative overflow-hidden">
+<img alt="Featured story image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="sunlit ancient library interior with tall wooden bookshelves, dramatic lighting highlighting dust motes in the air, scholarly atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIv9anDfstD-18G7sb9HTmONhCr65TbTyDoK1e6TxWbP2ktVDvpYsdSyto6WoxO_EZ5EYOMTmx8sTBvqeRI_U49T6l18fvRO_5RHSFfK1UPqDNiJR-EesVhd_5FXQWNh2XXEGjewyETcgWc6XhkAooH9nFYCY3m4S76nL7_q2hpqKM7gpM-s0t2IczbQYK1qV54MV9de9ahBiXYseHv96fPPmbJW0xWleMvOP1Y_eq4xstKo5RExUqIJiuuRPHEAsxWWqPmpm4V40g"/>
+</div>
+<div class="md:w-2/5 p-8 md:p-12 flex flex-col justify-center">
+<div class="flex items-center gap-3 mb-6">
+<span class="font-label text-xs font-bold text-primary bg-surface-variant px-2 py-1 rounded-DEFAULT">Special Collection</span>
+<span class="font-label text-xs text-on-surface-variant">Oct 24, 2024</span>
+</div>
+<h2 class="font-headline text-headline-md text-primary mb-4 leading-snug">The Digital Preservation Initiative: Safeguarding Early Academic Texts</h2>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">We are proud to announce a new grant supporting the high-resolution digitization of over 5,000 fragile manuscripts, ensuring global access for future scholars.</p>
+<a class="inline-flex items-center text-secondary font-label text-sm font-semibold hover:text-on-secondary-container transition-colors duration-300 w-fit" href="#">
+                        Read full dispatch
+                        <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Secondary News Grid -->
+<div class="flex items-center justify-between mb-8 border-b border-outline-variant/20 pb-4">
+<h3 class="font-headline text-2xl text-primary">Recent Articles</h3>
+<div class="flex gap-4">
+<button class="font-label text-sm text-secondary border-b border-secondary pb-1">All Topics</button>
+<button class="font-label text-sm text-on-surface-variant hover:text-primary transition-colors pb-1">Events</button>
+<button class="font-label text-sm text-on-surface-variant hover:text-primary transition-colors pb-1">Research</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+<!-- Article Card 1 -->
+<article class="group cursor-pointer">
+<div class="w-full h-48 bg-surface-container-low rounded-lg mb-6 overflow-hidden relative">
+<img alt="Article image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-90" data-alt="close up of person reading an old manuscript book with a magnifying glass, soft warm library lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOL7tj99ZscsPiRboQnyBVtjQjk6mDOHFG3-bwI_g0gbCcueRyh9V5_ST9K-Fu-GKxKunOjdmTzcmndAtU_ZzX9yOTjEhj7z4PMZmO5W9Ew5U0AGuQlljOr8yWakRDp-VVkOR7PcIhYilipcz8ChQIymtcItdNJ4ihnWZXrR0O6PmNotkR3PJ0U1BQFP8DGlFORKInEZmxyMPN09dJFytjXNF8giehxAytzLRsSX0kjoBn2qDnPfwuFpsuHsVV4OqndODeZGDeUEBt"/>
+</div>
+<div class="flex gap-3 items-center mb-3">
+<span class="font-label text-[10px] uppercase tracking-wider text-secondary font-bold">Research</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label text-xs text-on-surface-variant">Oct 18, 2024</span>
+</div>
+<h4 class="font-headline text-xl text-primary mb-3 leading-snug group-hover:text-secondary transition-colors duration-300">New Fellowship Opportunities in Central Asian Studies</h4>
+<p class="font-body text-sm text-on-surface-variant line-clamp-3 leading-relaxed">Applications are now open for the Spring 2025 research fellowships, granting exclusive access to the newly curated regional archives.</p>
+</article>
+<!-- Article Card 2 -->
+<article class="group cursor-pointer">
+<div class="w-full h-48 bg-surface-container-low rounded-lg mb-6 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container to-primary opacity-80 mix-blend-multiply z-10"></div>
+<img alt="Article image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out grayscale" data-alt="abstract architectural details of a modern academic building, concrete and glass intersecting with sharp shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnudFSyJlKKifFkYhLgI29d1PlOR3Sc2ZOFpXrTkuv7IS8-9gTrWMrcRFCkfUpJQ151Ndg3EScAlX8hEBCXs4r5Krj8PJ8Vk9yJxzNHxR4Mlq-KypXfJcp5fEPmJCWgae8Ur64t2xR49fa6P0FY_6zj920u5qSz-c2f9-3i3Hoye0tVu7WCgHWZ98XdFaI0cb9CVmVZVgJe5sI_qbhuBNE4tFy84a8ecabfqk8shRxfwubHHLAo4CcBikxbYewUWJ2zazb47E-DIq6"/>
+</div>
+<div class="flex gap-3 items-center mb-3">
+<span class="font-label text-[10px] uppercase tracking-wider text-secondary font-bold">Campus</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label text-xs text-on-surface-variant">Oct 12, 2024</span>
+</div>
+<h4 class="font-headline text-xl text-primary mb-3 leading-snug group-hover:text-secondary transition-colors duration-300">Extended Evening Hours for the Reading Room</h4>
+<p class="font-body text-sm text-on-surface-variant line-clamp-3 leading-relaxed">To better support graduate research schedules, the main reading room will now remain open until midnight on weekdays.</p>
+</article>
+<!-- Article Card 3 -->
+<article class="group cursor-pointer">
+<div class="w-full h-48 bg-surface-container-low rounded-lg mb-6 overflow-hidden relative">
+<img alt="Article image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-90" data-alt="macro shot of fountain pen nib resting on textured parchment paper with blue ink, high contrast, elegant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnI-lYHLiWSEaNUB9aVI5C2SwECtFm69rlphMxJ26ZOC3_bqAszi31jPxxFKbA6c9ItE3enqJ3VdjJTjLsvWsOKoy2c_Z77aoEprrEN0QsA71HAgIE2ho3IdgFULV4HfOp7nczG-kE9g8w-zMEvUsdZTR2RZ8hoWhTFj3L3PuBtrlYsmCaUDKn2JvHWxgJOj6dzlkbZhcpnSiq-oOjmwOTJNc460xOKXk8T_vZgweHG2f_OtYQJAjW-dq5v7JJEdV1vc-P7RN69C-6"/>
+</div>
+<div class="flex gap-3 items-center mb-3">
+<span class="font-label text-[10px] uppercase tracking-wider text-secondary font-bold">Acquisitions</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label text-xs text-on-surface-variant">Oct 05, 2024</span>
+</div>
+<h4 class="font-headline text-xl text-primary mb-3 leading-snug group-hover:text-secondary transition-colors duration-300">Acquisition: The Turgenev Letters Collection</h4>
+<p class="font-body text-sm text-on-surface-variant line-clamp-3 leading-relaxed">A rare collection of previously unpublished correspondence has been acquired and is currently undergoing preservation treatment before public exhibition.</p>
+</article>
+<!-- Text Only Highlight (Bento Grid Style) -->
+<article class="col-span-1 md:col-span-2 lg:col-span-2 bg-primary-container text-on-primary-container p-8 md:p-12 rounded-xl flex flex-col justify-between group">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary text-sm">event</span>
+<span class="font-label text-xs font-semibold uppercase tracking-widest text-secondary">Upcoming Symposium</span>
+</div>
+<h4 class="font-headline text-3xl text-on-primary mb-4 leading-tight w-3/4">The Future of Archival Curation in the AI Era</h4>
+<p class="font-body text-sm opacity-80 max-w-xl leading-relaxed">Join leading scholars and technologists for a two-day symposium exploring how machine learning is reshaping the way we interact with historical texts.</p>
+</div>
+<div class="mt-12 flex items-center justify-between">
+<span class="font-label text-sm font-medium">November 12-13, Main Auditorium</span>
+<button class="bg-transparent border border-outline-variant/20 hover:bg-surface-variant/10 text-on-primary px-6 py-2 rounded-md font-label text-sm transition-colors duration-300">Register</button>
+</div>
+</article>
+<!-- Article Card 4 -->
+<article class="group cursor-pointer">
+<div class="w-full h-48 bg-surface-container-low rounded-lg mb-6 overflow-hidden relative">
+<img alt="Article image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out opacity-90" data-alt="row of vintage leather-bound books side by side on a dark wooden shelf, moody scholarly lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmrycfatSamCZGA8XqTbQc3zPWXKZnPpWUPTmHTJl_AXu4wIisFyBYLeCVnYq1Xp1tGc-sSmSTsBE-2fQbh6efJvih_iZUawDeWcD-NIHl_Klj0RKRbuHqdsptaEn2pA6jNviRbTtXP7MEE2FA1n9zY244dQlH9pm9xPzkf1fL8dqh-cPCRd-fYsHXOUtu2sTLE0xh52BoBdZ3dmLSE8vfricmrlFPhjR4bZs1rU6ImY3jKbKLmWgePqOfKAA-oQVQ2qSg9YtrDCdz"/>
+</div>
+<div class="flex gap-3 items-center mb-3">
+<span class="font-label text-[10px] uppercase tracking-wider text-secondary font-bold">Policy</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label text-xs text-on-surface-variant">Sep 28, 2024</span>
+</div>
+<h4 class="font-headline text-xl text-primary mb-3 leading-snug group-hover:text-secondary transition-colors duration-300">Updates to Interlibrary Loan Protocols</h4>
+<p class="font-body text-sm text-on-surface-variant line-clamp-3 leading-relaxed">We have streamlined our global loan request system, significantly reducing wait times for international resource sharing.</p>
+</article>
+</div>
+<div class="mt-20 flex justify-center">
+<button class="font-label text-sm font-semibold text-primary hover:text-secondary border border-outline-variant/20 hover:border-secondary px-8 py-3 rounded-lg transition-colors duration-300">Load More Dispatches</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-20 bg-slate-50 dark:bg-slate-950 bg-slate-200/50 dark:bg-slate-800/50 flat no-shadows flex flex-col md:flex-row justify-between items-center px-12 border-t border-slate-200 dark:border-slate-800">
+<div class="mb-6 md:mb-0">
+<span class="font-['Newsreader'] font-semibold text-slate-900 dark:text-slate-100 text-lg">KazUTB Smart Library</span>
+<p class="text-slate-800 dark:text-slate-200 font-['Manrope'] text-sm tracking-wide mt-2">© 2024 KazUTB Smart Library. Preserving Knowledge through the Digital Curator.</p>
+</div>
+<div class="flex flex-wrap gap-6 justify-center">
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 font-['Manrope'] text-sm tracking-wide hover:text-teal-700 transition-colors duration-200" href="#">Institutional Access</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 font-['Manrope'] text-sm tracking-wide hover:text-teal-700 transition-colors duration-200" href="#">Library Terms</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 font-['Manrope'] text-sm tracking-wide hover:text-teal-700 transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 font-['Manrope'] text-sm tracking-wide hover:text-teal-700 transition-colors duration-200" href="#">Research Support</a>
+</div>
+</footer>
+</body></html>

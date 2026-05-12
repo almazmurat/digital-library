@@ -20,8 +20,8 @@
 
   $copy = [
       'ru' => [
-          'brand'       => 'KazUTB Smart Library',
-          'desc'        => 'Каталог, электронные ресурсы и читательские сервисы в едином интерфейсе KazUTB Smart Library.',
+          'brand'       => 'Казахский университет технологии и бизнеса имени К. Кулажанова',
+          'desc'        => 'Цифровая библиотека. Каталог, цифровые коллекции и читательские сервисы в едином публичном интерфейсе.',
           'col_explore' => 'Навигация',
           'col_updates' => 'Обновления',
           'col_inst'    => 'Институт',
@@ -32,6 +32,7 @@
               ['label' => 'Каталог',  'href' => $routeWithLang('/catalog')],
               ['label' => 'Открытия', 'href' => $routeWithLang('/discover')],
               ['label' => 'Ресурсы',  'href' => $routeWithLang('/resources')],
+              ['label' => 'Репозиторий', 'href' => $routeWithLang('/repository')],
           ],
           'updates' => [
               ['label' => 'Новости', 'href' => $routeWithLang('/news')],
@@ -54,8 +55,8 @@
           'lang_aria'   => 'Переключатель языка',
       ],
       'kk' => [
-          'brand'       => 'KazUTB Smart Library',
-          'desc'        => 'Каталог, электрондық ресурстар және оқырман сервистері KazUTB Smart Library-дің бірыңғай интерфейсінде берілген.',
+          'brand'       => 'Қ. Құлажанов атындағы Қазақ технология және бизнес университеті',
+          'desc'        => 'Цифрлық кітапханасы. Каталог, цифрлық жинақтар және оқырман сервистері бірыңғай қоғамдық интерфейсте берілген.',
           'col_explore' => 'Навигация',
           'col_updates' => 'Жаңартулар',
           'col_inst'    => 'Институт',
@@ -66,6 +67,7 @@
               ['label' => 'Каталог',   'href' => $routeWithLang('/catalog')],
               ['label' => 'Ашылымдар', 'href' => $routeWithLang('/discover')],
               ['label' => 'Ресурстар', 'href' => $routeWithLang('/resources')],
+              ['label' => 'Репозиторий', 'href' => $routeWithLang('/repository')],
           ],
           'updates' => [
               ['label' => 'Жаңалықтар', 'href' => $routeWithLang('/news')],
@@ -88,8 +90,8 @@
           'lang_aria'   => 'Тіл ауыстырғыш',
       ],
       'en' => [
-          'brand'       => 'KazUTB Smart Library',
-          'desc'        => 'Catalog search, electronic resources, and reader services in one KazUTB Smart Library interface.',
+          'brand'       => 'Kazakh University of Technology and Business named after K. Kulazhanov',
+          'desc'        => 'Digital Library. Catalog, digital collections, and reader services in one public-facing interface.',
           'col_explore' => 'Navigation',
           'col_updates' => 'Updates',
           'col_inst'    => 'Institution',
@@ -100,6 +102,7 @@
               ['label' => 'Catalog',   'href' => $routeWithLang('/catalog')],
               ['label' => 'Discover',  'href' => $routeWithLang('/discover')],
               ['label' => 'Resources', 'href' => $routeWithLang('/resources')],
+              ['label' => 'Repository', 'href' => $routeWithLang('/repository')],
           ],
           'updates' => [
               ['label' => 'News',   'href' => $routeWithLang('/news')],
@@ -125,6 +128,74 @@
 
   $localeLabels = ['kk' => 'Қазақша', 'ru' => 'Русский', 'en' => 'English'];
 @endphp
+<<<<<<< HEAD
+=======
+<style>
+  .footer-brand-logo-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 9999px;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.14);
+    border: 1px solid rgba(148, 163, 184, 0.38);
+    flex-shrink: 0;
+  }
+
+  .footer-brand-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 1px;
+    transform-origin: center;
+  }
+
+  .footer-brand-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
+  }
+
+  .footer-brand-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    color: #0f172a;
+  }
+
+  .footer-brand-subtitle {
+    margin-top: 0.2rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.71rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0f766e;
+    line-height: 1.4;
+  }
+
+  @media (min-width: 768px) {
+    .footer-brand-logo-wrap {
+      width: 64px;
+      height: 64px;
+    }
+
+    .footer-brand-title {
+      font-size: 1rem;
+    }
+
+    .footer-brand-subtitle {
+      font-size: 0.75rem;
+    }
+  }
+</style>
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 <footer class="site-footer bg-slate-100 text-blue-950 full-width py-12 px-8 border-t border-slate-200/20">
   <div class="w-full max-w-screen-2xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About - KazUTB Smart Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#76d6d5",
+                        "secondary-container": "#90efef",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "primary": "#000613",
+                        "secondary": "#006a6a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-container": "#76889d",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-surface": "#191c1d",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed": "#091d2e",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed": "#d1e4fb",
+                        "primary-fixed-dim": "#afc8f0",
+                        "on-primary-container": "#6f88ad",
+                        "tertiary": "#000610",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#476083",
+                        "tertiary-container": "#0d2031",
+                        "on-surface-variant": "#43474e",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary-fixed": "#93f2f2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "on-secondary-container": "#006e6e",
+                        "surface-dim": "#d9dadb",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#d4e3ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#001f3f",
+                        "inverse-primary": "#afc8f0",
+                        "on-secondary-fixed": "#002020",
+                        "inverse-surface": "#2e3132"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "display": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased selection:bg-secondary selection:text-on-secondary">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl bg-slate-100 dark:bg-slate-900 shadow-sm transition-all duration-500 ease-in-out hidden md:flex">
+<div class="flex justify-between items-center px-8 py-4 max-w-full w-full mx-auto">
+<div class="flex items-center gap-8">
+<a class="text-xl font-bold font-['Newsreader'] text-slate-900 dark:text-slate-50" href="#">KazUTB Smart Library</a>
+<div class="flex gap-6 font-['Newsreader'] tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-2 py-1 rounded" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-2 py-1 rounded" href="#">Discovery</a>
+<a class="text-teal-700 dark:text-teal-400 font-semibold border-b-2 border-teal-700 dark:border-teal-400 pb-1 px-2" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-2 py-1 rounded" href="#">Leadership</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-highest border-0 border-b border-outline-variant/20 focus:border-secondary focus:ring-0 rounded-t-DEFAULT w-64 font-body text-sm text-on-surface transition-colors" placeholder="Search resources..." type="text"/>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2 rounded-md font-body font-medium text-sm hover:opacity-90 transition-opacity">Sign In</button>
+</div>
+</div>
+</nav>
+<!-- Mobile Nav Header (simplified for demo) -->
+<header class="md:hidden fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md px-4 py-4 flex justify-between items-center">
+<span class="font-headline font-bold text-xl text-primary">KazUTB Smart Library</span>
+<button class="text-primary"><span class="material-symbols-outlined" data-icon="menu">menu</span></button>
+</header>
+<main class="pt-24 md:pt-32 pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Hero Section -->
+<section class="mb-24 mt-12 md:mt-20 flex flex-col md:flex-row items-end gap-12">
+<div class="md:w-3/5 space-y-8 relative z-10">
+<div class="inline-flex items-center gap-2 text-secondary font-label text-sm uppercase tracking-wider mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="account_balance">account_balance</span>
+<span>Institution</span>
+</div>
+<h1 class="font-display text-5xl md:text-7xl font-light text-primary leading-tight tracking-tight -ml-1">
+                    Preserving Knowledge.<br/>
+<span class="italic text-primary-container">Empowering Discovery.</span>
+</h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+                    The KazUTB Smart Library stands as a beacon of academic excellence, merging centuries of scholarly tradition with cutting-edge digital curation to serve the researchers of tomorrow.
+                </p>
+</div>
+<div class="md:w-2/5 w-full relative">
+<div class="aspect-[4/5] bg-surface-container-high rounded-xl overflow-hidden relative z-0">
+<img alt="Sunlit architectural interior of a modern academic library with tall shelves and reading desks" class="w-full h-full object-cover mix-blend-multiply opacity-90 grayscale-[20%]" data-alt="Sunlit architectural interior of a modern academic library with tall wooden shelves and quiet reading desks, soft warm light, academic atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDCtigXtfq_I-vJQHjviwFzFlltW_OWd6h_TpmZq5f6nSHWTIY9vYJvenxfuyafCYT37uF5Ze7eNIg42uolIunkcwZ-WYsQXOIIOSIBp03Ag3K52EiJBNBkKn6by8yVLBGUq-VuXlydBeGpJ8CJQbj1wNQFnRt_VS0nbyE6OlS5Ou91g4WcuVZ7VItcNimXVoMuNJ1MOS6LSXtChobFVNNmQHLPxN2Ety1O4Rgb8SeRjbd1ZYVBhyn0UCUr3nZ_W6gqXuXTb6GL3t_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+<div class="absolute -bottom-8 -left-8 bg-surface-container-lowest p-6 rounded-lg max-w-xs shadow-[0_24px_48px_rgba(0,6,19,0.04)] hidden lg:block">
+<p class="font-headline text-2xl text-primary mb-2">Est. 2004</p>
+<p class="font-body text-sm text-on-surface-variant">Providing over two decades of dedicated academic support and curation.</p>
+</div>
+</div>
+</section>
+<!-- Mission & Stats (Bento-ish) -->
+<section class="mb-32">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-low p-8 md:p-12 rounded-xl flex flex-col justify-between">
+<div>
+<h2 class="font-headline text-3xl text-primary mb-6">Our Mission</h2>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed max-w-3xl">
+                            To collect, preserve, and provide unparalleled access to the world's scholarly record. We strive to cultivate an environment of high-trust academic inquiry, where digital interfaces recede, allowing profound ideas and transformative research to flourish seamlessly.
+                        </p>
+</div>
+<div class="mt-12 flex gap-4">
+<button class="bg-transparent border-b border-outline-variant/20 pb-1 text-secondary font-body font-medium hover:border-secondary transition-colors inline-flex items-center gap-2">
+                            Read Strategic Plan <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-8 md:p-12 rounded-xl flex flex-col justify-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container rounded-full blur-3xl -mr-20 -mt-20 opacity-50"></div>
+<div class="relative z-10 space-y-8">
+<div>
+<p class="font-display text-5xl mb-2">2.4M+</p>
+<p class="font-body text-sm text-on-primary-container uppercase tracking-widest">Digital Assets</p>
+</div>
+<div>
+<p class="font-display text-5xl mb-2">15k</p>
+<p class="font-body text-sm text-on-primary-container uppercase tracking-widest">Active Scholars</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Collection Profile -->
+<section class="mb-32">
+<div class="flex flex-col md:flex-row justify-between items-baseline mb-12 gap-4">
+<h2 class="font-headline text-4xl text-primary">The Collection Profile</h2>
+<p class="font-body text-on-surface-variant max-w-md">A meticulously curated repository reflecting decades of interdisciplinary scholarship and specialized research.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+<!-- Item 1 -->
+<div class="group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" data-icon="science">science</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-3">Applied Sciences</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Comprehensive databases covering engineering, biotechnology, and environmental studies.</p>
+</div>
+<!-- Item 2 -->
+<div class="group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" data-icon="history_edu">history_edu</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-3">Humanities Arc</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Rare manuscripts, linguistic corpora, and extensive historical archives digitized for modern access.</p>
+</div>
+<!-- Item 3 -->
+<div class="group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" data-icon="business_center">business_center</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-3">Economics &amp; Policy</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">Real-time global market data, policy briefs, and extensive econometric models.</p>
+</div>
+<!-- Item 4 -->
+<div class="group cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" data-icon="palette">palette</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-3">Arts &amp; Design</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">High-resolution folios, architectural blueprints, and contemporary visual culture studies.</p>
+</div>
+</div>
+</section>
+<!-- Directory Links (Asymmetric List) -->
+<section class="mb-20 bg-surface-container-low rounded-2xl p-8 md:p-16">
+<h2 class="font-headline text-3xl text-primary mb-12">Institutional Directory</h2>
+<div class="space-y-12">
+<div class="flex flex-col md:flex-row gap-6 md:gap-16 items-start md:items-center group">
+<div class="md:w-1/4">
+<h3 class="font-headline text-2xl text-primary">Library Rules</h3>
+</div>
+<div class="md:w-2/4">
+<p class="font-body text-on-surface-variant">Guidelines for digital access, physical reading rooms, and interlibrary loan protocols.</p>
+</div>
+<div class="md:w-1/4 flex md:justify-end">
+<a class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-outline-variant/20 text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-6 md:gap-16 items-start md:items-center group">
+<div class="md:w-1/4">
+<h3 class="font-headline text-2xl text-primary">Leadership</h3>
+</div>
+<div class="md:w-2/4">
+<p class="font-body text-on-surface-variant">Meet the Board of Curators, Head Librarians, and the digital strategy team.</p>
+</div>
+<div class="md:w-1/4 flex md:justify-end">
+<a class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-outline-variant/20 text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-6 md:gap-16 items-start md:items-center group">
+<div class="md:w-1/4">
+<h3 class="font-headline text-2xl text-primary">Funding Rooms</h3>
+</div>
+<div class="md:w-2/4">
+<p class="font-body text-on-surface-variant">Information on grants, endowments, and supporting the library's acquisition funds.</p>
+</div>
+<div class="md:w-1/4 flex md:justify-end">
+<a class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-outline-variant/20 text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="north_east">north_east</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-20 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 font-['Manrope'] text-sm tracking-wide bg-slate-200/50 dark:bg-slate-800/50 flat no-shadows duration-200 flex flex-col md:flex-row justify-between items-center px-12 border-t border-slate-200 dark:border-slate-800">
+<div class="mb-6 md:mb-0">
+<span class="font-['Newsreader'] font-semibold text-slate-900 dark:text-slate-100 text-lg">KazUTB Smart Library</span>
+<p class="mt-2 text-slate-500 dark:text-slate-400">© 2024 KazUTB Smart Library. Preserving Knowledge through the Digital Curator.</p>
+</div>
+<div class="flex flex-wrap gap-6 justify-center">
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors" href="#">Institutional Access</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors" href="#">Library Terms</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors" href="#">Research Support</a>
+</div>
+</footer>
+</body></html>

@@ -28,7 +28,8 @@
           'bento_heading'   => 'Открытые лекции, презентации и академические конференции',
           'bento_body'      => 'Узнайте о ближайших событиях, симпозиумах и публичных программах KazUTB Smart Library.',
           'bento_cta'       => 'Смотреть мероприятия',
-          'load_more'       => 'Загрузить ещё',
+            'page_prev'       => 'Назад',
+            'page_next'       => 'Вперёд',
       ],
       'kk' => [
           'title'           => 'Жаңалықтар мен хабарландырулар — KazUTB Smart Library',
@@ -44,7 +45,8 @@
           'bento_heading'   => 'Ашық лекциялар, презентациялар және академиялық конференциялар',
           'bento_body'      => 'KazUTB Smart Library алдағы іс-шаралары, симпозиумдар және ашық бағдарламалар туралы біліңіз.',
           'bento_cta'       => 'Барлық іс-шараларды қарау',
-          'load_more'       => 'Тағы жүктеу',
+            'page_prev'       => 'Артқа',
+            'page_next'       => 'Алға',
       ],
       'en' => [
           'title'           => 'News and announcements — KazUTB Smart Library',
@@ -60,23 +62,78 @@
           'bento_heading'   => 'Open lectures, collection showcases, and academic symposia',
           'bento_body'      => 'Discover upcoming events, symposia, and public programmes at KazUTB Smart Library.',
           'bento_cta'       => 'View all events',
-          'load_more'       => 'Load More Dispatches',
+            'page_prev'       => 'Previous',
+            'page_next'       => 'Next',
       ],
   ][$lang];
 
+<<<<<<< HEAD
   $featured = null;
   $rest = [];
   foreach ($newsArticles as $article) {
       if ($featured === null && ! empty($article['featured'])) {
+=======
+    $pagination = $newsPagination ?? [
+      'topic' => 'all',
+      'page' => 1,
+      'per_page' => 5,
+      'total' => count($newsArticles ?? []),
+      'last_page' => 1,
+    ];
+    $currentTopic = in_array((string) ($pagination['topic'] ?? 'all'), ['all', 'events', 'research'], true)
+    ? (string) $pagination['topic']
+    : 'all';
+    $currentPage = max(1, (int) ($pagination['page'] ?? 1));
+    $lastPage = max(1, (int) ($pagination['last_page'] ?? 1));
+    $showCanonicalHero = $currentPage === 1;
+
+    $featured = null;
+    $rest = [];
+    if ($showCanonicalHero) {
+      foreach ($newsArticles as $article) {
+        if ($featured === null && ! empty($article['featured'])) {
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
           $featured = $article;
           continue;
+        }
+        $rest[] = $article;
       }
-      $rest[] = $article;
+
+      if ($featured === null && ! empty($newsArticles)) {
+        $featured = $newsArticles[0];
+        $rest = array_slice($newsArticles, 1);
+      }
+    } else {
+      $rest = $newsArticles;
   }
-  if ($featured === null && ! empty($newsArticles)) {
-      $featured = $newsArticles[0];
-      $rest = array_slice($newsArticles, 1);
+
+    $pageItems = [];
+    if ($lastPage <= 7) {
+      for ($i = 1; $i <= $lastPage; $i++) {
+        $pageItems[] = $i;
+      }
+    } else {
+      $pageItems[] = 1;
+      $start = max(2, $currentPage - 1);
+      $end = min($lastPage - 1, $currentPage + 1);
+
+      if ($start > 2) {
+        $pageItems[] = '...';
+      }
+
+      for ($i = $start; $i <= $end; $i++) {
+        $pageItems[] = $i;
+      }
+
+      if ($end < $lastPage - 1) {
+        $pageItems[] = '...';
+      }
+
+      $pageItems[] = $lastPage;
   }
+
+  $leadCards = array_slice($rest, 0, 3);
+  $tailCards = array_slice($rest, 3);
 @endphp
 
 @section('title', $chrome['title'])
@@ -91,8 +148,8 @@
     <p class="news-canonical__lead">{{ $chrome['lead'] }}</p>
   </header>
 
-  {{-- ② Featured Lead Story --}}
-  @if($featured)
+  {{-- ② Featured Lead Story (canonical block only on the first page) --}}
+  @if($showCanonicalHero && $featured)
   <section class="news-canonical__featured" data-section="news-canonical-featured" data-test-id="news-canonical-featured">
     <a href="{{ $routeWithLang('/news/' . $featured['slug']) }}" class="news-canonical__featured-card">
       <div class="news-canonical__featured-image">
@@ -135,8 +192,9 @@
 
     <div class="news-canonical__grid">
 
-      {{-- Seeded article cards --}}
-      @foreach($rest as $article)
+      @if($showCanonicalHero)
+      {{-- Canonical first row: exactly the first three article cards --}}
+      @foreach($leadCards as $article)
         <article class="news-canonical__card" data-test-id="news-canonical-article">
           <a href="{{ $routeWithLang('/news/' . $article['slug']) }}" class="news-canonical__card-link">
             <div class="news-canonical__card-image">
@@ -157,7 +215,7 @@
         </article>
       @endforeach
 
-      {{-- Canonical bento highlight: events CTA (spans 2 cols on md+) --}}
+      {{-- Canonical second row left: events CTA bento spans two columns --}}
       <article class="news-canonical__bento" data-test-id="news-canonical-bento">
         <div>
           <div class="news-canonical__bento-eyebrow">
@@ -175,13 +233,84 @@
         </div>
       </article>
 
+      {{-- Canonical second row right: remaining cards continue after the bento --}}
+      @foreach($tailCards as $article)
+        <article class="news-canonical__card" data-test-id="news-canonical-article">
+          <a href="{{ $routeWithLang('/news/' . $article['slug']) }}" class="news-canonical__card-link">
+            <div class="news-canonical__card-image">
+              @if(! empty($article['hero']['image']))
+                <img src="{{ asset($article['hero']['image']) }}"
+                     alt="{{ $article['hero']['alt'][$lang] ?? '' }}"
+                     loading="lazy" />
+              @endif
+            </div>
+            <div class="news-canonical__card-meta">
+              <span class="news-canonical__card-category">{{ $article['category'][$lang] }}</span>
+              <span class="news-canonical__card-dot" aria-hidden="true"></span>
+              <span class="news-canonical__card-date">{{ $article['published_display'][$lang] }}</span>
+            </div>
+            <h4 class="news-canonical__card-title">{{ $article['title'][$lang] }}</h4>
+            <p class="news-canonical__card-excerpt">{{ $article['excerpt'][$lang] }}</p>
+          </a>
+        </article>
+      @endforeach
+      @else
+      @foreach($rest as $article)
+        <article class="news-canonical__card" data-test-id="news-canonical-article">
+          <a href="{{ $routeWithLang('/news/' . $article['slug']) }}" class="news-canonical__card-link">
+            <div class="news-canonical__card-image">
+              @if(! empty($article['hero']['image']))
+                <img src="{{ asset($article['hero']['image']) }}"
+                     alt="{{ $article['hero']['alt'][$lang] ?? '' }}"
+                     loading="lazy" />
+              @endif
+            </div>
+            <div class="news-canonical__card-meta">
+              <span class="news-canonical__card-category">{{ $article['category'][$lang] }}</span>
+              <span class="news-canonical__card-dot" aria-hidden="true"></span>
+              <span class="news-canonical__card-date">{{ $article['published_display'][$lang] }}</span>
+            </div>
+            <h4 class="news-canonical__card-title">{{ $article['title'][$lang] }}</h4>
+            <p class="news-canonical__card-excerpt">{{ $article['excerpt'][$lang] }}</p>
+          </a>
+        </article>
+      @endforeach
+      @endif
+
     </div>
   </div>
 
+<<<<<<< HEAD
   {{-- ④ Load More --}}
   <div class="news-canonical__load-more">
     <button class="news-canonical__load-more-btn" type="button">{{ $chrome['load_more'] }}</button>
   </div>
+=======
+  {{-- ④ Pagination (numeric + previous/next, keeps topic/lang query state) --}}
+  <nav class="news-canonical__pagination" aria-label="News pagination" data-test-id="news-pagination">
+    @if($currentPage > 1)
+      <a href="{{ $routeWithLang('/news', ['topic' => $currentTopic, 'page' => $currentPage - 1]) }}" class="news-canonical__page-btn news-canonical__page-btn--nav" data-test-id="news-page-prev">{{ $chrome['page_prev'] }}</a>
+    @else
+      <button type="button" class="news-canonical__page-btn news-canonical__page-btn--nav" disabled aria-disabled="true" data-test-id="news-page-prev-disabled">{{ $chrome['page_prev'] }}</button>
+    @endif
+
+    @foreach($pageItems as $pageItem)
+      @if($pageItem === '...')
+        <span class="news-canonical__page-ellipsis" aria-hidden="true">...</span>
+      @elseif($pageItem === $currentPage)
+        <span class="news-canonical__page-btn news-canonical__page-btn--active" aria-current="page" data-test-id="news-page-current">{{ $pageItem }}</span>
+      @else
+        <a href="{{ $routeWithLang('/news', ['topic' => $currentTopic, 'page' => $pageItem]) }}" class="news-canonical__page-btn" data-test-id="news-page-{{ $pageItem }}">{{ $pageItem }}</a>
+      @endif
+    @endforeach
+
+    @if($currentPage < $lastPage)
+      <a href="{{ $routeWithLang('/news', ['topic' => $currentTopic, 'page' => $currentPage + 1]) }}" class="news-canonical__page-btn news-canonical__page-btn--nav" data-test-id="news-page-next">{{ $chrome['page_next'] }}</a>
+    @else
+      <button type="button" class="news-canonical__page-btn news-canonical__page-btn--nav" disabled aria-disabled="true" data-test-id="news-page-next-disabled">{{ $chrome['page_next'] }}</button>
+    @endif
+  </nav>
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 
 </div>
 @endsection
@@ -358,7 +487,12 @@
     margin: 0;
   }
 
-  .news-canonical__filter-tabs { display: flex; gap: 16px; }
+  .news-canonical__filter-tabs {
+    display: flex;
+    gap: 16px;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
 
   .news-canonical__filter-tab {
     font-family: 'Manrope', sans-serif;
@@ -370,6 +504,7 @@
     cursor: pointer;
     color: #43474e;
     transition: color .25s;
+    white-space: nowrap;
   }
   .news-canonical__filter-tab:hover { color: #000613; }
   .news-canonical__filter-tab--active {
@@ -539,15 +674,24 @@
     color: #ffffff;
   }
 
-  /* ── Load More ────────────────────────────────────────────── */
+  /* ── Pagination ───────────────────────────────────────────── */
 
-  .news-canonical__load-more {
+  .news-canonical__pagination {
     margin-top: 80px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
-  .news-canonical__load-more-btn {
+  .news-canonical__page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
     font-family: 'Manrope', sans-serif;
     font-size: .875rem;
     font-weight: 700;
@@ -555,14 +699,39 @@
     background: none;
     border: 1px solid rgba(196,198,207,.25);
     border-radius: 8px;
-    padding: 12px 32px;
+    text-decoration: none;
     cursor: pointer;
     transition: color .3s, border-color .3s;
+    white-space: nowrap;
   }
-  .news-canonical__load-more-btn:hover {
+  .news-canonical__page-btn:hover {
     color: #006a6a;
     border-color: #006a6a;
   }
+<<<<<<< HEAD
+=======
+  .news-canonical__page-btn--active {
+    background: #006a6a;
+    border-color: #006a6a;
+    color: #ffffff;
+    cursor: default;
+  }
+  .news-canonical__page-btn:disabled {
+    color: #8c9199;
+    border-color: rgba(196,198,207,.25);
+    cursor: not-allowed;
+    opacity: .65;
+  }
+  .news-canonical__page-btn:disabled:hover {
+    color: #8c9199;
+    border-color: rgba(196,198,207,.25);
+  }
+  .news-canonical__page-ellipsis {
+    font-family: 'Manrope', sans-serif;
+    color: #8c9199;
+    padding: 0 4px;
+  }
+>>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 
   /* ── Responsive ───────────────────────────────────────────── */
 

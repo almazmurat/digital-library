@@ -213,7 +213,7 @@ class DemoAuthTest extends TestCase
             ->assertSee('/api/login', false);
     }
 
-    public function test_login_page_exposes_quick_fill_for_librarian_and_admin(): void
+    public function test_login_page_does_not_expose_quick_fill_credentials(): void
     {
         Config::set('demo_auth.enabled', true);
 
@@ -221,10 +221,9 @@ class DemoAuthTest extends TestCase
 
         $response
             ->assertOk()
-            ->assertSee('data-quick-fill="librarian"', false)
-            ->assertSee('data-quick-fill="admin"', false)
-            ->assertSee('demo_librarian')
-            ->assertSee('demo_admin');
+            ->assertDontSee('Quick fill demo credentials')
+            ->assertDontSee('data-quick-fill="librarian"', false)
+            ->assertDontSee('data-quick-fill="admin"', false);
     }
 
     // ── No regression in real auth ────────────────────────────────

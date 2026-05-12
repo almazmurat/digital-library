@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How to Find Us - KazUTB Smart Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#76d6d5",
+                        "secondary-container": "#90efef",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "primary": "#000613",
+                        "secondary": "#006a6a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#36485b",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-container": "#76889d",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-surface": "#191c1d",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed": "#091d2e",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-primary-fixed": "#001c3a",
+                        "tertiary-fixed": "#d1e4fb",
+                        "primary-fixed-dim": "#afc8f0",
+                        "on-primary-container": "#6f88ad",
+                        "tertiary": "#000610",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#476083",
+                        "tertiary-container": "#0d2031",
+                        "on-surface-variant": "#43474e",
+                        "surface-container": "#edeeef",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary-fixed": "#93f2f2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "tertiary-fixed-dim": "#b5c8df",
+                        "on-secondary-container": "#006e6e",
+                        "surface-dim": "#d9dadb",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#d4e3ff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#001f3f",
+                        "inverse-primary": "#afc8f0",
+                        "on-secondary-fixed": "#002020",
+                        "inverse-surface": "#2e3132"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "display": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        h1, h2, h3, .font-headline {
+            font-family: 'Newsreader', serif;
+        }
+        /* No-line rule implementation via shadows/tones instead of borders */
+        .glass-panel {
+            background-color: rgba(248, 249, 250, 0.85); /* surface color with opacity */
+            backdrop-filter: blur(12px);
+        }
+        .ghost-border-bottom {
+            border-bottom: 1px solid rgba(116, 119, 127, 0.2); /* outline-variant at 20% */
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl bg-slate-100 dark:bg-slate-900 shadow-sm transition-all duration-500 ease-in-out">
+<div class="flex justify-between items-center px-8 py-4 max-w-full">
+<div class="text-xl font-bold font-['Newsreader'] text-slate-900 dark:text-slate-50">
+                KazUTB Smart Library
+            </div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex space-x-8">
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 rounded-md px-3 py-2" href="#">Catalog</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 rounded-md px-3 py-2" href="#">Discovery</a>
+<a class="text-teal-700 dark:text-teal-400 font-semibold border-b-2 border-teal-700 dark:border-teal-400 pb-1 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 rounded-md px-3 py-2" href="#">About</a>
+<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 font-['Newsreader'] tracking-tight hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 rounded-md px-3 py-2" href="#">Leadership</a>
+</div>
+<!-- Right Side -->
+<div class="flex items-center space-x-4">
+<button class="text-slate-900 dark:text-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 p-2 rounded-full transition-colors duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+<a class="text-slate-900 dark:text-slate-50 font-['Newsreader'] tracking-tight font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-300 px-4 py-2 rounded-md" href="#">
+                    Sign In
+                </a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-16 md:mb-24 max-w-3xl">
+<h1 class="text-[3.5rem] leading-tight font-headline text-primary mb-6 tracking-tight">Location &amp; Hours</h1>
+<p class="text-[1rem] leading-relaxed text-on-surface-variant font-body">
+                Plan your visit to the KazUTB Smart Library. Find our precise location, operational hours, and detailed guidance to navigate our specialized academic funds.
+            </p>
+</header>
+<!-- Main Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
+<!-- Left Column: Map & Primary Address (Spans 8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Map Container -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden aspect-[16/9] md:aspect-[21/9] relative group shadow-sm">
+<img alt="Map" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="stylized architectural map view of a university campus with soft lighting and clear pathways, modern aesthetic" data-location="Astana" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6NCkNIMgbbi6BuGg1wLM99WJCivPbjL85ky6G6HVDWOTb7P3qfmR0o93OsoWjg1FYW8EmP-U7kG1_tIlySZgHJGoFpHfmgOusN2qrljJfiLc_GQUKqhYHkIywxDyfMCzJWmhSN3vRtTpYbs1oIBRLwOkQXgPx4hms5fox4WFHpY82Z3jzTdskdickothxn0nNtL5hcAnoCc07MHJ-GxVII_ketnxDMsL2AlAQrglOb7Rgbgn2wh0PTVqLiNAgeuLY5AdFx07YvQM6"/>
+<!-- Overlay Info Card -->
+<div class="absolute bottom-6 left-6 bg-surface-container-lowest/95 backdrop-blur-md p-6 rounded-lg shadow-[0_24px_48px_rgba(0,6,19,0.04)] max-w-sm">
+<h3 class="font-headline text-[1.375rem] text-primary mb-2">Main Campus</h3>
+<p class="font-body text-[1rem] text-on-surface-variant mb-4">
+                            Abylai Khan Avenue 2/1<br/>
+                            Astana, Kazakhstan
+                        </p>
+<a class="inline-flex items-center text-secondary font-body font-medium hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined mr-2 text-[1.25rem]">directions</span>
+                            Get Directions
+                        </a>
+</div>
+</div>
+<!-- Room-Level Fund Guidance (Wayfinding) -->
+<section class="bg-surface-container-lowest rounded-xl p-8 md:p-10 shadow-[0_8px_32px_rgba(0,6,19,0.02)]">
+<div class="flex items-center gap-4 mb-8">
+<span class="material-symbols-outlined text-[2rem] text-primary">account_tree</span>
+<h2 class="font-headline text-[1.75rem] text-primary">Fund Guidance &amp; Wayfinding</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Fund Item 1 -->
+<div class="group">
+<div class="flex justify-between items-baseline ghost-border-bottom pb-4 mb-4">
+<h4 class="font-body font-bold text-[1.125rem] text-primary">Room 1/200</h4>
+<span class="bg-surface-container py-1 px-3 rounded-full text-label-md text-on-surface-variant font-medium group-hover:bg-surface-container-high transition-colors">Level 1</span>
+</div>
+<p class="font-body text-[1rem] text-on-surface-variant">Технологический фонд (Technological Fund)</p>
+<p class="font-body text-[0.875rem] text-on-tertiary-container mt-2">Engineering, Computer Science, and Applied Mathematics.</p>
+</div>
+<!-- Fund Item 2 -->
+<div class="group">
+<div class="flex justify-between items-baseline ghost-border-bottom pb-4 mb-4">
+<h4 class="font-body font-bold text-[1.125rem] text-primary">Room 2/105</h4>
+<span class="bg-surface-container py-1 px-3 rounded-full text-label-md text-on-surface-variant font-medium group-hover:bg-surface-container-high transition-colors">Level 2</span>
+</div>
+<p class="font-body text-[1rem] text-on-surface-variant">Гуманитарный фонд (Humanities Fund)</p>
+<p class="font-body text-[0.875rem] text-on-tertiary-container mt-2">Literature, History, Philosophy, and Social Sciences.</p>
+</div>
+<!-- Fund Item 3 -->
+<div class="group">
+<div class="flex justify-between items-baseline ghost-border-bottom pb-4 mb-4">
+<h4 class="font-body font-bold text-[1.125rem] text-primary">Room 3/300</h4>
+<span class="bg-surface-container py-1 px-3 rounded-full text-label-md text-on-surface-variant font-medium group-hover:bg-surface-container-high transition-colors">Level 3</span>
+</div>
+<p class="font-body text-[1rem] text-on-surface-variant">Rare Books &amp; Archives</p>
+<p class="font-body text-[0.875rem] text-secondary mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[1rem]">lock</span> Appointment Required
+                            </p>
+</div>
+<!-- Fund Item 4 -->
+<div class="group">
+<div class="flex justify-between items-baseline ghost-border-bottom pb-4 mb-4">
+<h4 class="font-body font-bold text-[1.125rem] text-primary">Main Atrium</h4>
+<span class="bg-surface-container py-1 px-3 rounded-full text-label-md text-on-surface-variant font-medium group-hover:bg-surface-container-high transition-colors">Ground</span>
+</div>
+<p class="font-body text-[1rem] text-on-surface-variant">General Reading Room</p>
+<p class="font-body text-[0.875rem] text-on-tertiary-container mt-2">Open seating, collaborative spaces, and daily periodicals.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Hours & Support (Spans 4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- Hours Card -->
+<div class="bg-primary text-on-primary rounded-xl p-8 shadow-lg relative overflow-hidden">
+<!-- Subtle gradient overlay to prevent flat black -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-80 pointer-events-none"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6 text-tertiary-fixed">
+<span class="material-symbols-outlined text-[1.75rem]">schedule</span>
+<h3 class="font-headline text-[1.375rem]">Operational Hours</h3>
+</div>
+<ul class="space-y-4 font-body text-[1rem]">
+<li class="flex justify-between items-center ghost-border-bottom pb-3 border-opacity-20 border-on-primary">
+<span class="text-on-primary-container">Mon - Fri</span>
+<span class="font-medium">08:00 — 20:00</span>
+</li>
+<li class="flex justify-between items-center ghost-border-bottom pb-3 border-opacity-20 border-on-primary">
+<span class="text-on-primary-container">Saturday</span>
+<span class="font-medium">09:00 — 18:00</span>
+</li>
+<li class="flex justify-between items-center">
+<span class="text-on-primary-container">Sunday</span>
+<span class="font-medium text-surface-tint">Closed</span>
+</li>
+</ul>
+<div class="mt-8 pt-6 ghost-border-bottom border-opacity-20 border-on-primary border-t">
+<p class="text-[0.875rem] text-on-primary-container">
+                                * Special holiday hours may apply. Check announcements for exam period extensions.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Contact & Support -->
+<div class="bg-surface-container-low rounded-xl p-8">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-[1.75rem] text-primary">support_agent</span>
+<h3 class="font-headline text-[1.375rem] text-primary">Need Assistance?</h3>
+</div>
+<div class="space-y-6">
+<a class="flex items-start gap-4 group" href="mailto:support@kazutb.edu.kz">
+<div class="p-3 bg-surface rounded-lg group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<div>
+<p class="font-body font-bold text-[1rem] text-primary">Email Support</p>
+<p class="font-body text-[0.875rem] text-on-surface-variant mt-1 group-hover:text-secondary transition-colors">support@kazutb.edu.kz</p>
+</div>
+</a>
+<a class="flex items-start gap-4 group" href="tel:+77172123456">
+<div class="p-3 bg-surface rounded-lg group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary">call</span>
+</div>
+<div>
+<p class="font-body font-bold text-[1rem] text-primary">Reference Desk</p>
+<p class="font-body text-[0.875rem] text-on-surface-variant mt-1 group-hover:text-secondary transition-colors">+7 (7172) 123-456</p>
+</div>
+</a>
+<a class="flex items-start gap-4 group" href="#">
+<div class="p-3 bg-surface rounded-lg group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary">chat</span>
+</div>
+<div>
+<p class="font-body font-bold text-[1rem] text-primary">Live Chat</p>
+<p class="font-body text-[0.875rem] text-on-surface-variant mt-1 group-hover:text-secondary transition-colors">Available during operating hours</p>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-12 mt-20 bg-slate-50 dark:bg-slate-950 bg-slate-200/50 dark:bg-slate-800/50 flat no-shadows flex flex-col md:flex-row justify-between items-center px-12 border-t border-slate-200 dark:border-slate-800 transition-colors duration-200">
+<div class="mb-6 md:mb-0 text-center md:text-left">
+<span class="font-['Newsreader'] font-semibold text-slate-900 dark:text-slate-100 text-lg block mb-2">KazUTB Smart Library</span>
+<span class="font-['Manrope'] text-sm tracking-wide text-slate-800 dark:text-slate-200">© 2024 KazUTB Smart Library. Preserving Knowledge through the Digital Curator.</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Manrope'] text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors duration-200" href="#">Institutional Access</a>
+<a class="font-['Manrope'] text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors duration-200" href="#">Library Terms</a>
+<a class="font-['Manrope'] text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-['Manrope'] text-sm tracking-wide text-slate-500 dark:text-slate-400 hover:text-teal-600 hover:text-teal-700 transition-colors duration-200" href="#">Research Support</a>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Reservations | Athenaeum Digital</title>
+<!-- Google Fonts: Newsreader (Serif) & Manrope (Sans-serif) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f3f4f5",
+                    "primary-container": "#001f3f",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#006a6a",
+                    "on-secondary-container": "#006e6e",
+                    "on-tertiary-container": "#76889d",
+                    "on-secondary-fixed-variant": "#004f4f",
+                    "background": "#f8f9fa",
+                    "primary": "#000613",
+                    "surface-tint": "#476083",
+                    "outline-variant": "#c4c6cf",
+                    "tertiary-fixed": "#d1e4fb",
+                    "tertiary-container": "#0d2031",
+                    "surface-variant": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#afc8f0",
+                    "on-tertiary-fixed-variant": "#36485b",
+                    "surface": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "on-surface-variant": "#43474e",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary-container": "#6f88ad",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#93f2f2",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#b5c8df",
+                    "on-tertiary-fixed": "#091d2e",
+                    "surface-dim": "#d9dadb",
+                    "on-surface": "#191c1d",
+                    "tertiary": "#000610",
+                    "on-background": "#191c1d",
+                    "on-secondary-fixed": "#002020",
+                    "secondary-container": "#90efef",
+                    "primary-fixed": "#d4e3ff",
+                    "secondary-fixed-dim": "#76d6d5",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary-fixed": "#001c3a",
+                    "surface-container": "#edeeef",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "surface-container-highest": "#e1e3e4",
+                    "error": "#ba1a1a",
+                    "outline": "#74777f",
+                    "inverse-primary": "#afc8f0",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Newsreader"
+                    ],
+                    "body": [
+                            "Manrope"
+                    ],
+                    "label": [
+                            "Manrope"
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for library feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e1e3e4; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c4c6cf; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar Component -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg flex justify-between items-center px-12 h-20 shadow-[0_24px_48px_rgba(0,31,63,0.04)] bg-slate-50 dark:bg-slate-900 ease-in-out duration-300 text-slate-900 dark:text-slate-50 font-['Newsreader'] italic tracking-tight">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-serif italic text-slate-900 dark:text-slate-50">Athenaeum Digital</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="hover:text-teal-600 dark:hover:text-teal-300 transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">search</span>
+</button>
+<button class="hover:text-teal-600 dark:hover:text-teal-300 transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar Component (Desktop) -->
+<aside class="hidden md:flex flex-col py-8 space-y-2 fixed left-0 top-20 h-[calc(100vh-5rem)] w-72 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 font-['Manrope'] text-sm uppercase tracking-widest bg-white/50 dark:bg-slate-800/50 border-r border-transparent">
+<div class="px-8 pb-8 mb-4 border-b border-surface-variant/50">
+<h2 class="font-serif text-xl normal-case tracking-normal mb-1">Library Access</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400 normal-case tracking-normal">The Scholar's Portal</p>
+</div>
+<nav class="flex-1 flex flex-col space-y-1 w-full">
+<!-- Dashboard -->
+<a class="flex items-center gap-4 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-10 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Dashboard
+            </a>
+<!-- Reservations (Active) -->
+<a class="flex items-center gap-4 px-8 py-3 text-teal-700 dark:text-teal-400 font-bold border-r-2 border-teal-700 dark:border-teal-400 bg-teal-50/50 dark:bg-teal-900/20 hover:pl-10 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">book_online</span>
+                Reservations
+            </a>
+<!-- History -->
+<a class="flex items-center gap-4 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-10 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+                History
+            </a>
+<!-- My Shortlist -->
+<a class="flex items-center gap-4 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-10 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+                My Shortlist
+            </a>
+<!-- Notifications -->
+<a class="flex items-center gap-4 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-10 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+                Notifications
+            </a>
+<!-- Messages -->
+<a class="flex items-center gap-4 px-8 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 hover:pl-10 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+                Messages
+            </a>
+</nav>
+</aside>
+<!-- Synthesized BottomNavBar for Mobile (Responsive Pivot) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest shadow-[0_-8px_24px_rgba(0,6,19,0.06)] z-50 flex justify-around items-center h-16 pb-safe">
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-secondary font-bold relative transition-colors" href="#">
+<div class="absolute -top-1 w-12 h-1 bg-secondary rounded-b-full"></div>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">book_online</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">history</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">bookmark</span>
+</a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-28 pb-24 md:pb-12 md:ml-72 min-h-screen px-6 md:px-16 lg:px-24 xl:px-32 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-16">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full mb-6">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label text-label-md text-on-surface-variant tracking-wider uppercase">3 Active Requests</span>
+</div>
+<h1 class="font-headline text-display-lg text-primary tracking-tight leading-none mb-6">My Reservations</h1>
+<p class="font-body text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                Review the status of your requested materials. Items marked as ready are held at the circulation desk for 72 hours before being returned to the stacks.
+            </p>
+</header>
+<!-- Reservations List (Tonal Layering, Asymmetric spacing) -->
+<div class="flex flex-col space-y-12">
+<!-- Card 1: Ready for Pickup (Highest Priority) -->
+<article class="group bg-surface-container-lowest rounded-xl p-6 md:p-10 flex flex-col md:flex-row gap-8 md:gap-12 relative overflow-hidden transition-colors duration-500 ease-out hover:bg-surface-container-low">
+<!-- Status Accent -->
+<div class="absolute top-0 left-0 w-1.5 h-full bg-secondary opacity-80 rounded-l-xl"></div>
+<!-- Image Wrapper -->
+<div class="shrink-0 relative">
+<div class="w-32 md:w-40 h-48 md:h-60 rounded-md overflow-hidden bg-surface-container shadow-[0_12px_32px_rgba(0,6,19,0.08)]">
+<img alt="Hardcover book titled 'The Architecture of Happiness' leaning against a stack of architectural blueprints in soft ambient light." class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Hardcover book titled 'The Architecture of Happiness' leaning against a stack of architectural blueprints in soft ambient light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3w92KqO9XXioYmcTad4l0N3gDT09EIKcEtSH42dlF4owM2uC_cBJLm4XuUkXV2PFfR1rldZtB0DNAyHBhPtKYEpfrW6LhiawyBW5exgaDHoHYs76_0AP8Y_Wlmwiy20OFtl_xlwoZGbDXlPFlzSP-gBIbn374yfYSch_ssK58OplkPwFaxNPSG-9YP1HYqS_2BH57EKXZbGU0eLpiDay2CqhMUNKUjkWinzrFTFaoxFkMpXJXY16nKRXewIaHX6CuXxj5tKcHuSvU"/>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 flex flex-col justify-between py-2">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/50 text-on-secondary-container font-label text-label-md tracking-widest uppercase">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                                Ready for Pickup
+                            </span>
+<span class="font-label text-label-md text-on-surface-variant tracking-wider uppercase">Expires Oct 24</span>
+</div>
+<h2 class="font-headline text-headline-md text-primary leading-tight mb-2 pr-4">The Architecture of Happiness</h2>
+<p class="font-body text-title-lg text-on-surface-variant font-medium mb-6">Alain de Botton</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant mt-0.5">location_on</span>
+<div>
+<p class="font-label text-label-md text-on-surface-variant tracking-wider uppercase mb-0.5">Pickup Location</p>
+<p class="font-body text-body-lg text-primary font-medium">Main Reading Room Desk</p>
+<p class="font-body text-sm text-on-surface-variant">Floor 2, North Wing</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant mt-0.5">schedule</span>
+<div>
+<p class="font-label text-label-md text-on-surface-variant tracking-wider uppercase mb-0.5">Desk Hours</p>
+<p class="font-body text-body-lg text-primary font-medium">08:00 AM — 08:00 PM</p>
+<p class="font-body text-sm text-on-surface-variant">Mon - Fri</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<button class="px-6 py-2.5 rounded-md bg-gradient-to-r from-primary to-primary-container text-on-primary font-body font-medium transition-opacity hover:opacity-90">
+                            View Instructions
+                        </button>
+<button class="px-6 py-2.5 rounded-md text-primary font-body font-medium transition-colors hover:bg-surface-variant">
+                            Release Hold
+                        </button>
+</div>
+</div>
+</article>
+<!-- Card 2: Confirmed -->
+<article class="group bg-surface-container-lowest rounded-xl p-6 md:p-10 flex flex-col md:flex-row gap-8 md:gap-12 relative overflow-hidden transition-colors duration-500 ease-out hover:bg-surface-container-low">
+<!-- Image Wrapper -->
+<div class="shrink-0 relative">
+<div class="w-32 md:w-40 h-48 md:h-60 rounded-md overflow-hidden bg-surface-container shadow-[0_12px_32px_rgba(0,6,19,0.04)] opacity-90 group-hover:opacity-100 transition-opacity">
+<img alt="Vintage typography poster book resting flat on a dark grey slate surface with harsh dramatic lighting casting sharp shadows." class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Vintage typography poster book resting flat on a dark grey slate surface with harsh dramatic lighting casting sharp shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb-tK5t27TkzSxwPPHB6tCyUR13_30Df7nJamqIguh2HmslQxHajKjINkhpO2fHZcetDF12MXDUbcIjKnvXPUU6D9QUHhiKAbcZBjyfxhEiZaQ1DngMJ0F7nJ0EKtRWfhmE3CaXHjM_9fUnmK-mbFLlrsxEMyYoNO9PnRIzvE_4W-7EaheUmPh3oHJho90J1huw_rEWhKvOzEj8I-9cJVTyCrHiTetwsvSPLkaXnMQL2T2j0L5lefE3X0UUmzYEl8Adoq9wr7SdxwI"/>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 flex flex-col justify-between py-2">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label text-label-md tracking-widest uppercase">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+                                Confirmed
+                            </span>
+<span class="font-label text-label-md text-on-surface-variant tracking-wider uppercase">Requested Oct 20</span>
+</div>
+<h2 class="font-headline text-headline-md text-primary leading-tight mb-2 pr-4">Grid Systems in Graphic Design</h2>
+<p class="font-body text-title-lg text-on-surface-variant font-medium mb-6">Josef Müller-Brockmann</p>
+<div class="flex items-start gap-3 mb-8 bg-surface p-4 rounded-lg">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant mt-0.5">local_shipping</span>
+<div>
+<p class="font-body text-body-lg text-primary font-medium mb-1">In Transit from Annex</p>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">This item is currently being transferred from our off-site storage facility. Expected arrival at the Main Branch is Oct 23.</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-auto border-t border-outline-variant/20 pt-6">
+<button class="px-6 py-2.5 rounded-md text-error font-body font-medium transition-colors hover:bg-error-container/50">
+                            Cancel Request
+                        </button>
+</div>
+</div>
+</article>
+<!-- Card 3: Pending -->
+<article class="group bg-surface-container-lowest rounded-xl p-6 md:p-10 flex flex-col md:flex-row gap-8 md:gap-12 relative overflow-hidden transition-colors duration-500 ease-out hover:bg-surface-container-low opacity-80 hover:opacity-100">
+<!-- Image Wrapper -->
+<div class="shrink-0 relative">
+<div class="w-32 md:w-40 h-48 md:h-60 rounded-md overflow-hidden bg-surface-container shadow-sm mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700">
+<img alt="Abstract close-up of folded textured paper in deep navy and grey tones suggesting archives and history." class="w-full h-full object-cover" data-alt="Abstract close-up of folded textured paper in deep navy and grey tones suggesting archives and history." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrtQN4PJUimsFsakryUTpGPNHvmX7hSoeAevqqXU9xAhywA7UHqkW1XsMKaSR7xGEwlDeIn6zVrtAgx0U_f4vOvTeqvmI8sv18CmMYbbImPFJx9uSXWkTaL9Af0U1dhWlIaAwEraUAq5NweYvh33X9TIRaz5U4l070W0kpuF0PoMHeCGNRwithwJf5XLYauzeNVJ423K-_GDbfQHJR_qjNOZwauOtc0RL-OzkCzXjycr68ET9vTqF8R8Qs7bK-tYrC2I_lR3SR5bUX"/>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-1 flex flex-col justify-between py-2">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-variant text-on-surface-variant font-label text-label-md tracking-widest uppercase border border-outline-variant/20">
+<span class="material-symbols-outlined text-[16px]">pending</span>
+                                Pending Review
+                            </span>
+<span class="font-label text-label-md text-on-surface-variant tracking-wider uppercase">Requested Oct 21</span>
+</div>
+<h2 class="font-headline text-headline-md text-primary leading-tight mb-2 pr-4 text-opacity-80">The Information: A History, A Theory, A Flood</h2>
+<p class="font-body text-title-lg text-on-surface-variant font-medium mb-6">James Gleick</p>
+<div class="flex items-start gap-3 mb-8">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant mt-0.5">info</span>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed max-w-lg">
+                                This item belongs to the Rare Books Collection. Your request is pending curator approval. You will receive an email notification once the status changes.
+                            </p>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-auto">
+<button class="px-6 py-2.5 rounded-md text-primary font-body font-medium transition-colors hover:bg-surface-variant border-b border-outline-variant/20 pb-2">
+                            Withdraw Request
+                        </button>
+</div>
+</div>
+</article>
+</div>
+</main>
+</body></html>
