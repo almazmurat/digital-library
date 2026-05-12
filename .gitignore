@@ -38,6 +38,10 @@ Thumbs.db
 /docs/qa/*-draft*.md
 /artifacts/obsidian/vault-mirror
 
+# Design export artifacts (source-only, not repository content)
+/design-system/design-exports/
+/docs/design-exports/
+
 # Obsidian local config (not knowledge)
 /kazutb-library-vault/.obsidian/workspace.json
 /kazutb-library-vault/.obsidian/workspace-mobile.json
