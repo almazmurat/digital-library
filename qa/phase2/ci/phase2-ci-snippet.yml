@@ -19,9 +19,16 @@ jobs:
           test -f qa/phase2/evidence/logs/phase2-automation-summary.log
           test -f qa/phase2/docs/phase2-final-summary.md
 
-      - name: Fail on fail-level gate breaches
+      - name: Validate Phase 2 gate schema header
         run: |
-          if grep -q ',Fail,' qa/phase2/metrics/phase2-quality-gate-results.csv; then
+          HEADER=$(head -n 1 qa/phase2/metrics/phase2-quality-gate-results.csv)
+          echo "$HEADER" | grep -q '^gate_id,gate_tier,metric,threshold,importance,enforcement_level,measurement_source,current_result,status,rationale_notes,implemented_in_ci$'
+
+      - name: Fail on current enforced fail-level gate breaches
+        run: |
+          FAIL_COUNT=$(awk -F',' 'NR>1 && $2=="current_enforced" && tolower($6)=="fail" && $9=="Fail" {count++} END {print count+0}' qa/phase2/metrics/phase2-quality-gate-results.csv)
+          echo "current_enforced_fail_count=$FAIL_COUNT"
+          if [ "$FAIL_COUNT" -gt 0 ]; then
             echo "Phase 2 quality gate failure detected"
             exit 1
           fi

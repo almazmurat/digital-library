@@ -21,3 +21,4 @@ P2-UI-OPS-001,Librarian UI,2026-05-13T12:22:58,Pass,None,4.7,"librarian route pr
 P2-UI-OPS-002,Member UI,2026-05-13T12:22:58,Pass,None,2.2,"account route behaved safely"
 P2-UI-OPS-003,Member UI,2026-05-13T12:22:58,Pass,None,1.8,"shortlist route behaved safely"
 P2-PHP-SUITE-001,Targeted PHPUnit,2026-05-13T12:21:20,Fail,"6 failed, 4 skipped, 31 passed",61.258,"includes sqlite table/view mismatch and redirect expectation mismatches"
+P2-GATE-EVAL-001,Quality Gates,2026-05-13T12:30:23,Fail,"3 fail-level gates and 1 warn-level attention",,"derived from phase2-quality-gates.log"

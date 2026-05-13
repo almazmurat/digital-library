@@ -1,43 +1,38 @@
 # Phase 2 Final Summary
 
-## Implemented
+## Executive Summary
 
-- Defined automation scope from Phase 1 high-risk register.
-- Designed 21 automation-focused test cases across auth, catalog, integration, and operations surfaces.
-- Implemented 10 new Phase 2 automation scripts/assets in qa/phase2/automation.
-- Executed measured automation runs for API smoke, UI smoke, and targeted PHPUnit subset.
+Phase 2 Part 2 is completed for quality-gate definition, CI integration hardening, and operational alert/failure procedures at production-oriented detail level.
 
-## Integrated
+## What Was Strengthened in Part 2
 
-- Added Phase 2 CI snippets and quality gate definitions under qa/phase2/ci.
-- Updated existing CI workflow to validate and publish Phase 2 artifacts and gate summaries.
+- Expanded quality gate model to separate current_enforced versus proposed_next_stage gates.
+- Added assignment-style pass/fail table and engineering gate matrix with threshold, source, enforcement, and rationale.
+- Updated CI integration documentation to distinguish implemented and proposed pipeline capabilities.
+- Hardened CI gate evaluation logic to enforce only current_enforced fail-level gates.
+- Expanded alerting/failure handling from high-level notes into operational runbook tables.
+- Updated evidence index and traceability to support both course submission and real QA handoff.
 
-## Measured metrics
+## Factual Current Results
 
 - API smoke: 10 cases, 7 pass, 3 fail, 38.435s.
 - UI smoke: 11 cases, 10 pass, 1 fail, 54.885s.
-- Targeted PHPUnit: 41 tests (31 pass, 6 fail, 4 skip), 61.258s.
-- Combined runtime: 154.578s.
+- Targeted PHPUnit subset: 41 tests (31 pass, 6 fail, 4 skip), 61.258s.
+- Current enforced gate outcome: pass=5, fail=3, warn=1.
 
-## Quality gate outcomes
+## Production Relevance
 
-- Fail: API pass-rate gate, PHPUnit pass-rate gate, public-route 5xx gate.
-- Pass: UI pass-rate gate, runtime gates.
-- Warn: coverage driver availability gate.
+- Gate definitions now explicitly encode what blocks deployment versus what is roadmap guidance.
+- CI artifacts and log references are documented as traceable evidence sources.
+- Failure handling now includes ownership, escalation, and recovery guidance for critical scenarios.
 
-## QA maturity improvement
+## Remaining Gaps Before Next Phase
 
-- Added repeatable automation assets and explicit quality gate governance.
-- Added machine-readable metrics for coverage, execution timing, defects vs risk, and per-case execution logs.
-- Added evidence index and traceability matrix for research reproducibility.
+- Resolve /news public route HTTP 500 failure.
+- Resolve integration endpoint/API boundary failures surfaced in smoke checks.
+- Stabilize targeted PHPUnit subset in sqlite-sensitive areas or align environment assumptions.
+- Implement proposed next-stage gates (coverage >=80 percent enforcement, static analysis, flaky-test control).
 
-## Remaining gaps before Phase 3
+## Readiness Statement
 
-- Resolve public /news route HTTP 500 observed in UI smoke.
-- Resolve integration API 404 findings or align test expectations to active route policy.
-- Resolve sqlite/runtime dependency issues affecting selected PHPUnit tests.
-- Enable reliable local coverage collection when needed for deeper trend analysis.
-
-## Readiness statement
-
-Phase 2 is complete as an automation foundation with factual evidence, CI integration, and research-ready reporting artifacts. The repository is ready to proceed to Phase 3 performance and experimental testing with clearly identified quality risks.
+Phase 2 now has a stronger governance layer for quality gates and CI visibility. The package is suitable for assignment submission and for operational QA handoff with clear evidence, enforcement boundaries, and documented limitations.

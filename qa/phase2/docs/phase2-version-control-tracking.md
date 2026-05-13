@@ -1,7 +1,11 @@
 # Phase 2 Version Control Tracking
 
-This table is updated with factual commits created during Phase 2 implementation.
+This table contains factual commit entries relevant to Assignment 2 (Phase 2).
 
-| Commit ID / Hash                    | Date       | Module/Feature  | Description of Changes                                      | Author         |
-| ----------------------------------- | ---------- | --------------- | ----------------------------------------------------------- | -------------- |
-| pre-commit-preparation              | 2026-05-13 | Phase 2 package | Scoped staging prepared for qa/phase2 and clean Phase 2 CI workflow integration only | GitHub Copilot |
+| Commit ID / Hash | Date | Module/Feature | Description of Changes | Author |
+| --- | --- | --- | --- | --- |
+| 36ea42a679ba8823f0c9a755577a029e48dbf133 | 2026-05-13 | Phase 2 baseline package | Implemented automation coverage, quality gates baseline, CI integration baseline, metrics, and research-ready evidence. | GitHub Copilot |
+
+## Note
+
+- The current Phase 2 Part 2 update in this working session will be appended with a factual hash in a subsequent tracking update after commit creation.

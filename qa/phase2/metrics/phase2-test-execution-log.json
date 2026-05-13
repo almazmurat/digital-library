@@ -1,112 +1,121 @@
 {
-    "executionLog": [
-        {
-            "testCaseId": "P2-API-AUTH-001",
-            "moduleFeature": "Auth",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Pass",
-            "defects": "None",
-            "executionTimeSeconds": 3.665,
-            "notes": "/api/v1/me returned 401"
-        },
-        {
-            "testCaseId": "P2-API-AUTH-002",
-            "moduleFeature": "Auth",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Pass",
-            "defects": "None",
-            "executionTimeSeconds": 3.54,
-            "notes": "/api/v1/account/reservations returned 401"
-        },
-        {
-            "testCaseId": "P2-API-AUTH-003",
-            "moduleFeature": "Authorization",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Pass",
-            "defects": "None",
-            "executionTimeSeconds": 3.608,
-            "notes": "/api/v1/internal/circulation/summary returned 404 and was accepted by policy"
-        },
-        {
-            "testCaseId": "P2-API-CAT-001",
-            "moduleFeature": "Catalog API",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Pass",
-            "defects": "None",
-            "executionTimeSeconds": 3.631,
-            "notes": "landing endpoint returned 200 JSON"
-        },
-        {
-            "testCaseId": "P2-API-CAT-002",
-            "moduleFeature": "Catalog API",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Pass",
-            "defects": "None",
-            "executionTimeSeconds": 3.037,
-            "notes": "catalog endpoint returned data"
-        },
-        {
-            "testCaseId": "P2-API-CAT-003",
-            "moduleFeature": "Catalog API",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Pass",
-            "defects": "None",
-            "executionTimeSeconds": 3.257,
-            "notes": "subjects endpoint returned 200"
-        },
-        {
-            "testCaseId": "P2-API-INT-001",
-            "moduleFeature": "Integration API",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Fail",
-            "defects": "Endpoint returned 404",
-            "executionTimeSeconds": 4.661,
-            "notes": "expected policy status 200/401/403"
-        },
-        {
-            "testCaseId": "P2-API-INT-002",
-            "moduleFeature": "Integration API",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Fail",
-            "defects": "Endpoint returned 404",
-            "executionTimeSeconds": 3.394,
-            "notes": "expected policy status 200/401/403/422"
-        },
-        {
-            "testCaseId": "P2-API-OPS-001",
-            "moduleFeature": "Circulation Ops",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Pass",
-            "defects": "None",
-            "executionTimeSeconds": 3.357,
-            "notes": "internal review endpoint returned 403"
-        },
-        {
-            "testCaseId": "P2-API-OPS-002",
-            "moduleFeature": "Admin Ops",
-            "executionDateTime": "2026-05-13T12:19:44",
-            "result": "Fail",
-            "defects": "Route returned 404",
-            "executionTimeSeconds": 3.348,
-            "notes": "expected admin guard policy response"
-        },
-        {
-            "testCaseId": "P2-UI-CAT-004",
-            "moduleFeature": "Public UI",
-            "executionDateTime": "2026-05-13T12:22:58",
-            "result": "Fail",
-            "defects": "HTTP 500 on /news",
-            "executionTimeSeconds": 36.9,
-            "notes": "failed assertion status <500"
-        },
-        {
-            "testCaseId": "P2-PHP-SUITE-001",
-            "moduleFeature": "Targeted PHPUnit",
-            "executionDateTime": "2026-05-13T12:21:20",
-            "result": "Fail",
-            "defects": "6 failed, 4 skipped, 31 passed",
-            "executionTimeSeconds": 61.258,
-            "notes": "includes sqlite table/view mismatch and redirect expectation mismatches"
-        }
-    ]
+  "executionLog": [
+    {
+      "testCaseId": "P2-API-AUTH-001",
+      "moduleFeature": "Auth",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Pass",
+      "defects": "None",
+      "executionTimeSeconds": 3.665,
+      "notes": "/api/v1/me returned 401"
+    },
+    {
+      "testCaseId": "P2-API-AUTH-002",
+      "moduleFeature": "Auth",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Pass",
+      "defects": "None",
+      "executionTimeSeconds": 3.54,
+      "notes": "/api/v1/account/reservations returned 401"
+    },
+    {
+      "testCaseId": "P2-API-AUTH-003",
+      "moduleFeature": "Authorization",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Pass",
+      "defects": "None",
+      "executionTimeSeconds": 3.608,
+      "notes": "/api/v1/internal/circulation/summary returned 404 and was accepted by policy"
+    },
+    {
+      "testCaseId": "P2-API-CAT-001",
+      "moduleFeature": "Catalog API",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Pass",
+      "defects": "None",
+      "executionTimeSeconds": 3.631,
+      "notes": "landing endpoint returned 200 JSON"
+    },
+    {
+      "testCaseId": "P2-API-CAT-002",
+      "moduleFeature": "Catalog API",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Pass",
+      "defects": "None",
+      "executionTimeSeconds": 3.037,
+      "notes": "catalog endpoint returned data"
+    },
+    {
+      "testCaseId": "P2-API-CAT-003",
+      "moduleFeature": "Catalog API",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Pass",
+      "defects": "None",
+      "executionTimeSeconds": 3.257,
+      "notes": "subjects endpoint returned 200"
+    },
+    {
+      "testCaseId": "P2-API-INT-001",
+      "moduleFeature": "Integration API",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Fail",
+      "defects": "Endpoint returned 404",
+      "executionTimeSeconds": 4.661,
+      "notes": "expected policy status 200/401/403"
+    },
+    {
+      "testCaseId": "P2-API-INT-002",
+      "moduleFeature": "Integration API",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Fail",
+      "defects": "Endpoint returned 404",
+      "executionTimeSeconds": 3.394,
+      "notes": "expected policy status 200/401/403/422"
+    },
+    {
+      "testCaseId": "P2-API-OPS-001",
+      "moduleFeature": "Circulation Ops",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Pass",
+      "defects": "None",
+      "executionTimeSeconds": 3.357,
+      "notes": "internal review endpoint returned 403"
+    },
+    {
+      "testCaseId": "P2-API-OPS-002",
+      "moduleFeature": "Admin Ops",
+      "executionDateTime": "2026-05-13T12:19:44",
+      "result": "Fail",
+      "defects": "Route returned 404",
+      "executionTimeSeconds": 3.348,
+      "notes": "expected admin guard policy response"
+    },
+    {
+      "testCaseId": "P2-UI-CAT-004",
+      "moduleFeature": "Public UI",
+      "executionDateTime": "2026-05-13T12:22:58",
+      "result": "Fail",
+      "defects": "HTTP 500 on /news",
+      "executionTimeSeconds": 36.9,
+      "notes": "failed assertion status <500"
+    },
+    {
+      "testCaseId": "P2-PHP-SUITE-001",
+      "moduleFeature": "Targeted PHPUnit",
+      "executionDateTime": "2026-05-13T12:21:20",
+      "result": "Fail",
+      "defects": "6 failed, 4 skipped, 31 passed",
+      "executionTimeSeconds": 61.258,
+      "notes": "includes sqlite table/view mismatch and redirect expectation mismatches"
+    },
+    {
+      "testCaseId": "P2-GATE-EVAL-001",
+      "moduleFeature": "Quality Gates",
+      "executionDateTime": "2026-05-13T12:30:23",
+      "result": "Fail",
+      "defects": "3 fail-level gates and 1 warn-level attention",
+      "executionTimeSeconds": null,
+      "notes": "derived from phase2-quality-gates.log"
+    }
+  ]
 }

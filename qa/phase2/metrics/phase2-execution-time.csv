@@ -1,5 +1,5 @@
 module_or_suite,number_of_test_cases,execution_time_seconds,total_time_seconds,notes
-API smoke scripts,10,38.435,38.435,"runner_elapsed_ms=38435.05"
-UI smoke scripts,11,54.885,54.885,"playwright_elapsed_ms=54884.76"
-Targeted PHPUnit subset,41,61.258,61.258,"phpunit_elapsed_ms=61258.42"
+API smoke scripts,10,38.435,38.435,"runner_elapsed_ms=38435.05; consumed_by=P2-QG-007"
+UI smoke scripts,11,54.885,54.885,"playwright_elapsed_ms=54884.76; consumed_by=P2-QG-007"
+Targeted PHPUnit subset,41,61.258,61.258,"phpunit_elapsed_ms=61258.42; consumed_by=P2-QG-007"
 Combined total,62,154.578,154.578,"sum of measured suite runtimes"

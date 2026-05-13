@@ -205,10 +205,18 @@ jobs:
           test -f qa/phase2/metrics/phase2-quality-gate-results.csv
           test -f qa/phase2/evidence/logs/phase2-automation-summary.log
 
+      - name: Validate Phase 2 gate schema header
+        run: |
+          HEADER=$(head -n 1 qa/phase2/metrics/phase2-quality-gate-results.csv)
+          echo "header=$HEADER"
+          echo "$HEADER" | grep -q '^gate_id,gate_tier,metric,threshold,importance,enforcement_level,measurement_source,current_result,status,rationale_notes,implemented_in_ci$'
+
       - name: Evaluate fail-level quality gates
         run: |
-          FAIL_COUNT=$(grep -c ',Fail,' qa/phase2/metrics/phase2-quality-gate-results.csv || true)
-          echo "Phase 2 fail-level gate count: $FAIL_COUNT"
+          FAIL_COUNT=$(awk -F',' 'NR>1 && $2=="current_enforced" && tolower($6)=="fail" && $9=="Fail" {count++} END {print count+0}' qa/phase2/metrics/phase2-quality-gate-results.csv)
+          WARN_COUNT=$(awk -F',' 'NR>1 && $2=="current_enforced" && tolower($6)=="warn" && ($9=="Warn" || $9=="Fail") {count++} END {print count+0}' qa/phase2/metrics/phase2-quality-gate-results.csv)
+          echo "Phase 2 enforced fail-level gate count: $FAIL_COUNT"
+          echo "Phase 2 enforced warn-level attention count: $WARN_COUNT"
           if [ "$FAIL_COUNT" -gt 0 ]; then
             echo "One or more fail-level quality gates are currently failing."
             exit 1
@@ -231,5 +239,6 @@ jobs:
             echo "## Phase 2 quality gates"
             echo "- Artifact validation completed"
             echo "- Gate source: qa/phase2/metrics/phase2-quality-gate-results.csv"
+            echo "- Evaluation scope: current_enforced gates only"
             echo "- Phase 2 artifacts uploaded"
           } >> "$GITHUB_STEP_SUMMARY"
