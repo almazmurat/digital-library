@@ -1,0 +1,60 @@
+{
+    "defectsVsRisk": [
+        {
+            "module": "Authentication",
+            "highRiskLevel": "P0",
+            "expectedDefects": "Low-to-medium",
+            "defectsFound": 0,
+            "passFail": "Pass",
+            "notes": "auth guard smoke checks passed"
+        },
+        {
+            "module": "Authorization/RBAC",
+            "highRiskLevel": "P1",
+            "expectedDefects": "Medium",
+            "defectsFound": 3,
+            "passFail": "Fail",
+            "notes": "targeted PHPUnit access-boundary assertions failed"
+        },
+        {
+            "module": "Catalog/Public routes",
+            "highRiskLevel": "P0",
+            "expectedDefects": "Medium",
+            "defectsFound": 1,
+            "passFail": "Fail",
+            "notes": "/news returned 500 in UI smoke"
+        },
+        {
+            "module": "Circulation/Operations",
+            "highRiskLevel": "P0",
+            "expectedDefects": "Medium",
+            "defectsFound": 1,
+            "passFail": "Fail",
+            "notes": "ops guard expectation mismatch"
+        },
+        {
+            "module": "Integration API",
+            "highRiskLevel": "P1",
+            "expectedDefects": "Medium",
+            "defectsFound": 2,
+            "passFail": "Fail",
+            "notes": "integration smoke endpoints returned 404"
+        },
+        {
+            "module": "Admin operations",
+            "highRiskLevel": "P1",
+            "expectedDefects": "Medium",
+            "defectsFound": 1,
+            "passFail": "Fail",
+            "notes": "admin/integrations returned 404 for anonymous request"
+        },
+        {
+            "module": "Data/Coverage readiness",
+            "highRiskLevel": "P0",
+            "expectedDefects": "Medium",
+            "defectsFound": 1,
+            "passFail": "Fail",
+            "notes": "coverage driver unavailable locally"
+        }
+    ]
+}

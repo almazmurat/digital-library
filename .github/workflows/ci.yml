@@ -186,3 +186,50 @@ jobs:
             echo "- Commands: \`npm run build\` and \`npm run test:e2e\`"
             echo "- Playwright traces uploaded when available"
           } >> "$GITHUB_STEP_SUMMARY"
+
+  phase2-quality-gates:
+    name: Phase 2 Artifact and Gate Validation
+    runs-on: ubuntu-latest
+    needs:
+      - backend-quality
+      - browser-smoke
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Validate required Phase 2 artifacts
+        run: |
+          test -f qa/phase2/docs/phase2-final-summary.md
+          test -f qa/phase2/metrics/phase2-quality-gate-results.csv
+          test -f qa/phase2/evidence/logs/phase2-automation-summary.log
+
+      - name: Evaluate fail-level quality gates
+        run: |
+          FAIL_COUNT=$(grep -c ',Fail,' qa/phase2/metrics/phase2-quality-gate-results.csv || true)
+          echo "Phase 2 fail-level gate count: $FAIL_COUNT"
+          if [ "$FAIL_COUNT" -gt 0 ]; then
+            echo "One or more fail-level quality gates are currently failing."
+            exit 1
+          fi
+
+      - name: Upload Phase 2 QA artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase2-qa-artifacts
+          path: |
+            qa/phase2/metrics
+            qa/phase2/evidence/logs
+            qa/phase2/reports
+
+      - name: Write Phase 2 summary
+        if: always()
+        run: |
+          {
+            echo "## Phase 2 quality gates"
+            echo "- Artifact validation completed"
+            echo "- Gate source: qa/phase2/metrics/phase2-quality-gate-results.csv"
+            echo "- Phase 2 artifacts uploaded"
+          } >> "$GITHUB_STEP_SUMMARY"

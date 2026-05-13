@@ -1,0 +1,60 @@
+{
+    "coverage": [
+        {
+            "module": "Authentication",
+            "highRiskFunction": "Session and protected endpoint guard behavior",
+            "automated": "Yes",
+            "coveragePercent": 100,
+            "evidence": ["phase2-api-tests.log"],
+            "notes": "3/3 planned auth checks executed"
+        },
+        {
+            "module": "Authorization/RBAC",
+            "highRiskFunction": "Guest access to protected role routes",
+            "automated": "Partial",
+            "coveragePercent": 75,
+            "evidence": ["phase2-playwright.log", "phase2-api-tests.log"],
+            "notes": "6/8 checks executed; mixed outcomes"
+        },
+        {
+            "module": "Catalog/Public",
+            "highRiskFunction": "Public route and API stability",
+            "automated": "Partial",
+            "coveragePercent": 87.5,
+            "evidence": ["phase2-playwright.log", "phase2-api-tests.log"],
+            "notes": "7/8 checks executed; /news failed"
+        },
+        {
+            "module": "Circulation/Operations",
+            "highRiskFunction": "Internal ops access boundaries",
+            "automated": "Partial",
+            "coveragePercent": 66.7,
+            "evidence": ["phase2-api-tests.log", "phase2-playwright.log"],
+            "notes": "4/6 checks executed"
+        },
+        {
+            "module": "Integration API",
+            "highRiskFunction": "Boundary and reservations path behavior",
+            "automated": "Partial",
+            "coveragePercent": 50,
+            "evidence": ["phase2-api-tests.log"],
+            "notes": "2/4 checks executed; both failed"
+        },
+        {
+            "module": "Admin operations",
+            "highRiskFunction": "Admin route guard behavior",
+            "automated": "Partial",
+            "coveragePercent": 50,
+            "evidence": ["phase2-api-tests.log", "phase2-playwright.log"],
+            "notes": "2/4 checks executed"
+        },
+        {
+            "module": "Shortlist/Member account",
+            "highRiskFunction": "Guest protection on member endpoints",
+            "automated": "Yes",
+            "coveragePercent": 100,
+            "evidence": ["phase2-api-tests.log", "phase2-playwright.log"],
+            "notes": "3/3 checks executed"
+        }
+    ]
+}

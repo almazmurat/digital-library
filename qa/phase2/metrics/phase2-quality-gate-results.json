@@ -1,0 +1,76 @@
+{
+    "qualityGates": [
+        {
+            "gateId": "P2-G-001",
+            "metric": "API smoke pass rate",
+            "threshold": ">=90%",
+            "enforcementLevel": "fail",
+            "currentResult": "70.00% (7/10)",
+            "status": "Fail",
+            "notes": "from phase2-api-tests.log"
+        },
+        {
+            "gateId": "P2-G-002",
+            "metric": "UI smoke pass rate",
+            "threshold": ">=90%",
+            "enforcementLevel": "fail",
+            "currentResult": "90.91% (10/11)",
+            "status": "Pass",
+            "notes": "from phase2-playwright.log"
+        },
+        {
+            "gateId": "P2-G-003",
+            "metric": "Targeted PHPUnit pass rate",
+            "threshold": ">=90%",
+            "enforcementLevel": "fail",
+            "currentResult": "83.78% (31/37)",
+            "status": "Fail",
+            "notes": "from phase2-automation-summary.log"
+        },
+        {
+            "gateId": "P2-G-004",
+            "metric": "Public critical route server errors",
+            "threshold": "0 unexpected 5xx",
+            "enforcementLevel": "fail",
+            "currentResult": "/news=500",
+            "status": "Fail",
+            "notes": "from phase2-playwright.log"
+        },
+        {
+            "gateId": "P2-G-005",
+            "metric": "API smoke runtime",
+            "threshold": "<=60s",
+            "enforcementLevel": "fail",
+            "currentResult": "38.435s",
+            "status": "Pass",
+            "notes": "runner_elapsed_ms=38435.05"
+        },
+        {
+            "gateId": "P2-G-006",
+            "metric": "UI smoke runtime",
+            "threshold": "<=90s",
+            "enforcementLevel": "warn",
+            "currentResult": "54.885s",
+            "status": "Pass",
+            "notes": "playwright_elapsed_ms=54884.76"
+        },
+        {
+            "gateId": "P2-G-007",
+            "metric": "PHPUnit targeted runtime",
+            "threshold": "<=90s",
+            "enforcementLevel": "warn",
+            "currentResult": "61.258s",
+            "status": "Pass",
+            "notes": "phpunit_elapsed_ms=61258.42"
+        },
+        {
+            "gateId": "P2-G-008",
+            "metric": "Coverage driver availability",
+            "threshold": "pcov or xdebug",
+            "enforcementLevel": "warn",
+            "currentResult": "blocked",
+            "status": "Warn",
+            "notes": "phase2-coverage.log"
+        }
+    ]
+}

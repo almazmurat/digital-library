@@ -1,0 +1,8 @@
+module,high_risk_function,automated,coverage_percent,evidence,notes
+Authentication,Session and protected endpoint guard behavior,Yes,100,"phase2-api-tests.log","3/3 planned auth checks executed"
+Authorization/RBAC,Guest access to protected role routes,Partial,75,"phase2-playwright.log;phase2-api-tests.log","6/8 checks executed; mixed outcomes"
+Catalog/Public,Public route and API stability,Partial,87.5,"phase2-playwright.log;phase2-api-tests.log","7/8 checks executed; /news failed"
+Circulation/Operations,Internal ops access boundaries,Partial,66.7,"phase2-api-tests.log;phase2-playwright.log","4/6 checks executed"
+Integration API,Boundary and reservations path behavior,Partial,50,"phase2-api-tests.log","2/4 checks executed; both failed"
+Admin operations,Admin route guard behavior,Partial,50,"phase2-api-tests.log;phase2-playwright.log","2/4 checks executed"
+Shortlist/Member account,Guest protection on member endpoints,Yes,100,"phase2-api-tests.log;phase2-playwright.log","3/3 checks executed"

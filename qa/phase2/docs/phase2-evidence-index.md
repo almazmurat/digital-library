@@ -1,0 +1,14 @@
+# Phase 2 Evidence Index
+
+| Evidence ID | Module/Feature             | Type       | Description                                                   | File Location                                                                                                            |
+| ----------- | -------------------------- | ---------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| P2-E-001    | API automation             | Log        | API smoke runner output with per-case status and elapsed time | qa/phase2/evidence/logs/phase2-api-tests.log                                                                             |
+| P2-E-002    | PHPUnit automation         | Log        | Targeted high-risk feature/API PHPUnit execution output       | qa/phase2/evidence/logs/phase2-phpunit.log                                                                               |
+| P2-E-003    | UI automation              | Log        | Playwright Phase 2 UI suite output with pass/fail summary     | qa/phase2/evidence/logs/phase2-playwright.log                                                                            |
+| P2-E-004    | Automation aggregate       | Log        | Consolidated summary of API/PHPUnit/Playwright run metrics    | qa/phase2/evidence/logs/phase2-automation-summary.log                                                                    |
+| P2-E-005    | Coverage availability      | Log        | Coverage driver detection result                              | qa/phase2/evidence/logs/phase2-coverage.log                                                                              |
+| P2-E-006    | UI failure screenshot      | Screenshot | News page smoke failure screenshot (HTTP 500)                 | qa/phase2/reports/test-results/playwright-raw/public-catalog.ui-P2-UI-CAT-004-news-page-loads-chromium/test-failed-1.png |
+| P2-E-007    | Playwright failure context | Report     | Error context for failed news page UI test                    | qa/phase2/reports/test-results/playwright-raw/public-catalog.ui-P2-UI-CAT-004-news-page-loads-chromium/error-context.md  |
+| P2-E-008    | CI quality gates           | Log        | Local quality gate evaluation result                          | qa/phase2/evidence/logs/phase2-quality-gates.log                                                                         |
+| P2-E-009    | CI validation              | Log        | Local checks for Phase 2 workflow and artifacts               | qa/phase2/evidence/logs/phase2-ci-local-validation.log                                                                   |
+| P2-E-010    | API result payload         | JSON       | Structured API smoke case-level report                        | qa/phase2/reports/test-results/phase2-api-results.json                                                                   |

@@ -1,0 +1,8 @@
+module,high_risk_level,expected_defects,defects_found,pass_fail,notes
+Authentication,P0,Low-to-medium,0,Pass,"auth guard smoke checks passed"
+Authorization/RBAC,P1,Medium,3,Fail,"targeted PHPUnit access-boundary assertions failed"
+Catalog/Public routes,P0,Medium,1,Fail,"/news returned 500 in UI smoke"
+Circulation/Operations,P0,Medium,1,Fail,"ops guard expectation mismatch"
+Integration API,P1,Medium,2,Fail,"integration smoke endpoints returned 404"
+Admin operations,P1,Medium,1,Fail,"admin/integrations returned 404 for anonymous request"
+Data/Coverage readiness,P0,Medium,1,Fail,"coverage driver unavailable locally"

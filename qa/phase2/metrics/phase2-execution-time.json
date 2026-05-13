@@ -1,0 +1,32 @@
+{
+    "executionTime": [
+        {
+            "moduleOrSuite": "API smoke scripts",
+            "numberOfTestCases": 10,
+            "executionTimeSeconds": 38.435,
+            "totalTimeSeconds": 38.435,
+            "notes": "runner_elapsed_ms=38435.05"
+        },
+        {
+            "moduleOrSuite": "UI smoke scripts",
+            "numberOfTestCases": 11,
+            "executionTimeSeconds": 54.885,
+            "totalTimeSeconds": 54.885,
+            "notes": "playwright_elapsed_ms=54884.76"
+        },
+        {
+            "moduleOrSuite": "Targeted PHPUnit subset",
+            "numberOfTestCases": 41,
+            "executionTimeSeconds": 61.258,
+            "totalTimeSeconds": 61.258,
+            "notes": "phpunit_elapsed_ms=61258.42"
+        },
+        {
+            "moduleOrSuite": "Combined total",
+            "numberOfTestCases": 62,
+            "executionTimeSeconds": 154.578,
+            "totalTimeSeconds": 154.578,
+            "notes": "sum of measured suite runtimes"
+        }
+    ]
+}
