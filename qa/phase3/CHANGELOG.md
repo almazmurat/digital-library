@@ -4,6 +4,101 @@ All notable changes to QA Phase 3 artifacts are documented here.
 
 ---
 
+## [Phase 3 Part 3 + Final Synthesis] — 2026-05-13
+
+### Added
+
+Chaos campaign automation:
+
+- `chaos/scripts/run-phase3-chaos.ps1` — bounded chaos scenarios with fault/recovery phase collection and propagation probe
+
+Chaos raw results:
+
+- `chaos/results/phase3-chaos-summary-20260513-142323.csv`
+- `chaos/results/phase3-chaos-summary-20260513-142323.json`
+- `chaos/results/phase3-chaos-requests-20260513-142323.csv`
+- `chaos/results/phase3-chaos-requests-20260513-142323.json`
+
+Chaos metrics:
+
+- `metrics/phase3-chaos-scenarios.csv`
+- `metrics/phase3-chaos-scenarios.json`
+- `metrics/phase3-chaos-results.csv`
+- `metrics/phase3-chaos-results.json`
+- `metrics/phase3-chaos-metrics.csv`
+- `metrics/phase3-chaos-metrics.json`
+
+Observed-vs-expected package:
+
+- `metrics/phase3-observed-vs-expected.csv`
+- `metrics/phase3-observed-vs-expected.json`
+
+Chaos and synthesis charts:
+
+- `charts/phase3-chaos-availability-chart.csv`
+- `charts/phase3-chaos-recovery-chart.csv`
+- `charts/phase3-chaos-error-propagation-chart.csv`
+- `charts/phase3-chaos-chart-instructions.md`
+
+Part 3 and synthesis documentation:
+
+- `docs/phase3-chaos-test-plan.md`
+- `docs/phase3-chaos-execution-report.md`
+- `docs/phase3-chaos-metrics-report.md`
+- `docs/phase3-chaos-lessons-learned.md`
+- `docs/phase3-experimental-setup.md`
+- `docs/phase3-observed-vs-expected.md`
+- `docs/phase3-experimental-final-report.md`
+
+Evidence references and transparency notes:
+
+- `evidence/references/phase3-chaos-command-log.md`
+- `evidence/screenshots/README.md`
+
+Paper-ready publication assets:
+
+- `qa/paper-assets/README.md`
+- `qa/paper-assets/generate-paper-figures.py`
+- `qa/paper-assets/figures/figure-index.md`
+- `qa/paper-assets/figures/phase1/phase1_manual_vs_automated_inventory.png`
+- `qa/paper-assets/figures/phase2/phase2_automation_coverage_by_module.png`
+- `qa/paper-assets/figures/midterm/midterm_defects_vs_risk.png`
+- `qa/paper-assets/figures/phase3/phase3_performance_response_times.png`
+- `qa/paper-assets/figures/phase3/phase3_mutation_score_by_module.png`
+- `qa/paper-assets/figures/phase3/phase3_chaos_availability_by_scenario.png`
+- `qa/paper-assets/figures/summary/summary_quality_progression_across_phases.png`
+- `qa/paper-assets/figures/summary/summary_quality_progression_source.csv`
+
+Archive preparation:
+
+- `qa/archive-preparation-report.md`
+
+### Updated
+
+- `README.md` — now includes Part 3 and complete package status.
+- `TRACEABILITY.md` — now includes full chaos and synthesis traceability.
+- `docs/phase3-final-summary.md` — upgraded to integrated final summary.
+
+### Part 3 Result Summary
+
+| Metric                          |           Value |
+| ------------------------------- | --------------: |
+| Chaos run ID                    | 20260513-142323 |
+| Scenarios executed              |               4 |
+| Fault-phase availability        |          50.00% |
+| Recovery-phase availability     |         100.00% |
+| Mean MTTR proxy                 |      3391.02 ms |
+| Isolated propagation scenarios  |               4 |
+| Cascading propagation scenarios |               0 |
+
+### Synthesis Notes
+
+- All newly generated figures are based on factual measured CSV data.
+- Synthetic fault models are explicitly documented in Part 3 reports.
+- No fabricated screenshots were introduced.
+
+---
+
 ## [Phase 3 Part 2] — 2026-05-13
 
 ### Added
