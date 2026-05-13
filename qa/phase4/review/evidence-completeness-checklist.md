@@ -36,6 +36,14 @@ Date: 2026-05-13
 - [ ] CHANGELOG.md lists added artifacts.
 - [ ] Part summary report reflects completed scope.
 
+## Part 3 Addendum (Peer Review and Defense)
+
+- [ ] internal-peer-review.md is aligned with the latest full-paper-draft content.
+- [ ] revision-priority-matrix.md and revision-action-plan.md include all high-severity issues.
+- [ ] defense-preparation-questions.md and defense-answer-guidance.md cover all major evidence domains.
+- [ ] final-readiness-checklist.md status lines match current citation and figure readiness state.
+- [ ] phase4-part3-summary.md reflects both strengths and unresolved gaps without overstatement.
+
 ---
 
 KazUTB Digital Library - Phase 4 Part 1

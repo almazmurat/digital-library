@@ -24,14 +24,14 @@ Date: 2026-05-13
 
 ## Part 2 Draft Usage Status
 
-| Section Draft | Figure/Table Placeholders Used |
-| --- | --- |
-| abstract-draft.md | none |
-| introduction-draft.md | F1, F7 |
-| methodology-draft.md | F1, F7, T1 |
-| results-draft.md | F2, F3, F4, F5, F6, F7, T2 |
-| discussion-draft.md | F7, T3 |
-| full-paper-draft.md | F1-F7 and T1-T3 placeholders |
+| Section Draft         | Figure/Table Placeholders Used |
+| --------------------- | ------------------------------ |
+| abstract-draft.md     | none                           |
+| introduction-draft.md | F1, F7                         |
+| methodology-draft.md  | F1, F7, T1                     |
+| results-draft.md      | F2, F3, F4, F5, F6, F7, T2     |
+| discussion-draft.md   | F7, T3                         |
+| full-paper-draft.md   | F1-F7 and T1-T3 placeholders   |
 
 ## Missing Figures/Tables Identified
 

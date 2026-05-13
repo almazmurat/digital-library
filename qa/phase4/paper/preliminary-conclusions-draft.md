@@ -18,4 +18,5 @@
 The strongest immediate implication is that multi-layer QA evidence produces better decision quality than relying only on automation pass rates or coverage presence metrics.
 
 ---
+
 KazUTB Digital Library - Phase 4 Part 2

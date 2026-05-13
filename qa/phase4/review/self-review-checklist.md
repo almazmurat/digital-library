@@ -37,6 +37,14 @@ Use this checklist before submitting each major paper draft revision.
 - [ ] section-map and results-evidence-map remain aligned with draft text.
 - [ ] citation-needed-tracker has no ignored required citation area.
 
+## Part 3 Addendum (Peer-Review Driven)
+
+- [ ] Major issues from major-issues-review.md are either fixed or explicitly deferred with rationale.
+- [ ] Minor wording and transition issues from minor-issues-review.md are tracked in revision-action-plan.md.
+- [ ] Conclusion layers are semantically separated (preliminary vs insight vs final).
+- [ ] No claim implies production-scale certainty from bounded synthetic evidence.
+- [ ] Defense-preparation question themes are answerable using current draft wording.
+
 ---
 
 KazUTB Digital Library - Phase 4 Part 1

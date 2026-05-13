@@ -34,6 +34,14 @@ Date: 2026-05-13
 - [ ] Citation style is consistent and complete.
 - [ ] Language remains precise, formal, and concise.
 
+## Part 3 Addendum (Review Rigor)
+
+- [ ] Contribution novelty is explicitly differentiated from standard QA retrospective reporting.
+- [ ] Threats-to-validity discussion follows a formal empirical framing approach.
+- [ ] Figure captions include claim-level takeaway statements and scope caveats.
+- [ ] Course-defense readiness and publication-style readiness are explicitly distinguished.
+- [ ] Citation placeholders are fully replaced in all literature-dependent sections before final submission.
+
 ---
 
 KazUTB Digital Library - Phase 4 Part 1

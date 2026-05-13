@@ -34,6 +34,7 @@ Empirical software engineering case-study standards for validity and reproducibi
 ## Methodology
 
 The methodology follows an evolving empirical pipeline:
+
 1. phase1 established risk-ranked scope and baseline evidence rules,
 2. phase2 operationalized automation and quality-gate governance,
 3. midterm reassessed assumptions with observed metrics,
@@ -93,9 +94,11 @@ Future work should complete external citation integration, refine final prose fo
 ## References
 
 Internal evidence inventory:
+
 - qa/phase4/references/source-inventory.md
 
 External references:
+
 - [citation needed]
 - [external reference required]
 
@@ -107,4 +110,5 @@ External references:
 4. Chaos evidence references: qa/phase3/evidence/references/phase3-chaos-command-log.md
 
 ---
+
 KazUTB Digital Library - Phase 4 Part 2

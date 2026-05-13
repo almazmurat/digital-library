@@ -27,18 +27,18 @@ Date: 2026-05-13
 
 ## Part 2 Completion Status
 
-| Section | Draft File | Status |
-| --- | --- | --- |
-| Abstract | qa/phase4/paper/abstract-draft.md | Draft complete |
-| Introduction | qa/phase4/paper/introduction-draft.md | Draft complete |
-| Literature Review | qa/phase4/paper/literature-review-draft.md | Draft complete (citations pending) |
-| Methodology | qa/phase4/paper/methodology-draft.md | Draft complete |
-| Results | qa/phase4/paper/results-draft.md | Draft complete |
-| Discussion | qa/phase4/paper/discussion-draft.md | Draft complete |
-| Preliminary Conclusions | qa/phase4/paper/preliminary-conclusions-draft.md | Draft complete |
-| Final Insight | qa/phase4/paper/final-insight-draft.md | Draft complete |
-| Final Conclusion | qa/phase4/paper/final-conclusion-draft.md | Draft complete |
-| Full Assembly | qa/phase4/paper/full-paper-draft.md | Draft complete |
+| Section                 | Draft File                                       | Status                             |
+| ----------------------- | ------------------------------------------------ | ---------------------------------- |
+| Abstract                | qa/phase4/paper/abstract-draft.md                | Draft complete                     |
+| Introduction            | qa/phase4/paper/introduction-draft.md            | Draft complete                     |
+| Literature Review       | qa/phase4/paper/literature-review-draft.md       | Draft complete (citations pending) |
+| Methodology             | qa/phase4/paper/methodology-draft.md             | Draft complete                     |
+| Results                 | qa/phase4/paper/results-draft.md                 | Draft complete                     |
+| Discussion              | qa/phase4/paper/discussion-draft.md              | Draft complete                     |
+| Preliminary Conclusions | qa/phase4/paper/preliminary-conclusions-draft.md | Draft complete                     |
+| Final Insight           | qa/phase4/paper/final-insight-draft.md           | Draft complete                     |
+| Final Conclusion        | qa/phase4/paper/final-conclusion-draft.md        | Draft complete                     |
+| Full Assembly           | qa/phase4/paper/full-paper-draft.md              | Draft complete                     |
 
 ---
 

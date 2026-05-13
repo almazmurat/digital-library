@@ -3,6 +3,7 @@
 ## 1. End-State Summary
 
 This paper draft documents an evidence-traceable QA evolution process for the KazUTB Digital Library repository across phase1, phase2, midterm, and phase3 artifacts. The case demonstrates that:
+
 1. risk-first planning can remain useful when continuously reassessed,
 2. automation and quality gates are necessary but not sufficient indicators,
 3. experimental layers (performance, mutation, chaos) materially improve confidence calibration.
@@ -22,10 +23,12 @@ This paper draft documents an evidence-traceable QA evolution process for the Ka
 ## 4. Future Work
 
 Priority future work should include:
+
 1. completion of full citation integration and literature grounding,
 2. expanded production-like performance and resilience validation,
 3. deeper assertion-strengthening in areas highlighted by surviving mutants,
 4. continued refinement of risk-to-evidence calibration across release cycles.
 
 ---
+
 KazUTB Digital Library - Phase 4 Part 2

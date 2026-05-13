@@ -9,4 +9,5 @@ Findings indicate measurable growth in QA process maturity, while also showing p
 The study is intentionally bounded by local/synthetic execution contexts and requires external literature integration for final scholarly positioning [citation needed] [external reference required].
 
 ---
+
 KazUTB Digital Library - Phase 4 Part 2
