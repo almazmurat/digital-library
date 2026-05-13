@@ -1,4 +1,4 @@
-# Phase 3 — Final Integrated Summary
+# experimental evaluation layer (Phase 3) — Final Integrated Summary
 
 Project: KazUTB Digital Library
 Date: 2026-05-13
@@ -8,7 +8,7 @@ Prepared by: QA Automation (GitHub Copilot Agent)
 
 ## Executive Outcome
 
-Phase 3 is complete across all required parts:
+experimental evaluation layer (Phase 3) is complete across all required parts:
 
 1. Part 1 — Performance testing: executed and analyzed.
 2. Part 2 — Mutation testing: executed and scored.
@@ -53,9 +53,9 @@ The system shows strong recovery behavior under bounded chaos and good mutation 
 
 ---
 
-## Assignment Readiness
+## QA Layer Readiness
 
-### Ready for Assignment 4
+### Ready for research synthesis layer
 
 1. Performance, mutation, and chaos datasets are complete and reproducible.
 2. Observed-vs-expected synthesis is documented and traceable.
@@ -87,5 +87,4 @@ The system shows strong recovery behavior under bounded chaos and good mutation 
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Final
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Final

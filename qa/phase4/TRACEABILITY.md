@@ -1,8 +1,8 @@
-# Phase 4 Part 1 - Traceability Matrix
+# research synthesis layer (Phase 4) Part 1 - Traceability Matrix
 
 Date: 2026-05-13
 
-| Phase 4 Requirement                | Artifact                                                                                                         | Evidence Source(s)                                                                                                                                                                           |
+| research synthesis layer (Phase 4) Requirement                | Artifact                                                                                                         | Evidence Source(s)                                                                                                                                                                           |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Build paper structure scaffold     | paper/paper-outline.md                                                                                           | qa/phase1/docs/phase1-final-summary.md; qa/phase2/docs/phase2-final-summary.md; qa/midterm/docs/midterm-final-report.md; qa/phase3/docs/phase3-final-summary.md                              |
 | Map previous work into sections    | paper/section-map.md                                                                                             | qa/phase1/TRACEABILITY.md; qa/phase2/TRACEABILITY.md; qa/midterm/TRACEABILITY.md; qa/phase3/TRACEABILITY.md                                                                                  |
@@ -14,8 +14,8 @@ Date: 2026-05-13
 | Reference and citation preparation | references/source-inventory.md; references/citation-needed-tracker.md                                            | all prior phase docs/metrics plus citation-needed placeholders                                                                                                                               |
 | Writing workflow planning          | paper/paper-writing-plan.md                                                                                      | section-map and evidence-map artifacts                                                                                                                                                       |
 | Review and quality preparation     | review/self-review-checklist.md; review/academic-quality-checklist.md; review/evidence-completeness-checklist.md | claims matrix, figures map, evidence maps                                                                                                                                                    |
-| Part-level synthesis summary       | reports/phase4-part1-summary.md                                                                                  | all Phase 4 Part 1 artifacts                                                                                                                                                                 |
+| Part-level synthesis summary       | reports/phase4-part1-summary.md                                                                                  | all research synthesis layer (Phase 4) Part 1 artifacts                                                                                                                                                                 |
 
 ---
 
-KazUTB Digital Library - QA Phase 4
+KazUTB Digital Library - QA research synthesis layer (Phase 4)

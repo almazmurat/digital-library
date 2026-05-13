@@ -1,10 +1,10 @@
-# CHANGELOG — QA Phase 3
+# CHANGELOG — QA experimental evaluation layer (Phase 3)
 
-All notable changes to QA Phase 3 artifacts are documented here.
+All notable changes to QA experimental evaluation layer (Phase 3) artifacts are documented here.
 
 ---
 
-## [Phase 3 Part 3 + Final Synthesis] — 2026-05-13
+## [experimental evaluation layer (Phase 3) Part 3 + Final Synthesis] — 2026-05-13
 
 ### Added
 
@@ -99,7 +99,7 @@ Archive preparation:
 
 ---
 
-## [Phase 3 Part 2] — 2026-05-13
+## [experimental evaluation layer (Phase 3) Part 2] — 2026-05-13
 
 ### Added
 
@@ -171,7 +171,7 @@ Key gap class:
 
 ---
 
-## [Phase 3 Part 1] — 2026-05-13
+## [experimental evaluation layer (Phase 3) Part 1] — 2026-05-13
 
 ### Added
 
@@ -273,9 +273,9 @@ Key gap class:
 
 ## Previous Phases
 
-- Phase 2 Part 3 (commit ea80e55) — Integration and API functional testing complete
-- Phase 2 Midterm (commit 87ac5bb) — Midterm QA report complete
-- Phase 1 — Unit and feature test baseline
+- automation and CI governance layer (Phase 2) Part 3 (commit ea80e55) — Integration and API functional testing complete
+- automation and CI governance layer (Phase 2) Intermediate Empirical Review (commit 87ac5bb) — Intermediate Empirical Review QA report complete
+- baseline QA layer (Phase 1) — Unit and feature test baseline
 
 ---
 

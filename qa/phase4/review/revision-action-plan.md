@@ -25,7 +25,7 @@ Higher readability and lower reviewer ambiguity risk.
 ## 3. Optional Polish (Time-Permitting)
 
 1. Add concise defense metric-script appendix for rapid oral recall (R-09).
-2. Add compact dual-readiness table (course vs publication-style) in summary/checklist docs (R-10).
+2. Add compact dual-readiness table (program vs publication-style) in summary/checklist docs (R-10).
 
 Expected outcome:
 Improved defense fluency and clearer expectation management.
@@ -45,4 +45,5 @@ Improved defense fluency and clearer expectation management.
 4. Defense polish and final checklist closure.
 
 ---
-KazUTB Digital Library - Phase 4 Part 3
+
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

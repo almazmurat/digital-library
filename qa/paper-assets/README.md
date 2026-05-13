@@ -4,10 +4,10 @@ This folder contains publication-ready assets for the final research paper.
 
 ## Structure
 
-- `figures/phase1/` — Phase 1 charts
-- `figures/phase2/` — Phase 2 charts
-- `figures/midterm/` — Midterm charts
-- `figures/phase3/` — Phase 3 charts
+- `figures/phase1/` — baseline QA layer (Phase 1) charts
+- `figures/phase2/` — automation and CI governance layer (Phase 2) charts
+- `figures/midterm/` — Intermediate Empirical Review charts
+- `figures/phase3/` — experimental evaluation layer (Phase 3) charts
 - `figures/summary/` — cross-phase summary charts
 
 ## Generation

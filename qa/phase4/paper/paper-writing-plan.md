@@ -42,4 +42,4 @@ Date: 2026-05-13
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 1

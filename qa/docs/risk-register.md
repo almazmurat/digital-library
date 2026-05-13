@@ -1,11 +1,11 @@
 # Risk Register — KazUTB Digital Library Platform
 
-> **Version:** 1.0  
-> **Date:** 2026-05-13  
-> **Project:** KazUTB Digital Library (`kazutb-dev/digital-library-kazutb`)  
-> **Owner:** (your name)  
-> **Review cycle:** Weekly during Assignments 1–3  
-> **Scale:** Business Impact 1–5 (5=critical), Failure Probability 1–5 (5=almost certain)  
+> **Version:** 1.0
+> **Date:** 2026-05-13
+> **Project:** KazUTB Digital Library (`kazutb-dev/digital-library-kazutb`)
+> **Owner:** (your name)
+> **Review cycle:** Weekly during baseline through experimental QA program layers
+> **Scale:** Business Impact 1–5 (5=critical), Failure Probability 1–5 (5=almost certain)
 > **Risk Score = Impact × Probability**
 
 ---

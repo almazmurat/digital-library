@@ -10,7 +10,7 @@ Digital library systems in university environments combine public information ac
 4. integration boundary endpoints,
 5. circulation and reservation behaviors that require state consistency.
 
-From a QA perspective, this creates a practical risk profile where defects are not uniformly distributed. Repository evidence from Phase 1 established that high-priority risks clustered around authentication/session behavior, catalog correctness, circulation reliability, API authorization, shortlist persistence, and coverage gaps (qa/phase1/docs/phase1-risk-register.md).
+From a QA perspective, this creates a practical risk profile where defects are not uniformly distributed. Repository evidence from baseline QA layer (Phase 1) established that high-priority risks clustered around authentication/session behavior, catalog correctness, circulation reliability, API authorization, shortlist persistence, and coverage gaps (qa/phase1/docs/phase1-risk-register.md).
 
 ## 2. Why Risk-Based Multi-Layer QA Matters in This Case
 
@@ -21,16 +21,16 @@ The repository evidence indicates that a single-layer test strategy would be ins
 3. workflow semantics required integration/feature coverage,
 4. resilience and sensitivity questions required mutation and chaos-style experiments.
 
-This direction was not hypothetical; it emerged empirically as Phase 2 quality-gate outcomes showed active failures despite measurable automation presence (qa/phase2/metrics/phase2-quality-gate-results.csv; qa/phase2/docs/phase2-metrics-report.md).
+This direction was not hypothetical; it emerged empirically as automation and CI governance layer (Phase 2) quality-gate outcomes showed active failures despite measurable automation presence (qa/phase2/metrics/phase2-quality-gate-results.csv; qa/phase2/docs/phase2-metrics-report.md).
 
 ## 3. Case-Study Framing
 
 This paper treats the repository as an evolving empirical QA case study rather than a controlled lab benchmark. The methodology and results are grounded in sequential project layers:
 
-1. Assignment 1 (phase1): risk baseline and testing strategy,
-2. Assignment 2 (phase2): automation expansion and quality-gate governance,
-3. Midterm layer: reassessment and empirical correction,
-4. Assignment 3 (phase3): performance, mutation, and chaos evidence.
+1. baseline risk-based QA strategy (Phase 1): risk baseline and testing strategy,
+2. automation and quality governance layer (Phase 2): automation expansion and quality-gate governance,
+3. Intermediate Empirical Review layer: reassessment and empirical correction,
+4. experimental evaluation layer (Phase 3): performance, mutation, and chaos evidence.
 
 The case-study framing is appropriate because the key observations were produced through repository-native artifacts, execution logs, metrics files, and traceability documents across phases (qa/phase1/TRACEABILITY.md; qa/phase2/TRACEABILITY.md; qa/midterm/TRACEABILITY.md; qa/phase3/TRACEABILITY.md).
 
@@ -59,4 +59,4 @@ Formal positioning against broader software QA literature is required in subsequ
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 2
+KazUTB Digital Library - Research Synthesis Layer (Phase 4) Part 2

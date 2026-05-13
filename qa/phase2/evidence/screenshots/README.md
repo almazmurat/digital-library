@@ -1,4 +1,4 @@
-# Phase 2 Screenshots
+# automation and CI governance layer (Phase 2) Screenshots
 
 No new screenshots were generated in this Part 3 update.
 

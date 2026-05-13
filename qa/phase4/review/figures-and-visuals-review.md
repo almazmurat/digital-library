@@ -28,6 +28,7 @@ Current status:
 Figure usage is mapped, but final caption text is still mostly conceptual.
 
 Caption improvements needed:
+
 1. Each caption should include one main takeaway sentence.
 2. Captions should explicitly state whether metric context is bounded/local.
 3. Captions should avoid normative wording unless supported by explicit comparisons.
@@ -56,4 +57,5 @@ Caption improvements needed:
 3. T2 compact metric table instead of full figure saturation.
 
 ---
-KazUTB Digital Library - Phase 4 Part 3
+
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

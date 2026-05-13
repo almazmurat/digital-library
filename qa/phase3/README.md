@@ -1,4 +1,4 @@
-# QA Phase 3 — Assignment 3 Final Package
+# QA experimental evaluation layer (Phase 3) — experimental evaluation layer Final Package
 
 Project: KazUTB Digital Library
 Status: Complete (Part 1, Part 2, Part 3)
@@ -8,7 +8,7 @@ Date: 2026-05-13
 
 ## Overview
 
-This directory now contains the complete Phase 3 package:
+This directory now contains the complete experimental evaluation layer (Phase 3) package:
 
 1. Part 1: Performance testing baseline and bottleneck analysis.
 2. Part 2: Mutation campaign and mutation score analysis.
@@ -158,5 +158,4 @@ pwsh -File "chaos/scripts/run-phase3-chaos.ps1"
 
 ---
 
-KazUTB Digital Library — QA Phase 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3)

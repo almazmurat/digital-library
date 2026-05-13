@@ -4,10 +4,10 @@ Date: 2026-05-13
 
 ## Source Coverage
 
-- [ ] Phase 1 baseline evidence is represented.
-- [ ] Phase 2 automation and gate evidence is represented.
-- [ ] Midterm reassessment evidence is represented.
-- [ ] Phase 3 performance, mutation, and chaos evidence is represented.
+- [ ] baseline QA layer (Phase 1) baseline evidence is represented.
+- [ ] automation and CI governance layer (Phase 2) automation and gate evidence is represented.
+- [ ] Intermediate Empirical Review reassessment evidence is represented.
+- [ ] experimental evaluation layer (Phase 3) performance, mutation, and chaos evidence is represented.
 - [ ] Paper-assets figure inventory is represented.
 
 ## Claim Coverage
@@ -32,7 +32,7 @@ Date: 2026-05-13
 
 ## Traceability and Governance
 
-- [ ] TRACEABILITY.md maps each Phase 4 Part 1 requirement.
+- [ ] TRACEABILITY.md maps each research synthesis layer (Phase 4) Part 1 requirement.
 - [ ] CHANGELOG.md lists added artifacts.
 - [ ] Part summary report reflects completed scope.
 
@@ -46,4 +46,4 @@ Date: 2026-05-13
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 1

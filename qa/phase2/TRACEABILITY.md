@@ -1,6 +1,6 @@
-# Phase 2 Traceability Matrix
+# automation and CI governance layer (Phase 2) Traceability Matrix
 
-| Assignment Requirement | Artifact(s) | Evidence |
+| QA Layer Requirement | Artifact(s) | Evidence |
 | --- | --- | --- |
 | Quality gate definition (assignment and engineering format) | docs/phase2-quality-gates.md; metrics/phase2-quality-gate-results.csv; metrics/phase2-quality-gate-results.json | evidence/logs/phase2-quality-gates.log |
 | CI/CD quality-gate integration | .github/workflows/ci.yml; ci/phase2-ci-snippet.yml; ci/phase2-quality-gates.yml | evidence/logs/phase2-ci-local-validation.log |
@@ -15,6 +15,6 @@
 
 ## Work wave distinction
 
-- Earlier Phase 2 wave: implemented baseline automation and initial evidence collection.
+- Earlier automation and CI governance layer (Phase 2) wave: implemented baseline automation and initial evidence collection.
 - Part 2 wave: quality-gate governance, CI integration detail, and operational failure procedures.
 - Part 3 wave: metrics formalization, interpretation layer, chart-ready datasets, and submission checklist completion.

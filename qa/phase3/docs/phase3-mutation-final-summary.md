@@ -1,7 +1,7 @@
-# Phase 3 Part 2 — Mutation Testing Final Summary
+# experimental evaluation layer (Phase 3) Part 2 — Mutation Testing Final Summary
 
-Project: KazUTB Digital Library  
-Date: 2026-05-13  
+Project: KazUTB Digital Library
+Date: 2026-05-13
 Run ID: 20260513-140552
 
 ## Executive Summary
@@ -50,9 +50,9 @@ The strongest areas are boundary and validation logic. The weakest area is servi
 2. Add dedicated context-mapping regression tests.
 3. Re-run this bounded campaign after test improvements to target >90% without survivors in context class.
 
-## Phase 3 Part 3 Recommendation
+## experimental evaluation layer (Phase 3) Part 3 Recommendation
 
-Phase 3 Part 3 should focus on mutation-driven hardening:
+experimental evaluation layer (Phase 3) Part 3 should focus on mutation-driven hardening:
 
 1. Implement P1 mutation recommendations.
 2. Expand mutant set by 6-10 additional high-value service-level mutants.
@@ -68,4 +68,4 @@ Phase 3 Part 3 should focus on mutation-driven hardening:
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 2
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 2

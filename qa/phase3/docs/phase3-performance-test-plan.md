@@ -1,12 +1,12 @@
-# Phase 3 Part 1 — Performance Testing: Test Plan
+# experimental evaluation layer (Phase 3) Part 1 — Performance Testing: Test Plan
 
-**Project:** KazUTB Digital Library  
-**Phase:** 3 — Performance & Scalability  
-**Part:** 1 — Performance Testing  
-**Document:** Test Plan  
-**Date:** 2026-05-13  
-**Environment:** Local Nginx/PHP 8.4 on Windows 11 (developer workstation)  
-**Test Tool:** PowerShell `Invoke-WebRequest` (k6 not available)  
+**Project:** KazUTB Digital Library
+**Phase:** 3 — Performance & Scalability
+**Part:** 1 — Performance Testing
+**Document:** Test Plan
+**Date:** 2026-05-13
+**Environment:** Local Nginx/PHP 8.4 on Windows 11 (developer workstation)
+**Test Tool:** PowerShell `Invoke-WebRequest` (k6 not available)
 **Test Model:** Bounded synthetic — 1 VU, sequential requests, explicit disclosure
 
 ---
@@ -15,7 +15,7 @@
 
 1. Establish baseline response-time and throughput metrics for the three priority modules under defined load scenarios.
 2. Identify endpoints failing the configured per-scenario latency thresholds.
-3. Produce evidence-backed bottleneck catalogue for Phase 3 Part 2 optimisation planning.
+3. Produce evidence-backed bottleneck catalogue for experimental evaluation layer (Phase 3) Part 2 optimisation planning.
 4. Document methodology limitations transparently to preserve academic integrity.
 
 ---
@@ -33,8 +33,8 @@
 
 ### Out of Scope
 
-- Authenticated API flows (`/api/login` — confirmed timeout from Phase 2)
-- News module (`/news` — confirmed HTTP 500 from Phase 2)
+- Authenticated API flows (`/api/login` — confirmed timeout from automation and CI governance layer (Phase 2))
+- News module (`/news` — confirmed HTTP 500 from automation and CI governance layer (Phase 2))
 - POST/PUT/DELETE operations
 - WebSocket or queue-based operations
 - Concurrent/multi-VU load (k6 not available in this environment)
@@ -109,4 +109,4 @@ S08 is measured as middleware overhead; FAIL indicates overhead exceeds 2 000ms 
 
 ---
 
-_KazUTB Digital Library — QA Phase 3 Part 1 — 2026-05-13_
+_KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 1 — 2026-05-13_

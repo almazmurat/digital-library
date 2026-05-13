@@ -1,4 +1,4 @@
-# Midterm System Description
+# Intermediate Empirical Review System Description
 
 ## Architecture
 

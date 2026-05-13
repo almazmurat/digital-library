@@ -1,4 +1,4 @@
-# Phase 2 Automation Coverage Report
+# automation and CI governance layer (Phase 2) Automation Coverage Report
 
 Source references:
 

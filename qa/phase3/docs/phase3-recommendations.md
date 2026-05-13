@@ -1,9 +1,9 @@
-# Phase 3 Part 1 — Performance Testing: Recommendations
+# experimental evaluation layer (Phase 3) Part 1 — Performance Testing: Recommendations
 
-**Project:** KazUTB Digital Library  
-**Phase:** 3 Part 1 — Performance Testing  
-**Document:** Recommendations  
-**Date:** 2026-05-13  
+**Project:** KazUTB Digital Library
+**Phase:** 3 Part 1 — Performance Testing
+**Document:** Recommendations
+**Date:** 2026-05-13
 **Based on:** 8 bottlenecks identified in phase3-bottleneck-analysis.md
 
 ---
@@ -26,7 +26,7 @@ opcache.jit_buffer_size=100M
 opcache.jit=1255
 ```
 
-**Expected outcome:** 30–60% latency reduction on warm path (industry benchmark for Laravel + OPcache).  
+**Expected outcome:** 30–60% latency reduction on warm path (industry benchmark for Laravel + OPcache).
 **Test validation:** Re-run S01 after OPcache enable; compare avg_ms.
 
 ---
@@ -44,7 +44,7 @@ return Cache::remember('catalog:subjects', 600, fn() => Subject::active()->get()
 return Cache::remember('external:resources', 300, fn() => $this->fetchResources());
 ```
 
-**Expected outcome:** Near-zero latency on cache hits; reduces DB load by 90%+ on repeated identical requests.  
+**Expected outcome:** Near-zero latency on cache hits; reduces DB load by 90%+ on repeated identical requests.
 **TTL guidance:** landing=5min, subjects=10min, external-resources=5min.
 
 ---
@@ -176,7 +176,7 @@ $table->index(['is_active', 'name']);
 
 ### R-010: Full Concurrent Load Test on Linux Staging (addresses BN-001, BN-004)
 
-**Rationale:** All Phase 3 Part 1 results were collected on a Windows dev workstation with 1-VU sequential tooling. Actual production capacity assessment requires k6 at 50–200 VU on Linux staging.
+**Rationale:** All experimental evaluation layer (Phase 3) Part 1 results were collected on a Windows dev workstation with 1-VU sequential tooling. Actual production capacity assessment requires k6 at 50–200 VU on Linux staging.
 
 **Steps:**
 
@@ -204,4 +204,4 @@ $table->index(['is_active', 'name']);
 
 ---
 
-_KazUTB Digital Library — QA Phase 3 Part 1 — 2026-05-13_
+_KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 1 — 2026-05-13_

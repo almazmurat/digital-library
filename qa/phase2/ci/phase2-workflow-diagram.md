@@ -1,4 +1,4 @@
-# Phase 2 Workflow Diagram
+# automation and CI governance layer (Phase 2) Workflow Diagram
 
 ## Text Pipeline View
 
@@ -7,7 +7,7 @@ Trigger (push to main / pull_request to main / workflow_dispatch)
   -> backend-quality job (Composer QA + PHPUnit + coverage threshold + backend artifacts)
   -> browser-smoke job (frontend build + Playwright smoke + browser artifacts)
   -> phase2-quality-gates job
-       -> validate required Phase 2 artifacts
+       -> validate required automation and CI governance layer (Phase 2) artifacts
        -> validate quality-gate CSV schema header
        -> evaluate current_enforced fail-level gates only
        -> upload phase2-qa-artifacts

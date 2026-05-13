@@ -1,4 +1,4 @@
-# Phase 3 Chaos Command Log
+# experimental evaluation layer (Phase 3) Chaos Command Log
 
 Date: 2026-05-13
 
@@ -36,4 +36,4 @@ Date: 2026-05-13
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 3
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 3

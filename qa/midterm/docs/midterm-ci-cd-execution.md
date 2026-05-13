@@ -1,4 +1,4 @@
-# Midterm CI/CD Execution
+# Intermediate Empirical Review CI/CD Execution
 
 ## Pipeline used
 
@@ -14,7 +14,7 @@ Repository workflow: .github/workflows/ci.yml (GitHub Actions).
 - Evaluate fail-level quality gates for current_enforced rows.
 - Upload artifacts.
 
-## Required Midterm interpretation
+## Required Intermediate Empirical Review interpretation
 
 - Automation is integrated in CI/CD and not manual-only.
 - Pass/fail and artifact generation are wired into the pipeline.

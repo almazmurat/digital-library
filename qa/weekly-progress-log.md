@@ -1,8 +1,8 @@
 # Weekly QA Progress Log — KazUTB Digital Library Platform
 
-> **Project:** `kazutb-dev/digital-library-kazutb`  
-> **Owner:** (your name)  
-> **Start Date:** 2026-05-13  
+> **Project:** `kazutb-dev/digital-library-kazutb`
+> **Owner:** (your name)
+> **Start Date:** 2026-05-13
 > **Format:** One entry per week with tasks, results, blockers, and metric snapshots
 
 ---
@@ -11,7 +11,7 @@
 
 ```
 ### Week N — Date Range
-**Assignment:** A1/A2/A3/Paper
+**QA Layer:** A1/A2/A3/Paper
 **Focus:** [main goal this week]
 
 #### Tasks Completed
@@ -50,7 +50,7 @@
 
 ## Week 2 — 2026-05-13 to 2026-05-19
 
-**Assignment:** A1 (Risk-Based QA)  
+**QA Layer:** A1 (Risk-Based QA)
 **Focus:** Environment setup, baseline capture, risk register, manual test cases
 
 ### Tasks Completed
@@ -111,7 +111,7 @@
 
 ## Week 3 — [Fill in dates]
 
-**Assignment:** A1 (continuing) / A2 prep  
+**QA Layer:** A1 (continuing) / A2 prep
 **Focus:** Manual test case execution, gap filling, automation prep
 
 ### Tasks Completed
@@ -133,7 +133,7 @@
 
 ## Week 4 — [Fill in dates]
 
-**Assignment:** A2 (Automation Baseline)  
+**QA Layer:** A2 (Automation Baseline)
 **Focus:** Factory creation, new automated tests, CI gate updates
 
 ### Tasks Planned
@@ -148,7 +148,7 @@
 
 ## Week 5 — [Fill in dates]
 
-**Assignment:** Midterm Checkpoint  
+**QA Layer:** Intermediate Empirical Review Checkpoint
 **Focus:** Metrics review, research paper methodology section
 
 ### Tasks Planned
@@ -162,7 +162,7 @@
 
 ## Week 6 — [Fill in dates]
 
-**Assignment:** A3 prep + research paper  
+**QA Layer:** A3 prep + research paper
 **Focus:** k6 setup, performance baseline, experimental design
 
 ### Tasks Planned
@@ -175,7 +175,7 @@
 
 ## Week 7 — [Fill in dates]
 
-**Assignment:** A3 (Performance & Experimental) + Final Paper  
+**QA Layer:** A3 (Performance & Experimental) + Final Paper
 **Focus:** Load experiments, charts, research paper finalization
 
 ### Tasks Planned
@@ -189,11 +189,11 @@
 
 ## Summary Table (Updated Weekly)
 
-| Week | Assignment | Test Files | Coverage % | Defects Found | CI Pass Rate | Notes |
+| Week | QA Layer | Test Files | Coverage % | Defects Found | CI Pass Rate | Notes |
 |------|-----------|-----------|-----------|--------------|-------------|-------|
 | W2 | A1 | 112 | ~30% (est) | TBD | TBD | Initial audit |
 | W3 | A1 | | | | | |
 | W4 | A2 | | | | | |
-| W5 | Midterm | | | | | |
+| W5 | Intermediate Empirical Review | | | | | |
 | W6 | A3 prep | | | | | |
 | W7 | A3 + Paper | | | | | |

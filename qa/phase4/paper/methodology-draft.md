@@ -2,7 +2,7 @@
 
 ## 1. Methodological Framing
 
-This study uses an evolving empirical QA case-study design over sequential assignment layers in a single repository. The intent is not to claim universal benchmark performance, but to analyze how structured QA evidence matured across four stages:
+This study uses an evolving empirical QA case-study design over sequential QA program layers in a single repository. The intent is not to claim universal benchmark performance, but to analyze how structured QA evidence matured across four stages:
 
 1. baseline risk and strategy definition,
 2. automation and governance formalization,
@@ -11,7 +11,7 @@ This study uses an evolving empirical QA case-study design over sequential assig
 
 The pipeline is grounded in repository artifacts and explicit traceability records (qa/phase1/TRACEABILITY.md; qa/phase2/TRACEABILITY.md; qa/midterm/TRACEABILITY.md; qa/phase3/TRACEABILITY.md).
 
-## 2. Assignment 1 (phase1): Risk Strategy Foundation
+## 2. baseline risk-based QA strategy (Phase 1): Risk Strategy Foundation
 
 Phase1 defined the initial risk model and testing strategy, including module-level risk priorities and test-level intent (qa/phase1/docs/phase1-risk-register.md; qa/phase1/docs/phase1-test-strategy.md).
 
@@ -23,7 +23,7 @@ Methodological contribution of phase1:
 
 This phase created the decision baseline that later phases could validate, adjust, or challenge.
 
-## 3. Assignment 2 (phase2): Automation and Quality-Gate Governance
+## 3. automation and quality governance layer (Phase 2): Automation and Quality-Gate Governance
 
 Phase2 operationalized the strategy by adding measurable automation coverage, runtime metrics, defects-vs-risk analysis, and quality-gate enforcement artifacts (qa/phase2/docs/phase2-metrics-report.md; qa/phase2/metrics/phase2-automation-coverage.csv; qa/phase2/metrics/phase2-quality-gate-results.csv).
 
@@ -35,11 +35,11 @@ Methodological role of phase2:
 
 This stage provided a necessary control layer, but still left unresolved blockers and depth gaps, which became inputs for reassessment.
 
-## 4. Midterm Layer: Empirical Reassessment
+## 4. Intermediate Empirical Review Layer: Empirical Reassessment
 
-The midterm layer re-scored risk assumptions and examined where phase2 evidence supported or contradicted prior expectations (qa/midterm/docs/midterm-methodology.md; qa/midterm/docs/midterm-final-report.md; qa/midterm/metrics/midterm-required-metrics.csv).
+The Intermediate Empirical Review layer re-scored risk assumptions and examined where phase2 evidence supported or contradicted prior expectations (qa/midterm/docs/midterm-methodology.md; qa/midterm/docs/midterm-final-report.md; qa/midterm/metrics/midterm-required-metrics.csv).
 
-Methodological role of midterm:
+Methodological role of Intermediate Empirical Review:
 
 1. convert static planning assumptions into evidence-informed updates,
 2. identify weak spots such as insufficient repeated-run stability evidence,
@@ -47,7 +47,7 @@ Methodological role of midterm:
 
 This reassessment stage is critical because it prevents linear overconfidence and preserves adaptive methodological behavior.
 
-## 5. Assignment 3 (phase3): Experimental Evidence Layer
+## 5. experimental evaluation layer (Phase 3): Experimental Evidence Layer
 
 Phase3 introduced three complementary experimental lenses:
 
@@ -82,7 +82,7 @@ Evidence collection followed artifact discipline:
 Core metrics families included:
 
 1. coverage/governance metrics (phase2),
-2. reassessment metrics (midterm),
+2. reassessment metrics (Intermediate Empirical Review),
 3. experimental metrics (phase3 performance/mutation/chaos).
 
 Mapped figure assets are documented in qa/paper-assets/figures/figure-index.md and qa/phase4/paper/figures-and-tables-map.md.
@@ -109,4 +109,4 @@ Formal linkage to external methodological standards requires literature support 
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 2
+KazUTB Digital Library - Research Synthesis Layer (Phase 4) Part 2

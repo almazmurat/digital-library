@@ -17,6 +17,7 @@ Citation placeholders reduce perceived scholarly completeness in literature-depe
 ## 2. Redundancy Assessment
 
 Observed redundancy:
+
 1. Repeated emphasis on bounded synthetic contexts across several sections.
 2. Repeated phrasing around "confidence" and "maturity" in conclusion-related sections.
 
@@ -29,16 +30,19 @@ Current state:
 Overclaiming is mostly controlled, but a few statements could be interpreted too broadly without scope qualifiers.
 
 High-risk areas:
+
 1. Final insight/conclusion phrasing around general applicability.
 2. Composite-indicator interpretation if not explicitly bounded.
 
 ## 4. Vague Section Detection
 
 Most concrete:
+
 1. Methodology draft.
 2. Results draft.
 
 Relatively vague:
+
 1. Literature review where references are pending.
 2. Some concluding statements where contribution boundaries could be sharper.
 
@@ -69,8 +73,9 @@ Relatively vague:
 
 ## 9. Defense-Readiness Writing Verdict
 
-1. Course defense readiness: strong with minor revision.
+1. program defense readiness: strong with minor revision.
 2. Publication-style readability: moderate; requires citation and transition polish.
 
 ---
-KazUTB Digital Library - Phase 4 Part 3
+
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

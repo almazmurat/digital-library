@@ -13,7 +13,7 @@ Prepare evidence-backed discussion threads without overstating claims.
 | DI-01      | Risk-based prioritization was directionally correct across phases                  | qa/phase1/docs/phase1-risk-register.md; qa/phase2/docs/phase2-metrics-interpretation.md; qa/midterm/docs/midterm-final-report.md            | High             | Depends on module-level aggregation granularity         |
 | DI-02      | Automation breadth improved faster than depth                                      | qa/phase2/metrics/phase2-automation-coverage.csv; qa/phase2/docs/phase2-metrics-report.md                                                   | High             | Coverage quality cannot be inferred from presence alone |
 | DI-03      | Governance surfaced release blockers early                                         | qa/phase2/metrics/phase2-quality-gate-results.csv; qa/phase2/TRACEABILITY.md                                                                | High             | Current gate design reflects local/project context      |
-| DI-04      | Midterm reassessment reduced uncertainty but did not eliminate critical weaknesses | qa/midterm/metrics/midterm-required-metrics.csv; qa/midterm/docs/midterm-comparative-analysis.md                                            | Medium-High      | Flaky-rate measurement remained limited                 |
+| DI-04      | Intermediate Empirical Review reassessment reduced uncertainty but did not eliminate critical weaknesses | qa/midterm/metrics/midterm-required-metrics.csv; qa/midterm/docs/midterm-comparative-analysis.md                                            | Medium-High      | Flaky-rate measurement remained limited                 |
 | DI-05      | Phase3 experiments improved evidence depth for reliability and resilience claims   | qa/phase3/docs/phase3-experimental-final-report.md; qa/phase3/metrics/phase3-mutation-score.csv; qa/phase3/metrics/phase3-chaos-metrics.csv | High             | Bounded synthetic constraints apply                     |
 | DI-06      | Integration boundary remains the most persistent cross-phase risk concentration    | qa/phase2/metrics/phase2-defects-vs-risk.csv; qa/phase3/metrics/phase3-performance-results.csv; qa/phase3/docs/phase3-final-summary.md      | High             | Requires future production-scale validation             |
 
@@ -32,4 +32,4 @@ Prepare evidence-backed discussion threads without overstating claims.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 1

@@ -1,4 +1,4 @@
-# Phase 4 Part 3 Summary
+# research synthesis layer (Phase 4) Part 3 Summary
 
 Date: 2026-05-13
 Project: KazUTB Digital Library
@@ -7,6 +7,7 @@ Scope: Peer review and revision package
 ## 1. Materials Created
 
 Review package artifacts created:
+
 1. internal-peer-review.md
 2. major-issues-review.md
 3. minor-issues-review.md
@@ -42,6 +43,7 @@ Review package artifacts created:
 ## 5. What Should Be Fixed Next
 
 Immediate next revisions before final polishing:
+
 1. Replace critical citation placeholders.
 2. Add formal threats-to-validity framework language.
 3. Finalize figure captions and table renderings.
@@ -56,8 +58,9 @@ Immediate next revisions before final polishing:
 
 ## 7. Readiness Interpretation
 
-1. Course defense readiness: strong.
+1. program defense readiness: strong.
 2. Publication-style readiness: moderate until citation and validity refinements are completed.
 
 ---
-KazUTB Digital Library - Phase 4 Part 3
+
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

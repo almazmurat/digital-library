@@ -2,7 +2,7 @@
 
 ## 1. Reporting Scope
 
-This section reports repository-measured outcomes from phase2, midterm, and phase3. Interpretation is intentionally limited; deeper analytical framing is reserved for the Discussion section.
+This section reports repository-measured outcomes from phase2, Intermediate Empirical Review, and phase3. Interpretation is intentionally limited; deeper analytical framing is reserved for the Discussion section.
 
 ## 2. Phase2 Results Snapshot (Automation and Governance)
 
@@ -24,7 +24,7 @@ Measured outcomes:
 
 [figure reference placeholder: F2]
 
-## 3. Midterm Results Snapshot (Reassessment Layer)
+## 3. Intermediate Empirical Review Results Snapshot (Reassessment Layer)
 
 Primary evidence sources:
 
@@ -37,8 +37,8 @@ Measured outcomes:
 1. weighted high-risk check coverage remained 75.0% (27/36),
 2. high-risk module automation presence remained 100% (7/7),
 3. observed defects/issues baseline for reassessment: 9,
-4. midterm added tests execution: 8/8 passed,
-5. midterm added run time reported as 24.15 seconds.
+4. Intermediate Empirical Review added tests execution: 8/8 passed,
+5. Intermediate Empirical Review added run time reported as 24.15 seconds.
 
 [figure reference placeholder: F3]
 
@@ -117,4 +117,4 @@ A phase-level progression indicator is available in the summary figure source an
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 2
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 2

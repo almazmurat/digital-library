@@ -1,4 +1,4 @@
-# Phase 3 — Experimental Testing Final Report
+# experimental evaluation layer (Phase 3) — Experimental Testing Final Report
 
 Project: KazUTB Digital Library
 Date: 2026-05-13
@@ -100,5 +100,4 @@ Primary evidence artifacts:
 
 ---
 
-KazUTB Digital Library — QA Phase 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3)

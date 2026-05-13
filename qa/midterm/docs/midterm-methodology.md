@@ -1,17 +1,17 @@
-# Midterm Methodology
+# Intermediate Empirical Review Methodology
 
 ## Risk-based testing approach
 
-This Midterm follows a risk-reassessment loop:
+This Intermediate Empirical Review follows a risk-reassessment loop:
 
-1. Start from Phase 1 baseline risk scores.
-2. Extract empirical evidence from Phase 2 measured outcomes.
+1. Start from baseline QA layer (Phase 1) baseline risk scores.
+2. Extract empirical evidence from automation and CI governance layer (Phase 2) measured outcomes.
 3. Re-score high-risk modules using observed defects, gate status, and coverage depth.
 4. Expand automation for weak/high-risk areas with new tests across Unit, Integration, and E2E levels.
 
 ## Re-scoring logic
 
-- Original score basis: Phase 1 score (probability x impact, 1-25 scale).
+- Original score basis: baseline QA layer (Phase 1) score (probability x impact, 1-25 scale).
 - Updated score basis:
   - Increase if repeated failures or fail-level gate breaches are observed.
   - Increase if user-facing critical flows fail (impact growth).

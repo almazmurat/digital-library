@@ -1,4 +1,4 @@
-# Phase 3 Mutation Charts — Instructions
+# experimental evaluation layer (Phase 3) Mutation Charts — Instructions
 
 Date: 2026-05-13
 
@@ -11,7 +11,7 @@ This file explains how to render mutation charts from factual CSV datasets.
 
 ## Chart 1 — Mutation Score by Module
 
-Dataset: `phase3-mutation-score-chart.csv`  
+Dataset: `phase3-mutation-score-chart.csv`
 Recommended chart: Clustered column chart
 
 Columns used:
@@ -26,11 +26,11 @@ Steps (Excel):
 3. Insert -> Column -> Clustered Column.
 4. Set Y-axis to 0-100.
 5. Add data labels (%).
-6. Title: `Phase 3 Part 2 Mutation Score by Module`.
+6. Title: `experimental evaluation layer (Phase 3) Part 2 Mutation Score by Module`.
 
 ## Chart 2 — Mutant Status Distribution by Module
 
-Dataset: `phase3-mutant-status-chart.csv`  
+Dataset: `phase3-mutant-status-chart.csv`
 Recommended chart: Stacked column chart
 
 Columns used:
@@ -64,4 +64,4 @@ Before presenting charts, verify:
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 2
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 2

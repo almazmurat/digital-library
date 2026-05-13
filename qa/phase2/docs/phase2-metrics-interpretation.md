@@ -1,11 +1,11 @@
-# Phase 2 Metrics Interpretation
+# automation and CI governance layer (Phase 2) Metrics Interpretation
 
 ## Interpretation frame
 
 Metrics are interpreted against two lenses:
 
-- Risk expectation from Phase 1.
-- Current quality-gate enforcement model from Phase 2.
+- Risk expectation from baseline QA layer (Phase 1).
+- Current quality-gate enforcement model from automation and CI governance layer (Phase 2).
 
 ## What the metrics indicate
 
@@ -18,7 +18,7 @@ Metrics are interpreted against two lenses:
 - This allows frequent reruns; therefore low pass-rate is not caused by execution-cost constraints.
 
 3. Defect signals match risk forecast.
-- Most failures are concentrated in modules classified as high risk in Phase 1.
+- Most failures are concentrated in modules classified as high risk in baseline QA layer (Phase 1).
 - This alignment supports validity of the original risk prioritization method.
 
 4. Gate failures represent real release blockers.

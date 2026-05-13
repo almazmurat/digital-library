@@ -1,4 +1,4 @@
-# Phase 3 Chaos Charts — Rendering Instructions
+# experimental evaluation layer (Phase 3) Chaos Charts — Rendering Instructions
 
 Date: 2026-05-13
 
@@ -66,5 +66,4 @@ Interpretation:
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 3

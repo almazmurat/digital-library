@@ -1,6 +1,6 @@
-# Phase 3 Part 2 — Mutation Recommendations
+# experimental evaluation layer (Phase 3) Part 2 — Mutation Recommendations
 
-Project: KazUTB Digital Library  
+Project: KazUTB Digital Library
 Date: 2026-05-13
 
 ## Priority Recommendations
@@ -55,7 +55,7 @@ Expected benefit:
 
 - Prevents mutation score regression and keeps test quality measurable over time.
 
-### R-MUT-005 (P3): Expand bounded mutant set in Phase 3 Part 3
+### R-MUT-005 (P3): Expand bounded mutant set in experimental evaluation layer (Phase 3) Part 3
 
 Action:
 
@@ -72,4 +72,4 @@ The current suite is strong on boundary and validation behavior (12/14 mutants k
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 2
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 2

@@ -1,4 +1,4 @@
-# Midterm Evidence References
+# Intermediate Empirical Review Evidence References
 
 ## Primary source artifacts reused
 
@@ -10,7 +10,7 @@
 - qa/phase2/metrics/phase2-execution-time.csv
 - .github/workflows/ci.yml
 
-## Midterm execution evidence
+## Intermediate Empirical Review execution evidence
 
 - qa/midterm/evidence/logs/midterm-new-phpunit.log
 - qa/midterm/evidence/logs/midterm-new-playwright.log

@@ -6,13 +6,13 @@ Date: 2026-05-13
 
 | Figure ID | Figure Path                                                                   | Paper Section                       | Analytical Purpose                             | Caption Idea                                                         | Supporting Dataset(s)                                                  |
 | --------- | ----------------------------------------------------------------------------- | ----------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| F1        | qa/paper-assets/figures/phase1/phase1_manual_vs_automated_inventory.png       | Introduction / Methodology Baseline | Show initial manual-to-automation distribution | Baseline test inventory at Phase 1 entry                             | qa/phase1/metrics/phase1-baseline-metrics.csv                          |
-| F2        | qa/paper-assets/figures/phase2/phase2_automation_coverage_by_module.png       | Results (Phase 2)                   | Show uneven depth across modules               | Phase 2 automation coverage by high-risk module                      | qa/phase2/metrics/phase2-automation-coverage.csv                       |
-| F3        | qa/paper-assets/figures/midterm/midterm_defects_vs_risk.png                   | Results (Midterm)                   | Compare planned and observed risk              | Midterm shift between planned and observed risk profile              | qa/midterm/charts/midterm-planned-vs-actual-chart.csv                  |
-| F4        | qa/paper-assets/figures/phase3/phase3_performance_response_times.png          | Results (Phase 3 Performance)       | Show latency shape across scenarios            | Phase 3 performance: average and P95 response times by scenario      | qa/phase3/charts/phase3-response-time-chart.csv                        |
-| F5        | qa/paper-assets/figures/phase3/phase3_mutation_score_by_module.png            | Results (Phase 3 Mutation)          | Compare mutation effectiveness by module       | Phase 3 mutation score distribution across targeted modules          | qa/phase3/charts/phase3-mutation-score-chart.csv                       |
-| F6        | qa/paper-assets/figures/phase3/phase3_chaos_availability_by_scenario.png      | Results (Phase 3 Chaos)             | Show fault vs recovery behavior                | Phase 3 chaos campaign: fault and recovery availability per scenario | qa/phase3/charts/phase3-chaos-availability-chart.csv                   |
-| F7        | qa/paper-assets/figures/summary/summary_quality_progression_across_phases.png | Discussion / Conclusion             | Show cross-phase maturity trend                | Cross-phase quality indicator progression from Phase 1 to Phase 3    | qa/paper-assets/figures/summary/summary_quality_progression_source.csv |
+| F1        | qa/paper-assets/figures/phase1/phase1_manual_vs_automated_inventory.png       | Introduction / Methodology Baseline | Show initial manual-to-automation distribution | Baseline test inventory at baseline QA layer (Phase 1) entry                             | qa/phase1/metrics/phase1-baseline-metrics.csv                          |
+| F2        | qa/paper-assets/figures/phase2/phase2_automation_coverage_by_module.png       | Results (automation and CI governance layer (Phase 2))                   | Show uneven depth across modules               | automation and CI governance layer (Phase 2) automation coverage by high-risk module                      | qa/phase2/metrics/phase2-automation-coverage.csv                       |
+| F3        | qa/paper-assets/figures/midterm/midterm_defects_vs_risk.png                   | Results (Intermediate Empirical Review)                   | Compare planned and observed risk              | Intermediate Empirical Review shift between planned and observed risk profile              | qa/midterm/charts/midterm-planned-vs-actual-chart.csv                  |
+| F4        | qa/paper-assets/figures/phase3/phase3_performance_response_times.png          | Results (experimental evaluation layer (Phase 3) Performance)       | Show latency shape across scenarios            | experimental evaluation layer (Phase 3) performance: average and P95 response times by scenario      | qa/phase3/charts/phase3-response-time-chart.csv                        |
+| F5        | qa/paper-assets/figures/phase3/phase3_mutation_score_by_module.png            | Results (experimental evaluation layer (Phase 3) Mutation)          | Compare mutation effectiveness by module       | experimental evaluation layer (Phase 3) mutation score distribution across targeted modules          | qa/phase3/charts/phase3-mutation-score-chart.csv                       |
+| F6        | qa/paper-assets/figures/phase3/phase3_chaos_availability_by_scenario.png      | Results (experimental evaluation layer (Phase 3) Chaos)             | Show fault vs recovery behavior                | experimental evaluation layer (Phase 3) chaos campaign: fault and recovery availability per scenario | qa/phase3/charts/phase3-chaos-availability-chart.csv                   |
+| F7        | qa/paper-assets/figures/summary/summary_quality_progression_across_phases.png | Discussion / Conclusion             | Show cross-phase maturity trend                | Cross-phase quality indicator progression from baseline QA layer (Phase 1) to experimental evaluation layer (Phase 3)    | qa/paper-assets/figures/summary/summary_quality_progression_source.csv |
 
 ## Proposed Table Inventory (for drafting in Part 2)
 
@@ -41,14 +41,14 @@ Date: 2026-05-13
 
 ## Proposed Figure Order in Paper
 
-1. F1 - Phase 1 baseline inventory.
-2. F2 - Phase 2 automation coverage by module.
-3. F3 - Midterm planned vs observed risk.
-4. F4 - Phase 3 performance response times.
-5. F5 - Phase 3 mutation score by module.
-6. F6 - Phase 3 chaos availability by scenario.
+1. F1 - baseline QA layer (Phase 1) baseline inventory.
+2. F2 - automation and CI governance layer (Phase 2) automation coverage by module.
+3. F3 - Intermediate Empirical Review planned vs observed risk.
+4. F4 - experimental evaluation layer (Phase 3) performance response times.
+5. F5 - experimental evaluation layer (Phase 3) mutation score by module.
+6. F6 - experimental evaluation layer (Phase 3) chaos availability by scenario.
 7. F7 - Cross-phase quality progression summary.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 1

@@ -1,7 +1,7 @@
-# Phase 3 Part 2 — Mutation Execution Report
+# experimental evaluation layer (Phase 3) Part 2 — Mutation Execution Report
 
-Project: KazUTB Digital Library  
-Date: 2026-05-13  
+Project: KazUTB Digital Library
+Date: 2026-05-13
 Run ID: 20260513-140552
 
 ## 1. Execution Approach
@@ -63,4 +63,4 @@ Before mutation, the targeted suite passed:
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 2
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 2

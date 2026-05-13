@@ -2,7 +2,7 @@
 
 ## 1. End-State Summary
 
-This paper draft documents an evidence-traceable QA evolution process for the KazUTB Digital Library repository across phase1, phase2, midterm, and phase3 artifacts. The case demonstrates that:
+This paper draft documents an evidence-traceable QA evolution process for the KazUTB Digital Library repository across phase1, phase2, Intermediate Empirical Review, and phase3 artifacts. The case demonstrates that:
 
 1. risk-first planning can remain useful when continuously reassessed,
 2. automation and quality gates are necessary but not sufficient indicators,
@@ -31,4 +31,4 @@ Priority future work should include:
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 2
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 2

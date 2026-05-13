@@ -4,9 +4,9 @@ Date: 2026-05-13
 
 ## Purpose
 
-Inventory factual in-repository sources used by Phase 4 Part 1 synthesis.
+Inventory factual in-repository sources used by research synthesis layer (Phase 4) Part 1 synthesis.
 
-## Phase 1 Sources
+## baseline QA layer (Phase 1) Sources
 
 1. qa/phase1/docs/phase1-risk-register.md
 2. qa/phase1/docs/phase1-test-strategy.md
@@ -14,7 +14,7 @@ Inventory factual in-repository sources used by Phase 4 Part 1 synthesis.
 4. qa/phase1/docs/phase1-final-summary.md
 5. qa/phase1/metrics/phase1-baseline-metrics.csv
 
-## Phase 2 Sources
+## automation and CI governance layer (Phase 2) Sources
 
 1. qa/phase2/TRACEABILITY.md
 2. qa/phase2/docs/phase2-metrics-report.md
@@ -24,7 +24,7 @@ Inventory factual in-repository sources used by Phase 4 Part 1 synthesis.
 6. qa/phase2/metrics/phase2-defects-vs-risk.csv
 7. qa/phase2/metrics/phase2-quality-gate-results.csv
 
-## Midterm Sources
+## Intermediate Empirical Review Sources
 
 1. qa/midterm/TRACEABILITY.md
 2. qa/midterm/docs/midterm-methodology.md
@@ -34,7 +34,7 @@ Inventory factual in-repository sources used by Phase 4 Part 1 synthesis.
 6. qa/midterm/metrics/midterm-quality-gate-evaluation.csv
 7. qa/midterm/charts/midterm-planned-vs-actual-chart.csv
 
-## Phase 3 Sources
+## experimental evaluation layer (Phase 3) Sources
 
 1. qa/phase3/README.md
 2. qa/phase3/TRACEABILITY.md
@@ -70,4 +70,4 @@ Inventory factual in-repository sources used by Phase 4 Part 1 synthesis.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 1

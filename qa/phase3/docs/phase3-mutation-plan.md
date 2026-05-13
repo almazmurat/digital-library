@@ -1,8 +1,8 @@
-# Phase 3 Part 2 — Mutation Testing Plan
+# experimental evaluation layer (Phase 3) Part 2 — Mutation Testing Plan
 
-Project: KazUTB Digital Library  
-Phase: 3 Part 2 (Assignment 3 continuation)  
-Date: 2026-05-13  
+Project: KazUTB Digital Library
+Phase: 3 Part 2 (experimental evaluation layer continuation)
+Date: 2026-05-13
 Campaign mode: Controlled manual mutation (scripted)
 
 ## 1. Goal
@@ -13,8 +13,8 @@ Assess how effectively the current automated integration-focused test suite dete
 
 Module selection used:
 
-1. Midterm risk reassessment (integration boundary and governance controls are high risk).
-2. Defect concentration history from Phase 2 and midterm integration regressions.
+1. Intermediate Empirical Review risk reassessment (integration boundary and governance controls are high risk).
+2. Defect concentration history from automation and CI governance layer (Phase 2) and Intermediate Empirical Review integration regressions.
 3. Mutation suitability (small deterministic guards/validators with existing focused tests).
 4. Execution feasibility in bounded time with reproducible test commands.
 
@@ -33,8 +33,8 @@ Bound constraints:
 
 | Module / Component                                                   | Why Selected                                                                                   | Risk Source                                                           | Mutation Suitability                                               | Existing Test Context                                         | Planned Mutants | Planned Types                                               |
 | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------- | --------------: | ----------------------------------------------------------- |
-| Integration Boundary Middleware (`EnsureIntegrationBoundary`)        | Governs authentication, required headers, and source-system control for all integration routes | Midterm integration boundary risk; Phase 3 Part 1 S08 failure context | Clear branch conditions and fallback returns                       | `IntegrationBoundarySkeletonTest`, `IntegrationRateLimitTest` |               3 | Guard inversion, logical operator, return change            |
-| Integration Reservations Read API (`ReservationReadController`)      | Exposes read list/detail with filter/pagination validation                                     | Phase 2 integration correctness and envelope consistency              | Deterministic validation + not-found branch                        | `ReservationReadTest`                                         |               3 | Logical operator, guard inversion                           |
+| Integration Boundary Middleware (`EnsureIntegrationBoundary`)        | Governs authentication, required headers, and source-system control for all integration routes | Intermediate Empirical Review integration boundary risk; experimental evaluation layer (Phase 3) Part 1 S08 failure context | Clear branch conditions and fallback returns                       | `IntegrationBoundarySkeletonTest`, `IntegrationRateLimitTest` |               3 | Guard inversion, logical operator, return change            |
+| Integration Reservations Read API (`ReservationReadController`)      | Exposes read list/detail with filter/pagination validation                                     | automation and CI governance layer (Phase 2) integration correctness and envelope consistency              | Deterministic validation + not-found branch                        | `ReservationReadTest`                                         |               3 | Logical operator, guard inversion                           |
 | Integration Reservations Mutate API (`ReservationMutateController`)  | Approve/reject command safety (role gate, idempotency, payload requirements)                   | Mutation endpoint governance risk; role abuse risk                    | Strong guard-heavy logic and context mapping                       | `ReservationMutateTest`                                       |               4 | Guard inversion, logical operator, key lookup alteration    |
 | Integration Document Management API (`DocumentManagementController`) | CRUD-like integration operations with validation, UUID checks, and context mapping             | High change surface, contract governance sensitivity                  | Validation and context mappings provide realistic mutation targets | `DocumentManagementTest`                                      |               4 | Guard inversion, constant alteration, key lookup alteration |
 
@@ -71,4 +71,4 @@ The campaign will produce:
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 2
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 2

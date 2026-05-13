@@ -20,11 +20,11 @@ Scope: Internal mock review of phase4 draft package
 2. Medium-high severity: MAJ-04, MAJ-05
 3. Medium severity: MAJ-06
 
-## Course Defense vs Publication Risk
+## program Defense vs Publication Risk
 
-1. For course defense: MAJ-01 and MAJ-03 are manageable with transparent caveat disclosure.
+1. For program defense: MAJ-01 and MAJ-03 are manageable with transparent caveat disclosure.
 2. For publication-style rigor: MAJ-01 to MAJ-05 should be resolved before submission-style claims.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 3
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

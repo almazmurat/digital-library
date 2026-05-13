@@ -1,12 +1,12 @@
-# Midterm QA Implementation & Empirical Analysis
+# Intermediate Empirical Review QA Implementation & Empirical Analysis
 
-This directory contains the Midterm synthesis layer for the KazUTB Digital Library.
+This directory contains the intermediate empirical review synthesis layer for the KazUTB Digital Library.
 
 ## Scope relationship
 
-- Phase 1 (Assignment 1): risk baseline and prioritization.
-- Phase 2 (Assignment 2): automation evidence, quality gates, CI integration, and measured metrics.
-- Midterm: empirical reassessment and expansion package built from Phase 1 + Phase 2 evidence plus newly executed Midterm tests.
+- baseline risk-based QA strategy (Phase 1): risk baseline and prioritization.
+- automation and quality governance layer (Phase 2): automation evidence, quality gates, CI integration, and measured metrics.
+- Intermediate Empirical Review: empirical reassessment and expansion package built from baseline QA layer (Phase 1) + automation and CI governance layer (Phase 2) evidence plus newly executed Intermediate Empirical Review tests.
 
 ## Contents
 
@@ -19,9 +19,9 @@ This directory contains the Midterm synthesis layer for the KazUTB Digital Libra
 ## Reproducibility
 
 1. Review source evidence mapping in qa/midterm/evidence/references/midterm-source-evidence.md.
-2. Re-run Midterm new PHPUnit tests:
+2. Re-run intermediate empirical review new PHPUnit tests:
    - php artisan test --filter='BibliographyFormatterMidtermTest|MidtermIntegrationRiskExpansionTest'
-3. Re-run Midterm new E2E tests:
+3. Re-run intermediate empirical review new E2E tests:
    - npx playwright test tests/e2e/midterm-risk-expansion.spec.ts --reporter=list
 4. Regenerate metrics/charts if source evidence changes.
 5. Verify CSV/JSON parity and references before submission.

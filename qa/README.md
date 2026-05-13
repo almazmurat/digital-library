@@ -1,8 +1,8 @@
 # QA Workspace — KazUTB Digital Library Platform
 
-> Repository: `kazutb-dev/digital-library-kazutb`  
-> QA Owner: (your name)  
-> Audit Date: 2026-05-13  
+> Repository: `kazutb-dev/digital-library-kazutb`
+> QA Owner: (your name)
+> Audit Date: 2026-05-13
 > Framework: Laravel 13 · PHP 8.4 · React 19 · Playwright · PHPUnit 12
 
 ---
@@ -56,7 +56,7 @@ composer test:internal
 # Run reservation + circulation core
 composer test:reservation-core
 
-# Run integration reservation tests  
+# Run integration reservation tests
 composer test:integration-reservations
 
 # Run stewardship metrics tests
@@ -73,6 +73,6 @@ composer test:stewardship
 - [x] Test Strategy v0.1 Written
 - [x] Environment Setup Report Created
 - [x] Baseline Metrics CSV Created
-- [ ] Manual Test Cases Written (Assignment 1)
-- [ ] Automation Scripts Created (Assignment 2)
-- [ ] Performance Baselines Captured (Assignment 3)
+- [ ] Manual Test Cases Written (baseline risk-based QA strategy)
+- [ ] Automation Scripts Created (automation and quality governance layer)
+- [ ] Performance Baselines Captured (experimental evaluation layer)

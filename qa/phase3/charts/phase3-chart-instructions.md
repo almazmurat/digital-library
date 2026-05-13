@@ -1,4 +1,4 @@
-# Phase 3 Chart Rendering Instructions
+# experimental evaluation layer (Phase 3) Chart Rendering Instructions
 
 These CSV files can be imported into Excel, Google Sheets, LibreOffice Calc, or any
 charting tool to produce the visualisations described below.
@@ -108,4 +108,4 @@ pre/post-run baseline values. Graphs are indicative, not precise.
 
 ---
 
-_Generated: 2026-05-13 | Phase 3 Part 1 — Performance Testing_
+_Generated: 2026-05-13 | experimental evaluation layer (Phase 3) Part 1 — Performance Testing_

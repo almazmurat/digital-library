@@ -7,7 +7,7 @@ Reviewed artifact: qa/phase4/paper/full-paper-draft.md and linked phase4 draft s
 
 ## 1. Overall Assessment
 
-The draft is strong for course-defense readiness because it is consistently evidence-traceable and transparent about bounded contexts. It is not yet publication-rigor ready because literature grounding, formal threats-to-validity depth, and novelty positioning remain partially underdeveloped.
+The draft is strong for program-defense readiness because it is consistently evidence-traceable and transparent about bounded contexts. It is not yet publication-rigor ready because literature grounding, formal threats-to-validity depth, and novelty positioning remain partially underdeveloped.
 
 Provisional recommendation:
 Strong revise (internal) before final polishing.
@@ -81,7 +81,7 @@ Important caveats are present but should be formalized in a compact dedicated su
 
 ### 5.7 Strength of Conclusions
 
-Status: Moderate-strong for course context
+Status: Moderate-strong for program context
 
 Comment:
 Conclusions are generally bounded, but they should further emphasize context scope to reduce overgeneralization risk.
@@ -92,10 +92,10 @@ Internal recommendation: strong revise, then finalize.
 
 Expected readiness after targeted revision:
 
-1. Course defense: high readiness.
+1. program defense: high readiness.
 2. Poster: high readiness with figure/caption tightening.
 3. Publication-style review: medium readiness pending citation integration and methodological sharpening.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 3
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

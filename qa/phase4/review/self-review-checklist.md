@@ -47,4 +47,4 @@ Use this checklist before submitting each major paper draft revision.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 1

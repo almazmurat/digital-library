@@ -1,6 +1,6 @@
-# Phase 3 Part 2 — Mutation Gap Analysis
+# experimental evaluation layer (Phase 3) Part 2 — Mutation Gap Analysis
 
-Project: KazUTB Digital Library  
+Project: KazUTB Digital Library
 Date: 2026-05-13
 
 ## 1. Surviving Mutants Overview
@@ -39,4 +39,4 @@ Both survivors involve operator-id header mapping to context arrays passed into 
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 2
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 2

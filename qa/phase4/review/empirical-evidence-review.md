@@ -38,7 +38,7 @@ Review type: Internal mock empirical-evidence critique
 
 ## 6. Evidence Readiness Assessment
 
-### Strong enough for course defense
+### Strong enough for program defense
 
 1. High, if caveats are presented clearly.
 
@@ -48,4 +48,4 @@ Review type: Internal mock empirical-evidence critique
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 3
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

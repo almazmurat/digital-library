@@ -1,11 +1,11 @@
-# Phase 4 Part 2 Summary
+# research synthesis layer (Phase 4) Part 2 Summary
 
 Date: 2026-05-13
 Project: KazUTB Digital Library
 
 ## Scope Completed
 
-Phase 4 Part 2 completed full paper draft scaffolding and assembled cross-section narrative using existing repository evidence.
+research synthesis layer (Phase 4) Part 2 completed full paper draft scaffolding and assembled cross-section narrative using existing repository evidence.
 
 ## Sections Drafted
 
@@ -22,7 +22,7 @@ Phase 4 Part 2 completed full paper draft scaffolding and assembled cross-sectio
 
 ## Strongest Sections
 
-1. Methodology draft: strongest evidence-chain clarity across assignments.
+1. Methodology draft: strongest evidence-chain clarity across program layers.
 2. Results draft: strongest metric grounding and figure linkage.
 3. Discussion draft: strongest limitation and validity framing.
 
@@ -52,4 +52,4 @@ Claims/evidence matrix was updated to include draft-era governance entries for c
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 2
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 2

@@ -1,4 +1,4 @@
-# Midterm Chart Instructions
+# Intermediate Empirical Review Chart Instructions
 
 ## Sources
 

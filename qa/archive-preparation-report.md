@@ -5,7 +5,7 @@ Date: 2026-05-13
 
 ## Scope
 
-This report documents QA archive preparation for finalized Phase 3 deliverables:
+This report documents QA archive preparation for finalized experimental evaluation layer (Phase 3) deliverables:
 
 1. Chaos/fault-injection campaign artifacts.
 2. Experimental synthesis documentation.
@@ -28,7 +28,7 @@ This report documents QA archive preparation for finalized Phase 3 deliverables:
 
 ## Integrity Verification Checklist
 
-1. Phase 3 docs include performance, mutation, chaos, and final synthesis updates.
+1. experimental evaluation layer (Phase 3) docs include performance, mutation, chaos, and final synthesis updates.
 2. Chaos metrics include both scenario-level and aggregate-level datasets.
 3. Observed-vs-expected datasets exist in CSV and JSON forms.
 4. `qa/paper-assets/figures/` contains phase1/phase2/midterm/phase3/summary PNG outputs.
@@ -36,9 +36,8 @@ This report documents QA archive preparation for finalized Phase 3 deliverables:
 
 ## Archive Readiness Conclusion
 
-The QA archive is considered ready for submission and long-term storage for Assignment 3/Phase 3 closure and Assignment 4 handoff. Artifacts are factual, reproducible, and explicitly disclose bounded synthetic fault models.
+The QA archive is considered ready for submission and long-term storage for experimental evaluation layer/experimental evaluation layer (Phase 3) closure and research synthesis layer handoff. Artifacts are factual, reproducible, and explicitly disclose bounded synthetic fault models.
 
 ---
 
 KazUTB Digital Library — QA Archive Preparation
-

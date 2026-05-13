@@ -18,7 +18,7 @@ The repository evidence reflects this layering trajectory:
 
 1. phase1 established baseline scope and constraints,
 2. phase2 expanded automation and governance,
-3. midterm reassessed evidence quality,
+3. Intermediate Empirical Review reassessed evidence quality,
 4. phase3 added performance, mutation, and chaos perspectives.
 
 The methodological value of layered evidence triangulation requires explicit empirical software engineering references [citation needed] [external reference required].
@@ -68,4 +68,4 @@ These gaps are tracked in qa/phase4/references/citation-needed-tracker.md.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 2
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 2

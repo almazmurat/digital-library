@@ -1,4 +1,4 @@
-# Phase 2 Automation Strategy Update
+# automation and CI governance layer (Phase 2) Automation Strategy Update
 
 ## Tool selection rationale
 

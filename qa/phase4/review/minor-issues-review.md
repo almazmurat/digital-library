@@ -22,4 +22,4 @@ Scope: Internal mock review of phase4 draft package
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 3
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

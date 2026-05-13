@@ -1,10 +1,10 @@
 # QA Test Strategy v0.1 — KazUTB Digital Library Platform
 
-> **Version:** 0.1 (Draft)  
-> **Date:** 2026-05-13  
-> **Project:** `kazutb-dev/digital-library-kazutb`  
-> **Author:** (your name)  
-> **Scope:** Advanced QA Assignments 1–3 + Research Paper  
+> **Version:** 0.1 (Draft)
+> **Date:** 2026-05-13
+> **Project:** `kazutb-dev/digital-library-kazutb`
+> **Author:** (your name)
+> **Scope:** Advanced QA baseline through experimental QA program layers + Research Paper
 > **Review:** Update at each assignment milestone
 
 ---
@@ -43,7 +43,7 @@
 | Area | Reason |
 |------|--------|
 | WCAG accessibility audit | Separate assignment |
-| Full security penetration testing | Beyond course scope |
+| Full security penetration testing | Beyond program scope |
 | Mobile/tablet responsiveness | UI not primary focus |
 | Legacy MARC-SQL data migration validation | Separate data ops concern |
 | 21st-dev AI assistant deep testing | External service, experimental |
@@ -98,7 +98,7 @@
 - **Tool:** Infection (configured in `composer.json`)
 - **Target:** Service layer (`app/Services/`)
 - **Command:** `./vendor/bin/infection --threads=4 --min-msi=50 --min-covered-msi=60`
-- **Goal:** MSI ≥ 50% (Assignment 2 milestone)
+- **Goal:** MSI ≥ 50% (automation and quality governance layer milestone)
 
 ---
 
@@ -167,7 +167,7 @@
 - [ ] `INTEGRATION_ALLOWED_TOKENS` set in `.env` for integration tests
 - [ ] Test environment documented (`php -v`, `node -v`, DB version)
 
-### Exit Criteria (Assignment 1 — Risk-Based QA)
+### Exit Criteria (baseline risk-based QA strategy — Risk-Based QA)
 
 - [ ] 17 risk items documented with scores in `qa/docs/risk-register.md`
 - [ ] 40+ manual test cases written (covering all P0 risks)
@@ -175,7 +175,7 @@
 - [ ] Baseline metrics captured in `qa/metrics/baseline-metrics.csv`
 - [ ] At least 3 defects or gaps documented
 
-### Exit Criteria (Assignment 2 — Automation)
+### Exit Criteria (automation and quality governance layer — Automation)
 
 - [ ] Coverage ≥ 40% (line coverage from Clover report)
 - [ ] All P0 automated test suites pass in CI
@@ -183,7 +183,7 @@
 - [ ] CI pipeline updated with new thresholds
 - [ ] Playwright E2E: member flow + librarian flow both pass
 
-### Exit Criteria (Assignment 3 — Performance)
+### Exit Criteria (experimental evaluation layer — Performance)
 
 - [ ] k6 baseline captured for catalog, login, circulation
 - [ ] P95 response time documented at 1/5/10 VU levels

@@ -4,7 +4,7 @@ Date: 2026-05-13
 
 ## Purpose
 
-Track where external academic or industry references are required during Phase 4 Part 2 drafting.
+Track where external academic or industry references are required during research synthesis layer (Phase 4) Part 2 drafting.
 No bibliography entries are fabricated here.
 
 | Citation Need ID | Paper Section      | Topic Requiring Citation                                    | Why Citation Is Needed                                    | Planned Citation Type                   | Status |
@@ -29,4 +29,4 @@ The following are internal factual references and do not need external citation:
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 1

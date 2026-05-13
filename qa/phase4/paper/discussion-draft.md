@@ -20,7 +20,7 @@ Evidence links:
 The model was validated where early high-risk modules aligned with observed defects, governance failures, and later experimental stress points. In particular:
 
 1. gate failures in phase2 confirmed unresolved high-risk areas,
-2. midterm reassessment preserved elevated risk concentration,
+2. Intermediate Empirical Review reassessment preserved elevated risk concentration,
 3. phase3 experiments did not remove integration-related concerns.
 
 This pattern suggests that risk-prioritization was directionally correct, even when mitigation depth was incomplete.
@@ -30,7 +30,7 @@ This pattern suggests that risk-prioritization was directionally correct, even w
 The model was weaker in two areas:
 
 1. it did not fully predict the persistence of assertion-depth gaps revealed by mutation survivors,
-2. it did not include strong repeated-run stability quantification at midterm due limited historical data.
+2. it did not include strong repeated-run stability quantification at Intermediate Empirical Review due limited historical data.
 
 These are not contradictions of the model, but evidence that risk frameworks require iterative calibration with richer empirical datasets.
 
@@ -92,4 +92,4 @@ However, reproducibility remains environment-sensitive for timing-related measur
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 2
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 2

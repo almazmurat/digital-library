@@ -1,4 +1,4 @@
-# Phase 3 Mutation Command Log
+# experimental evaluation layer (Phase 3) Mutation Command Log
 
 Date: 2026-05-13
 
@@ -32,4 +32,4 @@ Raw run payload:
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 2
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 2

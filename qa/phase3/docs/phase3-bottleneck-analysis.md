@@ -1,8 +1,8 @@
-# Phase 3 Part 1 — Performance Testing: Bottleneck Analysis
+# experimental evaluation layer (Phase 3) Part 1 — Performance Testing: Bottleneck Analysis
 
-**Project:** KazUTB Digital Library  
-**Phase:** 3 Part 1 — Performance Testing  
-**Document:** Bottleneck Analysis  
+**Project:** KazUTB Digital Library
+**Phase:** 3 Part 1 — Performance Testing
+**Document:** Bottleneck Analysis
 **Date:** 2026-05-13
 
 ---
@@ -17,8 +17,8 @@ Of the 9 scenarios executed, **1 scenario FAILS its threshold (S08)**; **8 scena
 
 ### BN-001 — CRITICAL: Uniform High Latency (3.1–3.8s avg)
 
-**Affected scenarios:** ALL  
-**Metric:** avg_ms across all endpoints: 3 077ms – 3 784ms  
+**Affected scenarios:** ALL
+**Metric:** avg_ms across all endpoints: 3 077ms – 3 784ms
 **Target reference:** University public API ≤ 500ms typical; national library API ≤ 1 000ms
 
 **Evidence:**
@@ -43,7 +43,7 @@ Of the 9 scenarios executed, **1 scenario FAILS its threshold (S08)**; **8 scena
 
 ### BN-002 — CRITICAL: Integration Middleware Rejection Overhead (3 237ms — FAIL)
 
-**Affected scenario:** S08-BND-INTEGRATION  
+**Affected scenario:** S08-BND-INTEGRATION
 **Metric:** middleware_overhead_avg_ms = 3 237.12ms; threshold = 2 000ms; overage = +62%
 
 **Evidence:**
@@ -63,7 +63,7 @@ The middleware chain processes the full PHP-FPM bootstrap, kernel service contai
 
 ### BN-003 — HIGH: Web Catalog HTML Payload (130KB per request)
 
-**Affected scenarios:** S06-NL-WEBCATALOG, S07-PL-WEBCATALOG  
+**Affected scenarios:** S06-NL-WEBCATALOG, S07-PL-WEBCATALOG
 **Metric:** avg_body_bytes = 130 180; avg_ms = 3 784.74 (slowest passing endpoint)
 
 **Evidence:**
@@ -82,7 +82,7 @@ The `/catalog` Blade view returns a full server-side rendered HTML page containi
 
 ### BN-004 — HIGH: Throughput Ceiling (0.26–0.33 rps)
 
-**Affected scenarios:** ALL  
+**Affected scenarios:** ALL
 **Metric:** throughput_rps across all scenarios: min 0.264 (S06), max 0.325 (S05), avg 0.292
 
 **Interpretation:**
@@ -94,7 +94,7 @@ At 1-VU sequential, the 3–4s avg latency caps throughput at ~0.29 rps. Under r
 
 ### BN-005 — MEDIUM: /api/v1/subjects High p95 Variance
 
-**Affected scenario:** S03-NL-SUBJECTS  
+**Affected scenario:** S03-NL-SUBJECTS
 **Metric:** p95 = 3 969ms vs median = 3 233ms (delta = 736ms; range = 2 831–4 417ms)
 
 **Evidence:**
@@ -112,21 +112,21 @@ S03 has the highest p95/median delta of any scenario (736ms), suggesting occasio
 
 ### BN-006 — MEDIUM: /news HTTP 500 (Untestable)
 
-**Affected scenario:** N/A (excluded)  
+**Affected scenario:** N/A (excluded)
 **Metric:** HTTP 500 availability failure
 
-The `/news` endpoint has returned HTTP 500 since Phase 2. The news module cannot be included in any performance scenario until the underlying server-side error is resolved. This represents a functional availability risk.
+The `/news` endpoint has returned HTTP 500 since automation and CI governance layer (Phase 2). The news module cannot be included in any performance scenario until the underlying server-side error is resolved. This represents a functional availability risk.
 
-**Severity: MEDIUM** — News is a public-facing module; unavailability during Phase 3 indicates an unresolved defect from a prior phase.
+**Severity: MEDIUM** — News is a public-facing module; unavailability during experimental evaluation layer (Phase 3) indicates an unresolved defect from a prior phase.
 
 ---
 
 ### BN-007 — MEDIUM: /api/login Timeout (Untestable)
 
-**Affected scenario:** N/A (excluded)  
+**Affected scenario:** N/A (excluded)
 **Metric:** Response time > 10 000ms (timeout)
 
-The `/api/login` endpoint timed out during Phase 2 testing and has not been resolved. Authentication is a critical path for member and librarian functionality; its timeout prevents any authenticated load scenario.
+The `/api/login` endpoint timed out during automation and CI governance layer (Phase 2) testing and has not been resolved. Authentication is a critical path for member and librarian functionality; its timeout prevents any authenticated load scenario.
 
 **Severity: MEDIUM** — All authenticated load testing is blocked until this is resolved.
 
@@ -134,7 +134,7 @@ The `/api/login` endpoint timed out during Phase 2 testing and has not been reso
 
 ### BN-008 — LOW: No Warm-Up Benefit (Endurance Flat)
 
-**Affected scenario:** S09-END-CATALOG  
+**Affected scenario:** S09-END-CATALOG
 **Metric:** S09 avg 3 454ms vs S01 avg 3 443ms (delta = 11ms over 138s/40 requests)
 
 The endurance test shows no degradation (positive) but also no latency improvement from PHP process warm-up (flat). If OPcache were active and working, the first N requests would be slower with subsequent requests significantly faster. The flat profile indicates OPcache does not materially improve response time in this configuration.
@@ -160,8 +160,8 @@ The endurance test shows no degradation (positive) but also no latency improveme
 
 ## 4. Conclusion
 
-The system is functionally stable (8/9 scenarios pass thresholds); however, absolute latency is uniformly high across all modules, indicating a systemic PHP/DB cold-path issue that will compound severely under concurrent production load. Phase 3 Part 2 optimisation should prioritise BN-001 and BN-002 before any deployment.
+The system is functionally stable (8/9 scenarios pass thresholds); however, absolute latency is uniformly high across all modules, indicating a systemic PHP/DB cold-path issue that will compound severely under concurrent production load. experimental evaluation layer (Phase 3) Part 2 optimisation should prioritise BN-001 and BN-002 before any deployment.
 
 ---
 
-_KazUTB Digital Library — QA Phase 3 Part 1 — 2026-05-13_
+_KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 1 — 2026-05-13_

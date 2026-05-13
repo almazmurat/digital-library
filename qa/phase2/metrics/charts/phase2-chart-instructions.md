@@ -1,6 +1,6 @@
-# Phase 2 Chart Instructions
+# automation and CI governance layer (Phase 2) Chart Instructions
 
-This guide explains how to generate charts from factual Phase 2 datasets.
+This guide explains how to generate charts from factual automation and CI governance layer (Phase 2) datasets.
 
 ## Source files
 

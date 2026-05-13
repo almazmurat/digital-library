@@ -1,4 +1,4 @@
-# Phase 2 Defects vs Expected Risk Report
+# automation and CI governance layer (Phase 2) Defects vs Expected Risk Report
 
 Source references:
 
@@ -20,4 +20,4 @@ Summary:
 
 - Total defects/issues observed: 9.
 - Failed risk areas: 6/7 modules.
-- Risk forecast alignment: high-risk concentration from Phase 1 is confirmed in authorization, public/catalog, operations, and integration paths.
+- Risk forecast alignment: high-risk concentration from baseline QA layer (Phase 1) is confirmed in authorization, public/catalog, operations, and integration paths.

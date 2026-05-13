@@ -1,4 +1,4 @@
-# Midterm Quality Gates Evaluation
+# Intermediate Empirical Review Quality Gates Evaluation
 
 ## Gate set evaluated
 

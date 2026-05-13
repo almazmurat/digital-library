@@ -18,7 +18,7 @@ Date: 2026-05-13
 
 1. Which risk assumptions were confirmed empirically?
 2. Which assumptions were weakened by later evidence?
-3. How was risk reassessment operationalized during midterm?
+3. How was risk reassessment operationalized during Intermediate Empirical Review?
 
 ## D. Automation Questions
 
@@ -70,4 +70,5 @@ Date: 2026-05-13
 4. "Your final insight is strong rhetoric but weakly novel."
 
 ---
-KazUTB Digital Library - Phase 4 Part 3
+
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

@@ -1,8 +1,8 @@
-# Phase 2 Metrics Report
+# automation and CI governance layer (Phase 2) Metrics Report
 
 ## Purpose
 
-This report consolidates quantitative Phase 2 outcomes so they can be used directly in assignment submission and research-paper results sections.
+This report consolidates quantitative automation and CI governance layer (Phase 2) outcomes so they can be used directly in program deliverable submission and research-paper results sections.
 
 ## Data sources
 
@@ -22,7 +22,7 @@ This report consolidates quantitative Phase 2 outcomes so they can be used direc
 | API smoke runtime | 38.435s total, 3.844s avg/case | Runtime is below current threshold and suitable for frequent CI execution. |
 | UI smoke runtime | 54.885s total, 4.989s avg/case | UI suite is bounded, with one slow failing /news case. |
 | Targeted PHPUnit runtime | 61.258s total, 1.494s avg/test | Runtime is acceptable; stability remains the key issue. |
-| Defects-vs-risk total | 9 observed defects/issues across 7 modules | Defects concentrate in previously high-risk areas from Phase 1. |
+| Defects-vs-risk total | 9 observed defects/issues across 7 modules | Defects concentrate in previously high-risk areas from baseline QA layer (Phase 1). |
 | Current enforced quality gates | pass=5, fail=3, warn=1 | Governance model is active and currently blocks release confidence. |
 
 ## Coverage details

@@ -1,4 +1,4 @@
-# Phase 3 Part 3 — Chaos Execution Report
+# experimental evaluation layer (Phase 3) Part 3 — Chaos Execution Report
 
 Project: KazUTB Digital Library
 Run ID: 20260513-142323
@@ -45,5 +45,4 @@ Raw outputs:
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 3

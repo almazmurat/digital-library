@@ -1,4 +1,4 @@
-# Midterm Metrics Report
+# Intermediate Empirical Review Metrics Report
 
 ## Required metric outcomes
 
@@ -14,7 +14,7 @@
 
 3. Efficiency
 - Phase2 combined measured runtime: 154.578s.
-- Midterm newly added test execution: 24.15s total (11.75s PHPUnit + 12.4s Playwright).
+- Intermediate Empirical Review newly added test execution: 24.15s total (11.75s PHPUnit + 12.4s Playwright).
 - Pipeline runtime aggregate value was not extracted as a single numeric run total from available local artifacts.
 
 4. Stability

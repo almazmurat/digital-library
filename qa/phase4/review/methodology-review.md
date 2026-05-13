@@ -5,7 +5,7 @@ Review type: Internal mock methodology critique
 
 ## 1. Methodology Strengths
 
-1. Clear phase-by-phase empirical pipeline (phase1 to phase3 with midterm transition).
+1. Clear phase-by-phase empirical pipeline (phase1 to phase3 with Intermediate Empirical Review transition).
 2. Strong traceability culture linking requirements, artifacts, and evidence.
 3. Explicit disclosure of bounded synthetic/local context limitations.
 4. Balanced use of governance metrics and experiment metrics.
@@ -16,7 +16,7 @@ Review type: Internal mock methodology critique
 1. External methodological anchoring is under-cited and placeholder-heavy.
 2. Threat-to-validity treatment is not yet framed against a formal methodological template.
 3. Some rationale statements remain implicit rather than explicitly criterion-driven.
-4. The distinction between "course-defense methodology adequacy" and "publication-style methodological adequacy" is not yet made explicit in the paper body.
+4. The distinction between "program-defense methodology adequacy" and "publication-style methodological adequacy" is not yet made explicit in the paper body.
 
 ## 3. Reproducibility Risks
 
@@ -32,7 +32,7 @@ Review type: Internal mock methodology critique
 
 ## 5. Defense Robustness Assessment
 
-### Strong enough for course defense
+### Strong enough for program defense
 
 1. Yes, because methodology is transparent, traceable, and caveated.
 
@@ -48,4 +48,4 @@ Review type: Internal mock methodology critique
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 3
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

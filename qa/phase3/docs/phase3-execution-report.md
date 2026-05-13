@@ -1,9 +1,9 @@
-# Phase 3 Part 1 — Performance Testing: Execution Report
+# experimental evaluation layer (Phase 3) Part 1 — Performance Testing: Execution Report
 
-**Project:** KazUTB Digital Library  
-**Phase:** 3 Part 1 — Performance Testing  
-**Document:** Execution Report  
-**Date:** 2026-05-13  
+**Project:** KazUTB Digital Library
+**Phase:** 3 Part 1 — Performance Testing
+**Document:** Execution Report
+**Date:** 2026-05-13
 **Executed by:** Automated PowerShell scripts on developer workstation (Windows 11)
 
 ---
@@ -36,10 +36,10 @@ pwsh -NoLogo -NoProfile -File "qa/phase3/performance/scripts/perf-catalog-api.ps
      -OutputDir "qa/phase3/performance/results"
 ```
 
-**Run ID:** `20260513-133438`  
-**Started:** 2026-05-13 13:34:38  
-**Completed:** 2026-05-13 13:42:22  
-**Result file:** `qa/phase3/performance/results/catalog-api-perf-20260513-133438.json`  
+**Run ID:** `20260513-133438`
+**Started:** 2026-05-13 13:34:38
+**Completed:** 2026-05-13 13:42:22
+**Result file:** `qa/phase3/performance/results/catalog-api-perf-20260513-133438.json`
 **Log file:** `qa/phase3/evidence/logs/perf-catalog-api.log`
 
 ### Run 2: Web/Public (S05–S07)
@@ -50,10 +50,10 @@ pwsh -NoLogo -NoProfile -File "qa/phase3/performance/scripts/perf-web-public.ps1
      -OutputDir "qa/phase3/performance/results"
 ```
 
-**Run ID:** `20260513-134213`  
-**Started:** 2026-05-13 13:42:13  
-**Completed:** 2026-05-13 13:45:11  
-**Result file:** `qa/phase3/performance/results/web-public-perf-20260513-134213.json`  
+**Run ID:** `20260513-134213`
+**Started:** 2026-05-13 13:42:13
+**Completed:** 2026-05-13 13:45:11
+**Result file:** `qa/phase3/performance/results/web-public-perf-20260513-134213.json`
 **Log file:** `qa/phase3/evidence/logs/perf-web-public.log`
 
 ### Run 3: Integration Boundary (S08)
@@ -64,10 +64,10 @@ pwsh -NoLogo -NoProfile -File "qa/phase3/performance/scripts/perf-integration-bo
      -OutputDir "qa/phase3/performance/results"
 ```
 
-**Run ID:** `20260513-134513`  
-**Started:** 2026-05-13 13:45:13  
-**Completed:** 2026-05-13 13:46:37  
-**Result file:** `qa/phase3/performance/results/integration-boundary-perf-20260513-134513.json`  
+**Run ID:** `20260513-134513`
+**Started:** 2026-05-13 13:45:13
+**Completed:** 2026-05-13 13:46:37
+**Result file:** `qa/phase3/performance/results/integration-boundary-perf-20260513-134513.json`
 **Log file:** `qa/phase3/evidence/logs/perf-integration-boundary.log`
 
 ---
@@ -121,10 +121,10 @@ S03 `/api/v1/subjects` showed the highest p95 relative to its median: p95 = 3 96
 
 | Endpoint                      | Reason for Exclusion                                              |
 | ----------------------------- | ----------------------------------------------------------------- |
-| `GET /news`                   | Returns HTTP 500 (confirmed Phase 2; server-side rendering error) |
-| `POST /api/login`             | Times out >10s (confirmed Phase 2; Sanctum auth flow issue)       |
+| `GET /news`                   | Returns HTTP 500 (confirmed automation and CI governance layer (Phase 2); server-side rendering error) |
+| `POST /api/login`             | Times out >10s (confirmed automation and CI governance layer (Phase 2); Sanctum auth flow issue)       |
 | Integration API (valid token) | Requires institutional bearer token unavailable in test env       |
 
 ---
 
-_KazUTB Digital Library — QA Phase 3 Part 1 — 2026-05-13_
+_KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 1 — 2026-05-13_

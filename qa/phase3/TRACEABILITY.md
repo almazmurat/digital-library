@@ -1,4 +1,4 @@
-# Phase 3 — Traceability Matrix
+# experimental evaluation layer (Phase 3) — Traceability Matrix
 
 Project: KazUTB Digital Library
 Date: 2026-05-13
@@ -81,5 +81,4 @@ Date: 2026-05-13
 
 ---
 
-KazUTB Digital Library — QA Phase 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3)

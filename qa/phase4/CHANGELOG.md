@@ -1,6 +1,6 @@
-# CHANGELOG - QA Phase 4
+# CHANGELOG - QA research synthesis layer (Phase 4)
 
-All notable changes for Phase 4 are documented here.
+All notable changes for research synthesis layer (Phase 4) are documented here.
 
 ## [Part 1] - 2026-05-13
 
@@ -40,10 +40,10 @@ Part summary:
 
 ### Notes
 
-1. All mappings use factual in-repository artifacts from phases 1-3, midterm, and paper-assets.
+1. All mappings use factual in-repository artifacts from phases 1-3, Intermediate Empirical Review, and paper-assets.
 2. No new experimental metrics were fabricated.
-3. This part prepares structured drafting and review readiness for Phase 4 Part 2.
+3. This part prepares structured drafting and review readiness for research synthesis layer (Phase 4) Part 2.
 
 ---
 
-KazUTB Digital Library - QA Phase 4
+KazUTB Digital Library - QA research synthesis layer (Phase 4)

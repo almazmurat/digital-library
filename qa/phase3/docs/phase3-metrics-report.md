@@ -1,8 +1,8 @@
-# Phase 3 Part 1 — Performance Testing: Metrics Report
+# experimental evaluation layer (Phase 3) Part 1 — Performance Testing: Metrics Report
 
-**Project:** KazUTB Digital Library  
-**Phase:** 3 Part 1 — Performance Testing  
-**Document:** Metrics Report  
+**Project:** KazUTB Digital Library
+**Phase:** 3 Part 1 — Performance Testing
+**Document:** Metrics Report
 **Date:** 2026-05-13
 
 ---
@@ -108,4 +108,4 @@
 
 ---
 
-_KazUTB Digital Library — QA Phase 3 Part 1 — 2026-05-13_
+_KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 1 — 2026-05-13_

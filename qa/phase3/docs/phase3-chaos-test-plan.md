@@ -1,4 +1,4 @@
-# Phase 3 Part 3 — Chaos / Fault Injection Test Plan
+# experimental evaluation layer (Phase 3) Part 3 — Chaos / Fault Injection Test Plan
 
 Project: KazUTB Digital Library
 Date: 2026-05-13
@@ -12,9 +12,9 @@ Evaluate robustness, resilience, and fault tolerance by introducing bounded faul
 
 Selection was based on:
 
-1. Midterm risk reassessment (`qa/midterm/metrics/midterm-risk-reassessment.csv`).
-2. Phase 3 Part 1 performance findings (integration boundary latency failure).
-3. Phase 3 Part 2 mutation survivors (integration controller context-path weaknesses).
+1. Intermediate Empirical Review risk reassessment (`qa/midterm/metrics/midterm-risk-reassessment.csv`).
+2. experimental evaluation layer (Phase 3) Part 1 performance findings (integration boundary latency failure).
+3. experimental evaluation layer (Phase 3) Part 2 mutation survivors (integration controller context-path weaknesses).
 4. Safety and reproducibility in local bounded execution.
 
 ## Safety Principles
@@ -47,5 +47,4 @@ Selection was based on:
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 3

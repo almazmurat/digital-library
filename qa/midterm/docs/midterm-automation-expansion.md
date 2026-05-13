@@ -1,4 +1,4 @@
-# Midterm Automation Expansion
+# Intermediate Empirical Review Automation Expansion
 
 ## New tests added (8 total)
 

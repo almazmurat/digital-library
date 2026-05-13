@@ -5,9 +5,9 @@ Risk-Based QA Evolution in the KazUTB Digital Library: From Baseline Risk Mappin
 
 ## Abstract
 
-This paper presents an empirical QA case study for the KazUTB Digital Library repository, focusing on how a risk-based testing strategy evolved into a multi-layer evidence framework across four stages: baseline risk definition (phase1), automation and quality-gate governance (phase2), midterm empirical reassessment, and experiment-backed synthesis (phase3).
+This paper presents an empirical QA case study for the KazUTB Digital Library repository, focusing on how a risk-based testing strategy evolved into a multi-layer evidence framework across four stages: baseline risk definition (phase1), automation and quality-gate governance (phase2), Intermediate Empirical Review empirical reassessment, and experiment-backed synthesis (phase3).
 
-The method integrates repository traceability artifacts, structured metrics datasets, and mapped figure evidence rather than isolated benchmark outputs. Reported evidence includes phase2 automation and gate metrics (for example weighted high-risk coverage of 75.0% and gate distribution pass=5/fail=3/warn=1), midterm reassessment outputs (including 8/8 newly added tests passed), and phase3 experimental results (performance scenario pass profile, mutation score of 85.71%, and bounded chaos recovery availability of 100.00%).
+The method integrates repository traceability artifacts, structured metrics datasets, and mapped figure evidence rather than isolated benchmark outputs. Reported evidence includes phase2 automation and gate metrics (for example weighted high-risk coverage of 75.0% and gate distribution pass=5/fail=3/warn=1), Intermediate Empirical Review reassessment outputs (including 8/8 newly added tests passed), and phase3 experimental results (performance scenario pass profile, mutation score of 85.71%, and bounded chaos recovery availability of 100.00%).
 
 Findings indicate measurable growth in QA process maturity, while also showing persistent concentration of risk around integration-boundary behavior across phases. The contribution of this work is a repository-grounded synthesis model and claims-to-evidence discipline that improves interpretive reliability for project-scale QA research reporting.
 
@@ -37,7 +37,7 @@ The methodology follows an evolving empirical pipeline:
 
 1. phase1 established risk-ranked scope and baseline evidence rules,
 2. phase2 operationalized automation and quality-gate governance,
-3. midterm reassessed assumptions with observed metrics,
+3. Intermediate Empirical Review reassessed assumptions with observed metrics,
 4. phase3 added experimental performance/mutation/chaos evidence.
 
 Evidence collection was artifact-driven (CSV/JSON metrics, traceability files, reports, mapped figures). Selection remained risk-prioritized, with repeated attention to high-impact module clusters. CI/CD gate outputs were treated as governance evidence, not as sole quality proxies.
@@ -49,7 +49,7 @@ Bounded-scope constraints were explicitly disclosed, especially for local/sequen
 
 ## Results
 
-Phase2 results show weighted high-risk automation coverage of 75.0%, 9 observed defects/issues, and gate distribution pass=5/fail=3/warn=1. Midterm results preserved 75.0% weighted checks, reported 8/8 newly added tests passed, and retained evidence of concentrated risk.
+Phase2 results show weighted high-risk automation coverage of 75.0%, 9 observed defects/issues, and gate distribution pass=5/fail=3/warn=1. Intermediate Empirical Review results preserved 75.0% weighted checks, reported 8/8 newly added tests passed, and retained evidence of concentrated risk.
 
 Phase3 results added experimental depth: performance scenarios passed 8/9 with one integration-boundary failure, mutation score reached 85.71% with two survivors, and chaos metrics showed 100.00% recovery availability under bounded synthetic faults with zero observed cascading failures.
 
@@ -111,4 +111,4 @@ External references:
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 2
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 2

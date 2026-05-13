@@ -1,4 +1,4 @@
-# Phase 2 Deliverables Checklist
+# automation and CI governance layer (Phase 2) Deliverables Checklist
 
 ## Completion status
 

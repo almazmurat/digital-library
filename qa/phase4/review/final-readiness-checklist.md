@@ -2,7 +2,7 @@
 
 Date: 2026-05-13
 
-## A. Course Submission Readiness
+## A. program Submission Readiness
 
 - [x] Full draft sections exist and are assembled.
 - [x] Claims-to-evidence mapping exists.
@@ -73,4 +73,5 @@ Status: Moderate-High; publication-style finalization still pending.
 - [ ] Final redundancy and transition polish completed.
 
 ---
-KazUTB Digital Library - Phase 4 Part 3
+
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 3

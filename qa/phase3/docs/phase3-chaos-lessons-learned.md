@@ -1,4 +1,4 @@
-# Phase 3 Part 3 — Chaos Lessons Learned
+# experimental evaluation layer (Phase 3) Part 3 — Chaos Lessons Learned
 
 Project: KazUTB Digital Library
 Date: 2026-05-13
@@ -29,7 +29,7 @@ Date: 2026-05-13
 
 ## Cross-Phase Linkage
 
-1. Midterm predicted integration and public-route stability risks; Phase 3 confirms residual sensitivity.
+1. Intermediate Empirical Review predicted integration and public-route stability risks; experimental evaluation layer (Phase 3) confirms residual sensitivity.
 2. Performance testing identified integration boundary latency weakness; chaos tests reinforce need for faster fault-path handling.
 3. Mutation survivors exposed context assertion weakness; this affects confidence in robustness validation depth.
 
@@ -39,9 +39,8 @@ Date: 2026-05-13
 2. Add lightweight health endpoint and error-budget SLO alerting for faster resilience diagnostics.
 3. Add chaos regression suite in CI (nightly) using bounded synthetic scenarios only.
 4. Improve test assertions on context propagation to reduce survivable logic regressions.
-5. Prioritize integration boundary optimization before Assignment 4 synthesis.
+5. Prioritize integration boundary optimization before research synthesis layer synthesis.
 
 ---
 
-KazUTB Digital Library — QA Phase 3 Part 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3) Part 3

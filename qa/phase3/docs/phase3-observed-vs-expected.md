@@ -1,4 +1,4 @@
-# Phase 3 — Observed vs Expected Analysis
+# experimental evaluation layer (Phase 3) — Observed vs Expected Analysis
 
 Project: KazUTB Digital Library
 Date: 2026-05-13
@@ -16,7 +16,7 @@ The full comparison dataset is stored in:
 2. Mutation campaign exceeded bounded quality target (85.71% >= 80%).
 3. Chaos recovery availability met expectation (100%).
 4. Chaos propagation remained isolated in all scenarios (0 cascading).
-5. Midterm prediction of elevated integration risk remains valid.
+5. Intermediate Empirical Review prediction of elevated integration risk remains valid.
 
 ## Key Deviations
 
@@ -29,13 +29,10 @@ The full comparison dataset is stored in:
 2. Surviving mutants indicate assertion-depth gaps in context mapping tests.
 3. Chaos scenarios show recovery behavior is stable, but baseline latency remains high enough to constrain resilience margin.
 
-## Implications for Next Phase
-
-1. Assignment 4 should prioritize integration-path hardening and observability.
+## Implications for Next baseline QA layer (Phase 1). research synthesis layer should prioritize integration-path hardening and observability.
 2. Add stricter context assertions in integration controller tests.
 3. Introduce bounded resilience gates in CI for early regression detection.
 
 ---
 
-KazUTB Digital Library — QA Phase 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3)

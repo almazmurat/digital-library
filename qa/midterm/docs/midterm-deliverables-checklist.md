@@ -1,4 +1,4 @@
-# Midterm Deliverables Checklist
+# Intermediate Empirical Review Deliverables Checklist
 
 | Deliverable | Description | File/Location | Status | Notes/Evidence |
 | --- | --- | --- | --- | --- |
@@ -13,9 +13,9 @@
 | Quality gate evaluation | Thresholds, status, strictness analysis | qa/midterm/metrics/midterm-quality-gate-evaluation.csv | Complete | Includes root-cause interpretation |
 | Required metrics report | Coverage, defects, efficiency, stability, governance | qa/midterm/docs/midterm-metrics-report.md | Complete | Numeric where derivable |
 | Comparative analysis | Planned vs actual gap analysis | qa/midterm/metrics/midterm-planned-vs-actual.csv | Complete | Includes corrective actions |
-| Final report | Full five-section midterm report | qa/midterm/docs/midterm-final-report.md | Complete | Submission-ready narrative |
+| Final report | Full five-section Intermediate Empirical Review report | qa/midterm/docs/midterm-final-report.md | Complete | Submission-ready narrative |
 | Chart datasets + instructions | Reproducible chart input files | qa/midterm/charts/* | Complete | CSV + generation guidance |
-| Midterm execution logs | New test execution evidence | qa/midterm/evidence/logs/* | Complete | Includes phpunit + playwright logs |
+| Intermediate Empirical Review execution logs | New test execution evidence | qa/midterm/evidence/logs/* | Complete | Includes phpunit + playwright logs |
 | Summary report | Concise review artifact | qa/midterm/reports/midterm-report-summary.md | Complete | Executive synthesis |
 
 ## Validation notes

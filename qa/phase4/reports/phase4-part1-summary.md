@@ -1,11 +1,11 @@
-# Phase 4 Part 1 Summary
+# research synthesis layer (Phase 4) Part 1 Summary
 
 Date: 2026-05-13
 Project: KazUTB Digital Library
 
 ## Objective
 
-Build Assignment 4 research synthesis scaffolding using factual artifacts from completed phases and existing paper assets.
+Build research synthesis layer research synthesis scaffolding using factual artifacts from completed phases and existing paper assets.
 
 ## Completed Outputs
 
@@ -15,7 +15,7 @@ Build Assignment 4 research synthesis scaffolding using factual artifacts from c
 4. Figures/tables mapping completed using existing qa/paper-assets figures.
 5. Reference inventory and citation-needed tracker completed.
 6. Writing plan and review checklists completed.
-7. Phase 4 governance files (README, TRACEABILITY, CHANGELOG) completed.
+7. research synthesis layer (Phase 4) governance files (README, TRACEABILITY, CHANGELOG) completed.
 
 ## Evidence Basis
 
@@ -46,4 +46,4 @@ Part 2 can proceed with full paper prose drafting because:
 
 ---
 
-KazUTB Digital Library - QA Phase 4 Part 1
+KazUTB Digital Library - QA research synthesis layer (Phase 4) Part 1

@@ -39,9 +39,9 @@ Date: 2026-05-13
 - [ ] Contribution novelty is explicitly differentiated from standard QA retrospective reporting.
 - [ ] Threats-to-validity discussion follows a formal empirical framing approach.
 - [ ] Figure captions include claim-level takeaway statements and scope caveats.
-- [ ] Course-defense readiness and publication-style readiness are explicitly distinguished.
+- [ ] program-defense readiness and publication-style readiness are explicitly distinguished.
 - [ ] Citation placeholders are fully replaced in all literature-dependent sections before final submission.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - research synthesis layer (Phase 4) Part 1

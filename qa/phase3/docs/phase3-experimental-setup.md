@@ -1,4 +1,4 @@
-# Phase 3 — Experimental Setup Documentation
+# experimental evaluation layer (Phase 3) — Experimental Setup Documentation
 
 Project: KazUTB Digital Library
 Date: 2026-05-13
@@ -7,7 +7,7 @@ Date: 2026-05-13
 
 1. OS: Windows 11 (local workstation)
 2. Runtime model: local Nginx + PHP-FPM/Laravel
-3. Hardware snapshot (from Phase 3 evidence):
+3. Hardware snapshot (from experimental evaluation layer (Phase 3) evidence):
 
 - CPU cores: 8
 - Total memory: 15613.1 MB
@@ -38,7 +38,7 @@ Date: 2026-05-13
 
 1. `qa/phase3/chaos/scripts/run-phase3-chaos.ps1`
 
-## Dataset Inventory Used in Phase 3
+## Dataset Inventory Used in experimental evaluation layer (Phase 3)
 
 1. Performance: `qa/phase3/metrics/phase3-performance-results.csv`
 2. Mutation: `qa/phase3/metrics/phase3-mutation-results.csv`, `qa/phase3/metrics/phase3-mutation-score.csv`
@@ -60,5 +60,4 @@ Date: 2026-05-13
 
 ---
 
-KazUTB Digital Library — QA Phase 3
-
+KazUTB Digital Library — QA experimental evaluation layer (Phase 3)

@@ -1,11 +1,11 @@
 # KazUTB Digital Library — Full Technical & QA Audit Report
 
-> **Version:** 1.0  
-> **Date:** 2026-05-13  
-> **Repository:** `kazutb-dev/digital-library-kazutb`  
-> **Branch audited:** `wave2-wip-before-openclaw`  
-> **Auditor:** (your name)  
-> **Purpose:** Foundation for Advanced QA Assignments 1–3 + Research Paper
+> **Version:** 1.0
+> **Date:** 2026-05-13
+> **Repository:** `kazutb-dev/digital-library-kazutb`
+> **Branch audited:** `wave2-wip-before-openclaw`
+> **Auditor:** (your name)
+> **Purpose:** Foundation for Advanced QA baseline through experimental QA program layers + Research Paper
 
 ---
 
@@ -562,7 +562,7 @@ P2 (Medium <10):   R09, R10, R13, R14, R15, R16, R17
 - Error handling (exception classes, HTTP response codes)
 - Performance baseline (response time, concurrent users)
 
-**OUT OF SCOPE (for Assignments 1–3):**
+**OUT OF SCOPE (for baseline through experimental QA program layers):**
 - Full mobile responsiveness testing
 - Accessibility (WCAG) audit — separate assignment
 - Security penetration testing (beyond auth hardening tests)
@@ -630,7 +630,7 @@ Tier 3 (complete after — P2 risks):
 - All P0 test cases pass
 - P1 test cases pass at 90%+
 - No unresolved Critical/High defects
-- Coverage meets threshold (target: 40% lines for Assignment 2)
+- Coverage meets threshold (target: 40% lines for automation and quality governance layer)
 - All E2E smoke tests pass on main branch
 
 ### 6.6 Defect Severity/Priority Model
@@ -691,7 +691,7 @@ Tier 3 (complete after — P2 risks):
 
 ### 7.2 Effort Estimates
 
-| Assignment | Estimated Hours | Breakdown |
+| QA Layer | Estimated Hours | Breakdown |
 |-----------|----------------|---------|
 | **A1 — Risk-based QA** | **12–16 hrs** | Risk register refinement (3h) + manual test cases writing (6h) + environment validation (2h) + artifacts (3h) |
 | **A2 — Automation baseline** | **20–28 hrs** | Auth automation (4h) + Catalog/circulation (8h) + API contract tests (6h) + CI gate setup (4h) + reporting (4h) |
@@ -719,7 +719,7 @@ Tier 3 (complete after — P2 risks):
 
 ## 8. QA ROADMAP (WEEK-BY-WEEK)
 
-### Week 2 — Assignment 1: Risk-Based QA
+### Week 2 — baseline risk-based QA strategy: Risk-Based QA
 
 **Goal:** Establish risk-based test foundation and manual test cases.
 
@@ -748,7 +748,7 @@ Tier 3 (complete after — P2 risks):
 
 ---
 
-### Week 4 — Assignment 2: Automation Baseline + CI Quality Gates
+### Week 4 — automation and quality governance layer: Automation Baseline + CI Quality Gates
 
 **Goal:** Automate P0/P1 test cases and integrate into CI pipeline.
 
@@ -778,7 +778,7 @@ Tier 3 (complete after — P2 risks):
 
 ---
 
-### Week 5 — Midterm Checkpoint
+### Week 5 — Intermediate Empirical Review Checkpoint
 
 **Goal:** Review quality metrics, adjust strategy, prepare for experimental phase.
 
@@ -787,7 +787,7 @@ Tier 3 (complete after — P2 risks):
 - 📝 Defect summary report (found vs fixed)
 - 📊 Coverage trend chart (Week 2 → Week 5)
 - 📝 Risk register update (re-score based on findings)
-- 🎯 Revised scope for Assignment 3
+- 🎯 Revised scope for experimental evaluation layer
 
 **Concrete tasks:**
 ```
@@ -801,7 +801,7 @@ Tier 3 (complete after — P2 risks):
 
 ---
 
-### Week 7 — Assignment 3: Performance & Experimental Testing
+### Week 7 — experimental evaluation layer: Performance & Experimental Testing
 
 **Goal:** Establish performance baseline, run load experiments, produce research data.
 
@@ -810,7 +810,7 @@ Tier 3 (complete after — P2 risks):
 - 📊 Performance baseline report (P50/P95 at 1/10/50 concurrent users)
 - 🧪 Experimental test design (hypothesis → test → result)
 - 📊 Research paper draft with charts/graphs
-- 🏁 Final QA summary (all 3 assignments combined)
+- 🏁 Final QA summary (all 3 program layers combined)
 
 **Concrete tasks:**
 ```
@@ -935,7 +935,7 @@ C:\dev\kazutb-library\qa\
 
 ## 12. FINAL CHECKLIST
 
-### Readiness for Assignment 1 Start
+### Readiness for baseline risk-based QA strategy Start
 
 | Item | Status | Next Action |
 |------|--------|------------|
@@ -957,7 +957,7 @@ C:\dev\kazutb-library\qa\
 | Demo auth enabled for E2E | ❌ Not Ready | Add `APP_DEMO_LOGIN=true` to `.env` |
 | `INTEGRATION_ALLOWED_TOKENS` set for API tests | ❌ Not Ready | Add token to `.env` |
 | Factory for Document/BookCopy | ❌ Not Ready | Create `database/factories/DocumentFactory.php` |
-| k6 installed for performance | ❌ Not Ready | Install for Assignment 3 (not urgent now) |
+| k6 installed for performance | ❌ Not Ready | Install for experimental evaluation layer (not urgent now) |
 
 ---
 

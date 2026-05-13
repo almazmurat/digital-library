@@ -1,9 +1,9 @@
 # QA Environment Setup Report — KazUTB Digital Library Platform
 
-> **Version:** 1.0  
-> **Date:** 2026-05-13  
-> **Project:** `kazutb-dev/digital-library-kazutb`  
-> **Author:** (your name)  
+> **Version:** 1.0
+> **Date:** 2026-05-13
+> **Project:** `kazutb-dev/digital-library-kazutb`
+> **Author:** (your name)
 > **Purpose:** Document environment setup steps and validation results for reproducible test execution
 
 ---
@@ -20,7 +20,7 @@
 | Docker Desktop | Latest | For PostgreSQL + full app stack |
 | Git | Any | Version control |
 | Chromium | Playwright-managed | For E2E tests (auto-installed) |
-| k6 | Latest (optional, Assignment 3) | Performance testing |
+| k6 | Latest (optional, experimental evaluation layer) | Performance testing |
 
 ---
 
@@ -117,7 +117,7 @@ docker compose up -d postgres
 
 **Expected result:** PostgreSQL 18 container running, healthy.
 
-**Validation:** 
+**Validation:**
 ```bash
 docker compose ps
 # postgres container status: "healthy"

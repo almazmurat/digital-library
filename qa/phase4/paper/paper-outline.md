@@ -1,4 +1,4 @@
-# Paper Outline - Assignment 4 Research Draft Scaffold
+# Paper Outline - Research Draft Scaffold
 
 Working title:
 Risk-Based QA Evolution in the KazUTB Digital Library: From Baseline Risk Mapping to Experimental Resilience Evidence
@@ -17,7 +17,7 @@ Evidence inputs:
 - qa/phase3/docs/phase3-experimental-final-report.md
 
 Phase artifact feeds:
-phase2, midterm, phase3, qa/paper-assets/figures/summary
+phase2, Intermediate Empirical Review, phase3, qa/paper-assets/figures/summary
 
 Draft status:
 Draft completed in `qa/phase4/paper/abstract-draft.md`.
@@ -55,7 +55,7 @@ Evidence inputs:
 - Internal method choices and limitations from phase docs.
 
 Phase artifact feeds:
-phase1, phase2, midterm, phase3 methodology and governance documents.
+phase1, phase2, Intermediate Empirical Review, phase3 methodology and governance documents.
 
 Draft status:
 Draft completed in `qa/phase4/paper/literature-review-draft.md`.
@@ -77,7 +77,7 @@ Evidence inputs:
 - qa/phase3/docs/phase3-experimental-setup.md
 
 Phase artifact feeds:
-phase1 through phase3 and midterm transition logic.
+phase1 through phase3 and Intermediate Empirical Review transition logic.
 
 Draft status:
 Draft completed in `qa/phase4/paper/methodology-draft.md`.
@@ -123,7 +123,7 @@ Evidence inputs:
 - qa/phase3/docs/phase3-final-summary.md
 
 Phase artifact feeds:
-midterm reassessment and phase3 integrated findings.
+Intermediate Empirical Review reassessment and phase3 integrated findings.
 
 Draft status:
 Draft completed in `qa/phase4/paper/discussion-draft.md`.
@@ -142,7 +142,7 @@ Evidence inputs:
 - qa/phase3/docs/phase3-final-summary.md
 
 Phase artifact feeds:
-midterm and phase3 synthesis.
+Intermediate Empirical Review and phase3 synthesis.
 
 Draft status:
 Draft completed in `qa/phase4/paper/preliminary-conclusions-draft.md`.
@@ -223,4 +223,4 @@ Appendix formatting and final numbered annexes.
 
 ---
 
-KazUTB Digital Library - Phase 4 Part 1
+KazUTB Digital Library - Research Synthesis Layer (Phase 4) Part 1
