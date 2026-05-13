@@ -1,32 +1,44 @@
 {
   "executionTime": [
     {
-      "moduleOrSuite": "API smoke scripts",
-      "numberOfTestCases": 10,
-      "executionTimeSeconds": 38.435,
-      "totalTimeSeconds": 38.435,
-      "notes": "runner_elapsed_ms=38435.05; consumed_by=P2-QG-007"
+      "module_feature": "API smoke critical suites",
+      "number_of_test_cases": 10,
+      "avg_execution_time_per_test_case_seconds": 3.844,
+      "total_execution_time_seconds": 38.435,
+      "environment": "local",
+      "notes": "from phase2-api-tests.log runner_elapsed_ms=38435.05"
     },
     {
-      "moduleOrSuite": "UI smoke scripts",
-      "numberOfTestCases": 11,
-      "executionTimeSeconds": 54.885,
-      "totalTimeSeconds": 54.885,
-      "notes": "playwright_elapsed_ms=54884.76; consumed_by=P2-QG-007"
+      "module_feature": "UI smoke critical routes",
+      "number_of_test_cases": 11,
+      "avg_execution_time_per_test_case_seconds": 4.989,
+      "total_execution_time_seconds": 54.885,
+      "environment": "local",
+      "notes": "from phase2-playwright.log elapsed=54.885s"
     },
     {
-      "moduleOrSuite": "Targeted PHPUnit subset",
-      "numberOfTestCases": 41,
-      "executionTimeSeconds": 61.258,
-      "totalTimeSeconds": 61.258,
-      "notes": "phpunit_elapsed_ms=61258.42; consumed_by=P2-QG-007"
+      "module_feature": "Targeted PHPUnit high-risk subset",
+      "number_of_test_cases": 41,
+      "avg_execution_time_per_test_case_seconds": 1.494,
+      "total_execution_time_seconds": 61.258,
+      "environment": "local",
+      "notes": "from phase2-phpunit.log elapsed=61.258s"
     },
     {
-      "moduleOrSuite": "Combined total",
-      "numberOfTestCases": 62,
-      "executionTimeSeconds": 154.578,
-      "totalTimeSeconds": 154.578,
-      "notes": "sum of measured suite runtimes"
+      "module_feature": "Combined automation run",
+      "number_of_test_cases": 62,
+      "avg_execution_time_per_test_case_seconds": 2.493,
+      "total_execution_time_seconds": 154.578,
+      "environment": "local",
+      "notes": "sum of local measured suites"
+    },
+    {
+      "module_feature": "CI execution benchmark",
+      "number_of_test_cases": "n/a",
+      "avg_execution_time_per_test_case_seconds": "n/a",
+      "total_execution_time_seconds": "not measured in current dataset",
+      "environment": "ci",
+      "notes": "proposed to capture from GitHub Actions artifacts in next iteration"
     }
   ]
 }

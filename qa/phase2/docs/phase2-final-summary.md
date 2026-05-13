@@ -1,38 +1,36 @@
 # Phase 2 Final Summary
 
-## Executive Summary
+## Executive summary
 
-Phase 2 Part 2 is completed for quality-gate definition, CI integration hardening, and operational alert/failure procedures at production-oriented detail level.
+Phase 2 Part 3 is finalized with a complete metrics package, interpretation layer, chart-ready datasets, deliverables checklist, and updated traceability/evidence linkage.
 
-## What Was Strengthened in Part 2
+## What was completed in Part 3
 
-- Expanded quality gate model to separate current_enforced versus proposed_next_stage gates.
-- Added assignment-style pass/fail table and engineering gate matrix with threshold, source, enforcement, and rationale.
-- Updated CI integration documentation to distinguish implemented and proposed pipeline capabilities.
-- Hardened CI gate evaluation logic to enforce only current_enforced fail-level gates.
-- Expanded alerting/failure handling from high-level notes into operational runbook tables.
-- Updated evidence index and traceability to support both course submission and real QA handoff.
+- Normalized Phase 2 metric datasets with CSV/JSON parity for:
+    - automation coverage
+    - execution time
+    - defects-vs-risk
+    - execution governance ledger
+- Added reproducible chart-source datasets and chart generation instructions.
+- Added metrics synthesis and interpretation documents for research/chapter-ready usage.
+- Expanded evidence index and traceability mappings to include all Part 3 artifacts.
+- Added execution snapshot and screenshot inventory note for reproducibility discipline.
 
-## Factual Current Results
+## Final measured outcomes (factual)
 
-- API smoke: 10 cases, 7 pass, 3 fail, 38.435s.
-- UI smoke: 11 cases, 10 pass, 1 fail, 54.885s.
-- Targeted PHPUnit subset: 41 tests (31 pass, 6 fail, 4 skip), 61.258s.
-- Current enforced gate outcome: pass=5, fail=3, warn=1.
+- Weighted high-risk automation coverage: 75.0 percent (27/36 checks).
+- Module-level automation presence: 7/7 modules at least partially automated.
+- Combined local measured runtime: 154.578s.
+- Defects/issues observed: 9 across 7 module groups.
+- Current enforced gate status: pass=5, fail=3, warn=1.
 
-## Production Relevance
+## Current blockers
 
-- Gate definitions now explicitly encode what blocks deployment versus what is roadmap guidance.
-- CI artifacts and log references are documented as traceable evidence sources.
-- Failure handling now includes ownership, escalation, and recovery guidance for critical scenarios.
+- Public /news route still fails with HTTP 500 in UI smoke.
+- Integration/admin API boundaries still produce failing smoke checks.
+- Targeted PHPUnit subset remains below required pass-rate threshold.
+- Local coverage driver limitation remains an unresolved data completeness gap.
 
-## Remaining Gaps Before Next Phase
+## Readiness statement
 
-- Resolve /news public route HTTP 500 failure.
-- Resolve integration endpoint/API boundary failures surfaced in smoke checks.
-- Stabilize targeted PHPUnit subset in sqlite-sensitive areas or align environment assumptions.
-- Implement proposed next-stage gates (coverage >=80 percent enforcement, static analysis, flaky-test control).
-
-## Readiness Statement
-
-Phase 2 now has a stronger governance layer for quality gates and CI visibility. The package is suitable for assignment submission and for operational QA handoff with clear evidence, enforcement boundaries, and documented limitations.
+The Phase 2 package is submission-ready for Assignment 2 evidence requirements and research reporting. It is not release-ready from a production reliability perspective until fail-level gate blockers are resolved.

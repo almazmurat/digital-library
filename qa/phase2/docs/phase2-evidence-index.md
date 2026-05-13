@@ -16,11 +16,20 @@
 | P2-E-012 | Pipeline diagram | Markdown | Text and mermaid pipeline flow for assignment and handoff | qa/phase2/ci/phase2-workflow-diagram.md | implemented |
 | P2-E-013 | UI failure screenshot | Screenshot | Public news route failure captured by Playwright | qa/phase2/reports/test-results/playwright-raw/public-catalog.ui-P2-UI-CAT-004-news-page-loads-chromium/test-failed-1.png | implemented |
 | P2-E-014 | UI failure context | Report | Detailed parse/runtime error context | qa/phase2/reports/test-results/playwright-raw/public-catalog.ui-P2-UI-CAT-004-news-page-loads-chromium/error-context.md | implemented |
-| P2-E-015 | Execution time metrics | CSV/JSON | Bounded runtime measurements used by QG runtime gates | qa/phase2/metrics/phase2-execution-time.csv; qa/phase2/metrics/phase2-execution-time.json | implemented |
-| P2-E-016 | Test execution ledger | CSV/JSON | Case-level pass/fail and defect notes across suites | qa/phase2/metrics/phase2-test-execution-log.csv; qa/phase2/metrics/phase2-test-execution-log.json | implemented |
+| P2-E-015 | Execution time metrics | CSV/JSON | Runtime measurements including average per test case and environment | qa/phase2/metrics/phase2-execution-time.csv; qa/phase2/metrics/phase2-execution-time.json | implemented |
+| P2-E-016 | Test execution ledger | CSV/JSON | Case-level pass/fail with script, risk, and evidence references | qa/phase2/metrics/phase2-test-execution-log.csv; qa/phase2/metrics/phase2-test-execution-log.json | implemented |
+| P2-E-017 | Automation coverage metrics | CSV/JSON | Coverage metrics with planned-check denominator | qa/phase2/metrics/phase2-automation-coverage.csv; qa/phase2/metrics/phase2-automation-coverage.json | implemented |
+| P2-E-018 | Defects-vs-risk metrics | CSV/JSON | Module-level defects linked to risk tier and evidence | qa/phase2/metrics/phase2-defects-vs-risk.csv; qa/phase2/metrics/phase2-defects-vs-risk.json | implemented |
+| P2-E-019 | Chart-source datasets | CSV | Visualization-ready tables for coverage, execution, defects | qa/phase2/metrics/charts/*.csv | implemented |
+| P2-E-020 | Chart generation instructions | Markdown | Reproducible chart generation procedure for reports | qa/phase2/metrics/charts/phase2-chart-instructions.md | implemented |
+| P2-E-021 | Metrics synthesis report | Markdown | Consolidated metric narrative for results chapter usage | qa/phase2/docs/phase2-metrics-report.md | implemented |
+| P2-E-022 | Metrics interpretation | Markdown | Risk and quality interpretation tied to Phase 1 assumptions | qa/phase2/docs/phase2-metrics-interpretation.md | implemented |
+| P2-E-023 | Deliverables checklist | Markdown | Submission-readiness checklist with completion status | qa/phase2/docs/phase2-deliverables-checklist.md | implemented |
+| P2-E-024 | Execution reproducibility snapshot | Markdown | Snapshot artifact linking run logs to structured metrics | qa/phase2/reports/execution/phase2-execution-dataset-snapshot.md | implemented |
+| P2-E-025 | Screenshot inventory note | Markdown | Clarifies current screenshot inventory and update rule | qa/phase2/evidence/screenshots/README.md | implemented |
 
-## Remaining Limitations (Factual)
+## Remaining limitations (factual)
 
-- Slack and email integrations are not configured in repository workflows; GitHub-native visibility is currently the active alerting channel.
-- Proposed next-stage gates (coverage >=80 percent, static analysis, flake-rate control, 100 percent critical workflow success) are documented but not enforced.
+- Slack and email integrations are not configured in repository workflows; GitHub-native visibility is the active alerting channel.
+- Proposed next-stage gates (coverage >=80 percent, static analysis, flaky rerun control, and 100 percent critical workflow success) are documented but not enforced.
 - Current enforced gate set remains red due measured failures in API smoke, targeted PHPUnit subset, and public /news fatal error detection.

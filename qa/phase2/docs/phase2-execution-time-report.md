@@ -5,21 +5,23 @@ Measured from:
 - qa/phase2/evidence/logs/phase2-api-tests.log
 - qa/phase2/evidence/logs/phase2-phpunit.log
 - qa/phase2/evidence/logs/phase2-playwright.log
+- qa/phase2/metrics/phase2-execution-time.csv
 
-| Module/Feature | Number of Test Cases | Execution Time | Total Time | Gate Mapping | Notes |
-| --- | --- | --- | --- | --- | --- |
-| API smoke (phase2 scripts) | 10 | 38.435s | 38.435s | P2-QG-007 | runner_elapsed_ms=38435.05 |
-| UI smoke (phase2 playwright specs) | 11 | 54.885s | 54.885s | P2-QG-007 | playwright_elapsed_ms=54884.76 |
-| Targeted PHPUnit high-risk subset | 41 (31 pass, 6 fail, 4 skip) | 61.258s | 61.258s | P2-QG-007 | phpunit_elapsed_ms=61258.42 |
-| Combined automation execution | 62 | 154.578s | 154.578s | Informational | Sum of measured suite runtimes |
+| Module/Feature | Number of Test Cases | Average per Test Case (s) | Total Time (s) | Environment | Gate Mapping | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| API smoke critical suites | 10 | 3.844 | 38.435 | local | P2-QG-007 | from phase2-api-tests.log runner_elapsed_ms=38435.05 |
+| UI smoke critical routes | 11 | 4.989 | 54.885 | local | P2-QG-007 | from phase2-playwright.log elapsed=54.885s |
+| Targeted PHPUnit high-risk subset | 41 | 1.494 | 61.258 | local | P2-QG-007 | from phase2-phpunit.log elapsed=61.258s |
+| Combined automation run | 62 | 2.493 | 154.578 | local | Informational | sum of measured local suite runtimes |
+| CI execution benchmark | n/a | n/a | not measured in current dataset | ci | Informational | keep as tracked gap for next iteration |
 
 Bottleneck observations:
 
-- The /news UI route check was one of the slowest tests and failed with HTTP 500.
-- API runner is stable and bounded under 40 seconds.
-- PHPUnit subset includes environment-sensitive tests (sqlite versus expected DB objects).
+- Single-case outlier: P2-UI-CAT-004 (/news) at approximately 36.9s and failing with HTTP 500.
+- API and UI suite totals remain below current warn-level thresholds.
+- PHPUnit subset is bounded but still stability-sensitive due environment assumptions.
 
 Operational interpretation:
 
-- Runtime thresholds are currently passing and are enforced as warn-level in the current gate model.
-- Runtime trend should continue to be monitored before tightening thresholds further.
+- Runtime thresholds currently pass under P2-QG-007.
+- Continue collecting CI runtime data before tightening thresholds.

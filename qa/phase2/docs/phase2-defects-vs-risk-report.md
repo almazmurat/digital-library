@@ -2,20 +2,22 @@
 
 Source references:
 
-- Phase 1 risk register: qa/phase1/docs/phase1-risk-register.md
-- Automation results: qa/phase2/evidence/logs/phase2-automation-summary.log
+- qa/phase1/docs/phase1-risk-register.md
+- qa/phase2/evidence/logs/phase2-automation-summary.log
+- qa/phase2/metrics/phase2-defects-vs-risk.csv
 
-| Module/Feature          | High-Risk Level | Expected Defects                 | Defects Found         | Pass/Fail | Notes                                                    |
-| ----------------------- | --------------- | -------------------------------- | --------------------- | --------- | -------------------------------------------------------- |
-| Authentication          | P0              | Low-to-medium (guard edge cases) | 0 in API auth smoke   | Pass      | Auth guard responses behaved as expected                 |
-| Authorization/RBAC      | P1              | Medium                           | 3 in targeted PHPUnit | Fail      | Internal access expectations mismatched redirects/status |
-| Catalog/Public routes   | P0              | Medium                           | 1 in UI smoke         | Fail      | /news returned HTTP 500                                  |
-| Circulation/Operations  | P0              | Medium                           | 1 in API smoke        | Fail      | Admin/integration expectation mismatch surfaced          |
-| Integration API         | P1              | Medium                           | 2 in API smoke        | Fail      | Integration endpoints returned 404 in host run           |
-| Admin operations        | P1              | Medium                           | 1 in API smoke        | Fail      | /admin/integrations returned 404 to anonymous request    |
-| Data/coverage readiness | P0 (R13)        | Medium                           | 1 process defect      | Fail      | Coverage driver unavailable in local run, metric blocked |
+| Module/Feature | High-Risk Level | Expected Defects | Defects Found | Pass/Fail | Evidence | Notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| Authentication | P0 | Low-to-medium | 0 | Pass | phase2-api-tests.log | auth guard smoke checks passed |
+| Authorization/RBAC | P1 | Medium | 3 | Fail | phase2-phpunit.log | targeted PHPUnit access-boundary assertions failed |
+| Catalog/Public routes | P0 | Medium | 1 | Fail | phase2-playwright.log | /news returned 500 in UI smoke |
+| Circulation/Operations | P0 | Medium | 1 | Fail | phase2-api-tests.log | operations guard expectation mismatch surfaced |
+| Integration API | P1 | Medium | 2 | Fail | phase2-api-tests.log | integration endpoints returned 404 |
+| Admin operations | P1 | Medium | 1 | Fail | phase2-api-tests.log | admin integrations route returned 404 for anonymous request |
+| Data/Coverage readiness | P0 (R13) | Medium | 1 | Fail | phase2-coverage.log | coverage driver unavailable in local measured run |
 
 Summary:
 
-- Total defects/issues observed in Phase 2 measured runs: 8
-- Predicted high-risk concentration from Phase 1 was confirmed in public/catalog and authorization surfaces.
+- Total defects/issues observed: 9.
+- Failed risk areas: 6/7 modules.
+- Risk forecast alignment: high-risk concentration from Phase 1 is confirmed in authorization, public/catalog, operations, and integration paths.

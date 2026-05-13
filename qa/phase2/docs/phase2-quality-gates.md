@@ -4,7 +4,7 @@
 
 | Quality Gate ID | Metric / Criterion | Threshold / Requirement | Importance | Notes |
 | --- | --- | --- | --- | --- |
-| QG01 | Code coverage for critical modules | Current enforceable: coverage driver availability must be detected in the measured environment. Target next stage: >=80 percent line coverage for critical modules. | High | Local Phase 2 host run is blocked for line coverage; CI backend job uses pcov for coverage generation. |
+| QG01 | Code coverage for critical modules | Current enforceable: coverage driver availability must be detected in measured environment. Target next stage: >=80 percent line coverage for critical modules. | High | Local Phase 2 host run is blocked for line coverage; CI backend job uses pcov for coverage generation. |
 | QG02 | Critical defects | Zero unresolved critical defects in enforced critical workflows. | High | Enforced through fail-level gates on critical smoke and fatal public errors. |
 | QG03 | Test execution time (TTE) | API smoke <=60s; UI smoke <=90s; targeted PHPUnit subset <=90s. | Medium | Current measured runtimes are below thresholds. |
 | QG04 | Regression test success for critical workflows | Current enforceable: >=90 percent pass-rate per critical suite. Target next stage: 100 percent for critical workflows. | High | Threshold is set to current maturity to avoid false certainty while still blocking major regressions. |
@@ -22,13 +22,13 @@
 | P2-QG-006 | current_enforced | Coverage availability status in measured environment | Coverage driver available (pcov or xdebug) | Medium | Warn | qa/phase2/evidence/logs/phase2-coverage.log | blocked | Warn | Local host measurements cannot yet emit reliable line coverage. | Yes |
 | P2-QG-007 | current_enforced | Test execution time thresholds | API <=60s; UI <=90s; PHPUnit <=90s | Medium | Warn | qa/phase2/metrics/phase2-execution-time.csv | API 38.435s; UI 54.885s; PHPUnit 61.258s | Pass | Runtime is currently within bounded gate limits. | Yes |
 | P2-QG-008 | current_enforced | CI artifact generation completeness | Required Phase 2 docs and gate/result logs present | Medium | Fail | qa/phase2/evidence/logs/phase2-ci-local-validation.log | required artifacts present | Pass | Prevents silent CI success without QA evidence artifacts. | Yes |
-| P2-QG-009 | proposed_next_stage | Critical module line coverage | >=80 percent line coverage for critical modules | High | Informational | build/test-results/clover.xml (CI), coverage trend reporting | Not measured in Phase 2 local dataset | Proposed | Promote to Fail after stable coverage baseline and tooling parity. | No |
+| P2-QG-009 | proposed_next_stage | Critical module line coverage | >=80 percent line coverage for critical modules | High | Informational | build/test-results/clover.xml (CI), coverage trend reporting | Not measured in current local dataset | Proposed | Promote to Fail after stable coverage baseline and tooling parity. | No |
 | P2-QG-010 | proposed_next_stage | Regression success for critical workflows | 100 percent pass-rate on critical auth, catalog, and circulation paths | High | Informational | Consolidated CI test matrix reports | Not yet achieved | Proposed | Final production target; current enforceable threshold is staged at >=90 percent. | No |
 | P2-QG-011 | proposed_next_stage | Static analysis major violations | 0 major violations | Medium | Informational | Future lint/static-analysis job artifacts | Not implemented | Proposed | Add once tooling and baseline suppression policy are agreed. | No |
 | P2-QG-012 | proposed_next_stage | Flaky-test control | <=2 percent flaky rerun rate over rolling 10 CI runs | Medium | Informational | CI rerun analytics and historical run metadata | Not measured | Proposed | Needed before tightening to strict 100 percent regression gates. | No |
 
-## Enforcement Notes
+## Enforcement notes
 
-- Current CI gate evaluation intentionally enforces only rows where gate_tier is current_enforced.
-- proposed_next_stage gates are documented for roadmap visibility and do not fail current pipeline runs.
-- This separation avoids over-claiming production maturity while still blocking known high-risk regressions.
+- Current CI gate evaluation enforces rows where gate_tier is current_enforced.
+- proposed_next_stage gates remain roadmap visibility and do not fail current runs.
+- Cross-reference for measured support metrics: docs/phase2-metrics-report.md and docs/phase2-metrics-interpretation.md.
