@@ -22,6 +22,17 @@ Date: 2026-05-13
 | T2       | Results           | Consolidate key metrics per phase         | qa/phase1/metrics/phase1-baseline-metrics.csv; qa/phase2/metrics/phase2-automation-coverage.csv; qa/midterm/metrics/midterm-required-metrics.csv; qa/phase3/metrics/phase3-chaos-metrics.csv |
 | T3       | Claims Governance | Show claim strength and caveats           | qa/phase4/paper/claims-to-evidence-matrix.md                                                                                                                                                 |
 
+## Part 2 Draft Usage Status
+
+| Section Draft | Figure/Table Placeholders Used |
+| --- | --- |
+| abstract-draft.md | none |
+| introduction-draft.md | F1, F7 |
+| methodology-draft.md | F1, F7, T1 |
+| results-draft.md | F2, F3, F4, F5, F6, F7, T2 |
+| discussion-draft.md | F7, T3 |
+| full-paper-draft.md | F1-F7 and T1-T3 placeholders |
+
 ## Missing Figures/Tables Identified
 
 1. Missing table template for direct side-by-side phase KPI summary (to be authored in Part 2).

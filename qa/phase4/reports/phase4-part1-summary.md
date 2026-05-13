@@ -20,6 +20,7 @@ Build Assignment 4 research synthesis scaffolding using factual artifacts from c
 ## Evidence Basis
 
 This part uses only existing repository artifacts from:
+
 - qa/phase1
 - qa/phase2
 - qa/midterm
@@ -31,6 +32,7 @@ No new experimental measurements were generated in this part.
 ## Ready State for Part 2
 
 Part 2 can proceed with full paper prose drafting because:
+
 1. Section objectives and dependencies are mapped.
 2. Claims are bounded by explicit evidence references.
 3. Figure order and analytical purpose are already defined.
@@ -43,4 +45,5 @@ Part 2 can proceed with full paper prose drafting because:
 3. Optional additional synthesis table/heatmap artifacts are still open.
 
 ---
+
 KazUTB Digital Library - QA Phase 4 Part 1

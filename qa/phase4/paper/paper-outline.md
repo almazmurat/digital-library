@@ -19,8 +19,11 @@ Evidence inputs:
 Phase artifact feeds:
 phase2, midterm, phase3, qa/paper-assets/figures/summary
 
+Draft status:
+Draft completed in `qa/phase4/paper/abstract-draft.md`.
+
 Remains to write later:
-Final concise narrative and keyword list after full draft completion.
+Final citation-grounded polish and keyword tuning.
 
 ## 2. Introduction
 
@@ -36,8 +39,11 @@ Evidence inputs:
 Phase artifact feeds:
 phase1 baseline and scope constraints.
 
+Draft status:
+Draft completed in `qa/phase4/paper/introduction-draft.md`.
+
 Remains to write later:
-Academic framing with external references for QA motivation.
+Insert external framing support where marked.
 
 ## 3. Literature Review
 
@@ -51,8 +57,11 @@ Evidence inputs:
 Phase artifact feeds:
 phase1, phase2, midterm, phase3 methodology and governance documents.
 
+Draft status:
+Draft completed in `qa/phase4/paper/literature-review-draft.md`.
+
 Remains to write later:
-External scholarly references are required and tracked in qa/phase4/references/citation-needed-tracker.md.
+Replace all `[citation needed]` and `[external reference required]` placeholders.
 
 ## 4. Methodology
 
@@ -70,8 +79,11 @@ Evidence inputs:
 Phase artifact feeds:
 phase1 through phase3 and midterm transition logic.
 
+Draft status:
+Draft completed in `qa/phase4/paper/methodology-draft.md`.
+
 Remains to write later:
-Integrated methodology prose and formal threat-to-validity subsection.
+Strengthen formal methodological positioning with external sources.
 
 ## 5. Results
 
@@ -92,8 +104,11 @@ Evidence inputs:
 Phase artifact feeds:
 all completed phases plus midterm.
 
+Draft status:
+Draft completed in `qa/phase4/paper/results-draft.md`.
+
 Remains to write later:
-Section-level statistical interpretation text and final table formatting.
+Final table rendering and citation-aware figure narration.
 
 ## 6. Discussion
 
@@ -110,8 +125,11 @@ Evidence inputs:
 Phase artifact feeds:
 midterm reassessment and phase3 integrated findings.
 
+Draft status:
+Draft completed in `qa/phase4/paper/discussion-draft.md`.
+
 Remains to write later:
-Link findings with external literature and discuss external validity.
+Deepen literature-backed validity discussion.
 
 ## 7. Preliminary Conclusions
 
@@ -126,8 +144,11 @@ Evidence inputs:
 Phase artifact feeds:
 midterm and phase3 synthesis.
 
+Draft status:
+Draft completed in `qa/phase4/paper/preliminary-conclusions-draft.md`.
+
 Remains to write later:
-Tighten academic wording and citation support.
+Condense wording for final submission format.
 
 ## 8. Final Insight
 
@@ -142,8 +163,11 @@ Evidence inputs:
 Phase artifact feeds:
 paper-assets summary figure and phase3 integrated report.
 
+Draft status:
+Draft completed in `qa/phase4/paper/final-insight-draft.md`.
+
 Remains to write later:
-Formalized insight statement with explicit novelty claim.
+Finalize novelty framing with citation support.
 
 ## 9. Final Conclusion
 
@@ -158,8 +182,11 @@ Evidence inputs:
 Phase artifact feeds:
 phase3 final package and archive readiness evidence.
 
+Draft status:
+Draft completed in `qa/phase4/paper/final-conclusion-draft.md`.
+
 Remains to write later:
-Final publication-ready conclusion text.
+Refine final future-work prioritization language.
 
 ## 10. References
 
