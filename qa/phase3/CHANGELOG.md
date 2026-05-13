@@ -4,6 +4,78 @@ All notable changes to QA Phase 3 artifacts are documented here.
 
 ---
 
+## [Phase 3 Part 2] — 2026-05-13
+
+### Added
+
+Mutation campaign automation:
+
+- `mutation/plans/run-phase3-mutation.ps1` — controlled manual mutation executor with source restoration and per-mutant targeted tests
+
+Mutation run artifacts:
+
+- `mutation/results/mutation-run-20260513-140552.json`
+
+Mutation metrics:
+
+- `metrics/phase3-mutants.csv`
+- `metrics/phase3-mutants.json`
+- `metrics/phase3-mutation-results.csv`
+- `metrics/phase3-mutation-results.json`
+- `metrics/phase3-mutation-score.csv`
+- `metrics/phase3-mutation-score.json`
+- `metrics/phase3-mutation-gaps.csv`
+- `metrics/phase3-mutation-gaps.json`
+
+Mutation charts:
+
+- `charts/phase3-mutation-score-chart.csv`
+- `charts/phase3-mutant-status-chart.csv`
+- `charts/phase3-mutation-chart-instructions.md`
+
+Mutation documentation:
+
+- `docs/phase3-mutation-plan.md`
+- `docs/phase3-mutation-execution-report.md`
+- `docs/phase3-mutation-score-report.md`
+- `docs/phase3-mutation-gap-analysis.md`
+- `docs/phase3-mutation-recommendations.md`
+- `docs/phase3-mutation-final-summary.md`
+
+Evidence references:
+
+- `evidence/references/phase3-mutation-command-log.md`
+- `evidence/logs/phase3-mutation-*.log` (14 logs)
+
+### Mutation Result Summary
+
+| Metric                 |           Value |
+| ---------------------- | --------------: |
+| Run ID                 | 20260513-140552 |
+| Mutants Created        |              14 |
+| Mutants Killed         |              12 |
+| Mutants Survived       |               2 |
+| Inconclusive           |               0 |
+| Overall Mutation Score |          85.71% |
+
+Module-level scores:
+
+- Integration Boundary Middleware: 100.00%
+- Integration Reservations Read API: 100.00%
+- Integration Reservations Mutate API: 75.00%
+- Integration Document Management API: 75.00%
+
+Surviving mutants:
+
+- MUT-MUT-004
+- MUT-DOC-004
+
+Key gap class:
+
+- Weak assertions on controller-to-service context payload fields.
+
+---
+
 ## [Phase 3 Part 1] — 2026-05-13
 
 ### Added

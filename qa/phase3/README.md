@@ -1,18 +1,22 @@
-# QA Phase 3 Part 1 — Performance Testing
+# QA Phase 3 — Assignment 3 Package
 
-**Project:** KazUTB Digital Library  
-**Status:** Complete  
-**Date:** 2026-05-13  
-**Test type:** Bounded synthetic (1 VU sequential, PowerShell)  
-**Results:** 8/9 scenarios PASS; 1 FAIL (S08 integration middleware threshold)
+Project: KazUTB Digital Library  
+Status: Complete (Part 1 and Part 2)  
+Date: 2026-05-13
 
 ---
 
 ## Overview
 
-This directory contains all artifacts for **Phase 3 Part 1 — Performance Testing** of the KazUTB Digital Library QA programme.
+This directory contains all Phase 3 artifacts:
 
-Three priority modules were tested under 9 load scenarios using PowerShell `Invoke-WebRequest` as the load generation tool (k6 not available in this environment). All measurements are disclosed as bounded synthetic (1 VU sequential).
+1. Part 1: Performance testing baseline.
+2. Part 2: Mutation testing campaign.
+
+Key outcomes:
+
+1. Performance: 8/9 scenarios PASS, 1 FAIL.
+2. Mutation: 14 mutants executed, 12 killed, 2 survived, overall score 85.71%.
 
 ---
 
@@ -20,9 +24,9 @@ Three priority modules were tested under 9 load scenarios using PowerShell `Invo
 
 ```
 qa/phase3/
-├── README.md                    ← This file
-├── TRACEABILITY.md              ← Scenario-to-evidence traceability matrix
-├── CHANGELOG.md                 ← Change log for this phase
+├── README.md
+├── TRACEABILITY.md
+├── CHANGELOG.md
 │
 ├── docs/
 │   ├── phase3-performance-test-plan.md
@@ -31,100 +35,102 @@ qa/phase3/
 │   ├── phase3-metrics-report.md
 │   ├── phase3-bottleneck-analysis.md
 │   ├── phase3-recommendations.md
-│   └── phase3-final-summary.md
+│   ├── phase3-final-summary.md
+│   ├── phase3-mutation-plan.md
+│   ├── phase3-mutation-execution-report.md
+│   ├── phase3-mutation-score-report.md
+│   ├── phase3-mutation-gap-analysis.md
+│   ├── phase3-mutation-recommendations.md
+│   └── phase3-mutation-final-summary.md
 │
 ├── metrics/
-│   ├── phase3-scenarios.csv                ← 9 scenario definitions
+│   ├── phase3-scenarios.csv
 │   ├── phase3-scenarios.json
-│   ├── phase3-performance-results.csv      ← Measured results per scenario
+│   ├── phase3-performance-results.csv
 │   ├── phase3-performance-results.json
-│   ├── phase3-resource-observations.csv    ← Host resource snapshots
+│   ├── phase3-resource-observations.csv
 │   ├── phase3-resource-observations.json
-│   ├── phase3-bottlenecks.csv              ← 8 bottleneck catalogue entries
-│   └── phase3-bottlenecks.json
+│   ├── phase3-bottlenecks.csv
+│   ├── phase3-bottlenecks.json
+│   ├── phase3-mutants.csv
+│   ├── phase3-mutants.json
+│   ├── phase3-mutation-results.csv
+│   ├── phase3-mutation-results.json
+│   ├── phase3-mutation-score.csv
+│   ├── phase3-mutation-score.json
+│   ├── phase3-mutation-gaps.csv
+│   └── phase3-mutation-gaps.json
 │
 ├── charts/
 │   ├── phase3-response-time-chart.csv
 │   ├── phase3-throughput-chart.csv
 │   ├── phase3-error-rate-chart.csv
 │   ├── phase3-resource-usage-chart.csv
-│   └── phase3-chart-instructions.md       ← How to render in Excel/Google Sheets
+│   ├── phase3-chart-instructions.md
+│   ├── phase3-mutation-score-chart.csv
+│   ├── phase3-mutant-status-chart.csv
+│   └── phase3-mutation-chart-instructions.md
 │
 ├── performance/
 │   ├── scripts/
-│   │   ├── perf-catalog-api.ps1            ← S01-S04, S09
-│   │   ├── perf-web-public.ps1             ← S05-S07
-│   │   ├── perf-integration-boundary.ps1   ← S08
-│   │   └── run-phase3-performance.ps1      ← Master orchestrator
 │   └── results/
-│       ├── catalog-api-perf-20260513-133438.json
-│       ├── web-public-perf-20260513-134213.json
-│       └── integration-boundary-perf-20260513-134513.json
+│
+├── mutation/
+│   ├── plans/
+│   │   └── run-phase3-mutation.ps1
+│   └── results/
+│       └── mutation-run-20260513-140552.json
 │
 └── evidence/
-    └── logs/
-        ├── perf-catalog-api.log
-        ├── perf-web-public.log
-        └── perf-integration-boundary.log
+    ├── logs/
+    └── references/
 ```
 
 ---
 
 ## Quick Results
 
-| Scenario            | Module             | Pass    | Avg (ms) | p95 (ms) |
-| ------------------- | ------------------ | ------- | -------- | -------- |
-| S01-NL-CATALOG      | Catalog API        | ✅      | 3 443    | 3 553    |
-| S02-PL-CATALOG      | Catalog API        | ✅      | 3 497    | 3 796    |
-| S03-NL-SUBJECTS     | Catalog API        | ✅      | 3 359    | 3 969    |
-| S04-SL-MIXED        | Catalog API        | ✅      | 3 464    | 3 659    |
-| S05-NL-EXTRES       | External Resources | ✅      | 3 077    | 3 334    |
-| S06-NL-WEBCATALOG   | Web Catalog UI     | ✅      | 3 784    | 4 037    |
-| S07-PL-WEBCATALOG   | Web Catalog UI     | ✅      | 3 639    | 4 014    |
-| S08-BND-INTEGRATION | Integration API    | ❌ FAIL | 3 237\*  | 3 661    |
-| S09-END-CATALOG     | Catalog API        | ✅      | 3 454    | 3 562    |
+### Part 1 Performance
 
-\*S08 avg = middleware overhead average (threshold = 2 000ms)
+| Area      | Result                  |
+| --------- | ----------------------- |
+| Scenarios | 9                       |
+| Pass      | 8                       |
+| Fail      | 1 (S08-BND-INTEGRATION) |
+
+### Part 2 Mutation
+
+| Module                              | Created | Killed | Survived | Score (%) |
+| ----------------------------------- | ------: | -----: | -------: | --------: |
+| Integration Boundary Middleware     |       3 |      3 |        0 |    100.00 |
+| Integration Reservations Read API   |       3 |      3 |        0 |    100.00 |
+| Integration Reservations Mutate API |       4 |      3 |        1 |     75.00 |
+| Integration Document Management API |       4 |      3 |        1 |     75.00 |
+| Overall                             |      14 |     12 |        2 |     85.71 |
 
 ---
 
-## How to Re-Run
+## Re-Run Commands
 
-### Individual scripts
-
-```powershell
-# Catalog API (S01–S04, S09)
-pwsh -File "performance/scripts/perf-catalog-api.ps1" -BaseUrl "http://localhost" -OutputDir "performance/results"
-
-# Web/Public (S05–S07)
-pwsh -File "performance/scripts/perf-web-public.ps1" -BaseUrl "http://localhost" -OutputDir "performance/results"
-
-# Integration boundary (S08)
-pwsh -File "performance/scripts/perf-integration-boundary.ps1" -BaseUrl "http://localhost" -OutputDir "performance/results"
-```
-
-### Master orchestrator
+### Performance (Part 1)
 
 ```powershell
 pwsh -File "performance/scripts/run-phase3-performance.ps1" -BaseUrl "http://localhost"
 ```
 
-> Requires: Nginx running on localhost:80, PHP-FPM serving Laravel 13.2.
+### Mutation (Part 2)
+
+```powershell
+pwsh -File "mutation/plans/run-phase3-mutation.ps1"
+```
 
 ---
 
 ## Methodology Disclosure
 
-All tests use PowerShell `Invoke-WebRequest` at 1 VU (sequential) — `dataset_type = bounded_synthetic`. Results are single-user latency baselines. Concurrent load testing requires k6/Locust on a Linux staging environment.
+Part 1 uses bounded synthetic sequential HTTP timing on local Windows environment.  
+Part 2 uses controlled manual mutation (scripted), one mutant at a time with source restoration and targeted module tests.
 
 ---
 
-## Related Documents
-
-- [Phase 2 QA Artifacts](../phase2/) — functional and integration testing baseline
-- [Project Context](../../PROJECT_CONTEXT.md)
-- [QA Overview](../README.md)
-
----
-
-_KazUTB Digital Library — QA Phase 3 Part 1 — 2026-05-13_
+KazUTB Digital Library — QA Phase 3
