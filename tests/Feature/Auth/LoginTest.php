@@ -2,21 +2,25 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function test_user_can_login_with_email(): void
     {
-        $user = User::factory()->create([
-            'email' => 'user@example.com',
-            'password' => 'secret',
-            'ad_login' => 'ad_login',
-            'role' => 'employee',
+        Http::fake([
+            '*' => Http::response([
+                'token' => 'crm-token-1',
+                'user' => [
+                    'id' => 'crm-user-1',
+                    'name' => 'Test Reader',
+                    'email' => 'user@example.com',
+                    'login' => 'reader01',
+                    'ad_login' => 'reader01',
+                    'role' => 'reader',
+                ],
+            ], 200),
         ]);
 
         $response = $this->postJson('/api/login', [
@@ -27,22 +31,30 @@ class LoginTest extends TestCase
 
         $response
             ->assertOk()
-            ->assertJsonPath('token_type', 'Bearer')
-            ->assertJsonPath('user.id', $user->id)
+            ->assertJsonPath('success', true)
+            ->assertJsonPath('user.id', 'crm-user-1')
             ->assertJsonPath('user.email', 'user@example.com')
-            ->assertJsonPath('user.ad_login', 'ad_login')
-            ->assertJsonPath('user.role', 'employee');
+            ->assertJsonPath('user.ad_login', 'reader01')
+            ->assertJsonPath('user.role', 'reader');
 
-        $this->assertDatabaseCount('personal_access_tokens', 1);
+        $this->assertTrue(session()->has('library.crm_token'));
+        $this->assertTrue(session()->has('library.user'));
     }
 
     public function test_user_can_login_with_login_field(): void
     {
-        $user = User::factory()->create([
-            'email' => 'user@example.com',
-            'password' => 'secret',
-            'ad_login' => 'ad_login',
-            'role' => 'employee',
+        Http::fake([
+            '*' => Http::response([
+                'token' => 'crm-token-2',
+                'user' => [
+                    'id' => 'crm-user-2',
+                    'name' => 'Test Librarian',
+                    'email' => 'librarian@example.com',
+                    'login' => 'ad_login',
+                    'ad_login' => 'ad_login',
+                    'role' => 'librarian',
+                ],
+            ], 200),
         ]);
 
         $response = $this->postJson('/api/login', [
@@ -53,12 +65,13 @@ class LoginTest extends TestCase
 
         $response
             ->assertOk()
-            ->assertJsonPath('token_type', 'Bearer')
-            ->assertJsonPath('user.id', $user->id)
-            ->assertJsonPath('user.email', 'user@example.com')
+            ->assertJsonPath('success', true)
+            ->assertJsonPath('user.id', 'crm-user-2')
+            ->assertJsonPath('user.email', 'librarian@example.com')
             ->assertJsonPath('user.ad_login', 'ad_login')
-            ->assertJsonPath('user.role', 'employee');
+            ->assertJsonPath('user.role', 'librarian');
 
-        $this->assertDatabaseCount('personal_access_tokens', 1);
+        $this->assertTrue(session()->has('library.crm_token'));
+        $this->assertTrue(session()->has('library.user'));
     }
 }

@@ -3,10 +3,13 @@
 Research paper drafts, charts, and final deliverables.
 
 ## Files
-- paper-draft.md — Research paper draft
-- igures/ — High-quality charts for publication
+
+- Active manuscript: ../phase4/paper/full-paper-draft.md
+- Paper integration package: ../final-improvements/paper-integration/
+- Figure sources: ../final-improvements/figure-sources/
 
 ## Research Paper Structure (Suggested)
+
 1. Abstract
 2. Introduction (system context, QA goals)
 3. Methodology (risk-based approach, tools, metrics)

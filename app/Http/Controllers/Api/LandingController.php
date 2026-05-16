@@ -13,7 +13,7 @@ class LandingController extends Controller
     {
         $stats = Config::get('library.stats');
 
-        $catalogPayload = $catalogReadService->search(limit: 6, sort: 'popular');
+        $catalogPayload = $catalogReadService->search(limit: 6, sort: 'popular', includeTotal: false, includeLocations: false);
         $books = is_array($catalogPayload['data'] ?? null) ? $catalogPayload['data'] : [];
         $totalBooks = (int) ($catalogPayload['meta']['total'] ?? 0);
 

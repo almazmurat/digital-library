@@ -59,7 +59,14 @@ class ReservationMutateTest extends TestCase
 
         $response->assertOk()
             ->assertJsonPath('data.status', 'READY')
-            ->assertJsonPath('request_id', 'req-mut-001');
+            ->assertJsonPath('data.id', $id)
+            ->assertJsonPath('request_id', 'req-mut-001')
+            ->assertJsonPath('correlation_id', 'corr-mut-001')
+            ->assertJsonPath('timestamp', '2026-04-01T20:00:00.000000Z')
+            ->assertJsonStructure([
+                'data' => ['id', 'status', 'processed_at', 'updated_at'],
+                'request_id', 'correlation_id', 'timestamp',
+            ]);
     }
 
     public function test_reject_success(): void
@@ -105,7 +112,65 @@ class ReservationMutateTest extends TestCase
 
         $response->assertOk()
             ->assertJsonPath('data.status', 'CANCELLED')
-            ->assertJsonPath('data.cancel_origin', 'OPERATOR_REJECT');
+            ->assertJsonPath('data.cancel_origin', 'OPERATOR_REJECT')
+            ->assertJsonPath('data.cancel_reason_code', 'ITEM_NOT_ELIGIBLE')
+            ->assertJsonPath('data.id', $id)
+            ->assertJsonPath('request_id', 'req-mut-001')
+            ->assertJsonPath('correlation_id', 'corr-mut-001')
+            ->assertJsonPath('timestamp', '2026-04-01T20:00:00.000000Z')
+            ->assertJsonStructure([
+                'data' => ['id', 'status', 'cancel_origin', 'cancel_reason_code'],
+                'request_id', 'correlation_id', 'timestamp',
+            ]);
+    }
+
+    /**
+     * Strengthen: context propagation in mutation response
+     */
+    public function test_approve_response_propagates_context_fields(): void
+    {
+        $id = '4327164d-49ae-48ad-98c5-cff27c3aa8fc';
+        $this->bindApproveResult($id, [
+            'status' => 200,
+            'body' => [
+                'data' => [
+                    'id' => $id,
+                    'status' => 'READY',
+                ],
+                'request_id' => 'req-mut-001',
+                'correlation_id' => 'corr-mut-001',
+                'timestamp' => '2026-04-01T20:00:00.000000Z',
+            ],
+            'replayed' => false,
+        ]);
+
+        $response = $this->withHeaders($this->headers)
+            ->postJson("/api/integration/v1/reservations/{$id}/approve");
+
+        $response->assertOk();
+        $json = $response->json();
+        $this->assertEquals('req-mut-001', $json['request_id'] ?? null);
+        $this->assertEquals('corr-mut-001', $json['correlation_id'] ?? null);
+        $this->assertEquals('2026-04-01T20:00:00.000000Z', $json['timestamp'] ?? null);
+        $this->assertArrayHasKey('data', $json);
+        $this->assertArrayHasKey('id', $json['data']);
+        $this->assertArrayHasKey('status', $json['data']);
+    }
+
+    /**
+     * Negative-path: malformed org context structure
+     */
+    public function test_invalid_operator_org_context_structure_returns_400(): void
+    {
+        $id = '4327164d-49ae-48ad-98c5-cff27c3aa8fc';
+        $headers = $this->headers;
+        $headers['X-Operator-Org-Context'] = 'not-a-json';
+
+        $response = $this->withHeaders($headers)
+            ->postJson("/api/integration/v1/reservations/{$id}/approve");
+
+        $response->assertStatus(400)
+            ->assertJsonPath('error.reason_code', 'invalid_operator_org_context');
     }
 
     public function test_invalid_transition_returns_conflict(): void

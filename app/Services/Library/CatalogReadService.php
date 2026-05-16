@@ -27,6 +27,8 @@ class CatalogReadService
         ?string $materialType = null,
         ?string $subjectId = null,
         ?string $institution = null,
+        bool $includeTotal = true,
+        bool $includeLocations = true,
     ): array {
         $page = max($page, 1);
         $limit = min(max($limit, 1), 100);
@@ -173,7 +175,7 @@ class CatalogReadService
             });
         }
 
-        $total = (clone $builder)->count();
+        $total = $includeTotal ? (clone $builder)->count() : 0;
 
         $sortLower = mb_strtolower($sort);
         if ($sortLower === 'newest') {
@@ -198,7 +200,7 @@ class CatalogReadService
             ->values()
             ->all();
 
-        $locationsByDocument = $this->loadLocationsByDocument($documentIds, $institution);
+        $locationsByDocument = $includeLocations ? $this->loadLocationsByDocument($documentIds, $institution) : [];
 
         $data = $rows->map(function (object $row) use ($locationsByDocument): array {
             $authors = $this->decodeJsonValue($row->authors_json);

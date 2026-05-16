@@ -3,15 +3,9 @@
 return [
     'skip_to_main' => 'Перейти к основному содержимому',
     'brand' => [
-<<<<<<< HEAD
         'title' => 'KazUTB Smart Library',
         'subtitle' => 'Since 2003',
         'home_aria' => 'Перейти на главную страницу Digital Library',
-=======
-        'title' => 'Казахский университет технологии и бизнеса имени К. Кулажанова',
-        'subtitle' => 'Цифровая библиотека',
-        'home_aria' => 'Перейти на главную страницу цифровой библиотеки КазУТБ',
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
     ],
     'nav' => [
         'home' => 'Главная',
@@ -40,11 +34,7 @@ return [
         'contact_librarian' => 'Связаться с библиотекарем',
         'shortlist' => 'Подборка',
         'secure_access' => 'Безопасный вход',
-<<<<<<< HEAD
         'support_copy' => 'Астана · служба поддержки Digital Library',
-=======
-        'support_copy' => 'Астана · служба поддержки цифровой библиотеки КазУТБ',
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
         'hours' => 'Пн–Пт 09:00–18:00 · Сб 10:00–14:00',
         'copyright' => 'Институциональный доступ и сервисы для читателей.',
     ],

@@ -319,28 +319,18 @@ class AccountController extends Controller
     {
         $sessionId = trim((string) ($sessionUser['id'] ?? ''));
 
+        // The session user's `id` is the authoritative CRM user identifier — it is
+        // populated directly from the CRM authentication response during login and
+        // stored in the signed, server-side session.  A secondary DB lookup against
+        // public.User to "confirm" the ID is redundant, fragile (hard-codes a
+        // schema/connection detail), and creates an unnecessary runtime dependency.
+        // This approach is already used by the web route resolver and is consistent
+        // with how the rest of the application trusts session-resident identity.
         if ($sessionId !== '' && \Illuminate\Support\Str::isUuid($sessionId)) {
-            $exists = DB::connection('pgsql')
-                ->table('public.User')
-                ->where('id', $sessionId)
-                ->exists();
-
-            if ($exists) {
-                return $sessionId;
-            }
+            return $sessionId;
         }
 
-        $email = mb_strtolower(trim((string) ($sessionUser['email'] ?? '')));
-        if ($email === '') {
-            return null;
-        }
-
-        $userId = DB::connection('pgsql')
-            ->table('public.User')
-            ->whereRaw('LOWER(email) = ?', [$email])
-            ->value('id');
-
-        return is_string($userId) ? $userId : null;
+        return null;
     }
 
     private function resolveReaderId(array $sessionUser): ?string

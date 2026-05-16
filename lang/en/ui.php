@@ -3,15 +3,9 @@
 return [
     'skip_to_main' => 'Skip to main content',
     'brand' => [
-<<<<<<< HEAD
         'title' => 'KazUTB Smart Library',
         'subtitle' => 'Since 2003',
         'home_aria' => 'Go to the Digital Library home page',
-=======
-        'title' => 'Kazakh University of Technology and Business named after K. Kulazhanov',
-        'subtitle' => 'Digital Library',
-        'home_aria' => 'Go to the KazUTB digital library home page',
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
     ],
     'nav' => [
         'home' => 'Home',
@@ -40,11 +34,7 @@ return [
         'contact_librarian' => 'Contact librarian',
         'shortlist' => 'Shortlist',
         'secure_access' => 'Secure access',
-<<<<<<< HEAD
         'support_copy' => 'Astana · Digital Library support desk',
-=======
-        'support_copy' => 'Astana · KazUTB digital library support desk',
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
         'hours' => 'Mon–Fri 09:00–18:00 · Sat 10:00–14:00',
         'copyright' => 'Institutional access and reader services.',
     ],

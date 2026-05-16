@@ -21,6 +21,20 @@ services:
   postgres:
     image: postgres:18
     restart: unless-stopped
+    command:
+      - postgres
+      - -c
+      - shared_buffers=256MB
+      - -c
+      - work_mem=8MB
+      - -c
+      - maintenance_work_mem=64MB
+      - -c
+      - effective_cache_size=768MB
+      - -c
+      - max_connections=120
+      - -c
+      - random_page_cost=1.1
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-library_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
@@ -34,6 +48,14 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1.50'
+          memory: 768M
+        reservations:
+          cpus: '0.50'
+          memory: 256M
 
   # ── Laravel App (nginx + php-fpm) ──────────────────────────
   app:
@@ -67,12 +89,21 @@ services:
     ports:
       - "0.0.0.0:80:80"
     volumes:
-      - ./:/app
+      - ./:/app:cached
     healthcheck:
       test: [ "CMD-SHELL", "curl -fs http://localhost/api/v1/catalog-db?limit=1 || exit 1" ]
       interval: 20s
       timeout: 5s
       retries: 5
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: 1024M
+        reservations:
+          cpus: '0.75'
+          memory: 384M
 
   frontend-dev:
     image: node:22
@@ -83,14 +114,23 @@ services:
     environment:
       APP_URL: "${APP_URL:-http://localhost}"
       VITE_HMR_HOST: "${VITE_HMR_HOST:-}"
-      CHOKIDAR_USEPOLLING: "true"
+      CHOKIDAR_USEPOLLING: "${CHOKIDAR_USEPOLLING:-false}"
+      CHOKIDAR_INTERVAL: "${CHOKIDAR_INTERVAL:-250}"
     command: >
       sh -lc "if [ ! -d node_modules ] || [ -z \"$(ls -A node_modules 2>/dev/null)\" ]; then npm install; fi && npm run dev -- --host 0.0.0.0 --port 5173"
     ports:
       - "0.0.0.0:5173:5173"
     volumes:
-      - ./:/app
+      - ./:/app:cached
       - frontend_node_modules:/app/node_modules
+    deploy:
+      resources:
+        limits:
+          cpus: '1.50'
+          memory: 1024M
+        reservations:
+          cpus: '0.50'
+          memory: 256M
 
 volumes:
   postgres_data:

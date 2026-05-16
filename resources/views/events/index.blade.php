@@ -15,49 +15,6 @@
 
   $copy = $events['chrome'][$lang];
   $eventItems = $events['items'];
-<<<<<<< HEAD
-=======
-  $pagination = $eventsPagination ?? [
-      'page' => 1,
-      'per_page' => 3,
-      'total' => count($eventItems ?? []),
-      'last_page' => 1,
-      'has_more' => false,
-  ];
-  $currentPage = max(1, (int) ($pagination['page'] ?? 1));
-  $lastPage = max(1, (int) ($pagination['last_page'] ?? 1));
-  $totalEvents = max(0, (int) ($pagination['total'] ?? count($eventItems)));
-  $pageStatus = strtr($copy['page_status'], [
-    ':page' => (string) $currentPage,
-    ':last' => (string) $lastPage,
-    ':total' => (string) $totalEvents,
-  ]);
-
-  $pageItems = [];
-  if ($lastPage <= 7) {
-      for ($i = 1; $i <= $lastPage; $i++) {
-          $pageItems[] = $i;
-      }
-  } else {
-      $pageItems[] = 1;
-      $start = max(2, $currentPage - 1);
-      $end = min($lastPage - 1, $currentPage + 1);
-
-      if ($start > 2) {
-          $pageItems[] = '...';
-      }
-
-      for ($i = $start; $i <= $end; $i++) {
-          $pageItems[] = $i;
-      }
-
-      if ($end < $lastPage - 1) {
-          $pageItems[] = '...';
-      }
-
-      $pageItems[] = $lastPage;
-  }
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 @endphp
 
 @section('title', $copy['title'])
@@ -110,39 +67,11 @@
       @endforeach
     </section>
 
-<<<<<<< HEAD
     {{-- Load More — UI-only surface for now; real pagination arrives with /events/{slug} module. --}}
     <div class="events-canonical__load-more-wrap" data-section="events-canonical-load-more">
       <button type="button" class="events-canonical__load-more" data-test-id="events-canonical-load-more">
         {{ $copy['load_more'] }}
       </button>
-=======
-    {{-- Numeric pagination mirrors catalog/news behavior and keeps stable page switching. --}}
-    <div class="events-canonical__controls" data-section="events-canonical-load-more">
-      <nav class="events-canonical__controls-row" aria-label="Events pagination" data-test-id="events-pagination">
-        @if($currentPage > 1)
-          <a href="{{ $routeWithLang('/events', ['page' => $currentPage - 1]) }}" class="events-canonical__nav-btn" data-test-id="events-page-prev">{{ $copy['previous_page'] }}</a>
-        @else
-          <button type="button" class="events-canonical__nav-btn" data-test-id="events-page-prev-disabled" disabled aria-disabled="true">{{ $copy['previous_page'] }}</button>
-        @endif
-
-        @foreach($pageItems as $pageItem)
-          @if($pageItem === '...')
-            <span class="events-canonical__page-ellipsis" aria-hidden="true">...</span>
-          @elseif($pageItem === $currentPage)
-            <span class="events-canonical__page-btn events-canonical__page-btn--active" aria-current="page" data-test-id="events-page-current">{{ $pageItem }}</span>
-          @else
-            <a href="{{ $routeWithLang('/events', ['page' => $pageItem]) }}" class="events-canonical__page-btn" data-test-id="events-page-{{ $pageItem }}">{{ $pageItem }}</a>
-          @endif
-        @endforeach
-
-        @if($currentPage < $lastPage)
-          <a href="{{ $routeWithLang('/events', ['page' => $currentPage + 1]) }}" class="events-canonical__nav-btn" data-test-id="events-page-next">{{ $copy['next_page'] ?? $copy['load_more'] }}</a>
-        @else
-          <button type="button" class="events-canonical__nav-btn" data-test-id="events-page-next-disabled" disabled aria-disabled="true">{{ $copy['next_page'] ?? $copy['load_more'] }}</button>
-        @endif
-      </nav>
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
     </div>
   </div>
 @endsection
@@ -397,42 +326,5 @@
   .events-canonical__page-btn:hover {
     background: #e1e3e4;
   }
-<<<<<<< HEAD
-=======
-
-  .events-canonical__nav-btn:disabled,
-  .events-canonical__page-btn:disabled {
-    color: #8c9199;
-    cursor: not-allowed;
-    opacity: .65;
-  }
-
-  .events-canonical__nav-btn:disabled:hover,
-  .events-canonical__page-btn:disabled:hover {
-    background: transparent;
-  }
-
-  .events-canonical__page-btn {
-    min-width: 40px;
-    height: 40px;
-    padding: 0 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .events-canonical__page-btn--active {
-    background: #006a6a;
-    border-color: #006a6a;
-    color: #ffffff;
-    cursor: default;
-  }
-
-  .events-canonical__page-ellipsis {
-    font-family: 'Manrope', sans-serif;
-    color: #8c9199;
-    padding: 0 4px;
-  }
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 </style>
 @endsection

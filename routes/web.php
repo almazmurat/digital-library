@@ -3,6 +3,7 @@
 use App\Services\Library\BookDetailReadService;
 use App\Services\Library\CatalogReadService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -56,8 +57,6 @@ $memberView = static function (Request $request, string $view, array $data = [])
     ], $data));
 };
 
-<<<<<<< HEAD
-=======
 $newsModelToPublicArticle = static function ($record): array {
     $publishedAt = $record->published_at ?? $record->updated_at ?? $record->created_at ?? now();
     $publishedAt = $publishedAt instanceof \Carbon\CarbonInterface ? $publishedAt : now();
@@ -257,7 +256,6 @@ $memberHistoryFeed = static function (string $crmUserId): array {
         ->all();
 };
 
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 // Phase 3.3 — seeded public news catalog.
 // Representative content for the canonical /news index + /news/{slug} detail.
 // The structure is deliberately DB-replaceable later: an array of article
@@ -1974,20 +1972,30 @@ $eventsSeedProvider = static function (): array {
     ];
 };
 
-Route::get('/news', function () use ($newsSeedProvider) {
+Route::get('/news', function (Request $request) use ($newsSeedProvider) {
     $seed = $newsSeedProvider();
-<<<<<<< HEAD
-    $articles = array_map(
-=======
     $topic = (string) $request->query('topic', 'all');
     $topic = in_array($topic, ['all', 'events', 'research'], true) ? $topic : 'all';
     $page = max(1, (int) $request->query('page', 1));
     $perPage = 5;
     $seedArticles = array_map(
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
         static fn (string $slug) => $seed['articles'][$slug],
         $seed['ordered']
     );
+
+    $articles = $seedArticles;
+    if ($topic !== 'all') {
+        $articles = array_values(array_filter(
+            $seedArticles,
+            static fn (array $article): bool => (string) ($article['topic'] ?? 'all') === $topic,
+        ));
+    }
+
+    $total = count($articles);
+    $lastPage = max(1, (int) ceil(max(1, $total) / $perPage));
+    $page = min($page, $lastPage);
+    $offset = ($page - 1) * $perPage;
+    $articles = array_slice($articles, $offset, $perPage);
 
     return view('news.index', [
         'activePage' => 'news',
@@ -2328,21 +2336,7 @@ Route::get('/contacts', function () use ($contactsSeedProvider) {
 // Mirrors docs/design-exports/events_index_canonical — header + vertical
 // event card list (1/4 date rail + 3/4 content with venue + details link)
 // + Load More. Content is driven by $eventsSeedProvider (trilingual).
-<<<<<<< HEAD
 Route::get('/events', function () use ($eventsSeedProvider) {
-=======
-Route::get('/events', function (Request $request) use ($eventsSeedProvider) {
-    $events = $eventsSeedProvider();
-    $page = max(1, (int) $request->query('page', 1));
-    $perPage = 3;
-    $total = count($events['items']);
-    $lastPage = max(1, (int) ceil(max(1, $total) / $perPage));
-    $page = min($page, $lastPage);
-    $offset = ($page - 1) * $perPage;
-
-    $events['items'] = array_slice($events['items'], $offset, $perPage);
-
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
     return view('events.index', [
         'activePage' => 'events',
         'events' => $eventsSeedProvider(),
@@ -3141,7 +3135,7 @@ Route::get('/resources', function () {
     $externalResourceService = app(\App\Services\ExternalResourceService::class);
     $resources = $externalResourceService->list();
     $categories = $externalResourceService->categories();
-    
+
     return view('resources', [
         'activePage' => 'resources',
         'resources' => $resources,

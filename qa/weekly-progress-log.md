@@ -11,7 +11,7 @@
 
 ```
 ### Week N — Date Range
-**QA Layer:** A1/A2/A3/Paper
+**Assignment:** A1/A2/A3/Paper
 **Focus:** [main goal this week]
 
 #### Tasks Completed
@@ -50,10 +50,11 @@
 
 ## Week 2 — 2026-05-13 to 2026-05-19
 
-**QA Layer:** A1 (Risk-Based QA)
+**Assignment:** A1 (Risk-Based QA)
 **Focus:** Environment setup, baseline capture, risk register, manual test cases
 
 ### Tasks Completed
+
 - [x] Full repository audit completed
 - [x] QA folder structure created (`C:\dev\kazutb-library\qa\`)
 - [x] Full audit report written (`qa/docs/00-full-audit-report.md`)
@@ -68,6 +69,7 @@
 - [ ] Document 3+ defects/gaps found during exploration
 
 ### Artifacts Created/Updated
+
 - `qa/README.md` — QA workspace index
 - `qa/docs/00-full-audit-report.md` — Full audit (47KB)
 - `qa/docs/risk-register.md` — 17-item risk register
@@ -77,25 +79,29 @@
 - `qa/weekly-progress-log.md` — This file
 
 ### Metrics Snapshot
-| Metric | Baseline | Week 2 | Δ |
-|--------|---------|--------|---|
-| PHP test files | — | ~112 | New |
-| Coverage % | — | ~30% (est.) | New |
-| Risk items identified | — | 17 | New |
-| CI jobs passing | — | 3 | New |
-| Defects documented | — | TBD | — |
+
+| Metric                | Baseline | Week 2      | Δ   |
+| --------------------- | -------- | ----------- | --- |
+| PHP test files        | —        | ~112        | New |
+| Coverage %            | —        | ~30% (est.) | New |
+| Risk items identified | —        | 17          | New |
+| CI jobs passing       | —        | 3           | New |
+| Defects documented    | —        | TBD         | —   |
 
 ### Defects Found
-| ID | Description | Severity | Status |
-|----|------------|---------|--------|
-| (fill in) | | | |
+
+| ID        | Description | Severity | Status |
+| --------- | ----------- | -------- | ------ |
+| (fill in) |             |          |        |
 
 ### Blockers / Risks
+
 - Demo auth setup not validated yet (blocks E2E)
 - Coverage actual % not yet measured (needs clover report)
 - PostgreSQL Docker not confirmed running
 
 ### Next Week Plan
+
 - [ ] Execute all test commands and fill in Environment Setup Report
 - [ ] Write 20+ manual test cases for: Auth (5), RBAC (5), Circulation (5), Catalog (5)
 - [ ] Generate actual PHPUnit coverage report
@@ -103,6 +109,7 @@
 - [ ] Update risk register with actual findings
 
 ### Notes / Observations
+
 > Initial audit completed. System is well-structured with strong test coverage for a project at this stage.
 > Key gaps: no rich test data factories, low coverage threshold (4%), no performance testing.
 > The `ReadOnlyPgsqlModel` pattern is unusual — need to understand test data approach for external read-only DB.
@@ -111,10 +118,11 @@
 
 ## Week 3 — [Fill in dates]
 
-**QA Layer:** A1 (continuing) / A2 prep
+**Assignment:** A1 (continuing) / A2 prep
 **Focus:** Manual test case execution, gap filling, automation prep
 
 ### Tasks Completed
+
 - [ ] All manual test cases written and reviewed
 - [ ] Environment validation 100% complete
 - [ ] Coverage report generated and documented
@@ -122,21 +130,23 @@
 - [ ] A1 artifacts finalized for submission
 
 ### Metrics Snapshot
-| Metric | Week 2 | Week 3 | Δ |
-|--------|--------|--------|---|
-| PHP test files | 112 | | |
-| Coverage % | 30% | | |
-| Risk items covered | 35% | | |
-| Defects found | TBD | | |
+
+| Metric             | Week 2 | Week 3 | Δ   |
+| ------------------ | ------ | ------ | --- |
+| PHP test files     | 112    |        |     |
+| Coverage %         | 30%    |        |     |
+| Risk items covered | 35%    |        |     |
+| Defects found      | TBD    |        |     |
 
 ---
 
 ## Week 4 — [Fill in dates]
 
-**QA Layer:** A2 (Automation Baseline)
+**Assignment:** A2 (Automation Baseline)
 **Focus:** Factory creation, new automated tests, CI gate updates
 
 ### Tasks Planned
+
 - [ ] Create DocumentFactory + ReaderFactory
 - [ ] Expand API tests for digital materials + shortlist export
 - [ ] Add Playwright tests for librarian circulation flow
@@ -148,10 +158,11 @@
 
 ## Week 5 — [Fill in dates]
 
-**QA Layer:** Intermediate Empirical Review Checkpoint
+**Assignment:** Midterm Checkpoint
 **Focus:** Metrics review, research paper methodology section
 
 ### Tasks Planned
+
 - [ ] Export all metrics (M1–M12) to CSV
 - [ ] Generate coverage trend chart
 - [ ] Review CI history (pass rate, flaky tests)
@@ -162,10 +173,11 @@
 
 ## Week 6 — [Fill in dates]
 
-**QA Layer:** A3 prep + research paper
+**Assignment:** A3 prep + research paper
 **Focus:** k6 setup, performance baseline, experimental design
 
 ### Tasks Planned
+
 - [ ] Install k6 and write 3 load test scripts
 - [ ] Capture baseline performance at 1/5/10 VU
 - [ ] Document test environment specs for paper
@@ -175,10 +187,11 @@
 
 ## Week 7 — [Fill in dates]
 
-**QA Layer:** A3 (Performance & Experimental) + Final Paper
+**Assignment:** A3 (Performance & Experimental) + Final Paper
 **Focus:** Load experiments, charts, research paper finalization
 
 ### Tasks Planned
+
 - [ ] Run full load test scenarios
 - [ ] Generate performance charts (response time curves, error rate vs load)
 - [ ] Populate all metrics M1–M12 in baseline-metrics.csv
@@ -189,11 +202,11 @@
 
 ## Summary Table (Updated Weekly)
 
-| Week | QA Layer | Test Files | Coverage % | Defects Found | CI Pass Rate | Notes |
-|------|-----------|-----------|-----------|--------------|-------------|-------|
-| W2 | A1 | 112 | ~30% (est) | TBD | TBD | Initial audit |
-| W3 | A1 | | | | | |
-| W4 | A2 | | | | | |
-| W5 | Intermediate Empirical Review | | | | | |
-| W6 | A3 prep | | | | | |
-| W7 | A3 + Paper | | | | | |
+| Week | Assignment | Test Files | Coverage % | Defects Found | CI Pass Rate | Notes         |
+| ---- | ---------- | ---------- | ---------- | ------------- | ------------ | ------------- |
+| W2   | A1         | 112        | ~30% (est) | TBD           | TBD          | Initial audit |
+| W3   | A1         |            |            |               |              |               |
+| W4   | A2         |            |            |               |              |               |
+| W5   | Midterm    |            |            |               |              |               |
+| W6   | A3 prep    |            |            |               |              |               |
+| W7   | A3 + Paper |            |            |               |              |               |

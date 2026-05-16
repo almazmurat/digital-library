@@ -1,340 +1,160 @@
 # KazUTB Digital Library
 
-Production-oriented digital library platform for Kazakh University of Technology and Business (KazUTB), built with Laravel 13, PostgreSQL, Vite, and Playwright.
+## Project Overview
 
-This repository contains the full web platform: public library portal, member cabinet, librarian operations, admin panels, API surface, and QA/test automation.
+KazUTB Digital Library is a Laravel-based university digital library platform for catalog discovery, member services, librarian workflows, administrative operations, and API integration.
 
-## Table of Contents
+This repository includes:
 
-1. Project Vision
-2. Core Features
-3. Architecture
-4. Tech Stack
-5. Repository Structure
-6. Prerequisites
-7. Quick Start (Docker, Recommended)
-8. Quick Start (Local, Non-Docker)
-9. Environment Configuration
-10. Database and Migrations
-11. Running the Application
-12. Testing and QA
-13. End-to-End Testing (Playwright)
-14. API and Integrations
-15. Authentication and Roles
-16. Internationalization
-17. Frontend Build Pipeline
-18. Operational Notes
-19. Troubleshooting
-20. Security and Secret Handling
-21. Contributing Workflow
-22. Release and Deployment Notes
-23. License
+- the web application (public and authenticated surfaces),
+- backend services and domain logic,
+- automated test suites (PHPUnit and Playwright),
+- QA and research evidence artifacts used for academic reporting.
 
-## Project Vision
+Main purpose:
 
-KazUTB Digital Library is a complete operational system for university library processes, not only a catalog UI.
+- provide an operational digital library system,
+- support reproducible QA validation and evidence-based reporting.
 
-It is designed to:
+Main technologies:
 
-- provide public discovery of library resources,
-- support authenticated member workflows (shortlists, reservations, cabinet pages),
-- enable librarian operations (inventory, circulation, reservations, reporting),
-- offer administrative management and integrations,
-- expose API endpoints for external systems,
-- maintain multilingual user experience.
+- Laravel 13, PHP 8.3+,
+- PostgreSQL,
+- Vite/Node.js frontend pipeline,
+- PHPUnit 12 and Playwright.
 
-## Core Features
+## Key Features
 
-- Public-facing pages: catalog, news, events, library information, contacts, rules.
-- Catalog discovery and detail pages.
-- Member cabinet workflows, including personal shortlist-related pages.
-- Reservation/circulation-related domain logic and status workflows.
-- Librarian and admin operational interfaces.
-- Integration endpoints and service-layer orchestration.
-- Notification and workflow support.
-- Extensive automated test coverage (Feature/Unit/E2E).
+- Public catalog, book detail, news/events, and informational pages.
+- Member flows (account, shortlist, reservations, notifications/history surfaces).
+- Librarian and internal operational modules.
+- Admin and integration-facing workflows.
+- Risk-aware QA evidence package under qa/.
+- Multi-language content support (en, kk, ru).
 
-## Architecture
+## Technology Stack
 
-High-level architecture follows a layered Laravel design:
-
-- HTTP layer: controllers and middleware in `app/Http`.
-- Domain/application services in `app/Services`.
-- Eloquent models in `app/Models`.
-- Route entry points in `routes/web.php` and `routes/api.php`.
-- Blade UI views in `resources/views`.
-- Frontend asset pipeline via Vite (`resources/js`, `resources/css`).
-- PostgreSQL as primary data store.
-- Optional external service integrations configured via `.env` and `config/*`.
-
-## Tech Stack
-
-- Backend: PHP 8.4+, Laravel 13
-- Database: PostgreSQL 18 (via Docker image in compose setup)
-- Frontend build: Node.js 20.19+ and Vite 8
-- CSS/tooling: TailwindCSS 4
-- Testing: PHPUnit 12, Laravel test runner, Playwright
-- Container runtime: Docker Compose
+- Backend: PHP, Laravel 13
+- Database: PostgreSQL (Docker service uses postgres:18)
+- Frontend tooling: Node.js, npm, Vite, TailwindCSS
+- Test frameworks: PHPUnit (Unit/Feature/API), Playwright (browser E2E)
+- Container workflow: Docker Compose
 
 ## Repository Structure
 
-Top-level map of key directories/files:
+Important paths for evaluators:
 
-- `app/` Laravel application code (controllers, middleware, models, services, notifications)
-- `bootstrap/` Laravel bootstrap files
-- `config/` Application and integration configuration
-- `database/` Migrations, factories, seeders
-- `docs/` Integration/API contract artifacts
-- `lang/` Localization files (`en`, `kk`, `ru`)
-- `public/` Public web root and built assets
-- `resources/` Blade views and frontend source
-- `routes/` Web, API, and console route definitions
-- `scripts/` Developer and CI helper scripts
-- `tests/` Unit, feature, and e2e tests
-- `docker/` Runtime configs (nginx, php, entrypoint, supervisor)
-- `docker-compose.yml` Local multi-service dev stack
-- `Dockerfile` App image definition
-- `composer.json` PHP dependencies and scripts
-- `package.json` JS dependencies and scripts
+- app/: Laravel application code (controllers, middleware, models, services)
+- config/: runtime and integration configuration
+- database/: migrations, factories, seeders
+- routes/: web/api route definitions
+- resources/: Blade views, JS/CSS source
+- tests/Unit: unit tests
+- tests/Feature: feature and API/integration-oriented tests
+- tests/e2e: Playwright browser tests
+- scripts/dev: QA/dev helper scripts used by Composer scripts
+- qa/: QA workspace and research artifacts
+- qa/final-improvements/: canonical metrics, tables, figures, traceability
+- qa/final-research/: manuscript and final integration/proofread reports
 
 ## Prerequisites
 
-For Docker-based flow:
+Recommended workflow uses Docker.
 
-- Docker Desktop or Docker Engine with Compose v2
+Required tools (Docker workflow):
 
-For local non-Docker flow:
+- Docker Desktop or Docker Engine with Docker Compose v2
 
-- PHP 8.4+
+Required tools (non-Docker/local workflow):
+
+- PHP 8.3+ (some QA scripts require PHP 8.4+ or Docker fallback)
 - Composer 2+
-- Node.js 20.19+
+- Node.js 20.19.0+
 - npm 10+
-- PostgreSQL 15+ (project compose uses PostgreSQL 18)
+- PostgreSQL (if not using Docker PostgreSQL)
 
-## Quick Start (Docker, Recommended)
+Optional but useful:
 
-1. Copy environment template and configure variables:
+- Bash shell on Windows (Git Bash or WSL) for scripts under scripts/dev/\*.sh
+- GitHub CLI (gh) for extended evidence logging in qa:evidence
+
+## Installation and Setup
+
+Primary recommended path: Docker.
+
+### 1. Clone and enter repository
+
+```bash
+git clone https://github.com/kazutb-dev/digital-library-kazutb.git
+cd digital-library-kazutb
+```
+
+### 2. Environment configuration
 
 ```bash
 cp .env.example .env
 ```
 
-2. Set required values in `.env` (especially DB and app settings).
+Then update critical values in .env:
 
-3. Build and start services:
+- APP_KEY (generate if empty)
+- DB*\* and POSTGRES*\* values
+- POSTGRES_PASSWORD (must be set for docker-compose)
+- APP_URL (default http://localhost)
 
-```bash
-docker compose up --build -d app frontend-dev
-```
-
-4. Install backend dependencies in app container (if needed):
-
-```bash
-docker compose exec app composer install
-```
-
-5. Run migrations:
+Generate application key:
 
 ```bash
-docker compose exec app php artisan migrate
-```
-
-6. Open application:
-
-- App: http://localhost
-- Vite dev server: http://localhost:5173
-
-### Compose Services
-
-- `postgres`: PostgreSQL database service
-- `app`: Laravel app runtime (nginx + php-fpm)
-- `frontend-dev`: Node/Vite live development server
-
-## Quick Start (Local, Non-Docker)
-
-1. Install PHP dependencies:
-
-```bash
-composer install
-```
-
-2. Install JS dependencies:
-
-```bash
-npm install
-```
-
-3. Configure environment:
-
-```bash
-cp .env.example .env
 php artisan key:generate
 ```
 
-4. Configure PostgreSQL credentials in `.env`.
+### 3. Install dependencies
 
-5. Run migrations:
+If using local host tools:
+
+```bash
+composer install
+npm install
+```
+
+If using Docker-first workflow, dependencies can be installed in containers when needed:
+
+```bash
+docker compose exec app composer install
+docker compose exec frontend-dev npm install
+```
+
+### 4. Database setup
+
+Run migrations:
 
 ```bash
 php artisan migrate
 ```
 
-6. Run app and assets:
+Notes:
+
+- In Docker app container, migrations are also executed by docker/entrypoint.sh at container start.
+- For a clean reset with seed data (if your evaluation requires it):
 
 ```bash
-php artisan serve
-npm run dev
-```
-
-## Environment Configuration
-
-Configuration is driven by `.env` + `config/*.php`.
-
-Important areas:
-
-- Application: `APP_NAME`, `APP_ENV`, `APP_DEBUG`, `APP_URL`
-- Database: `DB_*` / `POSTGRES_*`
-- Session/cache/queue: `SESSION_*`, `CACHE_*`, queue settings
-- Integrations: external auth/resource endpoints in config and env
-
-Do not commit real secrets, credentials, access tokens, or private endpoint keys.
-
-## Database and Migrations
-
-- Migration files are in `database/migrations`.
-- Factories in `database/factories`.
-- Seeders in `database/seeders`.
-
-Standard commands:
-
-```bash
-php artisan migrate
 php artisan migrate:fresh --seed
 ```
 
 ## Running the Application
 
-### Standard Laravel Dev Runtime
+### Option A (Recommended): Docker runtime
 
 ```bash
-composer dev
+docker compose up --build -d app frontend-dev
 ```
 
-This starts concurrent processes for app server, queue listener, logs, and Vite.
+Default endpoints:
 
-### One-command setup helper
+- Application: http://localhost
+- Vite dev server: http://localhost:5173
 
-```bash
-composer setup
-```
-
-## Testing and QA
-
-### Backend test suite
-
-```bash
-composer test
-# or
-php artisan test
-```
-
-### Focused/extended scripts (from `composer.json`)
-
-Examples:
-
-```bash
-composer test:critical-paths
-composer test:internal
-composer test:reservation-core
-composer test:integration-reservations
-composer test:stewardship
-```
-
-### CI/quality scripts
-
-```bash
-composer qa:ci
-composer qa:coverage-threshold
-composer qa:evidence
-```
-
-## End-to-End Testing (Playwright)
-
-Install browser dependencies:
-
-```bash
-npm run test:e2e:install
-# if system deps are needed:
-npm run test:e2e:install:system
-```
-
-Run tests:
-
-```bash
-npm run test:e2e
-```
-
-Playwright config is in `playwright.config.ts`.
-
-## API and Integrations
-
-- API routes: `routes/api.php`
-- Web routes: `routes/web.php`
-- Integration contract artifact: `docs/integration-api-contract.json`
-
-Service classes for integration/business workflows are under:
-
-- `app/Services`
-- `app/Services/Admin`
-- `app/Services/Library`
-
-## Authentication and Roles
-
-Project includes role-aware surfaces and route protection for different audiences:
-
-- Guest/public visitors
-- Authenticated members/readers
-- Librarian users
-- Admin users
-
-Middleware and route grouping enforce access behavior. Authentication/session details are configured via Laravel auth/session configs and integration endpoints where applicable.
-
-## Internationalization
-
-Multi-language resources are stored in:
-
-- `lang/en`
-- `lang/kk`
-- `lang/ru`
-
-UI translation arrays and language keys are maintained per locale.
-
-## Frontend Build Pipeline
-
-- Source assets: `resources/js`, `resources/css`
-- Vite config: `vite.config.js`
-- Build output: `public/build`
-
-Commands:
-
-```bash
-npm run dev
-npm run build
-```
-
-## Operational Notes
-
-- Runtime logs: `storage/logs`
-- Queue/session/cache behavior is env-configurable
-- Docker runtime scripts/configs are in `docker/`
-- Keep `APP_DEBUG=false` in production-like environments
-
-## Troubleshooting
-
-### App does not start in Docker
-
-- Verify `.env` has required values.
-- Check service health:
+Useful checks:
 
 ```bash
 docker compose ps
@@ -342,69 +162,225 @@ docker compose logs app --tail=200
 docker compose logs postgres --tail=200
 ```
 
-### Migration or DB connection issues
+### Option B: Local host runtime
 
-- Validate `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`.
-- Ensure PostgreSQL service is healthy.
-- Re-run migrations once connectivity is confirmed.
-
-### Frontend changes not visible
-
-- Ensure `frontend-dev` is running.
-- Confirm Vite port mapping (`5173`) and browser access.
-- Rebuild assets with `npm run build` for production mode checks.
-
-### Test failures after dependency update
-
-- Reinstall dependencies (`composer install`, `npm install`).
-- Clear framework caches:
+Run backend and frontend separately:
 
 ```bash
-php artisan optimize:clear
+php artisan serve
+npm run dev
 ```
 
-## Security and Secret Handling
+Or run the combined Composer dev process:
 
-Security practices for this repository:
+```bash
+composer dev
+```
 
-- Never commit `.env` with real credentials.
-- Do not commit secrets/tokens/certificates/private keys.
-- Use environment variables for sensitive config.
-- Rotate credentials if accidental disclosure occurs.
-- Review diffs before commit to avoid leaking local machine paths or tokens.
+This starts Laravel server, queue listener, logs stream, and Vite concurrently.
 
-## Contributing Workflow
+## Running Tests
 
-1. Create a feature branch from `main`.
-2. Implement changes with focused commits.
-3. Run relevant tests and QA scripts.
-4. Open pull request with context, screenshots (if UI), and test evidence.
-5. Address review comments and keep branch up to date.
+This repository includes README-required test script instructions below.
 
-Suggested commit hygiene:
+### Unit tests
 
-- Separate refactor, feature, and formatting changes when possible.
-- Include migration notes if schema changes are introduced.
-- Update docs when behavior changes.
+Run Unit suite only:
 
-## Release and Deployment Notes
+```bash
+php artisan test --testsuite=Unit
+```
 
-Before release:
+Alternative:
 
-- Ensure migrations are safe and reversible where possible.
-- Validate production env variables.
-- Run backend and e2e test gates.
-- Build frontend assets.
-- Confirm health checks and core catalog/auth flows.
+```bash
+php vendor/bin/phpunit --testsuite Unit
+```
 
-Recommended baseline release checklist:
+Expected output:
 
-- Dependency install success
-- DB migration success
-- Application health endpoint(s) reachable
-- Core user journeys tested (public browse, auth, member actions)
-- Admin/librarian critical operations smoke tested
+- PHPUnit/Laravel test summary with passed/failed counts.
+
+### Feature tests
+
+Run Feature suite only:
+
+```bash
+php artisan test --testsuite=Feature
+```
+
+Alternative:
+
+```bash
+php vendor/bin/phpunit --testsuite Feature
+```
+
+### Full backend test run
+
+```bash
+composer test
+```
+
+Equivalent core command:
+
+```bash
+php artisan test
+```
+
+### API / integration-focused tests
+
+Run specific reservation integration files:
+
+```bash
+composer test:integration-reservations
+```
+
+Critical-path API and core filters:
+
+```bash
+composer test:critical-paths
+```
+
+Other focused backend groups:
+
+```bash
+composer test:internal
+composer test:reservation-core
+composer test:stewardship
+```
+
+Environment note:
+
+- phpunit.xml sets DB_CONNECTION=sqlite and DB_DATABASE=:memory: for test defaults.
+- Some scripts/documentation identify PostgreSQL-only scenarios; run with live PostgreSQL when required for those paths.
+
+### Browser / end-to-end tests (Playwright)
+
+Install browser runtime:
+
+```bash
+npm run test:e2e:install
+```
+
+If system dependencies are missing (Linux/container contexts):
+
+```bash
+npm run test:e2e:install:system
+```
+
+Run E2E tests:
+
+```bash
+npm run test:e2e
+```
+
+Expected output:
+
+- Playwright terminal report and HTML report in playwright-report/ (or configured output path).
+
+### Frontend quality gate
+
+```bash
+npm run qa:frontend
+```
+
+This runs:
+
+1. npm run build
+2. npm run test:e2e
+
+## Test Scripts / QA Scripts
+
+Script directory:
+
+- scripts/dev/
+
+Verified Composer script commands and what they do:
+
+- composer qa:ci
+    - Runs scripts/dev/run-ci-gates.sh
+    - Performs: Laravel cache clear, Pint checks on targeted files, critical-path test filter, frontend production build.
+    - Use when: reproducing CI-like local gate checks.
+
+- composer qa:evidence
+    - Runs scripts/dev/run-verification-evidence.sh
+    - Captures evidence logs for qa:ci and Playwright runs, writes artifacts under evidence/verification/ with timestamps.
+    - Use when: producing auditable verification evidence.
+
+- composer qa:coverage-threshold
+    - Runs scripts/dev/check-coverage-threshold.php build/test-results/clover.xml 4
+    - Use when: validating coverage threshold after generating clover.xml.
+
+- composer dev:check
+    - Runs scripts/dev/check-dev-env.sh
+    - Prints availability and versions of core tools.
+
+- composer dev:critical-paths
+    - Runs scripts/dev/check-runtime-critical-paths.sh
+    - Checks presence and summary of critical-path test files.
+
+- composer dev:catalog-paths (alias composer test:catalog-paths)
+    - Runs scripts/dev/check-public-catalog-paths.sh
+    - Validates canonical route/API wiring and reports PASS/FAIL.
+
+Important shell note:
+
+- Many scripts use bash and may require Git Bash/WSL on Windows if run outside containers.
+
+## QA / Research Artifacts
+
+Primary QA/research locations:
+
+- qa/README.md: QA workspace overview
+- qa/final-improvements/: canonical QA evidence package
+    - SUMMARY.md, TRACEABILITY.md
+    - metrics/ (CSV/JSON evidence)
+    - tables/ (paper-ready markdown tables)
+    - figures-publication/ and figure-sources/
+    - docs/ methodology, validity, replication notes
+- qa/final-research/: final manuscript artifacts
+    - full-paper draft references and integration/proofread reports
+- qa/phase4/paper/full-paper-draft.md: active integrated paper draft
+
+If you are evaluating reproducibility, start with:
+
+1. qa/final-improvements/SUMMARY.md
+2. qa/final-improvements/TRACEABILITY.md
+3. qa/final-research/
+
+## Troubleshooting / Notes
+
+- Docker DB startup issues:
+    - Ensure POSTGRES_PASSWORD is set in .env.
+    - Check docker compose logs postgres.
+
+- App boots but migrations fail:
+    - Verify DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD.
+
+- Frontend not updating:
+    - Ensure frontend-dev service or npm run dev is running.
+
+- Playwright startup behavior:
+    - playwright.config.ts can fallback to Docker web server when compatible local PHP is unavailable.
+
+- Script portability on Windows:
+    - scripts/dev/\*.sh are bash scripts; run via Git Bash/WSL or inside Linux-based containers.
+
+- Partially supported script references:
+    - composer.json includes dev:vault-sync, dev:vault-watch, and dev:install-vault-hooks entries that reference scripts/dev/vault-\*.sh files not present in this repository snapshot.
+    - Treat those commands as unavailable unless those scripts are added.
 
 ## License
 
-This project is built on Laravel foundation components that are MIT-licensed. Confirm repository-level license policy with maintainers for organization-specific distribution terms.
+Composer metadata declares MIT license.
+No standalone LICENSE file was found in the repository root at the time of this README rewrite.
+
+## Author / Academic Context
+
+This repository includes an academic QA evidence and manuscript workflow under qa/, including:
+
+- structured risk/testing evidence,
+- final-improvements package,
+- final-research integration and editorial reports.
+
+For submission/evaluation context, use qa/final-research/ together with qa/final-improvements/.

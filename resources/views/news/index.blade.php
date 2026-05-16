@@ -67,32 +67,10 @@
       ],
   ][$lang];
 
-<<<<<<< HEAD
   $featured = null;
   $rest = [];
   foreach ($newsArticles as $article) {
       if ($featured === null && ! empty($article['featured'])) {
-=======
-    $pagination = $newsPagination ?? [
-      'topic' => 'all',
-      'page' => 1,
-      'per_page' => 5,
-      'total' => count($newsArticles ?? []),
-      'last_page' => 1,
-    ];
-    $currentTopic = in_array((string) ($pagination['topic'] ?? 'all'), ['all', 'events', 'research'], true)
-    ? (string) $pagination['topic']
-    : 'all';
-    $currentPage = max(1, (int) ($pagination['page'] ?? 1));
-    $lastPage = max(1, (int) ($pagination['last_page'] ?? 1));
-    $showCanonicalHero = $currentPage === 1;
-
-    $featured = null;
-    $rest = [];
-    if ($showCanonicalHero) {
-      foreach ($newsArticles as $article) {
-        if ($featured === null && ! empty($article['featured'])) {
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
           $featured = $article;
           continue;
         }
@@ -280,37 +258,10 @@
     </div>
   </div>
 
-<<<<<<< HEAD
   {{-- ④ Load More --}}
   <div class="news-canonical__load-more">
     <button class="news-canonical__load-more-btn" type="button">{{ $chrome['load_more'] }}</button>
   </div>
-=======
-  {{-- ④ Pagination (numeric + previous/next, keeps topic/lang query state) --}}
-  <nav class="news-canonical__pagination" aria-label="News pagination" data-test-id="news-pagination">
-    @if($currentPage > 1)
-      <a href="{{ $routeWithLang('/news', ['topic' => $currentTopic, 'page' => $currentPage - 1]) }}" class="news-canonical__page-btn news-canonical__page-btn--nav" data-test-id="news-page-prev">{{ $chrome['page_prev'] }}</a>
-    @else
-      <button type="button" class="news-canonical__page-btn news-canonical__page-btn--nav" disabled aria-disabled="true" data-test-id="news-page-prev-disabled">{{ $chrome['page_prev'] }}</button>
-    @endif
-
-    @foreach($pageItems as $pageItem)
-      @if($pageItem === '...')
-        <span class="news-canonical__page-ellipsis" aria-hidden="true">...</span>
-      @elseif($pageItem === $currentPage)
-        <span class="news-canonical__page-btn news-canonical__page-btn--active" aria-current="page" data-test-id="news-page-current">{{ $pageItem }}</span>
-      @else
-        <a href="{{ $routeWithLang('/news', ['topic' => $currentTopic, 'page' => $pageItem]) }}" class="news-canonical__page-btn" data-test-id="news-page-{{ $pageItem }}">{{ $pageItem }}</a>
-      @endif
-    @endforeach
-
-    @if($currentPage < $lastPage)
-      <a href="{{ $routeWithLang('/news', ['topic' => $currentTopic, 'page' => $currentPage + 1]) }}" class="news-canonical__page-btn news-canonical__page-btn--nav" data-test-id="news-page-next">{{ $chrome['page_next'] }}</a>
-    @else
-      <button type="button" class="news-canonical__page-btn news-canonical__page-btn--nav" disabled aria-disabled="true" data-test-id="news-page-next-disabled">{{ $chrome['page_next'] }}</button>
-    @endif
-  </nav>
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 
 </div>
 @endsection
@@ -708,30 +659,6 @@
     color: #006a6a;
     border-color: #006a6a;
   }
-<<<<<<< HEAD
-=======
-  .news-canonical__page-btn--active {
-    background: #006a6a;
-    border-color: #006a6a;
-    color: #ffffff;
-    cursor: default;
-  }
-  .news-canonical__page-btn:disabled {
-    color: #8c9199;
-    border-color: rgba(196,198,207,.25);
-    cursor: not-allowed;
-    opacity: .65;
-  }
-  .news-canonical__page-btn:disabled:hover {
-    color: #8c9199;
-    border-color: rgba(196,198,207,.25);
-  }
-  .news-canonical__page-ellipsis {
-    font-family: 'Manrope', sans-serif;
-    color: #8c9199;
-    padding: 0 4px;
-  }
->>>>>>> 01b6ceb (chore: sync wave2 updates and add comprehensive repository README)
 
   /* ── Responsive ───────────────────────────────────────────── */
 
